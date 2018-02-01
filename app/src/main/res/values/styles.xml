@@ -1,0 +1,77 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+
+    <style name="FullScreen" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
+    </style>
+
+    <style name="texto_18_blanco">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="texto_15_blanco">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="texto_15_verde">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/colorVerde</item>
+    </style>
+
+    <style name="texto_13_negro">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/colorNegro</item>
+    </style>
+
+    <style name="texto_13_verde">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/colorVerde</item>
+    </style>
+
+    <style name="texto_20_morado">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorMorado</item>
+    </style>
+
+    <style name="texto_22_morado">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">@color/colorMorado</item>
+    </style>
+
+    <style name="texto_15_gris">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/colorGris</item>
+    </style>
+
+    <style name="texto_16_morado">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/colorMorado</item>
+    </style>
+
+    <style name="texto_36_morado">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">@color/colorMorado</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

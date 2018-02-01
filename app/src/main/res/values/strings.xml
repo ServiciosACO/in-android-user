@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">indiesco</string>
+
+    <!--Tour-->
+    <string name="tour_boton">¡Empecemos!</string>
+    <string name="tour_titulo_1">Solicita el servicio que necesites</string>
+    <string name="tour_titulo_2">Programa tu servicio cuando quieras</string>
+    <string name="tour_titulo_3">Facilidades de pago</string>
+    <string name="tour_subtitulo_1">Elige si quieres limpieza para tu vivienda, finca, oficina o local comercial y gestiona los detalles de tu servicio</string>
+    <string name="tour_subtitulo_2">Podrás programar tu servicio para la fecha que quieras y tener control sobre todas las peticiones que realizaste</string>
+    <string name="tour_subtitulo_3">Paga online de forma segura, tenemos varias formas de pago a tu disposición para que utilices la que más te convenga</string>
+    <string name="title_activity_iniciar_sesion">IniciarSesion</string>
+
+    <!--Olvido Contraseña-->
+    <string name="olvido_contraseña_header">Recuperar contraseña</string>
+    <string name="olvido_contraseña_titulo">Necesitamos tu e-mail</string>
+    <string name="olvido_contraseña_subtitulo">Ingresa tu correo electrónico, te enviaremos un código de confirmación y luego podrás cambiar tu contraseña</string>
+
+    <!--Olvido Contraseña2-->
+    <string name="olvido_contraseña2_header">Recuperar contraseña</string>
+    <string name="olvido_contraseña2_titulo">Verifica que eres tú</string>
+    <string name="olvido_contraseña2_subtitulo">Digita el código de verificación que recibiste en tu correo electrónico</string>
+    <string name="olvido_contraseña2_respuesta_edit">El código es correcto</string>
+
+    <!--Olvido Contraseña3-->
+    <string name="olvido_contraseña3_header">Recuperar contraseña</string>
+    <string name="olvido_contraseña3_titulo">Crea tu contraseña nueva</string>
+    <string name="olvido_contraseña3_subtitulo">Ahora crea tu nueva contraseña, ésta debe tener 8 caracteres como mínimo</string>
+    <string name="olvido_contraseña3_respuesta_edit">Las contraseñas coinciden</string>
+    <string name="title_activity_home">Home</string>
+
+    <!--iniciar sesion2-->
+    <string name="iniciar_sesion2_header">Iniciar Sesión</string>
+    <string name="iniciar_sesion2_titulo">Bienvenido</string>
+    <string name="iniciar_sesion2_subtitulo">Ingresa tus datos para iniciar sesión</string>
+    <string name="iniciar_sesion2_olvido_contraseña">¿Olvidaste tu contraseña?</string>
+
+
+</resources>

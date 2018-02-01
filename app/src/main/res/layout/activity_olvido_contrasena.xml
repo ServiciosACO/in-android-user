@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorBlanco"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/llHeader"
+        android:layout_marginTop="30sp"
+        android:layout_marginLeft="19sp"
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgBotonVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/btn_atras" />
+        <co.kubo.indiesco.utils.Medium
+            android:id="@+id/tvTituloHeader"
+            style="@style/texto_20_morado"
+            android:layout_marginLeft="35sp"
+            android:text="@string/olvido_contraseña_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
+            android:orientation="vertical">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_22_morado"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46sp"
+                android:text="@string/olvido_contraseña_titulo" />
+            <co.kubo.indiesco.utils.Regular
+                style="@style/texto_15_gris"
+                android:gravity="center"
+                android:paddingRight="10sp"
+                android:paddingLeft="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48sp"
+                android:text="@string/olvido_contraseña_subtitulo" />
+            <EditText
+                android:id="@+id/editEmail"
+                android:inputType="textCapSentences"
+                android:imeOptions="actionGo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45sp"
+                android:textCursorDrawable="@color/colorVerdeCursor" />
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSiguiente"
+        android:src="@drawable/btn_next"
+        app:backgroundTint="@color/colorNaranja"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_gravity="right|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

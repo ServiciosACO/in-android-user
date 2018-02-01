@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlanco">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_logo" />
+            <Button
+                android:id="@+id/btnIniciarSesion"
+                android:text="Iniciar Sesión"
+                android:textColor="@color/colorBlanco"
+                android:textAllCaps="false"
+                android:layout_marginLeft="40sp"
+                android:layout_marginRight="40sp"
+                android:layout_marginTop="130sp"
+                android:background="@color/colorNaranja"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <Button
+                android:id="@+id/btnCrearCuenta"
+                android:text="Crear una cuenta"
+                android:textColor="@color/colorBlanco"
+                android:textAllCaps="false"
+                android:layout_marginLeft="40sp"
+                android:layout_marginRight="40sp"
+                android:layout_marginTop="10sp"
+                android:background="@color/colorNaranja"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <LinearLayout
+                android:gravity="center"
+                android:paddingTop="40sp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <co.kubo.indiesco.utils.Regular
+                    android:text="Lee nuestros "
+                    style="@style/texto_13_negro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvTerminosCondiciones"
+                    style="@style/texto_13_verde"
+                    android:text="Términos y condiciones de uso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

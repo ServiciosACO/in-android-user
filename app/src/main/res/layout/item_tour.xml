@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fondoTour"
+    android:background="@drawable/tour1_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgFondoTour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/tour1" />
+
+    <co.kubo.indiesco.utils.Bold
+        android:id="@+id/tvTituloTour"
+        android:text="Titulo"
+        style="@style/texto_18_blanco"
+        android:gravity="center"
+        android:layout_marginRight="30sp"
+        android:layout_marginLeft="30sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="20sp"
+        android:layout_below="@id/imgFondoTour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <co.kubo.indiesco.utils.Regular
+        android:id="@+id/tvSubTituloTour"
+        android:text="subtitulo"
+        android:gravity="center"
+        android:layout_marginRight="30sp"
+        android:layout_marginLeft="30sp"
+        style="@style/texto_15_blanco"
+        android:layout_below="@id/tvTituloTour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnTour"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="24sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="100sp"
+        android:layout_marginRight="100sp"
+        android:textAllCaps="false"
+        android:layout_below="@id/tvSubTituloTour"
+        android:textColor="@color/colorNaranja"
+        android:background="@color/colorBlanco"
+        android:layout_height="wrap_content"
+        android:text="¡Empecemos!" />
+
+</RelativeLayout>
