@@ -2,6 +2,7 @@ package co.kubo.indiesco.activities;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,9 +18,9 @@ public class OlvidoContrasena3 extends AppCompatActivity implements View.OnClick
     @BindView(R.id.imgBotonVolver)
     ImageView imgBotonVolver;
     @BindView(R.id.editpass1)
-    EditText editpass1;
+    TextInputEditText editpass1;
     @BindView(R.id.editpass2)
-    EditText editpass2;
+    TextInputEditText editpass2;
     @BindView(R.id.fabSiguiente)
     FloatingActionButton fabSiguiente;
     @BindView(R.id.tvNotificacionPass)

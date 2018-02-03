@@ -34,6 +34,7 @@
     <string name="iniciar_sesion2_titulo">Bienvenido</string>
     <string name="iniciar_sesion2_subtitulo">Ingresa tus datos para iniciar sesión</string>
     <string name="iniciar_sesion2_olvido_contraseña">¿Olvidaste tu contraseña?</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

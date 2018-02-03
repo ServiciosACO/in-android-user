@@ -6,11 +6,17 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by estacion on 31/01/18.
  */
 
 public class Utils {
+
+    public Utils() {
+    }
 
     public static boolean checkInternetConnection(Activity context, boolean showToast) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -36,19 +42,11 @@ public class Utils {
     public Typeface fuenteSemiBold(Context context){
         return Typeface.createFromAsset(context.getAssets(), "Fonts/Barlow-SemiBold.ttf");
     }
-    /*
 
-    public Typeface fuenteBold(Context context){
-        return Typeface.createFromAsset(context.getAssets(), "Fonts/Catamaran-Bold.ttf");
-    }
-    public Typeface fuenteRegular(Context context){
-        return Typeface.createFromAsset(context.getAssets(), "Fonts/Catamaran-Regular.ttf");
-    }
-
-    public static String md5Encrypt(String md5) {
+    public static String sha1Encrypt(String texto) {
         try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(md5.getBytes());
+            java.security.MessageDigest sha = java.security.MessageDigest.getInstance("SHA-1");
+            byte[] array = sha.digest(texto.getBytes());
             StringBuilder sb = new StringBuilder();
             for (byte anArray : array) {
                 sb.append(Integer.toHexString((anArray & 0xFF) | 0x100).substring(1, 3));
@@ -58,5 +56,23 @@ public class Utils {
         }
         return "";
     }
-     */
+
+    public boolean isEmailValid(String email) {
+        //String email = editEmail.getText().toString();
+        String regExpn =
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+        CharSequence inputStr = email;
+        Pattern pattern = Pattern.compile(regExpn, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }//public boolean isEmailValid
 }

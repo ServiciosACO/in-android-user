@@ -37,6 +37,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.tvTerminosCondiciones:
                 break;
             case R.id.btnCrearCuenta:
+                Intent inRegistro = new Intent(this, Registro.class);
+                startActivity(inRegistro);
                 break;
             case R.id.btnIniciarSesion:
                 Intent inIniciar = new Intent(this, IniciarSesion.class);

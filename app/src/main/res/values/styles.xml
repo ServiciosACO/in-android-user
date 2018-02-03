@@ -30,6 +30,11 @@
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
+    <style name="texto_14_verde">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/colorVerde</item>
+    </style>
+
     <style name="texto_15_verde">
         <item name="android:textSize">15dp</item>
         <item name="android:textColor">@color/colorVerde</item>
