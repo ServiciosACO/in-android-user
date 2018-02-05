@@ -10,6 +10,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,14 +22,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.restAPI.ConstantesRestApi;
+import co.kubo.indiesco.restAPI.Endpoints;
+import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
+import co.kubo.indiesco.restAPI.modelo.ResponseLogin;
+import co.kubo.indiesco.utils.Constantes;
+import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Utils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class IniciarSesion extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String TAG = "IniciarSesion";
     @BindView(R.id.imgBotonVolver)
     ImageView imgBotonVolver;
     @BindView(R.id.editEmail)
@@ -41,6 +54,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
     TextView tvOlvidoContraseña;
     @BindView(R.id.inputPassword)
     TextInputLayout inputPassword;
+    private String token = "0", plataforma = "a", email = "", contraseña = "";
 
     Utils utils = new Utils();
     Animation anim1, anim2;
@@ -101,20 +115,21 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
 
     private void animacion(){
         if (editEmail.getVisibility() == View.VISIBLE){
-            editEmail.setVisibility(View.GONE);
+            email = editEmail.getText().toString();
+            validarEmail(email);
+            /*editEmail.setVisibility(View.GONE);
             inputPassword.setVisibility(View.VISIBLE);
             inputPassword.startAnimation(anim1);
-            hideSoftKeyboard();
+            hideSoftKeyboard();*/
         }else{
             //consulta el servicio si la contraseña esta bien y se va a home
             //validar si tiene servicios por calificar(Abre servicios) si no home
-            Intent goHome = new Intent(this, Home.class);
+            contraseña = editContraseña.getText().toString();
+            login(contraseña);
+            /*Intent goHome = new Intent(this, Home.class);
             goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(goHome);
-            finish();
-            /*inputPassword.setVisibility(View.GONE);
-            editEmail.setVisibility(View.VISIBLE);
-            editEmail.startAnimation(anim2);*/
+            finish();*/
         }//else
     }
 
@@ -167,4 +182,73 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
         }catch (Exception e){
         }*/
     }
+
+    public void validarEmail(final String email){
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        String url = ConstantesRestApi.URL_VALIDAR_EMAIL + email;
+        Call<ResponseGeneral> responseGeneralCall = endpoints.validarEmail(authToken, url);
+        responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
+            @Override
+            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100": //Cuenta exitente va a login
+                        editEmail.setVisibility(View.GONE);
+                        inputPassword.setVisibility(View.VISIBLE);
+                        inputPassword.startAnimation(anim1);
+                        hideSoftKeyboard();
+                        break;
+                    case "101": //Email no existe va a crear cuenta
+                        Intent goCrear = new Intent(IniciarSesion.this, Registro.class);
+                        goCrear.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(goCrear);
+                        finish();
+                        break;
+                    case "103": // Cuenta inactiva
+                        Toast.makeText(IniciarSesion.this, "Su cuenta se encuentra incativa", Toast.LENGTH_LONG).show();
+                        break;
+                    case "120": //auth_token no valido
+                        break;
+                }//switch
+            }
+            @Override
+            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                Log.e(TAG, "onFailure validarEmail");
+            }
+        });
+    }//public void validarEmail
+
+    public void login(String password){
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        String passSha1 = Utils.sha1Encrypt(password);
+        Call<ResponseLogin> responseLoginCall = endpoints.login(authToken, email, passSha1, token, plataforma);
+        responseLoginCall.enqueue(new Callback<ResponseLogin>() {
+            @Override
+            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100": //Login correcto
+                        Intent goHome = new Intent(IniciarSesion.this, Home.class);
+                        goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(goHome);
+                        finish();
+                        break;
+                    case "102": //contraseña o email incorrectos
+                        Toast.makeText(IniciarSesion.this, "Contraseña o email incorrectos", Toast.LENGTH_LONG).show();
+                        break;
+                    case "120": //auth_token no valido
+                        break;
+                    default: break;
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                Log.e(TAG, "onFailure login");
+            }
+        });
+    } //login*/
 }

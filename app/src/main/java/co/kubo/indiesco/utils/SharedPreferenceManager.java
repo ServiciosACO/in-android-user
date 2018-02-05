@@ -23,6 +23,16 @@ public class SharedPreferenceManager {
         return prefs.getBoolean("primeraVez", false);
     }//public static boolean getPrimeraVez
 
+    public static void setAuthToken(Context context, String authToken) {
+        SharedPreferences prefs = context.getSharedPreferences(NOMBRE_ARCHIVO, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("authToken", authToken);
+        editor.apply();
+    }
 
+    public static String getAuthToken(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(NOMBRE_ARCHIVO, Context.MODE_PRIVATE);
+        return prefs.getString("authToken", "");
+    }
 
 }//public class SharedPreferenceManager

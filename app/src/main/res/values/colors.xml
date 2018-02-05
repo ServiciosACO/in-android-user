@@ -13,4 +13,5 @@
     <color name="fondo_registro">#FAFAFA</color>
     <color name="color_hint">#BFBFBF</color>
     <color name="fondo_dialog">#EDEDED</color>
+    <color name="colorRojo">#FD444F</color>
 </resources>

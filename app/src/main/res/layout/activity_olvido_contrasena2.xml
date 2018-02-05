@@ -107,6 +107,14 @@
                     android:layout_marginRight="10sp"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
             </LinearLayout>
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvNotificacionPass"
+                style="@style/texto_15_verde"
+                android:layout_marginTop="15sp"
+                android:gravity="center"
+                android:text="@string/olvido_contraseña2_respuesta_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 

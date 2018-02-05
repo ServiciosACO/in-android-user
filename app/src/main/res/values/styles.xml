@@ -40,6 +40,11 @@
         <item name="android:textColor">@color/colorVerde</item>
     </style>
 
+    <style name="texto_15_naranja">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/colorNaranja</item>
+    </style>
+
     <style name="texto_13_negro">
         <item name="android:textSize">13dp</item>
         <item name="android:textColor">@color/colorNegro</item>
@@ -50,6 +55,16 @@
         <item name="android:textColor">@color/colorVerde</item>
     </style>
 
+    <style name="texto_13_gris">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/colorGris</item>
+    </style>
+
+    <style name="texto_14_gris_hint">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/colorGris</item>
+    </style>
+
     <style name="texto_20_morado">
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/colorMorado</item>
@@ -58,6 +73,11 @@
     <style name="texto_22_morado">
         <item name="android:textSize">22dp</item>
         <item name="android:textColor">@color/colorMorado</item>
+    </style>
+
+    <style name="texto_22_verde">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">@color/colorVerde</item>
     </style>
 
     <style name="texto_15_gris">

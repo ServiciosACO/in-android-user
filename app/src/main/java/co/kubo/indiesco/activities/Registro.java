@@ -245,7 +245,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             return false;
         }
         if (!editpass1.getText().toString().equals(editpass2.getText().toString())) {
-            editpass2.setError("Las contraseñas no coinciden");
+            editpass1.setError("Las contraseñas no coinciden");
             inputPass1.startAnimation(animShake);
             inputPass2.startAnimation(animShake);
             return false;

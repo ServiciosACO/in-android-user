@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/colorBlanco"
     android:layout_height="match_parent"
@@ -29,7 +30,10 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <!--Pagina 1-->
     <ScrollView
+        android:visibility="visible"
+        android:id="@+id/scrollViewPagina1"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -44,7 +48,7 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="46sp"
+                android:layout_marginTop="86sp"
                 android:text="@string/olvido_contraseña_titulo" />
             <co.kubo.indiesco.utils.Regular
                 style="@style/texto_15_gris"
@@ -66,6 +70,183 @@
         </LinearLayout>
     </ScrollView>
 
+    <!--Pagina 2-->
+    <ScrollView
+        android:visibility="gone"
+        android:id="@+id/scrollViewPagina2"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
+            android:orientation="vertical">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_22_morado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="86sp"
+                android:text="@string/olvido_contraseña2_titulo" />
+            <co.kubo.indiesco.utils.Regular
+                style="@style/texto_15_gris"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48sp"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp"
+                android:gravity="center"
+                android:text="@string/olvido_contraseña2_subtitulo" />
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="38sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/editCodigo1"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/colorGris"
+                    android:textSize="20sp"
+                    android:maxLength="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+                <EditText
+                    android:id="@+id/editCodigo2"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/colorGris"
+                    android:maxLength="1"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+                <EditText
+                    android:id="@+id/editCodigo3"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/colorGris"
+                    android:maxLength="1"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+                <EditText
+                    android:id="@+id/editCodigo4"
+                    android:inputType="number"
+                    android:maxEms="1"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/colorGris"
+                    android:maxLength="1"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+            </LinearLayout>
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvNotificacionCodigo"
+                style="@style/texto_15_verde"
+                android:layout_marginTop="15sp"
+                android:gravity="center"
+                android:text="@string/olvido_contraseña2_respuesta_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:visibility="gone"
+        android:id="@+id/scrollViewPagina3"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
+            android:orientation="vertical">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_22_morado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="86sp"
+                android:text="@string/olvido_contraseña3_titulo" />
+            <co.kubo.indiesco.utils.Regular
+                style="@style/texto_15_gris"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48sp"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp"
+                android:gravity="center"
+                android:text="@string/olvido_contraseña3_subtitulo" />
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginTop="38sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputPass1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorGris"
+                    app:passwordToggleDrawable="@drawable/icon_selector"
+                    app:passwordToggleEnabled="true"
+                    android:hint="Contraseña"
+                    app:passwordToggleTint="@color/colorGris">
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/editpass1"
+                        android:inputType="textPassword"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
+                        style="@style/texto_15_gris"
+                        android:textColorHint="@color/colorVerde"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputPass2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorGris"
+                    app:passwordToggleDrawable="@drawable/icon_selector"
+                    app:passwordToggleEnabled="true"
+                    android:hint="Contraseña"
+                    app:passwordToggleTint="@color/colorGris">
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/editpass2"
+                        android:inputType="textPassword"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
+                        style="@style/texto_15_gris"
+                        android:textColorHint="@color/colorVerde"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </android.support.design.widget.TextInputLayout>
+                <co.kubo.indiesco.utils.Regular
+                    android:visibility="gone"
+                    android:id="@+id/tvNotificacionPass"
+                    style="@style/texto_15_verde"
+                    android:layout_marginTop="15sp"
+                    android:gravity="center"
+                    android:text="@string/olvido_contraseña3_respuesta_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSiguiente"
         android:src="@drawable/btn_next"
@@ -75,4 +256,4 @@
         android:layout_gravity="right|bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

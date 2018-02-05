@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -36,8 +35,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.IniciarSesion"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_iniciar_sesion"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.OlvidoContrasena" />
         <activity android:name=".activities.OlvidoContrasena2" />
@@ -61,7 +60,9 @@
 
         <activity
             android:name=".activities.Maps"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".activities.Calificar" />
+        <activity android:name=".activities.Calificar2"></activity>
     </application>
 
 </manifest>

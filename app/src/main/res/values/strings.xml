@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">indiesco</string>
+    <string name="IV">r0c8t09cc40s=j9a</string>
+    <string name="KEY_TOKEN_API">1e+ertsa97-hsvr2</string>
+    <string name="SECRET_API">5f573su1i+=1jt3d</string>
 
     <!--Tour-->
     <string name="tour_boton">¡Empecemos!</string>
@@ -21,12 +24,14 @@
     <string name="olvido_contraseña2_titulo">Verifica que eres tú</string>
     <string name="olvido_contraseña2_subtitulo">Digita el código de verificación que recibiste en tu correo electrónico</string>
     <string name="olvido_contraseña2_respuesta_edit">El código es correcto</string>
+    <string name="olvido_contraseña2_respuesta_edit_2">El código es incorrecto</string>
 
     <!--Olvido Contraseña3-->
     <string name="olvido_contraseña3_header">Recuperar contraseña</string>
     <string name="olvido_contraseña3_titulo">Crea tu contraseña nueva</string>
     <string name="olvido_contraseña3_subtitulo">Ahora crea tu nueva contraseña, ésta debe tener 8 caracteres como mínimo</string>
     <string name="olvido_contraseña3_respuesta_edit">Las contraseñas coinciden</string>
+    <string name="olvido_contraseña3_respuesta_edit_2">Las contraseñas no coinciden</string>
     <string name="title_activity_home">Home</string>
 
     <!--iniciar sesion2-->

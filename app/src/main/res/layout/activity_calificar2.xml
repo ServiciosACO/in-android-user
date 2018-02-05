@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/fondo_registro"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/llHeader"
+        android:layout_marginTop="30sp"
+        android:layout_marginLeft="19sp"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgBotonVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/btn_atras" />
+        <co.kubo.indiesco.utils.Medium
+            android:id="@+id/tvTituloHeader"
+            style="@style/texto_20_morado"
+            android:layout_marginLeft="35sp"
+            android:text="Servicios sin calificar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginTop="160sp"
+            android:layout_marginBottom="32sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/img_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <co.kubo.indiesco.utils.Bold
+            android:gravity="center"
+            android:layout_marginBottom="7sp"
+            android:text="¡Bien hecho!"
+            style="@style/texto_22_morado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Regular
+            android:gravity="center"
+            android:paddingLeft="40sp"
+            android:paddingRight="40sp"
+            android:text="Has calificado todos tus servicios, regresa cuando tengas más por calificar"
+            style="@style/texto_15_gris"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
