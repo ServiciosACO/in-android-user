@@ -5,7 +5,7 @@ package co.kubo.indiesco.restAPI;
  */
 
 public class ConstantesRestApi {
-    public static final String URL_BASE = "http://indiesco.inkubo.co/";
+    public static final String URL_BASE = "http://indiescoapi.inkubo.co/";
     public static final String URL_CREAR_CUENTA = "cuenta/crear_cuenta/";
     public static final String URL_CREAR_FOTO = "mascotas/crear_usuario_foto/";
     public static final String URL_OBTENER_AUTH_TOKEN = "cuenta/jwt_api/";

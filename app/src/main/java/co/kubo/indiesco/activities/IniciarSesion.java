@@ -1,15 +1,10 @@
 package co.kubo.indiesco.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,7 +12,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,6 +21,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
@@ -232,6 +227,18 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //Login correcto
+                        Usuario usuario = new Usuario();
+                        //usuario.setId_user(response.body().getData().getUid());
+                        usuario.setId_user(response.body().getData().get(0).getUid());
+                        usuario.setName(response.body().getData().get(0).getNombre());
+                        usuario.setEmail(response.body().getData().get(0).getEmail());
+                        usuario.setCelular(response.body().getData().get(0).getTelefono());
+                        usuario.setEmail(response.body().getData().get(0).getEmail());
+                        usuario.setCiudad(response.body().getData().get(0).getCiudad());
+                        usuario.setId_ciudad(response.body().getData().get(0).getId_ciudad());
+                        usuario.setDireccion(response.body().getData().get(0).getDireccion());
+                        SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
+                        SharedPreferenceManager.setLoged(IniciarSesion.this, true);
                         Intent goHome = new Intent(IniciarSesion.this, Home.class);
                         goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(goHome);

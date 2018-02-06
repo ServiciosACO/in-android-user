@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -23,7 +26,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,15 +38,11 @@
         <activity
             android:name=".activities.IniciarSesion"
             android:label="@string/title_activity_iniciar_sesion"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.OlvidoContrasena" />
-        <activity android:name=".activities.OlvidoContrasena2" />
-        <activity android:name=".activities.OlvidoContrasena3" />
         <activity
             android:name=".activities.Home"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_home" />
         <activity android:name=".activities.Registro" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -3,6 +3,8 @@ package co.kubo.indiesco.restAPI.modelo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 import co.kubo.indiesco.modelo.Login;
 
 /**
@@ -15,7 +17,7 @@ public class ResponseLogin {
     private String code;
     @SerializedName("data")
     @Expose
-    private Login data;
+    private ArrayList<Login> data;
 
     public String getCode() {
         return code;
@@ -25,11 +27,11 @@ public class ResponseLogin {
         this.code = code;
     }
 
-    public Login getData() {
+    public ArrayList<Login> getData() {
         return data;
     }
 
-    public void setData(Login data) {
+    public void setData(ArrayList<Login> data) {
         this.data = data;
     }
 }

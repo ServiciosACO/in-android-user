@@ -23,6 +23,39 @@ public class Login {
     @SerializedName("foto")
     @Expose
     private String foto;
+    @SerializedName("ciudad")
+    @Expose
+    private String ciudad;
+    @SerializedName("id_ciudad")
+    @Expose
+    private String id_ciudad;
+    @SerializedName("direccion")
+    @Expose
+    private String direccion;
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getId_ciudad() {
+        return id_ciudad;
+    }
+
+    public void setId_ciudad(String id_ciudad) {
+        this.id_ciudad = id_ciudad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     public String getUid() {
         return uid;

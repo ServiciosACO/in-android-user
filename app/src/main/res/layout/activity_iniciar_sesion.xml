@@ -98,6 +98,8 @@
                 android:id="@+id/tvOlvidoContraseña"
                 style="@style/texto_13_verde"
                 android:gravity="center"
+                android:paddingBottom="10sp"
+                android:paddingTop="10sp"
                 android:layout_marginBottom="30sp"
                 android:layout_marginTop="160sp"
                 android:text="¿Olvidaste tu contraseña?"

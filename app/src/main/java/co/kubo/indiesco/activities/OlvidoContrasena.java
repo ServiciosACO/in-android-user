@@ -346,10 +346,14 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
                 switch (code){
                     case "100": //OK
                         Toast.makeText(OlvidoContrasena.this, "El codigo ha sido enviado a su correo electrónico", Toast.LENGTH_LONG).show();
-                        scrollViewPagina1.setVisibility(View.GONE);
+                        Intent goIniciarSesion = new Intent(OlvidoContrasena.this, IniciarSesion.class);
+                        goIniciarSesion.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(goIniciarSesion);
+                        finish();
+                        /*scrollViewPagina1.setVisibility(View.GONE);
                         scrollViewPagina2.setVisibility(View.VISIBLE);
                         scrollViewPagina2.startAnimation(anim1);
-                        hideSoftKeyboard();
+                        hideSoftKeyboard();*/
                         break;
                     case "102": //Algo fallo
                         Toast.makeText(OlvidoContrasena.this, "Algo ha fallado por favor intente de nuevo", Toast.LENGTH_LONG).show();

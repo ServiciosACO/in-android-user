@@ -41,5 +41,7 @@
     <string name="iniciar_sesion2_olvido_contraseña">¿Olvidaste tu contraseña?</string>
     <string name="title_activity_maps">Map</string>
 
+    <!--Registro-->
+    <string name="registro_splash_final">¡Bien hecho! \nHas creado tu cuenta</string>
 
 </resources>
