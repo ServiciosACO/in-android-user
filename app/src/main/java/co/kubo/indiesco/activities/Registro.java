@@ -7,7 +7,10 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -44,6 +47,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import org.w3c.dom.Text;
 
@@ -52,6 +57,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -112,7 +118,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private Uri imageUri;
     private Boolean opcionesCamara = false;
     private static int takeImage = 2;
-    private int selectImage = 237487;
+    private int selectImage = 7;
     private static final int REQUEST_EXTERNAL_STORAGE = 2;
     private static final int OPTION_CAMERA = 0;
     private Boolean bandFoto = false;
@@ -131,6 +137,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         animShake = AnimationUtils.loadAnimation(Registro.this, R.anim.shake);
         fabSiguiente.setOnClickListener(this);
         imgFoto.setOnClickListener(this);
+        tvCamara.setOnClickListener(this);
+        tvGaleria.setOnClickListener(this);
         /**Para desaparecer el FAB cuando hago scroll*/
         scrollViewRegistro.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
@@ -406,7 +414,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 ActivityCompat.requestPermissions(Registro.this, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
             } else {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                intent.setType("image*//*");
+                intent.setType("image/*");
                 startActivityForResult(intent, selectImage);
             }
         }
@@ -524,16 +532,21 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             if (fileSec.exists())
                 fileSec.delete();
             if (Utils.checkInternetConnection(Registro.this, true)) {
-                bandFoto = true;
                 try {
-                    Glide
+                    Picasso
+                            .with(getApplicationContext())
+                            .load(file)
+                            .transform(new CircleTransform())
+                            .into(imgFoto);
+
+                    /*Glide
                             .with(Registro.this)
                             .load(file).apply(new RequestOptions()
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .skipMemoryCache(true)
                             //.transform(new CropCircleTransformation(this)))
                             .transform(new CircleCrop()))
-                            .into(imgFoto);
+                            .into(imgFoto);*/
                 } catch (Exception e) {
                     Log.e(TAG, "Fallo Glide foto");
                 }
@@ -646,7 +659,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         BufferedInputStream bis = new BufferedInputStream(is);
                         Bitmap bitmap = BitmapFactory.decodeStream(bis);
                         guardarFoto(bitmap);
-                    } catch (FileNotFoundException e) {}
+                    } catch (FileNotFoundException e) {
+                        Log.e(TAG, "onActivityResult, FileNotFoundException");
+                    }
                 }//if
             if (requestCode == takeImage)
                 if (resultCode == Activity.RESULT_OK) {
@@ -655,5 +670,33 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 }//if
         } catch (Exception e) {}
     }//onActivityResult
+
+    public class CircleTransform implements Transformation {
+        @Override
+        public Bitmap transform(Bitmap source) {
+            int size = Math.min(source.getWidth(), source.getHeight());
+            int x = (source.getWidth() - size) / 2;
+            int y = (source.getHeight() - size) / 2;
+            Bitmap squaredBitmap = Bitmap.createBitmap(source, x, y, size, size);
+            if (squaredBitmap != source) {
+                source.recycle();
+            }
+            Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
+            Canvas canvas = new Canvas(bitmap);
+            Paint paint = new Paint();
+            BitmapShader shader = new BitmapShader(squaredBitmap,
+                    BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
+            paint.setShader(shader);
+            paint.setAntiAlias(true);
+            float r = size / 2f;
+            canvas.drawCircle(r, r, r, paint);
+            squaredBitmap.recycle();
+            return bitmap;
+        }
+        @Override
+        public String key() {
+            return "circle";
+        }
+    }//CircleTransform
 
 }

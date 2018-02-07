@@ -5,8 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/fondo_registro">
+    android:fitsSystemWindows="true">
     <ScrollView
         android:visibility="visible"
         android:touchscreenBlocksFocus="false"
@@ -60,7 +59,8 @@
                 <ImageView
                     android:id="@+id/imgFoto"
                     android:src="@drawable/registro_foto"
-                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <EditText
                     android:id="@+id/editNombre"
