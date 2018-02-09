@@ -122,13 +122,13 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private int selectImage = 7;
     private static final int REQUEST_EXTERNAL_STORAGE = 2;
     private static final int OPTION_CAMERA = 0;
-    private Boolean bandFoto = false;
+    private Boolean bandFoto = false, bandY = false;
     private int scrollY, oldScrollY = 0;
     Utils utils = new Utils();
     Animation animShake;
     private File file;
     private boolean bandNombre = false, bandEmail = false, bandCel = false, bandDir = false, bandCiudad = false, bandPass1 = false, bandPass2 = false, bandOK = false;
-    private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "";
+    private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "",foto = "http:\\/\\/indiescoapi.inkubo.co\\/imgs_usuarios\\/-";
     private String direccion = "", lat = "", lng = "", complemento = "", ciudad = "";
 
     @Override
@@ -166,6 +166,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             email = parametros.getString("Email");//email
             editEmail.setText(email);
             bandX = true;
+            bandY = true;
         }//else
 
         setlistenerEditText();
@@ -297,7 +298,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             editNombre.setError("El nombre es requerido");
             return false;
         }
-        if (editEmail.getText().toString().trim().equalsIgnoreCase("") || bandX) {
+        if (editEmail.getText().toString().trim().equalsIgnoreCase("") || !bandY) {
             editEmail.setError("El correo electrónico es requerido");
             return false;
         }
@@ -533,6 +534,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         if (bandFoto){ //Si cargo foto se va al servicio cargar foto
                             crearFoto(usuario, uid, file);
                         }else{ //Si no cargo foto se va a Home
+                            usuario.setFoto(foto);
                             SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
                             SharedPreferenceManager.setLoged(Registro.this, true);
                             fabSiguiente.setVisibility(View.GONE);
@@ -746,6 +748,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                     Picasso
                             .with(getApplicationContext())
                             .load(file)
+                            .placeholder(getResources().getDrawable(R.drawable.registro_foto))
+                            .error(getResources().getDrawable(R.drawable.registro_foto))
                             .transform(new CircleTransform())
                             .memoryPolicy(MemoryPolicy.NO_CACHE)
                             .networkPolicy(NetworkPolicy.NO_CACHE)

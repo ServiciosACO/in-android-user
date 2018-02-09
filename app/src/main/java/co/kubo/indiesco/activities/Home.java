@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -56,7 +58,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         Picasso
                 .with(getApplicationContext())
                 .load(usuario.getFoto())
+                .placeholder(getResources().getDrawable(R.drawable.registro_foto))
+                .error(getResources().getDrawable(R.drawable.registro_foto))
                 .transform(new CircleTransform())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(imgFotoPerfil);
     }
 

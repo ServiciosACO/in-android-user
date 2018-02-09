@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -72,6 +74,8 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
                 .with(getApplicationContext())
                 .load(usuario.getFoto())
                 .transform(new CircleTransform())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(imgFoto);
 
     }//onCreate
