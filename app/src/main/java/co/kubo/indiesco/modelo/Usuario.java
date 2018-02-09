@@ -5,17 +5,68 @@ package co.kubo.indiesco.modelo;
  */
 
 public class Usuario {
-    String name, email, celular, direccion, ciudad, id_ciudad, contraseña, id_user;
+    String name, email, celular, contraseña, id_user, direccion, latitud, longitud, complemento, ciudad, foto;
 
     public Usuario() {
         this.id_user = "";
         this.name = "";
         this.email = "";
         this.celular = "";
-        this.direccion = "";
-        this.ciudad = "";
-        this.id_ciudad = "";
         this.contraseña = "";
+        this.direccion = "";
+        this.latitud = "";
+        this.longitud = "";
+        this.complemento = "";
+        this.ciudad = "";
+        this.foto = "";
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
     public String getName() {
@@ -40,30 +91,6 @@ public class Usuario {
 
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getId_ciudad() {
-        return id_ciudad;
-    }
-
-    public void setId_ciudad(String id_ciudad) {
-        this.id_ciudad = id_ciudad;
     }
 
     public String getContraseña() {

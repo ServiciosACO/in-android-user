@@ -24,15 +24,13 @@ public class Splash extends AppCompatActivity {
                 Intent in = null;
                 if (!primeraVez){
                     in = new Intent(Splash.this, Tour.class);
-                }else{/*
+                }else{
                     if (SharedPreferenceManager.getLoged(Splash.this)){
-//                        Usuario usuario = new Usuario();
-//                        usuario = SharedPreferenceManager.getInfoUsuario(Splash.this);
                         in = new Intent(Splash.this, Home.class);
-                    }else{*/
+                    }else{
                         in = new Intent(Splash.this, Login.class);
-                    }
-                //}//else
+                    }//else
+                }//else
                 in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(in);
                 finish();

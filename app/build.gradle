@@ -37,4 +37,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.daimajia.swipelayout:library:1.2.0@aar'
+    //compile 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b'
 }

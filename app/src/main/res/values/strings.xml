@@ -44,4 +44,7 @@
     <!--Registro-->
     <string name="registro_splash_final">¡Bien hecho! \nHas creado tu cuenta</string>
 
+    <!--Home-->
+    <string name="home_ver_perfil"><u>Mi perfil</u></string>
+
 </resources>

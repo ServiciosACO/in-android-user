@@ -2,10 +2,16 @@ package co.kubo.indiesco.restAPI;
 
 import co.kubo.indiesco.modelo.Foto;
 import co.kubo.indiesco.restAPI.modelo.ResponseAuthToken;
+import co.kubo.indiesco.restAPI.modelo.ResponseDireccion;
 import co.kubo.indiesco.restAPI.modelo.ResponseFoto;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
+import co.kubo.indiesco.restAPI.modelo.ResponseHistorial;
+import co.kubo.indiesco.restAPI.modelo.ResponseInmueble;
 import co.kubo.indiesco.restAPI.modelo.ResponseLogin;
+import co.kubo.indiesco.restAPI.modelo.ResponseNotificacion;
+import co.kubo.indiesco.restAPI.modelo.ResponsePedido;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
+import co.kubo.indiesco.utils.Constantes;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -17,6 +23,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Url;
 
 /**
@@ -49,5 +56,55 @@ public interface Endpoints {
     @POST(ConstantesRestApi.URL_CREAR_FOTO)
     Call<ResponseFoto> guardarFoto(@Header("X-AC-Auth-Token") String authToken, @Part("uid") RequestBody uid, @Part MultipartBody.Part foto);
 
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_AGREGAR_DIRECCION)
+    Call<ResponseGeneral> agregarDireccion(@Header("X-AC-Auth-Token") String authToken, @Field("uid") String uid,
+                                           @Field("direccion") String direccion, @Field("latitud") String latitud,
+                                           @Field("longitud") String longitud, @Field("complemento") String complemento, @Field("ciudad") String ciudad);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_ACTUALIZAR_DIRECCION)
+    Call<ResponseGeneral> actualizarDireccion(@Header("X-AC-Auth-Token") String authToken, @Field("id_direccion") String id_direccion,
+                                              @Field("direccion") String direccion, @Field("latitud") String latitud,
+                                              @Field("longitud") String longitud, @Field("complemento") String complemento/*, @Field("ciudad") String ciudad*/);
+
+    @GET(ConstantesRestApi.URL_LISTAR_DIRECCIONES + "{uid}")
+    Call<ResponseDireccion> listarDireccion(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_ACTUALIZAR_CONTRASEÑA)
+    Call<ResponseGeneral> actualizarContraseña(@Header("X-AC-Auth-Token") String authToken, @Field("uid") String uid,
+                                               @Field("pwd_nueva") String pwd_nueva, @Field("pwd_anterior") String pwd_anterior);
+
+    @GET(ConstantesRestApi.URL_ELIMINAR_DIRECCION + "{uid}/{id_direccion}")
+    Call<ResponseGeneral> eliminarDireccion(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid, @Path("id_direccion") String id_direccion);
+
+    @GET(ConstantesRestApi.URL_ELIMINAR_NOTIFICACION + "{uid}")
+    Call<ResponseGeneral> eliminarNotificacion(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid);
+
+    @GET(ConstantesRestApi.URL_LISTAR_NOTIFICACIONES + "{uid}/{inicia}")
+    Call<ResponseNotificacion> listarNotificaciones(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid, @Path("inicia") String inicia);
+
+    @GET(ConstantesRestApi.URL_CANCELAR_SERVICIO + "{id_solicitud}/{uid}")
+    Call<ResponseGeneral> cancelarServicio(@Header("X-AC-Auth-Token") String authToken, @Path("id_solicitud") String id_solicitud, @Path("uid") String uid);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_CREAR_PEDIDO)
+    Call<ResponsePedido> crearPedido(@Header("X-AC-Auth-Token") String authToken, @Field("uid") String uid, @Field("valor") String valor);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_CREAR_SERVICIO)
+    Call<ResponseGeneral> crearPedido(@Header("X-AC-Auth-Token") String authToken, @Field("uid") String uid,
+                                     @Field("id_tipo_inmueble") String id_tipo_inmueble, @Field("dimension") String dimension,
+                                     @Field("valor") String valor, @Field("id_direccion") String id_direccion,
+                                     @Field("fecha_servicio") String fecha_servicio, @Field("urgente") String urgente,
+                                     @Field("hora") String hora, @Field("comentario") String comentario, @Field("id_pedido") String id_pedido);
+
+    @GET(ConstantesRestApi.URL_LISTAR_TIPOS_INMUEBLES)
+    Call<ResponseInmueble> listarHistorial(@Header("X-AC-Auth-Token") String authToken);
+
+    @GET(ConstantesRestApi.URL_LISTAR_NOTIFICACIONES + "{id_tipo_inmueble}/{dimension}")
+    Call<ResponseNotificacion> tasarServicio(@Header("X-AC-Auth-Token") String authToken, @Path("id_tipo_inmueble") String id_tipo_inmueble,
+                                                    @Path("dimension") String dimension);
 
 }//Endpoints

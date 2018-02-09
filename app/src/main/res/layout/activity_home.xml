@@ -1,31 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/fondo_registro"
     android:layout_height="match_parent"
-    tools:context="co.kubo.indiesco.activities.Home">
-
-    <android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/llHeader"
+        android:layout_marginTop="36sp"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+        android:layout_height="wrap_content">
+        <co.kubo.indiesco.utils.Medium
+            android:id="@+id/tvTituloHeader"
+            style="@style/texto_20_morado"
+            android:text="Inicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="16sp"
+                    android:id="@+id/imgFotoPerfil"
+                    android:src="@drawable/registro_foto"
+                    android:layout_width="72sp"
+                    android:layout_height="72sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="16sp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvNombrePerfil"
+                    android:text="Tony Barajas"
+                    style="@style/texto_22_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvMiPerfil"
+                    android:text="@string/home_ver_perfil"
+                    style="@style/texto_15_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-</android.support.design.widget.CoordinatorLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp"
+            android:layout_marginBottom="64sp"
+            android:layout_marginTop="36sp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/llSolicitarServ"
+                android:background="@color/colorBlanco"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56sp"
+                    android:layout_marginBottom="56sp"
+                    android:layout_marginLeft="35sp"
+                    android:layout_marginRight="45sp"
+                    android:src="@drawable/main_service" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <co.kubo.indiesco.utils.Medium
+                        android:layout_marginTop="30sp"
+                        android:gravity="left"
+                        android:layout_gravity="center"
+                        style="@style/texto_15_gris"
+                        android:text="Solicitar servicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="14sp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <co.kubo.indiesco.utils.Regular
+                            android:id="@+id/tvNserviciosPendientes"
+                            style="@style/texto_12_gris_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <co.kubo.indiesco.utils.Regular
+                            android:text="Solicita uno de nuestros diferentes servicios de limpieza"
+                            style="@style/texto_12_gris_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="8sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/llCalendario"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8sp"
+                    android:layout_weight="1"
+                    android:background="@color/colorBlanco"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32sp"
+                        android:src="@drawable/main_calendar" />
+                    <co.kubo.indiesco.utils.Medium
+                        style="@style/texto_15_gris"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30sp"
+                        android:gravity="left"
+                        android:text="Mi calendario" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="14sp"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <co.kubo.indiesco.utils.Regular
+                            android:id="@+id/tvNserviciosProgramados"
+                            style="@style/texto_12_gris_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1 " />
+                        <co.kubo.indiesco.utils.Regular
+                            style="@style/texto_12_gris_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="programados" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llNotificaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorBlanco"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32sp"
+                        android:src="@drawable/main_notif" />
+                    <co.kubo.indiesco.utils.Medium
+                        style="@style/texto_15_gris"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30sp"
+                        android:gravity="left"
+                        android:text="Mis notificaciones" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="14sp"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <co.kubo.indiesco.utils.Regular
+                            android:id="@+id/tvNnotificaciones"
+                            style="@style/texto_12_gris_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1 " />
+                        <co.kubo.indiesco.utils.Regular
+                            style="@style/texto_12_gris_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="19dp"
+                            android:text="sin leer" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <co.kubo.indiesco.utils.Regular
+                android:text="V1.0"
+                android:layout_marginTop="34sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                style="@style/texto_12_gris_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

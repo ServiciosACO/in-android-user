@@ -198,11 +198,12 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                     case "101": //Email no existe va a crear cuenta
                         Intent goCrear = new Intent(IniciarSesion.this, Registro.class);
                         goCrear.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        goCrear.putExtra("Email", editEmail.getText().toString());
                         startActivity(goCrear);
                         finish();
                         break;
                     case "103": // Cuenta inactiva
-                        Toast.makeText(IniciarSesion.this, "Su cuenta se encuentra incativa", Toast.LENGTH_LONG).show();
+                        Toast.makeText(IniciarSesion.this, "Su cuenta se encuentra inactiva", Toast.LENGTH_LONG).show();
                         break;
                     case "120": //auth_token no valido
                         break;
@@ -235,7 +236,6 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                         usuario.setCelular(response.body().getData().get(0).getTelefono());
                         usuario.setEmail(response.body().getData().get(0).getEmail());
                         usuario.setCiudad(response.body().getData().get(0).getCiudad());
-                        usuario.setId_ciudad(response.body().getData().get(0).getId_ciudad());
                         usuario.setDireccion(response.body().getData().get(0).getDireccion());
                         SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
                         SharedPreferenceManager.setLoged(IniciarSesion.this, true);

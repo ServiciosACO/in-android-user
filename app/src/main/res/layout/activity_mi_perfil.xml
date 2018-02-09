@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <ScrollView
+        android:visibility="visible"
+        android:id="@+id/scrollViewRegistro"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:background="@color/fondo_dialog"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/llHeader"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginLeft="19sp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgBotonVolver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/btn_atras" />
+                    <co.kubo.indiesco.utils.Medium
+                        android:id="@+id/tvTituloHeader"
+                        style="@style/texto_20_morado"
+                        android:layout_marginLeft="35sp"
+                        android:text="Mi perfil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/imgCambiarFoto"
+                            android:layout_marginRight="18sp"
+                            android:src="@drawable/btn_foto_inactive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:id="@+id/imgFoto"
+                            android:src="@drawable/registro_foto"
+                            android:layout_marginBottom="20sp"
+                            android:layout_marginTop="20sp"
+                            android:layout_width="96sp"
+                            android:layout_height="96sp" />
+                        <ImageView
+                            android:id="@+id/imgConfig"
+                            android:layout_marginLeft="18sp"
+                            android:src="@drawable/btn_config_inactive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:id="@+id/llPerfil1"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <co.kubo.indiesco.utils.Bold
+                            android:id="@+id/tvNombrePerfil"
+                            android:gravity="center"
+                            android:layout_marginTop="22sp"
+                            android:text="Tony Barajas"
+                            style="@style/texto_22_naranja"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <co.kubo.indiesco.utils.Regular
+                            android:id="@+id/tvTelefonoPerfil"
+                            android:layout_marginBottom="24sp"
+                            android:layout_marginTop="6sp"
+                            android:gravity="center"
+                            android:text="123456780"
+                            style="@style/texto_15_gris"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llEditar"
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/editNombre"
+                            android:hint="Nombre"
+                            android:gravity="center"
+                            style="@style/texto_15_gris"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_marginTop="15sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editEmail"
+                            android:hint="Correo electrónico"
+                            style="@style/texto_15_gris"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textEmailAddress"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editCelular"
+                            android:hint="Teléfono celular"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="number"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editDireccion"
+                            android:hint="Dirección"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editComplemento"
+                            android:hint="Complemento de la dirección"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <RelativeLayout
+                            android:id="@+id/fondoMapaDir"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:background="@color/colorBlanco">
+                            <fragment
+                                android:id="@+id/mapaDireccion"
+                                class ="com.google.android.gms.maps.MapFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                        </RelativeLayout>
+                        <EditText
+                            android:id="@+id/editCiudad"
+                            android:hint="Ciudad"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="100sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/llPerfil2"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <co.kubo.indiesco.utils.Medium
+                    android:gravity="center"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginBottom="24sp"
+                    android:text="Cambiar contraseña"
+                    android:id="@+id/tvCambiarPass"
+                    style="@style/texto_15_verde"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_marginLeft="65sp"
+                    android:layout_marginRight="65sp"
+                    android:background="@color/colorGris"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1sp"/>
+                <co.kubo.indiesco.utils.Medium
+                    android:gravity="center"
+                    android:layout_marginTop="22sp"
+                    android:layout_marginBottom="24sp"
+                    android:text="Mis direcciones"
+                    android:id="@+id/tvDir"
+                    style="@style/texto_15_verde"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_marginLeft="65sp"
+                    android:layout_marginRight="65sp"
+                    android:background="@color/colorGris"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1sp"/>
+                <co.kubo.indiesco.utils.Medium
+                    android:gravity="center"
+                    android:layout_marginTop="22sp"
+                    android:layout_marginBottom="24sp"
+                    android:text="Historial de servicios"
+                    android:id="@+id/tvHistorial"
+                    style="@style/texto_15_verde"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_marginLeft="65sp"
+                    android:layout_marginRight="65sp"
+                    android:background="@color/colorGris"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1sp"/>
+                <co.kubo.indiesco.utils.Medium
+                    android:gravity="center"
+                    android:layout_marginTop="22sp"
+                    android:layout_marginBottom="24sp"
+                    android:text="Términos y condiciones de uso"
+                    android:id="@+id/tvTerminos"
+                    style="@style/texto_15_verde"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_marginLeft="65sp"
+                    android:layout_marginRight="65sp"
+                    android:background="@color/colorGris"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1sp"/>
+                <co.kubo.indiesco.utils.Medium
+                    android:gravity="center"
+                    android:layout_marginTop="22sp"
+                    android:layout_marginBottom="24sp"
+                    android:text="Llámanos"
+                    android:id="@+id/tvLlamanos"
+                    style="@style/texto_15_verde"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_marginLeft="65sp"
+                    android:layout_marginRight="65sp"
+                    android:background="@color/colorGris"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1sp"/>
+
+                <Button
+                    android:id="@+id/btnCerrarSesion"
+                    android:background="@drawable/boton_borde_rojo"
+                    android:layout_marginRight="40sp"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginTop="32sp"
+                    android:layout_marginBottom="24sp"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorRojo"
+                    android:text="Cerrar sesión"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSiguiente"
+        android:visibility="gone"
+        android:elevation="4sp"
+        app:fabSize="auto"
+        android:fitsSystemWindows="true"
+        android:fadeScrollbars="true"
+        android:src="@drawable/btn_done"
+        android:layout_marginVertical="@dimen/fab_margin"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        app:backgroundTint="@color/colorVerde"
+        android:layout_gravity="right|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</android.support.design.widget.CoordinatorLayout>

@@ -2,6 +2,7 @@ package co.kubo.indiesco.activities;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -11,6 +12,7 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.icu.lang.UCharacter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -33,6 +35,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -42,11 +45,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.gson.Gson;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -62,7 +62,10 @@ import java.nio.file.Files;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogImagenPerfil;
+import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
+import co.kubo.indiesco.restAPI.ConstantesRestApi;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseFoto;
@@ -81,6 +84,8 @@ import retrofit2.Response;
 public class Registro extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "Registro";
+    @BindView(R.id.imgBotonVolver)
+    ImageView imgBotonVolver;
     @BindView(R.id.imgFoto)
     ImageView imgFoto;
     @BindView(R.id.editNombre)
@@ -91,6 +96,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     EditText editCelular;
     @BindView(R.id.editDireccion)
     EditText editDireccion;
+    @BindView(R.id.editComplemento)
+    EditText editComplemento;
     @BindView(R.id.editCiudad)
     EditText editCiudad;
     @BindView(R.id.editpass1)
@@ -107,16 +114,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     TextInputLayout inputPass2;
     @BindView(R.id.llSplashRegistro)
     LinearLayout llSplashRegistro;
-    @BindView(R.id.llOpcionFoto)
-    LinearLayout llOpcionFoto;
-    @BindView(R.id.tvGaleria)
-    TextView tvGaleria;
-    @BindView(R.id.tvCamara)
-    TextView tvCamara;
 
     private int position = 0;
     private Uri imageUri;
-    private Boolean opcionesCamara = false;
+    private Boolean opcionesCamara = false, bandX = false;
     private static int takeImage = 2;
     private int selectImage = 7;
     private static final int REQUEST_EXTERNAL_STORAGE = 2;
@@ -128,6 +129,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private File file;
     private boolean bandNombre = false, bandEmail = false, bandCel = false, bandDir = false, bandCiudad = false, bandPass1 = false, bandPass2 = false, bandOK = false;
     private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "";
+    private String direccion = "", lat = "", lng = "", complemento = "", ciudad = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,8 +139,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         animShake = AnimationUtils.loadAnimation(Registro.this, R.anim.shake);
         fabSiguiente.setOnClickListener(this);
         imgFoto.setOnClickListener(this);
-        tvCamara.setOnClickListener(this);
-        tvGaleria.setOnClickListener(this);
+        imgBotonVolver.setOnClickListener(this);
+        hideSoftKeyboard();
         /**Para desaparecer el FAB cuando hago scroll*/
         scrollViewRegistro.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
@@ -157,16 +159,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        scrollViewRegistro.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (llOpcionFoto.getVisibility() == View.VISIBLE){
-                    scrollViewRegistro.setBackgroundColor(getResources().getColor(R.color.fondo_registro));
-                    llOpcionFoto.setVisibility(View.GONE);
-                }//if
-                return false;
-            }//onTouch
-        });
+        Bundle parametros = getIntent().getExtras();
+        if (parametros == null){
+            editEmail.setFocusableInTouchMode(true);
+        }else{
+            email = parametros.getString("Email");//email
+            editEmail.setText(email);
+            bandX = true;
+        }//else
 
         setlistenerEditText();
     }
@@ -192,7 +192,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().length() != 0) {
+                if (s.toString().trim().length() != 0 || bandX) {
                     bandEmail = true;
                 }else{
                     bandEmail = false;
@@ -280,7 +280,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void validarFABVerde(){
-        if (bandNombre&&bandEmail&&bandCel&&bandDir&&bandCiudad&&bandPass1&&bandPass2){
+        if (bandNombre&&(bandX || bandEmail)&&bandCel&&bandDir&&bandCiudad&&bandPass1&&bandPass2){
             fabSiguiente.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorVerde)));
             bandOK = true;
         }else{
@@ -297,7 +297,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             editNombre.setError("El nombre es requerido");
             return false;
         }
-        if (editEmail.getText().toString().trim().equalsIgnoreCase("")) {
+        if (editEmail.getText().toString().trim().equalsIgnoreCase("") || bandX) {
             editEmail.setError("El correo electrónico es requerido");
             return false;
         }
@@ -343,27 +343,48 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.fabSiguiente:
                 if (validacion() && bandOK){
-                    crearCuenta();
+                    nombre = editNombre.getText().toString();
+                    email = editEmail.getText().toString();
+                    password = editpass1.getText().toString();
+                    telefono = editCelular.getText().toString();
+
+                    direccion = editDireccion.getText().toString();
+                    lat = "-4.7026073";
+                    lng = "-74.0436851";
+                    complemento = editComplemento.getText().toString();
+                    ciudad = editCiudad.getText().toString();
+                    validarEmail();
                 }//if
                 break;
             case R.id.imgFoto:
-                scrollViewRegistro.setBackgroundColor(getResources().getColor(R.color.fondo_dialog));
-                llOpcionFoto.setVisibility(View.VISIBLE);
-                //opcionFoto();
+                new DialogImagenPerfil(Registro.this, new DialogImagenPerfil.RespuestaListener() {
+                    @Override
+                    public void onCamara() {
+                        position = 0;
+                        opcionFoto();
+                    }
+                    @Override
+                    public void onGaleria() {
+                        position = 1;
+                        opcionFoto();
+                    }
+
+                    @Override
+                    public void onSalir() {
+                        return;
+                    }
+                }).show();
                 break;
-            case R.id.llOpcionFoto:
-                //scrollViewRegistro.setBackgroundColor(getResources().getColor(R.color.fondo_dialog));
-                //llOpcionFoto.setVisibility(View.VISIBLE);
-                break;
-            case R.id.tvCamara:
-                position = 0;
-                opcionFoto();
-                break;
-            case R.id.tvGaleria:
-                position = 1;
-                opcionFoto();
+            case R.id.imgBotonVolver:
+                onBackPressed();
                 break;
         }//switch
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     private void splashRegistro(){
@@ -371,7 +392,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             public void run() {
                 Intent in = new Intent(Registro.this, Home.class);
                 setResult(RESULT_OK, in);
-                //in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(in);
                 finish();
             }//run
@@ -393,7 +414,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                     if (!myDir.exists()) {
                         myDir.mkdir();
                     }
-                    File fileImage = new File(myDir, SharedPreferenceManager.getInfoUsuario(Registro.this).getId_user() + ".jpg");
+                    File fileImage = new File(myDir,"foto.jpg");
                     if (fileImage.exists())
                         fileImage.delete();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -420,6 +441,42 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         }
     }//opcionFoto
 
+    public void validarEmail(){
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        String url = ConstantesRestApi.URL_VALIDAR_EMAIL + email;
+        Call<ResponseGeneral> responseGeneralCall = endpoints.validarEmail(authToken, url);
+        responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
+            @Override
+            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100": //Cuenta exitente va a login
+                        Toast.makeText(Registro.this, "La cuenta de correo electronico ya existe", Toast.LENGTH_LONG).show();
+                        Intent goLogin = new Intent(Registro.this, Login.class);
+                        goLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(goLogin);
+                        finish();
+                        break;
+                    case "101": //Email no existe va a crear cuenta
+                        hideSoftKeyboard();
+                        crearCuenta();
+                        break;
+                    case "103": // Cuenta inactiva
+                        Toast.makeText(Registro.this, "Su cuenta se encuentra inactiva y ya existe en la base de datos", Toast.LENGTH_LONG).show();
+                        break;
+                    case "120": //auth_token no valido
+                        break;
+                }//switch
+            }
+            @Override
+            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                Log.e(TAG, "onFailure validarEmail");
+            }
+        });
+    }//public void validarEmail
+
     private void crearCuenta(){
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         final String passSha1 = Utils.sha1Encrypt(password);
@@ -432,25 +489,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //OK
-                        Usuario usuario = new Usuario();
-                        usuario.setName(nombre);
-                        usuario.setEmail(email);
-                        usuario.setContraseña(passSha1);
-                        usuario.setCelular(telefono);
-                        //usuario.setDireccion(direccion);
-                        //usuario.setId_ciudad(id_ciudad);
-                        //usuario.setCiudad(ciudad);
-                        usuario.setId_user(response.body().getData().getUid());
-
-                        SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
-                        SharedPreferenceManager.setLoged(Registro.this, true);
-
-                        crearFoto(usuario, response.body().getData().getUid(), file);
-
-                        /*fabSiguiente.setVisibility(View.GONE);
-                        scrollViewRegistro.setVisibility(View.GONE);
-                        llSplashRegistro.setVisibility(View.VISIBLE);
-                        splashRegistro();*/
+                        //Servicio para crear direccion
+                        crearDireccion(passSha1, response.body().getData().getUid());
                         break;
                     case "102": //Fallo
                         Toast.makeText(Registro.this, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show();
@@ -462,6 +502,55 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             }
             @Override
             public void onFailure(Call<ResponseRegistro> call, Throwable t) {
+                Log.e(TAG, "onFailure registro");
+            }
+        });
+    }
+
+    private void crearDireccion(final String passSHA1, final String uid){
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, uid, direccion, lat, lng, complemento, ciudad);
+        responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
+            @Override
+            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100": //OK
+                        Usuario usuario = new Usuario();
+                        usuario.setId_user(uid);
+                        usuario.setName(nombre);
+                        usuario.setEmail(email);
+                        usuario.setContraseña(passSHA1);
+                        usuario.setCelular(telefono);
+                        usuario.setDireccion(direccion);
+                        usuario.setLatitud(lat);
+                        usuario.setLongitud(lng);
+                        usuario.setComplemento(complemento);
+                        usuario.setCiudad(ciudad);
+
+                        if (bandFoto){ //Si cargo foto se va al servicio cargar foto
+                            crearFoto(usuario, uid, file);
+                        }else{ //Si no cargo foto se va a Home
+                            SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
+                            SharedPreferenceManager.setLoged(Registro.this, true);
+                            fabSiguiente.setVisibility(View.GONE);
+                            scrollViewRegistro.setVisibility(View.GONE);
+                            llSplashRegistro.setVisibility(View.VISIBLE);
+                            splashRegistro();
+                        }//else
+                        break;
+                    case "102": //Fallo
+                        Toast.makeText(Registro.this, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show();
+                        break;
+                    case "120": //auth_token no valido
+                        break;
+                    default: break;
+                }//switch
+            }
+            @Override
+            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
                 Log.e(TAG, "onFailure registro");
             }
         });
@@ -483,7 +572,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //OK
-                        //Guardar foto
+                        usuario.setFoto(response.body().getFoto());
                         SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
                         SharedPreferenceManager.setLoged(Registro.this, true);
                         fabSiguiente.setVisibility(View.GONE);
@@ -506,54 +595,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         });
     }
 
-    public void guardarFoto(Bitmap myBitmap) throws Exception {
-        File myDir = new File(Environment.getExternalStorageDirectory() + "/Pictures", Registro.this.getPackageName());
-        if (!myDir.exists()) {
-            myDir.mkdir();
-        }
-        file = new File(myDir, "" + SharedPreferenceManager.getInfoUsuario(Registro.this).getId_user());  //getUid());
-        if (file.exists())
-            file.delete();
-        FileOutputStream stream = new FileOutputStream(file);
-        if (myBitmap.getWidth() >= myBitmap.getHeight()) {
-            myBitmap = Bitmap.createBitmap(myBitmap, myBitmap.getWidth() / 2 - myBitmap.getHeight() / 2, 0, myBitmap.getHeight(), myBitmap.getHeight());
-            if (myBitmap.getWidth() > 500 && myBitmap.getHeight() > 500) {
-                myBitmap = Bitmap.createScaledBitmap(myBitmap, 500, 500, false);
-            }
-        } else {
-            myBitmap = Bitmap.createBitmap(myBitmap, 0, myBitmap.getHeight() / 2 - myBitmap.getWidth() / 2, myBitmap.getWidth(), myBitmap.getWidth());
-            if (myBitmap.getWidth() > 500 && myBitmap.getHeight() > 500) {
-                myBitmap = Bitmap.createScaledBitmap(myBitmap, 500, 500, false);
-            }
-        }
-        myBitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
-        if (file != null) {
-            File fileSec = new File(myDir, SharedPreferenceManager.getInfoUsuario(Registro.this).getId_user() + ".jpg");
-            if (fileSec.exists())
-                fileSec.delete();
-            if (Utils.checkInternetConnection(Registro.this, true)) {
-                try {
-                    Picasso
-                            .with(getApplicationContext())
-                            .load(file)
-                            .transform(new CircleTransform())
-                            .into(imgFoto);
-
-                    /*Glide
-                            .with(Registro.this)
-                            .load(file).apply(new RequestOptions()
-                            .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .skipMemoryCache(true)
-                            //.transform(new CropCircleTransformation(this)))
-                            .transform(new CircleCrop()))
-                            .into(imgFoto);*/
-                } catch (Exception e) {
-                    Log.e(TAG, "Fallo Glide foto");
-                }
-            }
-        }
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -568,7 +609,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         if (!myDir.exists()) {
                             myDir.mkdir();
                         }
-                        File fileImage = new File(myDir, SharedPreferenceManager.getInfoUsuario(Registro.this).getId_user() + ".jpg");
+                        File fileImage = new File(myDir,"foto.jpg");
                         if (fileImage.exists())
                             fileImage.delete();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -607,7 +648,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         if (!myDir.exists()) {
                             myDir.mkdir();
                         }
-                        File fileImage = new File(myDir, SharedPreferenceManager.getInfoUsuario(Registro.this).getId_user() + ".jpg");
+                        File fileImage = new File(myDir,"foto.jpg");
                         if (fileImage.exists())
                             fileImage.delete();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -668,35 +709,55 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                     Bitmap thumbnail = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                     guardarFoto(thumbnail);
                 }//if
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            Log.e(TAG, "onActivityResult, Exception");
+        }
     }//onActivityResult
 
-    public class CircleTransform implements Transformation {
-        @Override
-        public Bitmap transform(Bitmap source) {
-            int size = Math.min(source.getWidth(), source.getHeight());
-            int x = (source.getWidth() - size) / 2;
-            int y = (source.getHeight() - size) / 2;
-            Bitmap squaredBitmap = Bitmap.createBitmap(source, x, y, size, size);
-            if (squaredBitmap != source) {
-                source.recycle();
+    public void guardarFoto(Bitmap myBitmap) throws Exception {
+        File myDir = new File(Environment.getExternalStorageDirectory() + "/Pictures", Registro.this.getPackageName());
+        if (!myDir.exists()) {
+            myDir.mkdir();
+        }
+        file = new File(myDir, "foto");
+        if (file.exists()){
+            file.delete();
+        }
+        FileOutputStream stream = new FileOutputStream(file);
+        if (myBitmap.getWidth() >= myBitmap.getHeight()) {
+            myBitmap = Bitmap.createBitmap(myBitmap, myBitmap.getWidth() / 2 - myBitmap.getHeight() / 2, 0, myBitmap.getHeight(), myBitmap.getHeight());
+            if (myBitmap.getWidth() > 500 && myBitmap.getHeight() > 500) {
+                myBitmap = Bitmap.createScaledBitmap(myBitmap, 500, 500, false);
             }
-            Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
-            Canvas canvas = new Canvas(bitmap);
-            Paint paint = new Paint();
-            BitmapShader shader = new BitmapShader(squaredBitmap,
-                    BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
-            paint.setShader(shader);
-            paint.setAntiAlias(true);
-            float r = size / 2f;
-            canvas.drawCircle(r, r, r, paint);
-            squaredBitmap.recycle();
-            return bitmap;
+        } else {
+            myBitmap = Bitmap.createBitmap(myBitmap, 0, myBitmap.getHeight() / 2 - myBitmap.getWidth() / 2, myBitmap.getWidth(), myBitmap.getWidth());
+            if (myBitmap.getWidth() > 500 && myBitmap.getHeight() > 500) {
+                myBitmap = Bitmap.createScaledBitmap(myBitmap, 500, 500, false);
+            }
         }
-        @Override
-        public String key() {
-            return "circle";
+        myBitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
+        if (file != null) {
+            File fileSec = new File(myDir, "foto.jpg");
+            if (fileSec.exists())
+                fileSec.delete();
+            if (Utils.checkInternetConnection(Registro.this, true)) {
+                bandFoto = true;
+                try {
+                    Picasso
+                            .with(getApplicationContext())
+                            .load(file)
+                            .transform(new CircleTransform())
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .networkPolicy(NetworkPolicy.NO_CACHE)
+                            .into(imgFoto);
+                } catch (Exception e) {
+                    Log.e(TAG, "Fallo Picasso foto");
+                }
+            }
         }
-    }//CircleTransform
+    }
 
+    private void hideSoftKeyboard(){
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
 }

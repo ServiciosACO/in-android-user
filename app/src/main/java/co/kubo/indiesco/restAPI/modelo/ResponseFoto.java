@@ -16,9 +16,9 @@ public class ResponseFoto {
     @SerializedName("code")
     @Expose
     private String code;
-    @SerializedName("data")
+    @SerializedName("foto")
     @Expose
-    private ArrayList<Foto> data;
+    private String foto;
 
     public String getCode() {
         return code;
@@ -28,11 +28,11 @@ public class ResponseFoto {
         this.code = code;
     }
 
-    public ArrayList<Foto> getData() {
-        return data;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setData(ArrayList<Foto> data) {
-        this.data = data;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

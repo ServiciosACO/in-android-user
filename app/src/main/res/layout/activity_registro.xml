@@ -8,10 +8,9 @@
     android:fitsSystemWindows="true">
     <ScrollView
         android:visibility="visible"
-        android:touchscreenBlocksFocus="false"
         android:id="@+id/scrollViewRegistro"
-        android:background="@color/fondo_registro"
         android:layout_weight="1"
+        android:background="@color/fondo_registro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -24,8 +23,8 @@
                 android:layout_marginLeft="19sp"
                 android:orientation="horizontal"
                 android:layout_gravity="left"
-                android:gravity="center"
-                android:layout_width="wrap_content"
+                android:gravity="left"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/imgBotonVolver"
@@ -43,7 +42,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:background="@color/fondo_registro"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -59,8 +57,9 @@
                 <ImageView
                     android:id="@+id/imgFoto"
                     android:src="@drawable/registro_foto"
-                    android:layout_marginBottom="27sp"
-                    android:layout_width="match_parent"
+                    android:layout_marginBottom="20sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
                     android:id="@+id/editNombre"
@@ -83,6 +82,7 @@
                     style="@style/texto_15_gris"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:focusable="false"
                     android:inputType="textEmailAddress"
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
@@ -122,6 +122,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
+
+                <EditText
+                    android:id="@+id/editComplemento"
+                    android:hint="Complemento de la dirección"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textCapSentences"
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:textColorHint="@color/color_hint"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+
+
                 <RelativeLayout
                     android:id="@+id/fondoMapaDir"
                     android:layout_marginRight="40sp"
@@ -237,37 +255,5 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/llOpcionFoto"
-        android:orientation="vertical"
-        android:padding="8sp"
-        android:layout_marginRight="8sp"
-        android:layout_marginLeft="8sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorBlanco">
-        <co.kubo.indiesco.utils.Medium
-            android:id="@+id/tvCamara"
-            style="@style/texto_15_gris"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cámara" />
-        <View
-            android:layout_margin="10sp"
-            android:background="@color/colorGris"
-            android:layout_width="wrap_content"
-            android:layout_height="0.1sp"/>
-        <co.kubo.indiesco.utils.Medium
-            android:id="@+id/tvGaleria"
-            style="@style/texto_15_gris"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvCamara"
-            android:text="Galería" />
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
