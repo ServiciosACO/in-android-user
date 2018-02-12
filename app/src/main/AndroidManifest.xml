@@ -76,7 +76,8 @@
         <activity android:name=".activities.Calificar2" />
         <activity android:name=".activities.MiPerfil" />
         <activity android:name=".activities.CambiarContrasena" />
-        <activity android:name=".activities.MisDirecciones"></activity>
+        <activity android:name=".activities.MisDirecciones" />
+        <activity android:name=".activities.HistorialServicios"></activity>
     </application>
 
 </manifest>

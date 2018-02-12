@@ -59,6 +59,7 @@
                 <co.kubo.indiesco.utils.Regular
                     android:id="@+id/tvMiPerfil"
                     android:text="@string/home_ver_perfil"
+                    android:padding="5sp"
                     style="@style/texto_15_morado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -152,8 +153,8 @@
                         style="@style/texto_15_gris"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="12sp"
                         android:layout_marginTop="30sp"
-                        android:gravity="left"
                         android:text="Mi calendario" />
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -164,6 +165,7 @@
                         android:gravity="center"
                         android:orientation="horizontal">
                         <co.kubo.indiesco.utils.Regular
+                            android:layout_marginLeft="16sp"
                             android:id="@+id/tvNserviciosProgramados"
                             style="@style/texto_12_gris_hint"
                             android:layout_width="match_parent"
@@ -195,7 +197,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30sp"
-                        android:gravity="left"
+                        android:layout_marginLeft="12sp"
                         android:text="Mis notificaciones" />
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -206,6 +208,7 @@
                         android:gravity="center"
                         android:orientation="horizontal">
                         <co.kubo.indiesco.utils.Regular
+                            android:layout_marginLeft="17sp"
                             android:id="@+id/tvNnotificaciones"
                             style="@style/texto_12_gris_hint"
                             android:layout_width="match_parent"
@@ -214,7 +217,7 @@
                         <co.kubo.indiesco.utils.Regular
                             style="@style/texto_12_gris_hint"
                             android:layout_width="match_parent"
-                            android:layout_height="19dp"
+                            android:layout_height="wrap_content"
                             android:text="sin leer" />
                     </LinearLayout>
                 </LinearLayout>

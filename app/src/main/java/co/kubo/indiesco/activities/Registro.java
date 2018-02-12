@@ -127,6 +127,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     Utils utils = new Utils();
     Animation animShake;
     private File file;
+    private String val;
     private boolean bandNombre = false, bandEmail = false, bandCel = false, bandDir = false, bandCiudad = false, bandPass1 = false, bandPass2 = false, bandOK = false;
     private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "",foto = "http:\\/\\/indiescoapi.inkubo.co\\/imgs_usuarios\\/-";
     private String direccion = "", lat = "", lng = "", complemento = "", ciudad = "";
@@ -162,11 +163,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         Bundle parametros = getIntent().getExtras();
         if (parametros == null){
             editEmail.setFocusableInTouchMode(true);
+            val = "0";
         }else{
             email = parametros.getString("Email");//email
             editEmail.setText(email);
             bandX = true;
-            bandY = true;
+            val = "1";
         }//else
 
         setlistenerEditText();
@@ -298,9 +300,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             editNombre.setError("El nombre es requerido");
             return false;
         }
-        if (editEmail.getText().toString().trim().equalsIgnoreCase("") || !bandY) {
-            editEmail.setError("El correo electrónico es requerido");
-            return false;
+        if (val.equals("0")){
+            if (editEmail.getText().toString().trim().equalsIgnoreCase("")) {
+                editEmail.setError("El correo electrónico es requerido");
+                return false;
+            }
         }
         if (!utils.isEmailValid(editEmail.getText().toString())){
             editEmail.setError("Debe ingresar un correo electrónico valido");

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.RadioGroup;
 
 import butterknife.ButterKnife;
-import co.kubo.indiesco.Adaptadores.CustomPagerAdapter;
+import co.kubo.indiesco.adaptadores.CustomPagerAdapter;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 

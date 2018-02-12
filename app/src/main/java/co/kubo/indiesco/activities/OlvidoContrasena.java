@@ -238,10 +238,9 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
     @Override
     public void onBackPressed() {
         //Entra a la pagina 1
-        if (scrollViewPagina1.getVisibility() == View.VISIBLE){
-            super.onBackPressed();
-            finish();
-        }
+        super.onBackPressed();
+        finish();
+        /*
         //Entra a la pagina 2
         if (scrollViewPagina2.getVisibility() == View.VISIBLE){
             scrollViewPagina2.setVisibility(View.GONE);
@@ -259,6 +258,7 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
             editCodigo3.setText("");
             editCodigo4.setText("");
         }//if
+        */
     }//onBackPressed
 
     private boolean validacion(){
@@ -399,8 +399,8 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
             }
         });
     }//public void validarEmail
-    private void hideSoftKeyboard(){
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-    }
+        private void hideSoftKeyboard(){
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        }
 
 }

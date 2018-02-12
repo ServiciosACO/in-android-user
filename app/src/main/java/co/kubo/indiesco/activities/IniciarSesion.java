@@ -190,15 +190,17 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //Cuenta exitente va a login
+                        hideSoftKeyboard();
                         editEmail.setVisibility(View.GONE);
                         inputPassword.setVisibility(View.VISIBLE);
                         inputPassword.startAnimation(anim1);
-                        hideSoftKeyboard();
+                        editContraseña.setFocusable(true);
                         break;
                     case "101": //Email no existe va a crear cuenta
                         Intent goCrear = new Intent(IniciarSesion.this, Registro.class);
                         goCrear.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         goCrear.putExtra("Email", editEmail.getText().toString());
+                        goCrear.putExtra("Validar", "1");
                         startActivity(goCrear);
                         finish();
                         break;

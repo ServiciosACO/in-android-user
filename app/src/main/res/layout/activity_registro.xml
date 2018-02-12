@@ -221,16 +221,13 @@
         android:id="@+id/fabSiguiente"
         android:visibility="visible"
         android:elevation="4sp"
-        app:fabSize="auto"
-        android:fitsSystemWindows="true"
-        android:fadeScrollbars="true"
         android:src="@drawable/btn_done"
-        android:layout_marginVertical="@dimen/fab_margin"
-        android:layout_marginHorizontal="@dimen/fab_margin"
         app:backgroundTint="@color/color_hint"
         android:layout_gravity="right|bottom"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin" />
 
     <LinearLayout
         android:visibility="gone"

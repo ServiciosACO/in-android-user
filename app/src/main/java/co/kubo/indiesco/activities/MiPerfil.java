@@ -1,6 +1,7 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.io.File;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 
@@ -73,6 +75,8 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
         Picasso
                 .with(getApplicationContext())
                 .load(usuario.getFoto())
+                .placeholder(getResources().getDrawable(R.drawable.registro_foto))
+                .error(getResources().getDrawable(R.drawable.registro_foto))
                 .transform(new CircleTransform())
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .networkPolicy(NetworkPolicy.NO_CACHE)
@@ -93,14 +97,25 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
                 onBackPressed();
                 break;
             case R.id.tvCambiarPass:
+                Intent inPassword = new Intent(MiPerfil.this, CambiarContrasena.class);
+                startActivity(inPassword);
                 break;
             case R.id.tvDir:
+                Intent inDir = new Intent(this, MisDirecciones.class);
+                startActivity(inDir);
                 break;
             case R.id.tvHistorial:
+                Intent inHistorial = new Intent(this, HistorialServicios.class);
+                startActivity(inHistorial);
                 break;
             case R.id.tvTerminos:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+                startActivity(browserIntent);
                 break;
             case R.id.tvLlamanos:
+                String phone = "123456789";
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                startActivity(intent);
                 break;
             case R.id.btnCerrarSesion:
                 Intent in = new Intent(MiPerfil.this, Login.class);

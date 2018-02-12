@@ -139,7 +139,8 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSiguiente"
         android:src="@drawable/btn_done"
-        app:backgroundTint="@color/colorVerde"
+        android:elevation="4sp"
+        app:backgroundTint="@color/color_hint"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
         android:layout_gravity="right|bottom"
