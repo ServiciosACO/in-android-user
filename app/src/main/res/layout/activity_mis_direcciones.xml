@@ -54,7 +54,7 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabSiguiente"
+        android:id="@+id/fabAgregar"
         android:src="@drawable/btn_add"
         app:backgroundTint="@color/colorNaranja"
         android:layout_marginRight="@dimen/fab_margin"

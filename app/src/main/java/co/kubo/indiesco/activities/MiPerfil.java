@@ -89,8 +89,6 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
         switch (view.getId()){
             case R.id.imgCambiarFoto:
                 break;
-            case R.id.imgFoto:
-                break;
             case R.id.imgConfig:
                 break;
             case R.id.imgBotonVolver:

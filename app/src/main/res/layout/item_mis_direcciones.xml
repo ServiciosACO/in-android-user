@@ -8,25 +8,39 @@
     swipe:rightEdgeSwipeOffset="0dp">
     <!-- Bottom View Start-->
     <LinearLayout
+        android:layout_marginTop="8sp"
+        android:layout_marginBottom="8sp"
         android:orientation="vertical"
         android:background="@color/colorRojo"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <!--What you want to show-->
-        <ImageView
-            android:layout_gravity="center"
-            android:src="@drawable/btn_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <co.kubo.indiesco.utils.Medium
+        <LinearLayout
+            android:id="@+id/llBorrar"
+            android:orientation="vertical"
+            android:background="@color/colorRojo"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:id="@+id/btnBorrarDireccion"
-            style="@style/texto_12_blanco"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Eliminar" />
+            android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginTop="15sp"
+                    android:layout_marginRight="43sp"
+                    android:layout_marginLeft="43sp"
+                    android:layout_marginBottom="9sp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/btn_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Medium
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16sp"
+                    style="@style/texto_12_blanco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eliminar" />
+        </LinearLayout>
     </LinearLayout>
     <!-- Bottom View End-->
 
@@ -61,8 +75,8 @@
         </LinearLayout>
         <WebView
             android:id="@+id/webViewMap"
-            android:layout_marginTop="8sp"
             android:layout_marginBottom="8sp"
+            android:layout_marginTop="8sp"
             android:layout_marginRight="8sp"
             android:layout_weight="1"
             android:layout_gravity="center"

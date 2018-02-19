@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "808320108164",
+    "firebase_url": "https://kubo-indiesco.firebaseio.com",
+    "project_id": "kubo-indiesco",
+    "storage_bucket": "kubo-indiesco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808320108164:android:dc7c926b9ad3b05d",
+        "android_client_info": {
+          "package_name": "co.kubo.indiesco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808320108164-pktjv194bf47qb7ggesdkr8t5ck0d0ci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.kubo.indiesco",
+            "certificate_hash": "fffe6d6da81d70c2edba8c3aff6f774c35ab70a9"
+          }
+        },
+        {
+          "client_id": "808320108164-uejvitli5t4gqheejcsf3rluio8vi9mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ-bFS_HrwpfPHwTtORNnS5rXukQdzGjo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808320108164-uejvitli5t4gqheejcsf3rluio8vi9mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

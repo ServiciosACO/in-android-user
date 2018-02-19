@@ -20,10 +20,11 @@ public class ConstantesRestApi {
     public static final String URL_LISTAR_DIRECCIONES = "cuenta/listar_direcciones/";
     public static final String URL_LISTAR_NOTIFICACIONES = "cuenta/listar_notificaciones/";
     public static final String URL_CANCELAR_SERVICIO = "servicios/cancelar_servicio/";
-    public static final String URL_CREAR_PEDIDO = "servicios/crear_pedido/";
+    public static final String URL_RESUMEN_PEDIDO = "servicios/resumen_pedido/";
     public static final String URL_CREAR_SERVICIO = "servicios/crear_servicio";
-    public static final String URL_LISTAR_HISTORIAL = "historial/lista_historial/uid/tipo";
+    public static final String URL_LISTAR_HISTORIAL = "historial/lista_historial/";
     public static final String URL_LISTAR_TIPOS_INMUEBLES = "servicios/lista_tipos_inmuebles";
     public static final String URL_TASAR_SERVICIO = "servicios/tasar_servicio/id_tipo_inmueble/dimension";
+    public static final String URL_REGISTRAR_SALTO_TX = "servicios/registrar_salto_tx/";
 
 }

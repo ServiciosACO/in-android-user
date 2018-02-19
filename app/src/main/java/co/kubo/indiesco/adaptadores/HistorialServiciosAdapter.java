@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogDetalleHistorial;
 import co.kubo.indiesco.modelo.Historial;
 
 /**
@@ -34,8 +35,8 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
     }
 
     @Override
-    public void onBindViewHolder(HistorialServiciosViewHolder holder, int position) {
-        Historial hist = historials.get(position);
+    public void onBindViewHolder(final HistorialServiciosViewHolder holder, int position) {
+        final Historial hist = historials.get(position);
         holder.tvNoServicioHist.setText(String.valueOf(hist.getId_pedido()));
         holder.tvFechaServicioHist.setText(String.valueOf(hist.getFecha_servicio()));
         holder.tvDirServicioHist.setText(String.valueOf(hist.getDireccion()));
@@ -44,7 +45,13 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
         holder.llHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getId_pedido(), hist.getDireccion(),
+                        hist.getCiudad(), hist.getId_tipo_inmueble(), hist.getFecha_servicio(), hist.getHora(), hist.getValor(),
+                        new DialogDetalleHistorial.RespuestaListener() {
+                    @Override
+                    public void onSalir() {
+                    }
+                }).show();
             }
         });
     }

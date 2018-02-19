@@ -77,7 +77,8 @@
         <activity android:name=".activities.MiPerfil" />
         <activity android:name=".activities.CambiarContrasena" />
         <activity android:name=".activities.MisDirecciones" />
-        <activity android:name=".activities.HistorialServicios"></activity>
+        <activity android:name=".activities.HistorialServicios" />
+        <activity android:name=".activities.SolicitudServicio"></activity>
     </application>
 
 </manifest>

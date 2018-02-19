@@ -81,6 +81,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     case "102":
                         Log.e(TAG, "Hash no valido");
                         break;
+                    default: break;
                 }//switch
             }
             @Override

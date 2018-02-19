@@ -28,13 +28,13 @@ import co.kubo.indiesco.R;
 public class DialogDetalleHistorial extends Dialog implements View.OnClickListener {
 
     private Activity activity;
-    private String lat, lng, nServicio, dir, ciudad, tipoTipo, tipoMetros, fecha, hora, valor;
+    private String lat, lng, nServicio, dir, ciudad, tipoTipo, fecha, hora, valor;
     private RespuestaListener respuestaListener;
 
-    public DialogDetalleHistorial(@NonNull Context context, int themeResId, Activity activity, String lat,
-                                  String lng, String nServicio, String dir, String ciudad, String tipoTipo,
-                                  String tipoMetros, String fecha, String hora, String valor, RespuestaListener respuestaListener) {
-        super(context, themeResId);
+    public DialogDetalleHistorial(Activity activity, String lat, String lng, String nServicio, String dir,
+                                  String ciudad, String tipoTipo, String fecha, String hora, String valor,
+                                  RespuestaListener respuestaListener) {
+        super(activity, R.style.ThemeTransparent);
         this.activity = activity;
         this.lat = lat;
         this.lng = lng;
@@ -42,7 +42,6 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         this.dir = dir;
         this.ciudad = ciudad;
         this.tipoTipo = tipoTipo;
-        this.tipoMetros = tipoMetros;
         this.fecha = fecha;
         this.hora = hora;
         this.valor = valor;
@@ -70,11 +69,19 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         TextView tvDirDetalleHist = (TextView) findViewById(R.id.tvDirDetalleHist);
         TextView tvCiudadDetalle = (TextView) findViewById(R.id.tvCiudadDetalle);
         TextView tvTipoTipo = (TextView) findViewById(R.id.tvTipoTipo);
-        TextView tvTipoMetros = (TextView) findViewById(R.id.tvTipoMetros);
         TextView tvFechaDetalle = (TextView) findViewById(R.id.tvFechaDetalle);
         TextView tvHoraDetalle = (TextView) findViewById(R.id.tvHoraDetalle);
         TextView tvPrecioServicioDet = (TextView) findViewById(R.id.tvPrecioServicioDet);
 
+        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
+        webViewHistorial.loadUrl(url);
+        tvNoServicioDetHist.setText(nServicio);
+        tvDirDetalleHist.setText(dir);
+        tvCiudadDetalle.setText(ciudad);
+        tvTipoTipo.setText(tipoTipo);
+        tvFechaDetalle.setText(fecha);
+        tvHoraDetalle.setText(hora);
+        tvPrecioServicioDet.setText(valor);
 
         Display display = activity.getWindowManager().getDefaultDisplay();
         Point size = new Point();
