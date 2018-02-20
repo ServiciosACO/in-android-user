@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="24sp"
+    android:paddingLeft="24sp"
+    android:id="@+id/llSalir"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/colorBlanco"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <co.kubo.indiesco.utils.Bold
+            android:gravity="center"
+            android:layout_marginTop="32sp"
+            style="@style/texto_20_morado"
+            android:text="Escoge tu dirección"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvDirDialog"
+            android:layout_marginTop="40sp"
+            android:paddingLeft="23sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+        <co.kubo.indiesco.utils.Medium
+            android:id="@+id/tvIrMisDirecciones"
+            android:gravity="center"
+            android:padding="5sp"
+            android:layout_marginTop="40sp"
+            android:layout_marginBottom="22sp"
+            style="@style/texto_14_verde"
+            android:text="Ir a mis direcciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

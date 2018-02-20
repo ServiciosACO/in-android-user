@@ -1,6 +1,7 @@
 package co.kubo.indiesco.activities;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ShapeDrawable;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogDirecciones;
 import co.kubo.indiesco.modelo.Inmueble;
 import co.kubo.indiesco.modelo.TasarServicio;
 import co.kubo.indiesco.modelo.Usuario;
@@ -68,15 +70,16 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     TextView tvValor;
 
     private ArrayList<Inmueble> inmuebles = new ArrayList<>();
-    private ArrayList<TasarServicio> valorServicio = new ArrayList<>();
-    private String tipoInmueble = "", urgente = "no", dimension = "0", id_inmueble = "-1";
-    private boolean band1 = false, band2 = false, bandUrgente = true, bandTasarServicio = false;
+    private ArrayList<String> valorServicio = new ArrayList<>();
+    private String tipoInmueble = "", urgente = "no", dimension = "60", id_inmueble = "-1";
+    private boolean band1 = false, band2 = true, bandUrgente = true, bandTasarServicio = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitud_servicio);
         ButterKnife.bind(this);
+        tvDir.setOnClickListener(this);
         imgBotonVolver.setOnClickListener(this);
         imgUrgente.setOnClickListener(this);
         spinnerInmueble.setPrompt("Selecciona");
@@ -86,6 +89,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 tipoInmueble = spinnerInmueble.getItemAtPosition(i).toString();
                 id_inmueble = inmuebles.get(i).getId_tipo_inmueble();
                 band1 = true;
+                tasarServicio();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -101,7 +105,6 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                     case 0:
                         tvDimension.setText(getResources().getString(R.string.dimension_1));
                         dimension = "60";
-                        band2 = true;
                         break;
                     case 1:
                         tvDimension.setText(getResources().getString(R.string.dimension_2));
@@ -145,8 +148,6 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
     }
 
-
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -158,7 +159,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                     imgUrgente.setImageResource(R.drawable.switch_inactive);
                     urgente = "no";
                     bandUrgente = true;
-                    if (bandTasarServicio){
+                    if (bandTasarServicio && band1 && band2){
                         tasarServicio();
                     }
                 }else{
@@ -170,6 +171,23 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                     }
                     bandTasarServicio = true;
                 }
+                break;
+            case R.id.tvDir:
+                new DialogDirecciones(SolicitudServicio.this, new DialogDirecciones.RespuestaListener() {
+                    @Override
+                    public void onSelectDir(String dir, String lat, String lng, String complemento, String ciudad) {
+                        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
+                        webViewMapServicio.loadUrl(url);
+                    }
+                    @Override
+                    public void onIrMisDir() {
+                        Intent inDir = new Intent(SolicitudServicio.this, MisDirecciones.class);
+                        startActivity(inDir);
+                    }
+                    @Override
+                    public void onSalir() {
+                    }
+                }).show();
                 break;
         }//switch
     }
@@ -194,7 +212,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 switch (code){
                     case "100":
                         valorServicio = response.body().getData();
-                        String valor = valorServicio.get(0).getValor();
+                        String valor = valorServicio.get(1);
                         llValor.setVisibility(View.VISIBLE);
                         tvValor.setText("$" + valor);
                         break;
