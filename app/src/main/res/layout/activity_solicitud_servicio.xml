@@ -1,9 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.kubo.indiesco.activities.SolicitudServicio">
+    android:fitsSystemWindows="true">
+    <ScrollView
+        android:visibility="visible"
+        android:id="@+id/scrollViewSolicitudServ"
+        android:background="@color/fondo_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/llHeader"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="19sp"
+                android:orientation="horizontal"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgBotonVolver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/btn_atras" />
+                <co.kubo.indiesco.utils.Medium
+                    android:id="@+id/tvTituloHeader"
+                    style="@style/texto_20_morado"
+                    android:layout_marginLeft="35sp"
+                    android:text="Solicitar Servicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+            <LinearLayout
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginRight="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginBottom="16sp"
+                android:layout_marginTop="32sp"
+                android:paddingLeft="24sp"
+                android:paddingRight="24sp"
+                android:background="@color/colorBlanco"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvTituloServicio"
+                    android:text="Servicio de Limpieza General"
+                    style="@style/texto_16_morado"
+                    android:gravity="left"
+                    android:layout_marginTop="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvSubTituloServicio"
+                    android:layout_marginTop="21sp"
+                    android:text="Descripción: Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
+                    style="@style/texto_13_gris"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvTituloInmueble"
+                    android:text="Tipo de inmueble"
+                    android:layout_marginTop="25sp"
+                    style="@style/texto_16_morado"
+                    android:gravity="left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <Spinner
+                    android:id="@+id/spinnerInmueble"
+                    android:layout_marginTop="25sp"
+                    android:spinnerMode="dialog"
+                    android:popupBackground="@color/colorBlanco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvTituloDimension"
+                    android:text="Dimensión del lugar (m2)"
+                    android:layout_marginTop="25sp"
+                    style="@style/texto_16_morado"
+                    android:gravity="left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/seekBarDimension"
+                    android:max="3"
+                    android:thumb="@drawable/dot_active"
+                    app:tickMark="@drawable/tick_mark_general"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28sp" />
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvDimension"
+                    android:text="@string/dimension_1"
+                    style="@style/texto_16_rojo"
+                    android:gravity="center"
+                    android:layout_marginTop="25sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_16_morado"
+                    android:layout_marginTop="25sp"
+                    android:text="Dirección"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/llDireccion"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <co.kubo.indiesco.utils.Regular
+                        android:id="@+id/tvDir"
+                        style="@style/texto_14_gris_hint"
+                        android:text="Selecciona tu dirección"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:src="@drawable/arrow_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <WebView
+                    android:id="@+id/webViewMapServicio"
+                    android:layout_marginTop="31sp"
+                    android:layout_width="280sp"
+                    android:layout_height="136sp"/>
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvFechaServicio"
+                    android:layout_marginTop="25sp"
+                    android:text="Fecha del servicio"
+                    style="@style/texto_16_morado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <DatePicker
+                    android:id="@+id/FechaServ"
+                    android:clickable="true"
+                    android:calendarTextColor="@color/colorGris"
+                    android:layout_marginTop="30sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="140sp"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    android:layout_gravity="center_horizontal"/>
+
+                <LinearLayout
+                    android:id="@+id/llUrgente"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <co.kubo.indiesco.utils.Bold
+                        android:id="@+id/tvUrgente"
+                        style="@style/texto_16_morado"
+                        android:text="Servicio urgente"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:id="@+id/imgUrgente"
+                        android:src="@drawable/switch_inactive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvInfo"
+                    style="@style/texto_13_rojo"
+                    android:layout_marginTop="21sp"
+                    android:text="Recuerda que los servicios urgentes tienen recargo y debes solicitarlos con mínimo 2 horas de anticipación"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvHora"
+                    android:layout_marginTop="36sp"
+                    android:text="Hora del servicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TimePicker
+                    android:id="@+id/horaServ"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginBottom="30sp"
+                    android:timePickerMode="spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="130sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/llValor"
+                android:orientation="vertical"
+                android:paddingLeft="16sp"
+                android:paddingTop="12sp"
+                android:paddingBottom="10sp"
+                android:layout_marginLeft="8sp"
+                android:layout_marginRight="8sp"
+                android:background="@color/colorRojo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <co.kubo.indiesco.utils.Regular
+                    android:text="Precio del servicio"
+                    style="@style/texto_12_blanco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvValor"
+                    android:text="$300.000"
+                    style="@style/texto_36_blanco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

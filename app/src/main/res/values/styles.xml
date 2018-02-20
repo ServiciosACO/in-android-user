@@ -7,6 +7,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+
     <style name="ThemeTransparent" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowBackground">@color/colorNegro</item>
@@ -62,6 +64,11 @@
     <style name="texto_13_negro">
         <item name="android:textSize">13dp</item>
         <item name="android:textColor">@color/colorNegro</item>
+    </style>
+
+    <style name="texto_13_rojo">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/colorRojo</item>
     </style>
 
     <style name="texto_13_verde">
@@ -124,9 +131,19 @@
         <item name="android:textColor">@color/colorMorado</item>
     </style>
 
+    <style name="texto_16_rojo">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/colorRojo</item>
+    </style>
+
     <style name="texto_36_morado">
         <item name="android:textSize">36dp</item>
         <item name="android:textColor">@color/colorMorado</item>
+    </style>
+
+    <style name="texto_36_blanco">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
