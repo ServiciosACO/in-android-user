@@ -81,6 +81,11 @@
         <item name="android:textColor">@color/colorGris</item>
     </style>
 
+    <style name="texto_13_gris_hint">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/colorGris</item>
+    </style>
+
     <style name="texto_14_gris_hint">
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/colorGris</item>

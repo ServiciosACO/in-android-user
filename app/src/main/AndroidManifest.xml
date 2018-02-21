@@ -78,7 +78,8 @@
         <activity android:name=".activities.CambiarContrasena" />
         <activity android:name=".activities.MisDirecciones" />
         <activity android:name=".activities.HistorialServicios" />
-        <activity android:name=".activities.SolicitudServicio"></activity>
+        <activity android:name=".activities.SolicitudServicio" />
+        <activity android:name=".activities.Notificaciones"></activity>
     </application>
 
 </manifest>

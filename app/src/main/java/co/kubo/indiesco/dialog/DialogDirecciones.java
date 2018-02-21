@@ -50,7 +50,7 @@ public class DialogDirecciones extends Dialog implements View.OnClickListener, I
         this.activity = activity;
         this.respuestaListener = respuestaListener;
 
-        presenter = new DialogDireccionesPresenter(activity.this, activity.getApplicationContext());
+        //presenter = new DialogDireccionesPresenter(DialogDirecciones.this, activity.getApplicationContext());
     }
 
     @Override

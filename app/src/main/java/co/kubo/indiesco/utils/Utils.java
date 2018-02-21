@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
+import android.net.ParseException;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -77,4 +79,30 @@ public class Utils {
         else
             return false;
     }//public boolean isEmailValid
+
+    public String StringToDate(String fecha){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = null;
+        try {
+            date = format.parse(fecha);
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return DateToString(date);
+    }
+    public String DateToString (java.util.Date date){
+        SimpleDateFormat dateformat = new SimpleDateFormat("dd MMMM yyyy");
+        String datetime="";
+        try {
+            datetime = dateformat.format(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return datetime;
+    }//public String DateToString
 }
