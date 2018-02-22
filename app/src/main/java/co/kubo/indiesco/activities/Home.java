@@ -78,7 +78,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 startActivity(inServ);
                 break;
             case R.id.llNotificaciones:
-
+                Intent inNot = new Intent(this, MisNotificaciones.class);
+                startActivity(inNot);
                 break;
             case R.id.llCalendario:
 

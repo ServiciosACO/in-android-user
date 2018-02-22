@@ -32,8 +32,6 @@ public class Utils {
         }
     }
 
-
-
     public Typeface fuenteBold(Context context){
         return Typeface.createFromAsset(context.getAssets(), "Fonts/Barlow-Bold.ttf");
     }

@@ -18,6 +18,16 @@ public class Notificaciones {
     @Expose
     private String fecha;
 
+    private String isHeader;
+
+    public String getIsHeader() {
+        return isHeader;
+    }
+
+    public void setIsHeader(String isHeader) {
+        this.isHeader = isHeader;
+    }
+
     public String getId_notificacion() {
         return id_notificacion;
     }

@@ -53,8 +53,9 @@ public interface Endpoints {
     @GET(ConstantesRestApi.URL_ELIMINAR_DIRECCION + "{uid}/{id_direccion}")
     Call<ResponseGeneral> eliminarDireccion(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid, @Path("id_direccion") String id_direccion);
 
-    @GET(ConstantesRestApi.URL_ELIMINAR_NOTIFICACION + "{uid}")
-    Call<ResponseGeneral> eliminarNotificacion(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid);
+    @GET(ConstantesRestApi.URL_ELIMINAR_NOTIFICACION + "{uid}/{id_notificacion}")
+    Call<ResponseGeneral> eliminarNotificacion(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid,
+                                               @Path("id_notificacion") String id_notificacion);
 
     @GET(ConstantesRestApi.URL_LISTAR_DIRECCIONES + "{uid}")
     Call<ResponseDireccion> listarDireccion(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid);

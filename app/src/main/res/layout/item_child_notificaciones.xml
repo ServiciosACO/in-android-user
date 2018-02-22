@@ -4,6 +4,7 @@
     android:id="@+id/miSwipeSuscripcion"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    swipe:clickToClose="true"
     swipe:leftEdgeSwipeOffset="0dp"
     swipe:rightEdgeSwipeOffset="0dp">
     <!-- Bottom View Start-->
@@ -23,8 +24,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="17dp"
-            android:layout_marginStart="17dp"
+
             android:background="@color/colorRojo"
             android:gravity="center"
             android:orientation="vertical">
