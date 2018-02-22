@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -50,7 +51,7 @@ public class DialogDirecciones extends Dialog implements View.OnClickListener, I
         this.activity = activity;
         this.respuestaListener = respuestaListener;
 
-        //presenter = new DialogDireccionesPresenter(DialogDirecciones.this, activity.getApplicationContext());
+        presenter = new DialogDireccionesPresenter(DialogDirecciones.this, activity.getApplicationContext());
     }
 
     @Override
@@ -99,7 +100,7 @@ public class DialogDirecciones extends Dialog implements View.OnClickListener, I
         RecyclerView rvDirDialog = (RecyclerView) findViewById(R.id.rvDirDialog);
         LinearLayout llSalir = (LinearLayout) findViewById(R.id.llSalir);
         llSalir.setOnClickListener(this);
-        EditText tvIrMisDirecciones = (EditText) findViewById(R.id.tvIrMisDirecciones);
+        TextView tvIrMisDirecciones = (TextView) findViewById(R.id.tvIrMisDirecciones);
         tvIrMisDirecciones.setOnClickListener(this);
 
         /*dirX = tvDir.getText().toString();
@@ -120,6 +121,8 @@ public class DialogDirecciones extends Dialog implements View.OnClickListener, I
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tvIrMisDirecciones:
+                Intent inDir = new Intent(activity, MisDirecciones.class);
+                activity.startActivity(inDir);
                 dismiss();
                 break;
             case R.id.llSalir:

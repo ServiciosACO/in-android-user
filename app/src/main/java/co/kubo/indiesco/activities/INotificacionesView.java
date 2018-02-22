@@ -6,7 +6,7 @@ package co.kubo.indiesco.activities;
 
 public interface INotificacionesView {
 
-    public void generarLinearLayoutVertical();
+    //public void generarLinearLayoutVertical();
 
 
     /*

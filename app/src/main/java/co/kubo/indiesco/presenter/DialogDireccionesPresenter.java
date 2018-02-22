@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import co.kubo.indiesco.activities.IDialogDireccionesView;
 import co.kubo.indiesco.activities.IMisDireccionesPresenter;
 import co.kubo.indiesco.activities.IMisDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
@@ -24,12 +25,12 @@ import retrofit2.Response;
 
 public class DialogDireccionesPresenter implements IMisDireccionesPresenter {
     public static final String TAG = "DialogDirPresenter";
-    private IMisDireccionesView iMisDireccionesView;
+    private IDialogDireccionesView iDialogDireccionesView;
     private Context context;
     private ArrayList<Direccion> direccion;
 
-    public DialogDireccionesPresenter(IMisDireccionesView iMisDireccionesView, Context context) {
-        this.iMisDireccionesView = iMisDireccionesView;
+    public DialogDireccionesPresenter(IDialogDireccionesView iDialogDireccionesView, Context context) {
+        this.iDialogDireccionesView = iDialogDireccionesView;
         this.context = context;
         obtenerDirecciones();
     }
@@ -49,6 +50,7 @@ public class DialogDireccionesPresenter implements IMisDireccionesPresenter {
                 switch (code){
                     case "100":
                         direccion = response.body().getData();
+
                         mostrarDirecciones();
                         break;
                     case "102":
@@ -70,7 +72,7 @@ public class DialogDireccionesPresenter implements IMisDireccionesPresenter {
 
     @Override
     public void mostrarDirecciones() {
-        iMisDireccionesView.inicializarAdaptadorRvDirecciones(iMisDireccionesView.crearAdaptadorDirecciones(direccion));
-        iMisDireccionesView.generarLinearLayoutVertical();
+        iDialogDireccionesView.inicializarAdaptadorRvDirecciones(iDialogDireccionesView.crearAdaptadorDialogDirecciones(direccion));
+        iDialogDireccionesView.generarLinearLayoutVertical();
     }
 }

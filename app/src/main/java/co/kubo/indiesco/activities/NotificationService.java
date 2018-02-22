@@ -12,8 +12,6 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import co.kubo.indiesco.R;
-
 /**
  * Created by estacion on 21/02/18.
  */
@@ -39,7 +37,7 @@ public class NotificationService extends FirebaseMessagingService {
          android:taskAffinity=""
          android:excludeFromRecents="true"*/
 
-        Intent in = new Intent(this, Notificaciones.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Intent in = new Intent(this, MisNotificaciones.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, in, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

@@ -105,7 +105,7 @@ public interface Endpoints {
 
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_REGISTRAR_SALTO_TX)
-    Call<ResponseGeneral> crearServicio(@Header("X-AC-Auth-Token") String authToken, @Field("id_solicitud") String id_solicitud,
+    Call<ResponseGeneral> registrarSaltoTX(@Header("X-AC-Auth-Token") String authToken, @Field("id_solicitud") String id_solicitud,
                                         @Field("nombre") String nombre, @Field("telefono") String telefono,
                                         @Field("email") String email, @Field("documento") String documento,
                                         @Field("valor") String valor);
