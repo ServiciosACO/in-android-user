@@ -111,10 +111,12 @@ public interface Endpoints {
                                         @Field("valor") String valor);
 
     @GET(ConstantesRestApi.URL_RESUMEN_PEDIDO + "{uid}/{id_solicitud}")
-    Call<ResponsePedido> resumenPedido(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid, @Path("id_solicitud") String id_solicitud);
+    Call<ResponsePedido> resumenPedido(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid,
+                                       @Path("id_solicitud") String id_solicitud);
 
-    @GET(ConstantesRestApi.URL_LISTAR_NOTIFICACIONES + "{id_tipo_inmueble}/{dimension}")
+    @GET(ConstantesRestApi.URL_TASAR_SERVICIO + "{id_tipo_inmueble}/{dimension}/{urgente}")
     Call<ResponseTasarServicio> tasarServicio(@Header("X-AC-Auth-Token") String authToken,
-                                              @Path("id_tipo_inmueble") String id_tipo_inmueble, @Path("dimension") String dimension);
+                                              @Path("id_tipo_inmueble") String id_tipo_inmueble,
+                                              @Path("dimension") String dimension, @Path("urgente") String urgente);
 
 }//Endpoints

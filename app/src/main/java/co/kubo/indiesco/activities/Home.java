@@ -74,7 +74,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 startActivity(in);
                 break;
             case R.id.llSolicitarServ:
-
+                Intent inServ = new Intent(Home.this, SolicitudServicio.class);
+                startActivity(inServ);
                 break;
             case R.id.llNotificaciones:
 

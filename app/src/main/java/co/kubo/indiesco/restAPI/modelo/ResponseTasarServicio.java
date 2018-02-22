@@ -18,7 +18,7 @@ public class ResponseTasarServicio {
     private String code;
     @SerializedName("data")
     @Expose
-    private ArrayList<TasarServicio> data;
+    private ArrayList<String> data;
 
     public String getCode() {
         return code;
@@ -28,11 +28,11 @@ public class ResponseTasarServicio {
         this.code = code;
     }
 
-    public ArrayList<TasarServicio> getData() {
+    public ArrayList<String> getData() {
         return data;
     }
 
-    public void setData(ArrayList<TasarServicio> data) {
+    public void setData(ArrayList<String> data) {
         this.data = data;
     }
 }

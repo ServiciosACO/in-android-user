@@ -239,6 +239,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                         usuario.setEmail(response.body().getData().get(0).getEmail());
                         usuario.setCiudad(response.body().getData().get(0).getCiudad());
                         usuario.setDireccion(response.body().getData().get(0).getDireccion());
+                        usuario.setFoto(response.body().getData().get(0).getFoto());
                         SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
                         SharedPreferenceManager.setLoged(IniciarSesion.this, true);
                         Intent goHome = new Intent(IniciarSesion.this, Home.class);

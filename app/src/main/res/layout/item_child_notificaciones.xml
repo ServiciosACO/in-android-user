@@ -1,0 +1,109 @@
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/miSwipeSuscripcion"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp">
+    <!-- Bottom View Start-->
+    <LinearLayout
+        android:layout_marginTop="8sp"
+        android:layout_marginBottom="8sp"
+        android:orientation="vertical"
+        android:background="@color/colorRojo"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!--What you want to show-->
+        <LinearLayout
+            android:id="@+id/llBorrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:background="@color/colorRojo"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="9sp"
+                android:layout_marginLeft="43sp"
+                android:layout_marginRight="43sp"
+                android:layout_marginTop="15sp"
+                android:src="@drawable/btn_delete" />
+            <co.kubo.indiesco.utils.Medium
+                style="@style/texto_12_blanco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16sp"
+                android:gravity="center"
+                android:text="Eliminar" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Bottom View End-->
+
+    <!-- Surface View Start -->
+    <RelativeLayout
+        android:paddingLeft="16sp"
+        android:paddingRight="3sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/llNotif"
+            android:orientation="vertical"
+            android:background="@color/colorBlanco"
+            android:paddingTop="14sp"
+            android:layout_marginTop="14sp"
+            android:layout_marginRight="13sp"
+            android:paddingLeft="16sp"
+            android:paddingRight="16sp"
+            android:paddingBottom="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_marginBottom="8sp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvTituloNot"
+                    style="@style/texto_15_morado"
+                    android:text="ACO LTDA."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvHoraNot"
+                    android:text="11:11 am"
+                    android:gravity="right"
+                    style="@style/texto_13_gris_hint"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvMensajeNot"
+                android:text="Tu servicio ha sido programado para el día 10 de Noviembre de 2017 a las 12:15 pm. Si tienes alguna duda, contáctanos para poder ayudarte."
+                style="@style/texto_13_gris"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/imgNotNueva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/notif_dot" />
+    </RelativeLayout>
+    <!-- Surface View End -->
+</com.daimajia.swipe.SwipeLayout>

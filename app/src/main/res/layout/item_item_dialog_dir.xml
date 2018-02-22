@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llItemDir"
+        android:orientation="vertical"
+        android:background="@color/colorBlanco"
+        android:paddingTop="20sp"
+        android:paddingLeft="16sp"
+        android:paddingRight="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <co.kubo.indiesco.utils.Bold
+            android:id="@+id/tvItemDir"
+            style="@style/texto_15_naranja"
+            android:text="Calle 24 #12 - 05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvItemCiudad"
+            android:text="La Guajira, Riohacha"
+            style="@style/texto_13_gris"
+            android:layout_weight="1"
+            android:paddingBottom="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:background="@color/colorGris"
+            android:layout_width="wrap_content"
+            android:layout_height="0.5sp"/>
+    </LinearLayout>
+</LinearLayout>
