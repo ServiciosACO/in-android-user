@@ -10,8 +10,10 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import co.kubo.indiesco.R;
 
@@ -21,17 +23,19 @@ import static android.widget.Button.*;
  * Created by Diego on 9/02/2018.
  */
 
-//DialogBorrarDir
+//DialogDosOpciones
 
-public class DialogBorrarDir extends Dialog implements View.OnClickListener {
+public class DialogDosOpciones extends Dialog implements View.OnClickListener {
 
     private Activity activity;
     private boolean respuesta;
+    private String opcion;
     private RespuestaListener respuestaListener;
 
-    public DialogBorrarDir(Activity activity, RespuestaListener respuestaListener) {
+    public DialogDosOpciones(Activity activity, String opcion, RespuestaListener respuestaListener) {
         super(activity, R.style.ThemeTransparent);
         this.activity = activity;
+        this.opcion = opcion;
         this.respuestaListener = respuestaListener;
     }
 
@@ -60,6 +64,25 @@ public class DialogBorrarDir extends Dialog implements View.OnClickListener {
         LinearLayout llSalir = (LinearLayout) findViewById(R.id.llSalir);
         llSalir.setOnClickListener(this);
 
+        ImageView imgBorrar = (ImageView) findViewById(R.id.imgBorrar);
+        TextView tvMensaje = (TextView) findViewById(R.id.tvMensaje);
+
+        switch (opcion){
+            case "0": //Borrar direccion
+                imgBorrar.setImageResource(R.drawable.img_deleteaddress);
+                tvMensaje.setText("¿Estás seguro de que deseas eliminar esta dirección?");
+                break;
+            case "1": //Borrar Notificacion
+                imgBorrar.setImageResource(R.drawable.img_deletenotif);
+                tvMensaje.setText("¿Estás seguro de que deseas eliminar esta notificación?");
+                break;
+            case "2": //Cancelar servicio
+                imgBorrar.setImageResource(R.drawable.img_cancel_service);
+                tvMensaje.setText("¿Estás seguro de que deseas cancelar el servicio?");
+                break;
+            default:break;
+        }//switch
+
         Display display = activity.getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -87,9 +110,9 @@ public class DialogBorrarDir extends Dialog implements View.OnClickListener {
     private void salir(){
         dismiss();
         if (respuesta) {
-            respuestaListener.onCancelar();
-        } else {
             respuestaListener.onAceptar();
+        } else {
+            respuestaListener.onCancelar();
         }
     }//private void salir
 }

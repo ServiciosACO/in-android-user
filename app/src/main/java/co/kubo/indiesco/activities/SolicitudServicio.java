@@ -29,6 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogDirecciones;
+import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.modelo.Inmueble;
 import co.kubo.indiesco.modelo.TasarServicio;
 import co.kubo.indiesco.modelo.Usuario;
@@ -143,8 +144,9 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
             }
         });
 
-        listarTiposInmuebles();
 
+
+        listarTiposInmuebles();
 
     }
 
@@ -194,9 +196,17 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
+        new DialogDosOpciones(SolicitudServicio.this, "2", new DialogDosOpciones.RespuestaListener() {
+            @Override
+            public void onCancelar() {}
+            @Override
+            public void onAceptar() {
+                finish();
+            }
+            @Override
+            public void onSalir() {}
+        }).show();
+    }//public void onBackPressed
 
     private void tasarServicio(){
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());

@@ -2,29 +2,17 @@ package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.IDialogDireccionesView;
-import co.kubo.indiesco.dialog.DialogBorrarDir;
 import co.kubo.indiesco.modelo.Direccion;
-import co.kubo.indiesco.modelo.Usuario;
-import co.kubo.indiesco.restAPI.Endpoints;
-import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
-import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
-import co.kubo.indiesco.utils.SharedPreferenceManager;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by estacion on 20/02/18.

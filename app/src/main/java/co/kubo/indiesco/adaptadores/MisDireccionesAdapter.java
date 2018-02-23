@@ -1,7 +1,6 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,13 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.net.FileNameMap;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.dialog.DialogBorrarDir;
+import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -59,7 +55,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
         holder.llBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DialogBorrarDir(activity, new DialogBorrarDir.RespuestaListener() {
+                new DialogDosOpciones(activity, "0", new DialogDosOpciones.RespuestaListener() {
                     @Override
                     public void onCancelar() {
                     }

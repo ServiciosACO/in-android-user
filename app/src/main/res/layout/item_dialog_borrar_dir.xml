@@ -26,11 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <ImageView
+            android:id="@+id/imgBorrar"
             android:src="@drawable/img_deleteaddress"
             android:layout_marginBottom="31sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvMensaje"
             android:paddingRight="32sp"
             android:paddingLeft="32sp"
             android:gravity="center"

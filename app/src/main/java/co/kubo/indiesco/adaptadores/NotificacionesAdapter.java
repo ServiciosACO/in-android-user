@@ -12,11 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.EventListener;
 
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.ViewHolderHeader;
 import co.kubo.indiesco.activities.ViewHolderListItem;
+import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.modelo.Notificaciones;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -74,14 +77,31 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             ((ViewHolderListItem) holder).getLlBorrar().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    borrarNotificacion(notificaciones.get(position).getId_notificacion(), position, ((ViewHolderListItem) holder).getLlBorrar());
+                    new DialogDosOpciones(activity, "1", new DialogDosOpciones.RespuestaListener() {
+                        @Override
+                        public void onCancelar() {
+                        }
+                        @Override
+                        public void onAceptar() {
+                            borrarNotificacion(notificaciones.get(position).getId_notificacion(), position, ((ViewHolderListItem) holder).getLlBorrar());
+                        }
+                        @Override
+                        public void onSalir() {
+                        }
+                    }).show();
                 }
             });
 
         } else if (holder instanceof ViewHolderHeader) {
             Utils utils = new Utils();
+            Date currentTime = Calendar.getInstance().getTime();
+            String today =  utils.DateToString(currentTime);
             String nueva_fecha = utils.StringToDate(notificaciones.get(position).getFecha());
-            ((ViewHolderHeader) holder).setTvHeader(nueva_fecha.replace(" ", " de "));
+            if (today.equals(nueva_fecha)){
+                ((ViewHolderHeader) holder).setTvHeader("Hoy");
+            }else{
+                ((ViewHolderHeader) holder).setTvHeader(nueva_fecha.replace(" ", " de "));
+            }
         }
     }
 
@@ -96,7 +116,6 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (isPositionHeader(position))
             return TYPE_HEADER;
         return TYPE_ITEM;
-
     }
 
     private boolean isPositionHeader(int position) {
