@@ -53,6 +53,19 @@ public class CustomPagerAdapter extends PagerAdapter {
         tvTituloTour.setText(titulo[position]);
         tvSubTituloTour.setText(subtitulo[position]);
 
+        switch (position){
+            case 0:
+                btnTour.setTextColor(mContext.getResources().getColor(R.color.colorNaranja));
+                break;
+            case 1:
+                btnTour.setTextColor(mContext.getResources().getColor(R.color.colorVerde));
+                break;
+            case 2:
+                btnTour.setTextColor(mContext.getResources().getColor(R.color.colorMorado));
+                break;
+            default:break;
+        }//switch
+
         btnTour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

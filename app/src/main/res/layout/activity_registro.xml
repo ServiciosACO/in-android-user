@@ -59,8 +59,8 @@
                     android:src="@drawable/registro_foto"
                     android:layout_marginBottom="20sp"
                     android:layout_marginTop="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="96sp"
+                    android:layout_height="96sp" />
                 <EditText
                     android:id="@+id/editNombre"
                     android:hint="Nombre"
@@ -107,6 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
+
                 <EditText
                     android:id="@+id/editDireccion"
                     android:hint="Dirección"
@@ -118,11 +119,22 @@
                     android:textColorHint="@color/color_hint"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
-
+                <ListView
+                    android:id="@+id/listaDirecciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:background="@color/colorBlanco"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp"
+                    android:listSelector="@android:color/transparent"
+                    android:scrollbars="none" />
                 <EditText
                     android:id="@+id/editComplemento"
                     android:hint="Complemento de la dirección"
@@ -138,7 +150,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
-
 
                 <RelativeLayout
                     android:id="@+id/fondoMapaDir"

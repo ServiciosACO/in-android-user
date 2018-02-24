@@ -96,6 +96,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnContinuar:
                 if (validacion()){
+                    btnContinuar.setEnabled(false);
                     animacion();
                 }//if
                 break;
@@ -197,6 +198,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                         editContraseña.setFocusable(true);
                         break;
                     case "101": //Email no existe va a crear cuenta
+                        btnContinuar.setEnabled(false);
                         Intent goCrear = new Intent(IniciarSesion.this, Registro.class);
                         goCrear.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         goCrear.putExtra("Email", editEmail.getText().toString());
@@ -219,6 +221,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
     }//public void validarEmail
 
     public void login(String password){
+        btnContinuar.setEnabled(false);
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();

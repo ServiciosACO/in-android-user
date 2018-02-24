@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/iconoDir"
+            android:layout_toEndOf="@+id/iconoDir">
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/nombreDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="prueba_prueba_prueba"
+                android:textColor="@color/colorGris"
+                android:textSize="14dp"/>
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/ciudadDur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGris"
+                android:textSize="13dp"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/iconoDir" />
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="55dp"
+        android:background="@color/colorGris"/>
+</LinearLayout>
