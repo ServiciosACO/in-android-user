@@ -3,6 +3,7 @@ package co.kubo.indiesco.activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -12,18 +13,25 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.icu.lang.UCharacter;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
@@ -41,10 +49,25 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.VisibleRegion;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -56,15 +79,23 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.adaptadores.AdapterOpcionesDirec;
+import co.kubo.indiesco.asincronasMapa.AsynkDireccionPalabra;
+import co.kubo.indiesco.asincronasMapa.AsynkObtenerDireccion;
 import co.kubo.indiesco.dialog.DialogImagenPerfil;
 import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
+import co.kubo.indiesco.modelo.direccionesGoogleVO;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
@@ -73,6 +104,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.utils.Constantes;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import co.kubo.indiesco.utils.Singleton;
 import co.kubo.indiesco.utils.Utils;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -81,7 +113,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Registro extends AppCompatActivity implements View.OnClickListener {
+public class Registro extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
 
     private static final String TAG = "Registro";
     @BindView(R.id.imgBotonVolver)
@@ -114,6 +146,27 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     TextInputLayout inputPass2;
     @BindView(R.id.llSplashRegistro)
     LinearLayout llSplashRegistro;
+    private MapFragment mapaDireccion;
+    private GoogleMap googleMap;
+    private Boolean cargoMapa = false;
+    private Boolean cargarDireccion = false;
+    private ListView listaDirecciones;
+    private List<direccionesGoogleVO> listaDatos = new ArrayList<>();
+    private Double latitudDireccion = 0.0;
+    private Double longitudDireccion = 0.0;
+    private Boolean bandSubir = false;
+    private Boolean bandPonerDir = true;
+    private float zoomActual = 0;
+    private Singleton general = Singleton.getInstance();
+    private Boolean bandLista = false;
+    private boolean gps_enabled = false;
+    private boolean network_enabled = false;
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final float DEFAULT_ZOOM = 11f;
+    private Boolean mLocationPermissionsGranted = false;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private double lati, longi;
 
     private int position = 0;
     private Uri imageUri;
@@ -129,7 +182,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private File file;
     private String val;
     private boolean bandNombre = false, bandEmail = false, bandCel = false, bandDir = false, bandCiudad = false, bandPass1 = false, bandPass2 = false, bandOK = false;
-    private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "",foto = "http:\\/\\/indiescoapi.inkubo.co\\/imgs_usuarios\\/-";
+    private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "", foto = "http:\\/\\/indiescoapi.inkubo.co\\/imgs_usuarios\\/-";
     private String direccion = "", lat = "", lng = "", complemento = "", ciudad = "";
 
     @Override
@@ -137,10 +190,13 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         ButterKnife.bind(this);
+        getLocationPermission();
         animShake = AnimationUtils.loadAnimation(Registro.this, R.anim.shake);
         fabSiguiente.setOnClickListener(this);
         imgFoto.setOnClickListener(this);
         imgBotonVolver.setOnClickListener(this);
+        mapaDireccion = (MapFragment) getFragmentManager().findFragmentById(R.id.mapaDireccion);
+        listaDirecciones = (ListView) findViewById(R.id.listaDirecciones);
         hideSoftKeyboard();
         /**Para desaparecer el FAB cuando hago scroll*/
         scrollViewRegistro.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
@@ -148,12 +204,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             public void onScrollChanged() {
                 scrollY = scrollViewRegistro.getScrollY();
                 Log.e("scroll", scrollY + " " + oldScrollY);
-                if (scrollY > oldScrollY){
+                if (scrollY > oldScrollY) {
                     fabSiguiente.hide();
                     oldScrollY = scrollY;
                     if (scrollViewRegistro.getChildAt(0).getBottom() <= (scrollViewRegistro.getHeight() + scrollViewRegistro.getScrollY()) || scrollY <= 0)
                         fabSiguiente.show();
-                }else{
+                } else {
                     fabSiguiente.show();
                     oldScrollY = scrollY;
                 }
@@ -161,152 +217,231 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         });
 
         Bundle parametros = getIntent().getExtras();
-        if (parametros == null){
+        if (parametros == null) {
             editEmail.setFocusableInTouchMode(true);
             val = "0";
-        }else{
+        } else {
             email = parametros.getString("Email");//email
             editEmail.setText(email);
             bandX = true;
             val = "1";
         }//else
 
-        setlistenerEditText();
-    }
+        listaDirecciones.setVisibility(View.GONE);
+        editDireccion.setVisibility(View.VISIBLE);
 
-    private void setlistenerEditText(){
+        setlistenerEditText();
+
+        editDireccion.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence valorDireccion, int start, int before, int count) {
+                int valorCambio = 0;
+                if (before > count) {
+                    valorCambio = before - count;
+                } else if (before < count) {
+                    valorCambio = count - before;
+                } else {
+                    valorCambio = 0;
+                }
+                //validarBotonGuardar();
+                if (valorCambio <= 1) {
+                    if (editDireccion.getVisibility() == View.VISIBLE && bandLista == true) {
+                        if (valorDireccion.toString().trim().length() >= 3) {
+                            if (Utils.checkInternetConnection(Registro.this, true)) {
+                                if (cargarDireccion) {
+                                    cargarDireccion = false;
+                                    googleMap.getUiSettings().setScrollGesturesEnabled(false);
+                                    AsynkDireccionPalabra asyn = new AsynkDireccionPalabra(Registro.this, "" + latitudDireccion, "" + longitudDireccion, "" + valorDireccion.toString(), "" + getResources().getString(R.string.key_google_maps));
+                                    asyn.execute();
+                                }
+                            }
+                        } else {
+                            listaDirecciones.setVisibility(View.GONE);
+                            if (valorDireccion.toString().trim().length() == 0) {
+                                //  guardarDireccion.setBackgroundResource(R.drawable.fondo_gris);
+                            } else {
+                                //   guardarDireccion.setBackgroundResource(R.drawable.btn_azul);
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+    }//onCreate
+
+    private void setlistenerEditText() {
         editNombre.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() != 0) {
                     bandNombre = true;
-                }else{
+                } else {
                     bandNombre = false;
                 }
                 validarFABVerde();
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
         editEmail.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() != 0 || bandX) {
                     bandEmail = true;
-                }else{
+                } else {
                     bandEmail = false;
                 }
                 validarFABVerde();
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
         editCelular.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() != 0) {
                     bandCel = true;
-                }else{
+                } else {
                     bandCel = false;
                 }
                 validarFABVerde();
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
         editDireccion.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() != 0) {
                     bandDir = true;
-                }else{
+                } else {
                     bandDir = false;
                 }
                 validarFABVerde();
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
         editCiudad.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() != 0) {
                     bandCiudad = true;
-                }else{
+                } else {
                     bandCiudad = false;
                 }
                 validarFABVerde();
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
         editpass1.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() != 0) {
                     bandPass1 = true;
-                }else{
+                } else {
                     bandPass1 = false;
                 }
                 validarFABVerde();
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
         editpass2.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() != 0) {
                     bandPass2 = true;
-                }else{
+                } else {
                     bandPass2 = false;
                 }
                 validarFABVerde();
             }
+
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
     }
 
-    private void validarFABVerde(){
-        if (bandNombre&&(bandX || bandEmail)&&bandCel&&bandDir&&bandCiudad&&bandPass1&&bandPass2){
+    private void validarFABVerde() {
+        if (bandNombre && (bandX || bandEmail) && bandCel && bandDir && bandCiudad && bandPass1 && bandPass2) {
             fabSiguiente.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorVerde)));
             bandOK = true;
-        }else{
+        } else {
             fabSiguiente.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_hint)));
             bandOK = false;
         }
     }//validarFABVerde
 
     private Boolean validacion() {
-        if (!Utils.checkInternetConnection(this, true)){
+        if (!Utils.checkInternetConnection(this, true)) {
             return false;
         }
         if (editNombre.getText().toString().trim().equalsIgnoreCase("")) {
             editNombre.setError("El nombre es requerido");
             return false;
         }
-        if (val.equals("0")){
+        if (val.equals("0")) {
             if (editEmail.getText().toString().trim().equalsIgnoreCase("")) {
                 editEmail.setError("El correo electrónico es requerido");
                 return false;
             }
         }
-        if (!utils.isEmailValid(editEmail.getText().toString())){
+        if (!utils.isEmailValid(editEmail.getText().toString())) {
             editEmail.setError("Debe ingresar un correo electrónico valido");
             return false;
         }
@@ -314,7 +449,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             editCelular.setError("El celular es requerido");
             return false;
         }
-        if(editCelular.getText().toString().trim().length() != 10){
+        if (editCelular.getText().toString().trim().length() != 10) {
             editCelular.setError("Ingrese un numero de celular de 10 digitos valido");
             return false;
         }
@@ -340,14 +475,23 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             inputPass2.startAnimation(animShake);
             return false;
         }
+        if (editpass1.getText().toString().trim().length() < 8) {
+            editpass1.setError("La contraseña debe tener mínimo 8 dígitos");
+            return false;
+        }
+        if (editpass2.getText().toString().trim().length() < 8) {
+            editpass2.setError("La contraseña debe tener mínimo 8 dígitos");
+            return false;
+        }
         return true;
     }//validacion
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.fabSiguiente:
-                if (validacion() && bandOK){
+                if (validacion() && bandOK) {
+                    fabSiguiente.setEnabled(false);
                     nombre = editNombre.getText().toString();
                     email = editEmail.getText().toString();
                     password = editpass1.getText().toString();
@@ -368,6 +512,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         position = 0;
                         opcionFoto();
                     }
+
                     @Override
                     public void onGaleria() {
                         position = 1;
@@ -392,7 +537,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         finish();
     }
 
-    private void splashRegistro(){
+    private void splashRegistro() {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 Intent in = new Intent(Registro.this, Home.class);
@@ -404,7 +549,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         }, Constantes.tiempoSplash);
     }//splashRegistro
 
-    private void opcionFoto(){
+    private void opcionFoto() {
         if (position == 0) {
             opcionesCamara = true;
             if (ActivityCompat.checkSelfPermission(Registro.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -419,7 +564,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                     if (!myDir.exists()) {
                         myDir.mkdir();
                     }
-                    File fileImage = new File(myDir,"foto.jpg");
+                    File fileImage = new File(myDir, "foto.jpg");
                     if (fileImage.exists())
                         fileImage.delete();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -446,7 +591,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         }
     }//opcionFoto
 
-    public void validarEmail(){
+    public void validarEmail() {
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -456,7 +601,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100": //Cuenta exitente va a login
                         Toast.makeText(Registro.this, "La cuenta de correo electronico ya existe", Toast.LENGTH_LONG).show();
                         Intent goLogin = new Intent(Registro.this, Login.class);
@@ -475,6 +620,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         break;
                 }//switch
             }
+
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
                 Log.e(TAG, "onFailure validarEmail");
@@ -482,7 +628,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         });
     }//public void validarEmail
 
-    private void crearCuenta(){
+    private void crearCuenta() {
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         final String passSha1 = Utils.sha1Encrypt(password);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
@@ -492,7 +638,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<ResponseRegistro> call, Response<ResponseRegistro> response) {
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100": //OK
                         //Servicio para crear direccion
                         crearDireccion(passSha1, response.body().getData().getUid());
@@ -502,9 +648,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         break;
                     case "120": //auth_token no valido
                         break;
-                    default: break;
+                    default:
+                        break;
                 }//switch
             }
+
             @Override
             public void onFailure(Call<ResponseRegistro> call, Throwable t) {
                 Log.e(TAG, "onFailure registro");
@@ -512,7 +660,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         });
     }
 
-    private void crearDireccion(final String passSHA1, final String uid){
+    private void crearDireccion(final String passSHA1, final String uid) {
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -521,7 +669,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100": //OK
                         Usuario usuario = new Usuario();
                         usuario.setId_user(uid);
@@ -535,9 +683,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         usuario.setComplemento(complemento);
                         usuario.setCiudad(ciudad);
 
-                        if (bandFoto){ //Si cargo foto se va al servicio cargar foto
+                        if (bandFoto) { //Si cargo foto se va al servicio cargar foto
                             crearFoto(usuario, uid, file);
-                        }else{ //Si no cargo foto se va a Home
+                        } else { //Si no cargo foto se va a Home
                             usuario.setFoto(foto);
                             SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
                             SharedPreferenceManager.setLoged(Registro.this, true);
@@ -552,9 +700,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         break;
                     case "120": //auth_token no valido
                         break;
-                    default: break;
+                    default:
+                        break;
                 }//switch
             }
+
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
                 Log.e(TAG, "onFailure registro");
@@ -562,7 +712,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         });
     }
 
-    private void crearFoto(final Usuario usuario, String id, File file){
+    private void crearFoto(final Usuario usuario, String id, File file) {
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -576,7 +726,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<ResponseFoto> call, Response<ResponseFoto> response) {
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100": //OK
                         usuario.setFoto(response.body().getFoto());
                         SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
@@ -591,9 +741,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         break;
                     case "120": //auth_token no valido
                         break;
-                    default: break;
+                    default:
+                        break;
                 }//switch
             }
+
             @Override
             public void onFailure(Call<ResponseFoto> call, Throwable t) {
                 Log.e(TAG, "onFailure crearFoto");
@@ -615,7 +767,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         if (!myDir.exists()) {
                             myDir.mkdir();
                         }
-                        File fileImage = new File(myDir,"foto.jpg");
+                        File fileImage = new File(myDir, "foto.jpg");
                         if (fileImage.exists())
                             fileImage.delete();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -627,7 +779,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                         startActivityForResult(intent, takeImage);
                     }
-                }else{
+                } else {
                     /*final DialogOpcionSenc dialogConfig = new DialogOpcionSenc(this, "-", getResources().getString(R.string.noCamara), getResources().getString(R.string.configuracion), 0);
                     dialogConfig.setPositveButton(new View.OnClickListener() {
                         @Override
@@ -654,7 +806,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         if (!myDir.exists()) {
                             myDir.mkdir();
                         }
-                        File fileImage = new File(myDir,"foto.jpg");
+                        File fileImage = new File(myDir, "foto.jpg");
                         if (fileImage.exists())
                             fileImage.delete();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -670,7 +822,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         intent.setType("image/*");
                         startActivityForResult(intent, selectImage);
                     }
-                }else{
+                } else {
                     /*final DialogOpcionSenc dialogConfig = new DialogOpcionSenc(this, "-", getResources().getString(R.string.noFotos), getResources().getString(R.string.configuracion), 0);
                     dialogConfig.setPositveButton(new View.OnClickListener() {
                         @Override
@@ -726,7 +878,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             myDir.mkdir();
         }
         file = new File(myDir, "foto");
-        if (file.exists()){
+        if (file.exists()) {
             file.delete();
         }
         FileOutputStream stream = new FileOutputStream(file);
@@ -765,7 +917,267 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private void hideSoftKeyboard(){
+    private void hideSoftKeyboard() {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        googleMap = map;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        googleMap.setMyLocationEnabled(true);
+        if (googleMap != null) {
+            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            googleMap.getUiSettings().setScrollGesturesEnabled(true);
+        }
+
+        googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            public void onMapLoaded() {
+                cargoMapa = true;
+                if (latitudDireccion!=null&&longitudDireccion!=null){
+                    if(latitudDireccion == 0.0 && longitudDireccion == 0.0){
+                        posicionInicial();
+                    }
+                }
+            }
+        });
+
+        googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+            @Override
+            public void onCameraChange(CameraPosition cameraPosition) {
+                if (cargoMapa & cargarDireccion) {
+                    if (zoomActual == cameraPosition.zoom) {
+                        cargarDireccion = false;
+                        Location locationFinal = new Location("punto final");
+                        VisibleRegion visibleRegion = googleMap.getProjection().getVisibleRegion();
+                        Point x = googleMap.getProjection().toScreenLocation(visibleRegion.farRight);
+                        Point y = googleMap.getProjection().toScreenLocation(visibleRegion.nearLeft);
+                        Point centerPoint = new Point(x.x / 2, y.y / 2);
+                        LatLng centerFromPoint = googleMap.getProjection().fromScreenLocation(centerPoint);
+                        if (centerFromPoint.latitude != 0.0 && centerFromPoint.longitude != 0.0) {
+                            locationFinal.setLatitude(centerFromPoint.latitude);
+                            locationFinal.setLongitude(centerFromPoint.longitude);
+                        }
+                        latitudDireccion = locationFinal.getLatitude();
+                        longitudDireccion = locationFinal.getLongitude();
+                        if(!bandPonerDir){
+                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, false);
+                            asyncDir.execute();
+                        }else{
+                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, true);
+                            asyncDir.execute();
+                        }
+                        bandPonerDir = true;
+                    }
+                }
+                zoomActual = cameraPosition.zoom;
+            }
+        });
+    }
+
+    public void vacio() {
+        cargarDireccion = true;
+        listaDirecciones.setVisibility(View.GONE);
+    }
+    public void opcionesDireccion(List<direccionesGoogleVO> lista) {
+        listaDirecciones.setVisibility(View.VISIBLE);
+        cargarDireccion = true;
+        this.listaDatos = lista;
+        if (this.listaDatos.size() != 0) {
+            listaDirecciones.setAdapter(new AdapterOpcionesDirec(this,lista));
+        }
+    }
+    public void valorDireccion(String direccion , Boolean bandPonerDir){
+        cargarDireccion = true;
+        try {
+            String data[] = direccion.split(",");
+            if (data != null) {
+                if (data.length > 0 && bandPonerDir) {
+                    if (data[0].contains(" a ")) {
+                        String direc[] = data[0].split(" a ");
+                        editDireccion.setText(direc[0]);
+                    } else {
+                        editDireccion.setText(data[0]);
+                    }
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitudDireccion, longitudDireccion, 1);
+            if (addresses.size() != 0) {
+                ciudad = addresses.get(0).getLocality();
+                if(ciudad == null){
+                    ciudad = "Quito";
+                }
+            } else {
+                ciudad = "Quito";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            ciudad = "Quito";
+        }
+        if(editDireccion.getText().toString().trim().length() == 0){
+            //  guardarDireccion.setBackgroundResource(R.drawable.fondo_gris);
+        }else{
+            //  guardarDireccion.setBackgroundResource(R.drawable.btn_azul);
+        }
+    }
+    public void guardarCoordenadas(String lat, String log, Boolean bandDir) {
+        latitudDireccion = Double.parseDouble(lat);
+        longitudDireccion = Double.parseDouble(log);
+        listaDirecciones.setVisibility(View.GONE);
+        if(googleMap != null){
+            googleMap.clear();
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitudDireccion, longitudDireccion), 16));
+        }
+        if(bandSubir){
+            bandSubir = false;
+            //animacionVista(false,200);
+        }
+        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, bandDir);
+        asyncDir.execute();
+    }
+
+    public void posicionInicial() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (latitudDireccion!=null&&longitudDireccion!=null){
+                    Boolean ponerDir = true;
+                    if(latitudDireccion == 0.0 && longitudDireccion == 0.0){
+                        latitudDireccion = general.getLatitud();
+                        longitudDireccion = general.getLongitud();
+                        ponerDir = true;
+                    }else{
+                        ponerDir = false;
+                        googleMap.clear();
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitudDireccion, longitudDireccion), 16));
+                        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, ponerDir);
+                        asyncDir.execute();
+                    }
+                }else{
+                }
+            }
+        }, 3000);
+    }
+
+    private void getDeviceLocation(){
+        checkLocation();
+        if (gps_enabled){
+            mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(Registro.this);
+            try{
+                if(mLocationPermissionsGranted){
+                    final Task location = mFusedLocationProviderClient.getLastLocation();
+                    location.addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if(task.isSuccessful()){
+                                try{
+                                    Log.e(TAG, "onComplete: found location!");
+                                    Location currentLocation = (Location) task.getResult();
+                                    moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM);
+                                    Log.e(TAG, currentLocation.getLatitude()+","+currentLocation.getLongitude());
+                                    lati = currentLocation.getLatitude();
+                                    longi = currentLocation.getLongitude();
+                                }catch (Exception e){
+                                    Log.e(TAG, "onComplete: found location!");
+                                }
+                            }else{
+                                Log.e(TAG, "Exception getDeviceLocation");
+                            }
+                        }
+                    });
+                }else {
+                    getLocationPermission();
+                }
+            }catch (SecurityException e){
+                Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
+            }
+        }
+    }//private void getDeviceLocation
+
+    private void getLocationPermission(){
+        Log.e(TAG, "getLocationPermission: getting location permissions");
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
+        if(ContextCompat.checkSelfPermission(Registro.this, FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            mLocationPermissionsGranted = true;
+            //initMap();
+        }else{
+            ActivityCompat.requestPermissions(Registro.this, permissions, LOCATION_PERMISSION_REQUEST_CODE);
+        }
+    }//private void getLocationPermission
+
+    private void checkLocation() {
+        LocationManager lm = (LocationManager) Registro.this.getSystemService(Context.LOCATION_SERVICE);
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception ignored) {}
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch (Exception ignored) {}
+        if (!gps_enabled && !network_enabled) {
+            /*
+            new DosOpcionesDialog(Registro.this, "x", new DosOpcionesDialog.RespuestaListener() {
+                @Override
+                public void onOpcionNo() {
+                }
+                @Override
+                public void onOpcionSi() {
+                    gps_enabled = true;
+                    network_enabled = true;
+                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(myIntent);
+                }
+            }).show();
+            */
+        }//if
+    }//private void checkLocation
+
+    /*@Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.e(TAG, "onRequestPermissionsResult: called.");
+        mLocationPermissionsGranted = false;
+        switch(requestCode){
+            case LOCATION_PERMISSION_REQUEST_CODE:{
+                if(grantResults.length > 0){
+                    for(int i = 0; i < grantResults.length; i++){
+                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                            mLocationPermissionsGranted = false;
+                            Log.e(TAG, "onRequestPermissionsResult: permission failed");
+                            return;
+                        }
+                    }
+                    Log.e(TAG, "onRequestPermissionsResult: permission granted");
+                    mLocationPermissionsGranted = true;
+                    //initMap();
+                }
+            }
+        }
+    }//public void onRequestPermissionsResult*/
+
+    private void moveCamera(LatLng latLng, float zoom){
+        Log.e(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
+        googleMap.animateCamera(update);
+        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        MarkerOptions options = new MarkerOptions()
+                .position(latLng);
+                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacion));
+        googleMap.addMarker(options);
+        hideSoftKeyboard();
+    }//private void moveCamera
+
 }

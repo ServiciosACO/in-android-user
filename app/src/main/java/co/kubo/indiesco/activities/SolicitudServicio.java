@@ -23,6 +23,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -35,9 +39,11 @@ import co.kubo.indiesco.modelo.TasarServicio;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseInmueble;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -72,7 +78,8 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
     private ArrayList<Inmueble> inmuebles = new ArrayList<>();
     private ArrayList<String> valorServicio = new ArrayList<>();
-    private String tipoInmueble = "", urgente = "no", dimension = "60", id_inmueble = "-1";
+    private String tipoInmueble = "1", urgente = "no", dimension = "60", id_inmueble = "-1", valorX = "0";
+    private String id_direccion = "1", comentario = "Sin comentarios", fecha = "1 de enero de 2018", hora = "11:30AM";
     private boolean band1 = false, band2 = true, bandUrgente = true, bandTasarServicio = false;
 
     @Override
@@ -83,6 +90,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
         tvDir.setOnClickListener(this);
         imgBotonVolver.setOnClickListener(this);
         imgUrgente.setOnClickListener(this);
+        llValor.setOnClickListener(this);
         spinnerInmueble.setPrompt("Selecciona");
         spinnerInmueble.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -94,7 +102,6 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
@@ -145,9 +152,11 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
         });
 
 
-
         listarTiposInmuebles();
-
+        String lat = "-4.7026073";
+        String lng = "-74.0436851";
+        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
+        webViewMapServicio.loadUrl(url);
     }
 
     @Override
@@ -191,21 +200,55 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                     }
                 }).show();
                 break;
+            case R.id.llValor:
+                crearServicio();
+                break;
         }//switch
+    }
+
+    public void crearServicio(){
+        //llValor.setEnabled(false);
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Usuario usuario = new Usuario();
+        usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
+        final String id_user = usuario.getId_user();
+        Call<ResponseCrearServicio> responseCrearServicioCall = endpoints.crearServicio(authToken, usuario.getId_user(), id_inmueble, dimension,
+                valorX, id_direccion, fecha, urgente, hora, comentario);
+        final Usuario finalUsuario = usuario;
+        responseCrearServicioCall.enqueue(new Callback<ResponseCrearServicio>() {
+            @Override
+            public void onResponse(Call<ResponseCrearServicio> call, Response<ResponseCrearServicio> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100":
+                        String id_solicitud = response.body().getData().getIdSolicitud();
+                        String urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/" + id_user + "/" + id_solicitud;
+                        Intent goPago = new Intent(SolicitudServicio.this, Transaccion.class);
+                        goPago.putExtra("url", urlTransaccion);
+                        startActivity(goPago);
+                        break;
+                    case "102":
+                        Toast.makeText(SolicitudServicio.this, "No fue posible crear el servicio, intente de nuevo", Toast.LENGTH_LONG).show();
+                        break;
+                    case "120": //auth_token no valido
+                        Log.e(TAG, "cod: 120, onResponse Token Invalido");
+                        break;
+                    default:break;
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseCrearServicio> call, Throwable t) {
+                Log.e(TAG, "onFailure crearServicio");
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
-        new DialogDosOpciones(SolicitudServicio.this, "2", new DialogDosOpciones.RespuestaListener() {
-            @Override
-            public void onCancelar() {}
-            @Override
-            public void onAceptar() {
-                finish();
-            }
-            @Override
-            public void onSalir() {}
-        }).show();
+        super.onBackPressed();
+        finish();
     }//public void onBackPressed
 
     private void tasarServicio(){
@@ -222,9 +265,9 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 switch (code){
                     case "100":
                         valorServicio = response.body().getData();
-                        String valor = valorServicio.get(1);
+                        valorX = valorServicio.get(1);
                         llValor.setVisibility(View.VISIBLE);
-                        tvValor.setText("$" + valor);
+                        tvValor.setText("$" + valorX);
                         break;
                     case "102":
                         Log.e(TAG, "tasarServicio, Cod: 102 No hay datos");

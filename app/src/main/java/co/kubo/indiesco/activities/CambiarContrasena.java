@@ -77,6 +77,7 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.fabSiguiente:
                 if (validaion()){
+                    fabSiguiente.setEnabled(false);
                     hideSoftKeyboard();
                     oldPass = editpassOld.getText().toString();
                     Pass1 = editpass1.getText().toString();
@@ -149,6 +150,14 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
             editpass1.setError("Las contraseñas no coinciden");
             inputPass1.startAnimation(animShake);
             inputPass2.startAnimation(animShake);
+            return false;
+        }
+        if (editpass1.getText().toString().trim().length() < 8) {
+            editpass1.setError("La contraseña debe tener mínimo 8 dígitos");
+            return false;
+        }
+        if (editpass2.getText().toString().trim().length() < 8) {
+            editpass2.setError("La contraseña debe tener mínimo 8 dígitos");
             return false;
         }
         if (!Utils.checkInternetConnection(this, true)){

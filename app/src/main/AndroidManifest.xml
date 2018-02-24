@@ -38,7 +38,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -55,8 +54,8 @@
         <activity android:name=".activities.OlvidoContrasena" />
         <activity
             android:name=".activities.Home"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_home" />
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.Registro" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -68,27 +67,38 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="@string/key_google_maps" />
 
         <activity
             android:name=".activities.Maps"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".activities.Calificar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.Calificar2"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.MiPerfil"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.CambiarContrasena"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.MisDirecciones"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.HistorialServicios"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.SolicitudServicio"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.MisNotificaciones"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.Calificar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Calificar2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MiPerfil"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CambiarContrasena"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MisDirecciones"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HistorialServicios"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SolicitudServicio"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MisNotificaciones"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Transaccion"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -76,13 +76,14 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
-                        android:hint="Contraseña"
+                        android:hint="Contraseña actual"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpassOld"
                             android:inputType="textPassword"
                             android:gravity="center"
                             android:imeOptions="actionNext"
+                            android:hint="Contraseña actual"
                             style="@style/texto_15_gris"
                             android:textColorHint="@color/colorVerde"
                             android:layout_width="match_parent"
@@ -96,13 +97,14 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
-                        android:hint="Contraseña"
+                        android:hint="Nueva contraseña"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpass1"
                             android:inputType="textPassword"
                             android:gravity="center"
                             android:imeOptions="actionNext"
+                            android:hint="Nueva contraseña"
                             style="@style/texto_15_gris"
                             android:textColorHint="@color/colorVerde"
                             android:layout_width="match_parent"
@@ -115,13 +117,14 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
-                        android:hint="Contraseña"
+                        android:hint="Repita nueva contraseña"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpass2"
                             android:inputType="textPassword"
                             android:gravity="center"
                             android:imeOptions="actionDone"
+                            android:hint="Repita nueva contraseña"
                             style="@style/texto_15_gris"
                             android:textColorHint="@color/colorVerde"
                             android:layout_width="match_parent"

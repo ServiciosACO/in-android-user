@@ -3,6 +3,7 @@ package co.kubo.indiesco.restAPI;
 import co.kubo.indiesco.modelo.Foto;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.restAPI.modelo.ResponseAuthToken;
+import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseDireccion;
 import co.kubo.indiesco.restAPI.modelo.ResponseFoto;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
@@ -16,6 +17,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.Constantes;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -92,11 +94,11 @@ public interface Endpoints {
 
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_CREAR_SERVICIO)
-    Call<ResponseGeneral> crearServicio(@Header("X-AC-Auth-Token") String authToken, @Field("uid") String uid,
-                                        @Field("id_tipo_inmueble") String id_tipo_inmueble, @Field("dimension") String dimension,
-                                        @Field("valor") String valor, @Field("id_direccion") String id_direccion,
-                                        @Field("fecha_servicio") String fecha_servicio, @Field("urgente") String urgente,
-                                        @Field("hora") String hora, @Field("comentario") String comentario, @Field("id_pedido") String id_pedido);
+    Call<ResponseCrearServicio> crearServicio(@Header("X-AC-Auth-Token") String authToken, @Field("uid") String uid,
+                                     @Field("id_tipo_inmueble") String id_tipo_inmueble, @Field("dimension") String dimension,
+                                     @Field("valor") String valor, @Field("id_direccion") String id_direccion,
+                                     @Field("fecha_servicio") String fecha_servicio, @Field("urgente") String urgente,
+                                     @Field("hora") String hora, @Field("comentario") String comentario);
 
     @GET(ConstantesRestApi.URL_LISTAR_HISTORIAL + "{uid}/{tipo}")
     Call<ResponseHistorial> listarHistorial(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid, @Path("tipo") String tipo);
