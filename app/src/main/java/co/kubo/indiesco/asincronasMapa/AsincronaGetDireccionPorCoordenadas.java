@@ -17,7 +17,7 @@ import java.net.URL;
 import co.kubo.indiesco.activities.Registro;
 import co.kubo.indiesco.utils.Servicios;
 
-public class AsynkObtenerDireccion extends AsyncTask<Void, Void, String> {
+public class AsincronaGetDireccionPorCoordenadas extends AsyncTask<Void, Void, String> {
 
     private Registro context = new Registro();
     private String urlServicio = "";
@@ -27,7 +27,7 @@ public class AsynkObtenerDireccion extends AsyncTask<Void, Void, String> {
     private Boolean band = true;
     Activity activity;
 
-    public AsynkObtenerDireccion(String lat, String lon, Activity activity) {
+    public AsincronaGetDireccionPorCoordenadas(String lat, String lon, Activity activity) {
         this.lat = lat;
         this.lon = lon;
         this.activity = activity;

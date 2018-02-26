@@ -52,7 +52,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (holder instanceof ViewHolderListItemCalendario) {
             ((ViewHolderListItemCalendario) holder).setTvDir(calendar.get(position).getDireccion());
 
-            String [] splitHora_1 = calendar.get(position).getFecha_servicio().split(" ");
+            String [] splitHora_1 = calendar.get(position).getFecha_transaccion().split(" ");
             String [] splitHora_2 = splitHora_1[1].split(":");
             String hora = splitHora_2[0].concat(":").concat(splitHora_2[1]);
             ((ViewHolderListItemCalendario) holder).setTvHoraCalendar(hora);
@@ -62,10 +62,10 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         } else if (holder instanceof ViewHolderHeaderCalendario) {
             Utils utils = new Utils();
-            String nueva_fecha = utils.StringToDate(calendar.get(position).getFecha_servicio());
+            String nueva_fecha = utils.StringToDate(calendar.get(position).getFecha_transaccion());
             String [] extractMes = nueva_fecha.split(" ");
             String month = extractMes[1];
-            ((ViewHolderHeader) holder).setTvHeader(month);
+            ((ViewHolderHeaderCalendario) holder).setTvHeader(month);
         }
     }
 

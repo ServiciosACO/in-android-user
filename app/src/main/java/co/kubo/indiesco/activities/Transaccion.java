@@ -73,6 +73,9 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        /*
         new DialogDosOpciones(Transaccion.this, "2", new DialogDosOpciones.RespuestaListener() {
             @Override
             public void onCancelar() {}
@@ -84,6 +87,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onSalir() {}
         }).show();
+        */
     }
 
     private void cancelarServicio(){

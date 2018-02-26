@@ -2,19 +2,13 @@ package co.kubo.indiesco.activities;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Point;
-import android.icu.lang.UCharacter;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -24,16 +18,13 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -41,17 +32,18 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -61,7 +53,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -72,9 +63,6 @@ import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
-
-import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -82,7 +70,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -90,11 +77,11 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.adaptadores.AdapterOpcionesDirec;
-import co.kubo.indiesco.asincronasMapa.AsynkDireccionPalabra;
-import co.kubo.indiesco.asincronasMapa.AsynkObtenerDireccion;
+import co.kubo.indiesco.adaptadores.AdapterAutocomplete;
+import co.kubo.indiesco.asincronasMapa.AsincronaGetDetalleDireccionGoogle;
+import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionPorCoordenadas;
+import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionesGoogle;
 import co.kubo.indiesco.dialog.DialogImagenPerfil;
-import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.modelo.direccionesGoogleVO;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
@@ -128,7 +115,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     @BindView(R.id.editCelular)
     EditText editCelular;
     @BindView(R.id.editDireccion)
-    EditText editDireccion;
+    AutoCompleteTextView editDireccion;
     @BindView(R.id.editComplemento)
     EditText editComplemento;
     @BindView(R.id.editCiudad)
@@ -159,11 +146,13 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     private List<direccionesGoogleVO> listaDatos = new ArrayList<>();
     private Double latitudDireccion = 0.0;
     private Double longitudDireccion = 0.0;
+    private boolean primeraVezMarker, cargarDireccionesGoogle, isMapa, selDireccion, bandSubio, bandPalabra, bandError, bandDireccionValida;
     private Boolean bandSubir = false;
     private Boolean bandPonerDir = true;
     private float zoomActual = 0;
     private Singleton general = Singleton.getInstance();
     private Boolean bandLista = true;
+    private boolean bandPermiso = false;
     private boolean gps_enabled = false;
     private boolean network_enabled = false;
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
@@ -188,7 +177,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     private String val;
     private boolean bandNombre = false, bandEmail = false, bandCel = false, bandDir = false, bandCiudad = false, bandPass1 = false, bandPass2 = false, bandOK = false;
     private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "", foto = "http:\\/\\/indiescoapi.inkubo.co\\/imgs_usuarios\\/-";
-    private String direccion = "", lat = "", lng = "", complemento = "", ciudad = "";
+    private String direccion = "",complemento = "-", ciudad = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,7 +190,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         imgFoto.setOnClickListener(this);
         imgBotonVolver.setOnClickListener(this);
         mapaDireccion = (MapFragment) getFragmentManager().findFragmentById(R.id.mapaDireccion);
-        listaDirecciones = (ListView) findViewById(R.id.listaDirecciones);
+
         hideSoftKeyboard();
         /**Para desaparecer el FAB cuando hago scroll*/
         scrollViewRegistro.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
@@ -236,65 +225,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             val = "1";
         }//else
 
-        listaDirecciones.setVisibility(View.GONE);
-        editDireccion.setVisibility(View.VISIBLE);
-
         setlistenerEditText();
 
-        editDireccion.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence valorDireccion, int start, int before, int count) {
-                int valorCambio = 0;
-                if (before > count) {
-                    valorCambio = before - count;
-                } else if (before < count) {
-                    valorCambio = count - before;
-                } else {
-                    valorCambio = 0;
-                }
-                //validarBotonGuardar();
-                if (valorCambio <= 1) {
-                    if (editDireccion.getVisibility() == View.VISIBLE && bandLista == true) {
-                        if (valorDireccion.toString().trim().length() >= 3) {
-                            if (Utils.checkInternetConnection(Registro.this, true)) {
-                                if (!cargarDireccion) {
-                                    cargarDireccion = false;
-                                    googleMap.getUiSettings().setScrollGesturesEnabled(false);
-                                    AsynkDireccionPalabra asyn = new AsynkDireccionPalabra(Registro.this, "" + latitudDireccion, "" + longitudDireccion, "" + valorDireccion.toString(), "" + getResources().getString(R.string.key_google_maps));
-                                    asyn.execute();
-                                }
-                            }
-                        } else {
-                            listaDirecciones.setVisibility(View.GONE);
-                            if (valorDireccion.toString().trim().length() == 0) {
-                                //  guardarDireccion.setBackgroundResource(R.drawable.fondo_gris);
-                            } else {
-                                //   guardarDireccion.setBackgroundResource(R.drawable.btn_azul);
-                            }
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
-                // TODO Auto-generated method stub
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
-            }
-        });
-
     }//onCreate
-
-    /*private void initMap() {
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }*/
 
     private void setlistenerEditText() {
         editNombre.addTextChangedListener(new TextWatcher() {
@@ -431,6 +364,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             }
         });
 
+        /**Para hacer scroll en el mapa verticalmente*/
         imagetrans.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -441,23 +375,63 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         scrollViewRegistro.requestDisallowInterceptTouchEvent(true);
                         // Disable touch on transparent view
                         return false;
-
                     case MotionEvent.ACTION_UP:
                         // Allow ScrollView to intercept touch events.
                         scrollViewRegistro.requestDisallowInterceptTouchEvent(false);
                         return true;
-
                     case MotionEvent.ACTION_MOVE:
                         scrollViewRegistro.requestDisallowInterceptTouchEvent(true);
                         return false;
-
                     default:
                         return true;
                 }
             }
         });
 
+        editDireccion.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkLocation();
+                if (!bandPermiso && gps_enabled){
+                    getDeviceLocation();
+                    bandPermiso = true;
+                }
+                if (!isMapa) {
+                    bandDireccionValida = false;
+                    if (s.toString().length() >= 2) {
+                        if (Utils.checkInternetConnection(Registro.this, true)) {
+                            new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim()).execute();
+                            /*if (cargarDireccionesGoogle) {
+                                cargarDireccionesGoogle = false;
+                                new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim()).execute();
+                            }*/
+                        }
+                    }
+                }
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+        editDireccion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                selDireccion = true;
+                //editDireccion.setBackgroundResource(R.drawable.xml_edit_text_direccion);
+                bandDireccionValida = true;
+                try {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editDireccion.getWindowToken(), 0);
+                } catch (Exception e) {
 
+                }
+                String placeId = ((String[]) arg0.getItemAtPosition(arg2))[1];
+                direccion ="";
+                if (Utils.checkInternetConnection(Registro.this, true)) {
+                    new AsincronaGetDetalleDireccionGoogle(Registro.this, placeId).execute();
+                }
+            }
+        });
     }
 
     private void validarFABVerde() {
@@ -539,10 +513,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                     email = editEmail.getText().toString();
                     password = editpass1.getText().toString();
                     telefono = editCelular.getText().toString();
-
                     direccion = editDireccion.getText().toString();
-                    lat = "-4.7026073";
-                    lng = "-74.0436851";
                     complemento = editComplemento.getText().toString();
                     ciudad = editCiudad.getText().toString();
                     validarEmail();
@@ -705,7 +676,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, uid, direccion, lat, lng, complemento, ciudad);
+        Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, uid, direccion, String.valueOf(lati), String.valueOf(longi), complemento, ciudad);
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
@@ -719,8 +690,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         usuario.setContraseña(passSHA1);
                         usuario.setCelular(telefono);
                         usuario.setDireccion(direccion);
-                        usuario.setLatitud(lat);
-                        usuario.setLongitud(lng);
+                        usuario.setLatitud(String.valueOf(lati));
+                        usuario.setLongitud(String.valueOf(longi));
                         usuario.setComplemento(complemento);
                         usuario.setCiudad(ciudad);
 
@@ -962,17 +933,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
+    /**Configurar direccion en el mapa*/
     @Override
     public void onMapReady(GoogleMap map) {
         googleMap = map;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         googleMap.setMyLocationEnabled(true);
@@ -981,159 +946,39 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             googleMap.getUiSettings().setScrollGesturesEnabled(true);
         }
 
-        googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-            @Override
-            public void onMapLoaded() {
-                cargoMapa = true;
-                if (latitudDireccion!=null&&longitudDireccion!=null){
-                    if(latitudDireccion == 0.0 && longitudDireccion == 0.0){
-                        posicionInicial();
-                    }
-                }
-            }
-        });
-
         googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
             @Override
             public void onCameraIdle() {
                 latitudDireccion = googleMap.getCameraPosition().target.latitude;
                 longitudDireccion = googleMap.getCameraPosition().target.longitude;
-                //editDireccion.setAdapter(null);
+                isMapa = false;
+                editDireccion.setAdapter(null);
                 if (Utils.checkInternetConnection(Registro.this, true)) {
-                    AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
+                    AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
                     asyncDir.execute();
                 }
             }
         });
-
-        googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+        /*
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionsGranted = true;
+            buildGoogleApiClient();
+            map.setMyLocationEnabled(true);
+            setDatos();
+        } else {
+            isMapa = false;
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_LOCATION_REQUEST_CODE);
+        }
+        map.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
-            public void onCameraChange(CameraPosition cameraPosition) {
-                if (cargoMapa & cargarDireccion) {
-                    if (zoomActual == cameraPosition.zoom) {
-                        cargarDireccion = false;
-                        Location locationFinal = new Location("punto final");
-                        VisibleRegion visibleRegion = googleMap.getProjection().getVisibleRegion();
-                        Point x = googleMap.getProjection().toScreenLocation(visibleRegion.farRight);
-                        Point y = googleMap.getProjection().toScreenLocation(visibleRegion.nearLeft);
-                        Point centerPoint = new Point(x.x / 2, y.y / 2);
-                        LatLng centerFromPoint = googleMap.getProjection().fromScreenLocation(centerPoint);
-                        if (centerFromPoint.latitude != 0.0 && centerFromPoint.longitude != 0.0) {
-                            locationFinal.setLatitude(centerFromPoint.latitude);
-                            locationFinal.setLongitude(centerFromPoint.longitude);
-                        }
-                        latitudDireccion = locationFinal.getLatitude();
-                        longitudDireccion = locationFinal.getLongitude();
-                        if(!bandPonerDir){
-                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
-                            asyncDir.execute();
-                        }else{
-                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
-                            asyncDir.execute();
-                        }
-                        bandPonerDir = true;
-                    }
-                }
-                zoomActual = cameraPosition.zoom;
+            public boolean onMyLocationButtonClick() {
+                checkLocation();
+                return false;
             }
         });
-    }
-
-    public void setDireccion(String direccion, String ciudad) {
-        if(direccion.length() != 0){
-            editDireccion.setText(direccion.concat(", ").concat(ciudad));
-            this.ciudad = ciudad;
-            this.direccion = direccion;
-        }
-    }
-
-    public void vacio() {
-        cargarDireccion = true;
-        listaDirecciones.setVisibility(View.GONE);
-    }
-    public void opcionesDireccion(List<direccionesGoogleVO> lista) {
-        listaDirecciones.setVisibility(View.VISIBLE);
-        cargarDireccion = true;
-        this.listaDatos = lista;
-        if (this.listaDatos.size() != 0) {
-            listaDirecciones.setAdapter(new AdapterOpcionesDirec(this,lista));
-        }
-    }
-    public void valorDireccion(String direccion , Boolean bandPonerDir){
-        cargarDireccion = true;
-        try {
-            String data[] = direccion.split(",");
-            if (data != null) {
-                if (data.length > 0 && bandPonerDir) {
-                    if (data[0].contains(" a ")) {
-                        String direc[] = data[0].split(" a ");
-                        editDireccion.setText(direc[0]);
-                    } else {
-                        editDireccion.setText(data[0]);
-                    }
-                }
-            }
-        } catch (Exception e) {
-
-        }
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder.getFromLocation(latitudDireccion, longitudDireccion, 1);
-            if (addresses.size() != 0) {
-                ciudad = addresses.get(0).getLocality();
-                if(ciudad == null){
-                    ciudad = "Quito";
-                }
-            } else {
-                ciudad = "Quito";
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            ciudad = "Quito";
-        }
-        if(editDireccion.getText().toString().trim().length() == 0){
-            //  guardarDireccion.setBackgroundResource(R.drawable.fondo_gris);
-        }else{
-            //  guardarDireccion.setBackgroundResource(R.drawable.btn_azul);
-        }
-    }
-    public void guardarCoordenadas(String lat, String log, Boolean bandDir) {
-        latitudDireccion = Double.parseDouble(lat);
-        longitudDireccion = Double.parseDouble(log);
-        listaDirecciones.setVisibility(View.GONE);
-        if(googleMap != null){
-            googleMap.clear();
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitudDireccion, longitudDireccion), 16));
-        }
-        if(bandSubir){
-            bandSubir = false;
-            //animacionVista(false,200);
-        }
-        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
-        asyncDir.execute();
-    }
-
-    public void posicionInicial() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (latitudDireccion!=null&&longitudDireccion!=null){
-                    Boolean ponerDir = true;
-                    if(latitudDireccion == 0.0 && longitudDireccion == 0.0){
-                        latitudDireccion = general.getLatitud();
-                        longitudDireccion = general.getLongitud();
-                        ponerDir = true;
-                    }else{
-                        ponerDir = false;
-                        googleMap.clear();
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitudDireccion, longitudDireccion), 16));
-                        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
-                        asyncDir.execute();
-                    }
-                }else{
-                }
-            }
-        }, 3000);
+        */
     }
 
     private void getDeviceLocation(){
@@ -1231,15 +1076,42 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     }//public void onRequestPermissionsResult*/
 
     private void moveCamera(LatLng latLng, float zoom){
+        googleMap.clear();
         Log.e(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
         googleMap.animateCamera(update);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
         MarkerOptions options = new MarkerOptions()
-                .position(latLng);
-                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacion));
+                .position(latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.location_pin));
         googleMap.addMarker(options);
         hideSoftKeyboard();
     }//private void moveCamera
+
+    /**Para colocar autocomplete para el mapa*/
+    public void llenarAutocomplete(ArrayList<String[]> lista) {
+        cargarDireccionesGoogle = true;
+        AdapterAutocomplete adapter = new AdapterAutocomplete(this, R.layout.item_direccion_google, R.id.txtItemDireccionGoogle, lista);
+        editDireccion.setAdapter(adapter);
+    }
+    public void setLatitudYLongitud(String[] latitudYLongitud) {
+        googleMap.clear();
+        this.lati  = Double.parseDouble(latitudYLongitud[0]);
+        this.longi = Double.parseDouble(latitudYLongitud[1]);
+        LatLng latLng = new LatLng(lati, longi);
+        MarkerOptions mp = new MarkerOptions()
+                .position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.location_pin));
+        googleMap.addMarker(mp);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+    }
+
+    public void setDireccion(String direccion, String ciudad) {
+        if(direccion.length() != 0){
+            editDireccion.setText(direccion);
+            editCiudad.setText(ciudad);
+            this.ciudad = ciudad;
+            this.direccion = direccion;
+        }
+    }
 
 }

@@ -60,15 +60,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48sp"
                 android:text="@string/olvido_contraseña_subtitulo" />
-            <EditText
-                android:id="@+id/editEmail"
-                android:inputType="textCapSentences"
-                android:imeOptions="actionGo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="45sp"
-                android:textCursorDrawable="@color/colorVerdeCursor" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45sp"
+            android:imeOptions="actionGo"
+            android:inputType="textCapSentences"
+            android:textCursorDrawable="@color/colorVerdeCursor" />
     </ScrollView>
 
     <!--Pagina 2-->

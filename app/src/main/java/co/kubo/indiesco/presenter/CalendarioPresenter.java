@@ -30,7 +30,7 @@ public class CalendarioPresenter implements ICalendarioPresenter{
     private ICalendarioView iCalendarioView;
     private Context context;
     private ArrayList<Historial> calendario = new ArrayList<>();
-    private ArrayList<Notificaciones> holder_calendar = new ArrayList<>();
+    private ArrayList<Historial> holder_calendar = new ArrayList<>();
     private ArrayList<String> fecha = new ArrayList<>();
 
     public CalendarioPresenter(ICalendarioView iCalendarioView, Context context) {
@@ -68,15 +68,20 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                             for (int i = 0; i < calendario.size(); i++){
                                 if (calendario.get(i).getFecha_servicio().equals(fecha.get(y))){
                                     if (band){
-                                        Notificaciones not = new Notificaciones();
-                                        not.setFecha(calendario.get(i).getFecha_servicio());
-                                        not.setNotificacion("");
+                                        Historial not = new Historial();
+                                        not.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
+                                        not.setDireccion(calendario.get(i).getDireccion());
+                                        not.setCiudad(calendario.get(i).getCiudad());
+                                        not.setInmueble(calendario.get(i).getInmueble());
                                         not.setIsHeader("si");
                                         band = false;
                                         holder_calendar.add(not);
                                     }
-                                    Notificaciones not = new Notificaciones();
-                                    not.setFecha(calendario.get(i).getFecha_servicio());
+                                    Historial not = new Historial();
+                                    not.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
+                                    not.setDireccion(calendario.get(i).getDireccion());
+                                    not.setCiudad(calendario.get(i).getCiudad());
+                                    not.setInmueble(calendario.get(i).getInmueble());
                                     not.setIsHeader("no");
                                     band = false;
                                     holder_calendar.add(not);
@@ -103,7 +108,7 @@ public class CalendarioPresenter implements ICalendarioPresenter{
 
     @Override
     public void mostrarCalendario() {
-        iCalendarioView.inicializarAdaptadorRvCalendario(iCalendarioView.crearAdaptadorCalendario(calendario));
+        iCalendarioView.inicializarAdaptadorRvCalendario(iCalendarioView.crearAdaptadorCalendario(holder_calendar));
         iCalendarioView.generarLinearLayoutVertical();
     }
 }

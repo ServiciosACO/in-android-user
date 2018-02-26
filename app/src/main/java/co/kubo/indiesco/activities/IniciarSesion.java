@@ -111,7 +111,6 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tvOlvidoContraseña:
                 Intent in = new Intent(this, OlvidoContrasena.class);
-                in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(in);
                 break;
 

@@ -106,7 +106,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
-                <EditText
+
+                <AutoCompleteTextView
+                    android:id="@+id/editDireccion"
+                    android:hint="Dirección"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textCapSentences"
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:textColorHint="@color/color_hint"
+                    android:textCursorDrawable="@color/colorVerdeCursor"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!--<EditText
                     android:id="@+id/editDireccion"
                     android:hint="Dirección"
                     android:imeOptions="actionNext"
@@ -117,10 +134,11 @@
                     android:textColorHint="@color/color_hint"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textCursorDrawable="@color/colorVerdeCursor" />
-                <ListView
+                    android:textCursorDrawable="@color/colorVerdeCursor" />-->
+                <!--<ListView
                     android:id="@+id/listaDirecciones"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -131,7 +149,7 @@
                     android:divider="@android:color/transparent"
                     android:dividerHeight="0dp"
                     android:listSelector="@android:color/transparent"
-                    android:scrollbars="none" />
+                    android:scrollbars="none" />-->
                 <EditText
                     android:id="@+id/editComplemento"
                     android:hint="Complemento de la dirección"

@@ -35,7 +35,20 @@
                 android:layout_marginRight="24sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <EditText
+                <AutoCompleteTextView
+                    android:id="@+id/editDireccion"
+                    android:hint="Dirección"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textCapSentences"
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:textColorHint="@color/color_hint"
+                    android:textCursorDrawable="@color/colorVerdeCursor"
+                    android:layout_marginTop="32sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <!--<EditText
                     android:id="@+id/tvDir"
                     android:hint="Dirección"
                     android:gravity="center"
@@ -43,9 +56,9 @@
                     android:textSize="15sp"
                     android:layout_marginTop="32sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content" />-->
                 <EditText
-                    android:id="@+id/tvDirComplemento"
+                    android:id="@+id/editDirComplemento"
                     android:textColorHint="@color/color_hint"
                     android:textSize="15sp"
                     android:gravity="center"

@@ -118,10 +118,12 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
                         break;
                     case "101":
                         Toast.makeText(CambiarContrasena.this, "La contraseña anterior no es la misma", Toast.LENGTH_LONG).show();
+                        fabSiguiente.setEnabled(true);
                         break;
                     case "102": //Algo fallo
                         Toast.makeText(CambiarContrasena.this, "Algo ha fallado por favor intente de nuevo", Toast.LENGTH_LONG).show();
-                        break;
+                        fabSiguiente.setEnabled(true);
+                    break;
                     case "120": //auth_token no valido
                         break;
                 }//switch

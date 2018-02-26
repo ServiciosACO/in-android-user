@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.Registro;
+import co.kubo.indiesco.dialog.DialogDirecciones;
 import co.kubo.indiesco.interfaces.IDialogDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
 
@@ -23,12 +25,12 @@ public class DialogDireccionesAdapter extends RecyclerView.Adapter<DialogDirecci
     public static final String TAG = "DialogDireccionesAdapter";
     private ArrayList<Direccion> direccion;
     Activity activity;
-    IDialogDireccionesView iDialogDireccionesView;
+    DialogDirecciones dialogDirecciones;
 
-    public DialogDireccionesAdapter(ArrayList<Direccion> direccion, Activity activity, IDialogDireccionesView iDialogDireccionesView) {
+    public DialogDireccionesAdapter(ArrayList<Direccion> direccion, Activity activity, DialogDirecciones dialogDirecciones) {
         this.direccion = direccion;
         this.activity = activity;
-        this.iDialogDireccionesView = iDialogDireccionesView;
+        this.dialogDirecciones = dialogDirecciones;
     }
 
     @Override
@@ -40,13 +42,13 @@ public class DialogDireccionesAdapter extends RecyclerView.Adapter<DialogDirecci
     @Override
     public void onBindViewHolder(DialogDireccionesViewHolder holder, int position) {
         final Direccion dir = direccion.get(position);
-        holder.tvItemDir.setText(String.valueOf(dir.getDireccion()));
-        holder.tvCiudad.setText(String.valueOf(dir.getCiudad()));
+        holder.tvItemDir.setText(dir.getDireccion());
+        holder.tvItemCiudad.setText(dir.getCiudad());
 
         holder.llItemDir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iDialogDireccionesView.setDatos(dir.getDireccion(), dir.getLatitud(), dir.getLongitud());
+                dialogDirecciones.setDatos(dir.getDireccion(), dir.getLatitud(), dir.getLongitud());
             }
         });
     }
@@ -57,12 +59,12 @@ public class DialogDireccionesAdapter extends RecyclerView.Adapter<DialogDirecci
     }
 
     public class DialogDireccionesViewHolder extends RecyclerView.ViewHolder{
-        TextView tvItemDir, tvCiudad;
+        TextView tvItemDir, tvItemCiudad;
         LinearLayout llItemDir;
         public DialogDireccionesViewHolder(View itemView) {
             super(itemView);
             tvItemDir = (TextView) itemView.findViewById(R.id.tvItemDir);
-            tvCiudad = (TextView) itemView.findViewById(R.id.tvCiudad);
+            tvItemCiudad = (TextView) itemView.findViewById(R.id.tvItemCiudad);
             llItemDir = (LinearLayout) itemView.findViewById(R.id.llItemDir);
         }
     }

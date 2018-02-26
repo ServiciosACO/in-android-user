@@ -133,11 +133,36 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
-                <WebView
+
+                <RelativeLayout
+                    android:id="@+id/fondoMapaDir"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:background="@color/colorBlanco">
+                <fragment
+                    android:id="@+id/mapaDireccion"
+                    class ="com.google.android.gms.maps.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imagetrans"
+                    android:layout_alignTop="@+id/mapaDireccion"
+                    android:layout_alignBottom="@+id/mapaDireccion"
+                    android:layout_alignEnd="@+id/mapaDireccion"
+                    android:layout_alignRight="@+id/mapaDireccion"
+                    android:layout_alignLeft="@+id/mapaDireccion"
+                    android:layout_alignStart="@+id/mapaDireccion"/>
+                </RelativeLayout>
+
+                <!--<WebView
                     android:id="@+id/webViewMapServicio"
                     android:layout_marginTop="31sp"
                     android:layout_width="280sp"
-                    android:layout_height="136sp"/>
+                    android:layout_height="136sp"/>-->
                 <co.kubo.indiesco.utils.Bold
                     android:id="@+id/tvFechaServicio"
                     android:layout_marginTop="25sp"

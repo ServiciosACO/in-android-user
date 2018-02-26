@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.location.Location;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,8 +24,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -34,6 +40,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionPorCoordenadas;
 import co.kubo.indiesco.dialog.DialogDirecciones;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.modelo.Inmueble;
@@ -45,12 +52,13 @@ import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseInmueble;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import co.kubo.indiesco.utils.Utils;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SolicitudServicio extends AppCompatActivity implements View.OnClickListener {
+public class SolicitudServicio extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
 
     public static final String TAG = "SolicitudServicio";
     @BindView(R.id.imgBotonVolver)
@@ -65,8 +73,8 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     TextView tvDimension;
     @BindView(R.id.tvDir)
     TextView tvDir;
-    @BindView(R.id.webViewMapServicio)
-    WebView webViewMapServicio;
+    //@BindView(R.id.webViewMapServicio)
+    //WebView webViewMapServicio;
     @BindView(R.id.FechaServ)
     DatePicker FechaServ;
     @BindView(R.id.imgUrgente)
@@ -78,17 +86,24 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     @BindView(R.id.tvValor)
     TextView tvValor;
 
+    private MapFragment mapaDireccion;
+    private GoogleMap googleMap;
+
     private ArrayList<Inmueble> inmuebles = new ArrayList<>();
     private ArrayList<String> valorServicio = new ArrayList<>();
     private String tipoInmueble = "1", urgente = "no", dimension = "60", id_inmueble = "1", valorX = "0";
     private String id_direccion = "1", comentario = "Sin comentarios", fecha = "1 de enero de 2018", hora = "11:30AM";
-    private boolean band1 = false, band2 = true, bandUrgente = true, bandTasarServicio = false;
+    private boolean band1 = false, band2 = true, bandUrgente = true, bandTasarServicio = false, bandDir = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitud_servicio);
         ButterKnife.bind(this);
+        mapaDireccion = (MapFragment) getFragmentManager().findFragmentById(R.id.mapaDireccion);
+        if (mapaDireccion != null) {
+            mapaDireccion.getMapAsync(this);
+        }
         tvDir.setOnClickListener(this);
         imgBotonVolver.setOnClickListener(this);
         imgUrgente.setOnClickListener(this);
@@ -190,8 +205,11 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 new DialogDirecciones(SolicitudServicio.this, new DialogDirecciones.RespuestaListener() {
                     @Override
                     public void onSelectDir(String dir, String lat, String lng, String complemento, String ciudad) {
-                        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
-                        webViewMapServicio.loadUrl(url);
+                        setLatitudYLongitud(Double.parseDouble(lat), Double.parseDouble(lng));
+                        bandDir = true;
+                        //onMapReady(googleMap);
+                        /*String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
+                        webViewMapServicio.loadUrl(url);*/
                     }
                     @Override
                     public void onIrMisDir() {
@@ -322,5 +340,37 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 Log.e(TAG, "listarTiposInmuebles, onFailure");
             }
         });
+    }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        googleMap = map;
+
+        if (googleMap != null) {
+            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            googleMap.getUiSettings().setScrollGesturesEnabled(false);
+        }
+
+        final GoogleMap finalGoogleMap = googleMap;
+        googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+            @Override
+            public void onCameraIdle() {
+                Double latitude = finalGoogleMap.getCameraPosition().target.latitude;
+                Double longitude = finalGoogleMap.getCameraPosition().target.longitude;
+                if (bandDir){
+                    setLatitudYLongitud(latitude, longitude);
+                    bandDir = false;
+                }
+            }
+        });
+    }
+
+    public void setLatitudYLongitud(Double lati, Double longi) {
+        googleMap.clear();
+        LatLng latLng = new LatLng(lati, longi);
+        MarkerOptions mp = new MarkerOptions()
+                .position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.location_pin));
+        googleMap.addMarker(mp);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
     }
 }

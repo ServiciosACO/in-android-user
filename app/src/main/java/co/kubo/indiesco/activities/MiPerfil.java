@@ -116,12 +116,13 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
                 startActivity(intent);
                 break;
             case R.id.btnCerrarSesion:
-                Intent in = new Intent(MiPerfil.this, Login.class);
                 SharedPreferenceManager.setLoged(MiPerfil.this, false);
                 Usuario usuario = new Usuario();
                 SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
-                startActivity(in);
                 finish();
+                Intent in = new Intent(MiPerfil.this, Login.class);
+                in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(in);
                 break;
         }//switch
     }

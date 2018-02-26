@@ -86,7 +86,7 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
                                 }//for2
                             }//for
                         }else{
-                            notificaciones = new ArrayList<>();
+                            holder_notif = new ArrayList<>();
                         }
 
                         mostrarNotificaciones();

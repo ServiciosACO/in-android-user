@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -49,37 +50,6 @@ public class DialogDirecciones extends Dialog implements View.OnClickListener, I
     }
 
     @Override
-    public void generarLinearLayoutVertical() {
-        LinearLayoutManager llm = new LinearLayoutManager(activity);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        rvDirDialog.setLayoutManager(llm);
-    }
-    @Override
-    public void inicializarAdaptadorRvDirecciones(DialogDireccionesAdapter dialogDireccionesAdapter) {
-        rvDirDialog.setAdapter(dialogDireccionesAdapter);
-    }
-
-    @Override
-    public DialogDireccionesAdapter crearAdaptadorDialogDirecciones(ArrayList<Direccion> direccions) {
-        DialogDireccionesAdapter dialogDireccionesAdapter = new DialogDireccionesAdapter(direccions, activity, iDialogDireccionesView);
-        return dialogDireccionesAdapter;
-    }
-
-    @Override
-    public void setDatos(String dir, String lat, String lng) {
-        dirX = dir;
-        latX = lat;
-        lngX = lng;
-    }
-
-
-    public interface RespuestaListener {
-        void onSelectDir(String dir, String lat, String lng, String complemento, String ciudad);
-        void onIrMisDir();
-        void onSalir();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setCanceledOnTouchOutside(true);
@@ -91,7 +61,7 @@ public class DialogDirecciones extends Dialog implements View.OnClickListener, I
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }//if
 
-        RecyclerView rvDirDialog = (RecyclerView) findViewById(R.id.rvDirDialog);
+        rvDirDialog = (RecyclerView) findViewById(R.id.rvDirDialog);
         LinearLayout llSalir = (LinearLayout) findViewById(R.id.llSalir);
         llSalir.setOnClickListener(this);
         TextView tvIrMisDirecciones = (TextView) findViewById(R.id.tvIrMisDirecciones);
@@ -129,4 +99,40 @@ public class DialogDirecciones extends Dialog implements View.OnClickListener, I
         if (respuesta)
             respuestaListener.onSelectDir(dirX, latX, lngX , complementoX, ciudadX);
     }//private void salir
+
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(activity);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rvDirDialog.setLayoutManager(llm);
+    }
+    @Override
+    public void inicializarAdaptadorRvDirecciones(DialogDireccionesAdapter dialogDireccionesAdapter) {
+        rvDirDialog.setAdapter(dialogDireccionesAdapter);
+    }
+
+    @Override
+    public DialogDireccionesAdapter crearAdaptadorDialogDirecciones(ArrayList<Direccion> direccions) {
+        DialogDireccionesAdapter dialogDireccionesAdapter = new DialogDireccionesAdapter(direccions, activity, DialogDirecciones.this);
+        return dialogDireccionesAdapter;
+    }
+
+    @Override
+    public void setDatos(String dir, String lat, String lng) {
+        dirX = dir;
+        latX = lat;
+        lngX = lng;
+        respuestaListener.onSelectDir(dir, lat, lng, complementoX, ciudadX);
+        dismiss();
+    }
+
+    public interface RespuestaListener {
+        void onSelectDir(String dir, String lat, String lng, String complemento, String ciudad);
+        void onIrMisDir();
+        void onSalir();
+    }
+
+    private void otro(){
+
+    }
 }
