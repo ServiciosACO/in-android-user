@@ -18,15 +18,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogPendienteCalificar;
+import co.kubo.indiesco.modelo.PendienteCalificar;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.restAPI.modelo.ResponseLogin;
+import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
 import co.kubo.indiesco.utils.Constantes;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Utils;
@@ -49,7 +56,9 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
     TextView tvOlvidoContraseña;
     @BindView(R.id.inputPassword)
     TextInputLayout inputPassword;
+
     private String token = "0", plataforma = "a", email = "", contraseña = "";
+    private ArrayList<PendienteCalificar> calificar = new ArrayList<>();
 
     Utils utils = new Utils();
     Animation anim1, anim2;
@@ -111,21 +120,15 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
 
     private void animacion(){
         if (editEmail.getVisibility() == View.VISIBLE){
+            hideSoftKeyboard();
             email = editEmail.getText().toString();
             validarEmail(email);
-            /*editEmail.setVisibility(View.GONE);
-            inputPassword.setVisibility(View.VISIBLE);
-            inputPassword.startAnimation(anim1);
-            hideSoftKeyboard();*/
         }else{
+            hideSoftKeyboard();
             //consulta el servicio si la contraseña esta bien y se va a home
             //validar si tiene servicios por calificar(Abre servicios) si no home
             contraseña = editContraseña.getText().toString();
             login(contraseña);
-            /*Intent goHome = new Intent(this, Home.class);
-            goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(goHome);
-            finish();*/
         }//else
     }
 
@@ -234,7 +237,6 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 switch (code){
                     case "100": //Login correcto
                         Usuario usuario = new Usuario();
-                        //usuario.setId_user(response.body().getData().getUid());
                         usuario.setId_user(response.body().getData().get(0).getUid());
                         usuario.setName(response.body().getData().get(0).getNombre());
                         usuario.setEmail(response.body().getData().get(0).getEmail());
@@ -245,6 +247,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                         usuario.setFoto(response.body().getData().get(0).getFoto());
                         SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
                         SharedPreferenceManager.setLoged(IniciarSesion.this, true);
+
                         Intent goHome = new Intent(IniciarSesion.this, Home.class);
                         goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(goHome);
@@ -263,5 +266,5 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 Log.e(TAG, "onFailure login");
             }
         });
-    } //login*/
+    } //login
 }

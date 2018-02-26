@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.activities.IDialogDireccionesView;
+import co.kubo.indiesco.interfaces.IDialogDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
 
 /**

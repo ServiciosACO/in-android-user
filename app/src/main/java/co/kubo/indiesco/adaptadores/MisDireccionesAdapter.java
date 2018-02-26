@@ -45,14 +45,14 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
         return new MisDireccionesViewHolder(v);
     }
     @Override
-    public void onBindViewHolder(MisDireccionesViewHolder holder, int position) {
+    public void onBindViewHolder(MisDireccionesViewHolder holder, final int position) {
         final Direccion dir = direccion.get(position);
         holder.tvDir.setText(String.valueOf(dir.getDireccion()));
         holder.tvCiudad.setText(String.valueOf(dir.getCiudad()));
         String url = "http://maps.google.com/maps/api/staticmap?center=" + dir.getLatitud() + "," + dir.getLongitud() + "&zoom=15&size=200x200&sensor=false";
         holder.webViewMap.loadUrl(url);
 
-        holder.llBorrar.setOnClickListener(new View.OnClickListener() {
+        holder.llBorrarDir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DialogDosOpciones(activity, "0", new DialogDosOpciones.RespuestaListener() {
@@ -61,7 +61,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                     }
                     @Override
                     public void onAceptar() {
-                        borrarDir(dir.getId_direccion());
+                        borrarDir(dir.getId_direccion(), position);
                     }
                     @Override
                     public void onSalir() {
@@ -78,17 +78,17 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     public class MisDireccionesViewHolder extends RecyclerView.ViewHolder{
         TextView tvDir, tvCiudad;
         WebView webViewMap;
-        LinearLayout llBorrar;
+        LinearLayout llBorrarDir;
         public MisDireccionesViewHolder(View itemView) {
             super(itemView);
             tvDir = (TextView) itemView.findViewById(R.id.tvDir);
             tvCiudad = (TextView) itemView.findViewById(R.id.tvCiudad);
             webViewMap = (WebView) itemView.findViewById(R.id.webViewMap);
-            llBorrar = (LinearLayout) itemView.findViewById(R.id.llBorrar);
+            llBorrarDir = (LinearLayout) itemView.findViewById(R.id.llBorrarDir);
         }
     }
 
-    private void borrarDir(String id_dir){
+    private void borrarDir(String id_dir, final int adapter_position){
         String authToken = SharedPreferenceManager.getAuthToken(activity);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -102,6 +102,8 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                 switch (code){
                     case "100":
                         Toast.makeText(activity, "Elimino la dirección con éxito", Toast.LENGTH_LONG).show();
+                        direccion.remove(adapter_position);
+                        notifyDataSetChanged();
                         break;
                     case "102":
                         Toast.makeText(activity, "Ha ocurrido un error intente de nuevo", Toast.LENGTH_SHORT).show();

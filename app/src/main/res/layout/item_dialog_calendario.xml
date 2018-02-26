@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="24sp"
+    android:paddingLeft="24sp"
+    android:id="@+id/llSalir"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/colorBlanco"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <WebView
+                android:id="@+id/webViewHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="155sp">
+            </WebView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24sp"
+            android:layout_marginRight="24sp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14sp"
+                android:layout_marginTop="23sp"
+                android:orientation="horizontal">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_15_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dirección: " />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvDirDetalle"
+                    style="@style/texto_15_gris"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calle 00 # 00-00" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14sp"
+                android:orientation="horizontal">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_15_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ciudad: " />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvCiudadDetalle"
+                    style="@style/texto_15_gris"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bogotá, Bogotá" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14sp"
+                android:orientation="horizontal">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_15_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tipo: " />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvTipoTipo"
+                    style="@style/texto_15_gris"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vivienda" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14sp"
+                android:orientation="horizontal">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_15_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha: " />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvFechaDetalle"
+                    style="@style/texto_15_gris"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11/02/2018" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22sp"
+                android:orientation="horizontal">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_15_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hora: " />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvHoraDetalle"
+                    style="@style/texto_15_gris"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:15 am" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="33sp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvTipoMoneda"
+                    style="@style/texto_22_verde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$" />
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvPrecioServicioDet"
+                    style="@style/texto_22_verde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="385.500" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnCancelarServicio"
+                style="@style/texto_15_naranja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:background="@drawable/boton_borde_naranja"
+                android:text="Cancelar servicio"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

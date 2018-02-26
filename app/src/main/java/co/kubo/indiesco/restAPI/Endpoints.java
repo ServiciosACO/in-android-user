@@ -12,6 +12,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseInmueble;
 import co.kubo.indiesco.restAPI.modelo.ResponseLogin;
 import co.kubo.indiesco.restAPI.modelo.ResponseNotificacion;
 import co.kubo.indiesco.restAPI.modelo.ResponsePedido;
+import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.Constantes;
@@ -113,6 +114,7 @@ public interface Endpoints {
                                         @Field("email") String email, @Field("documento") String documento,
                                         @Field("valor") String valor);
 
+    //Esta url se envia a un webView segun el id_solicitud
     @GET(ConstantesRestApi.URL_RESUMEN_PEDIDO + "{uid}/{id_solicitud}")
     Call<ResponsePedido> resumenPedido(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid,
                                        @Path("id_solicitud") String id_solicitud);
@@ -121,5 +123,13 @@ public interface Endpoints {
     Call<ResponseTasarServicio> tasarServicio(@Header("X-AC-Auth-Token") String authToken,
                                               @Path("id_tipo_inmueble") String id_tipo_inmueble,
                                               @Path("dimension") String dimension, @Path("urgente") String urgente);
+
+    @GET(ConstantesRestApi.URL_PENDIENTE_CALIFICAR + "{uid}")
+    Call<ResponsePendienteCalificar> pendienteCalificar(@Header("X-AC-Auth-Token") String authToken, @Path("uid") String uid);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO)
+    Call<ResponseGeneral> calificarServicio(@Header("X-AC-Auth-Token") String authToken, @Field("id_solicitud") String id_solicitud,
+                                            @Field("calificacion") String calificacion, @Field("comentario") String comentario);
 
 }//Endpoints

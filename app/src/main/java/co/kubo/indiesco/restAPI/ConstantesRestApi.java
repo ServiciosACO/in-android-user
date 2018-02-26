@@ -26,5 +26,6 @@ public class ConstantesRestApi {
     public static final String URL_LISTAR_TIPOS_INMUEBLES = "servicios/lista_tipos_inmuebles";
     public static final String URL_TASAR_SERVICIO = "servicios/tasar_servicio/id_tipo_inmueble/dimension";
     public static final String URL_REGISTRAR_SALTO_TX = "servicios/registrar_salto_tx/";
-
+    public static final String URL_CALIFICAR_SERVICIO = "servicios/calificar_servicio/";
+    public static final String URL_PENDIENTE_CALIFICAR = "servicios/pendientes_calificar/";
 }

@@ -13,6 +13,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.adaptadores.NotificacionesAdapter;
+import co.kubo.indiesco.interfaces.INotificacionesPresenter;
+import co.kubo.indiesco.interfaces.INotificacionesView;
 import co.kubo.indiesco.modelo.Notificaciones;
 import co.kubo.indiesco.presenter.NotificacionesPresenter;
 

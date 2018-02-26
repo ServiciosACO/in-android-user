@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import co.kubo.indiesco.activities.INotificacionesPresenter;
-import co.kubo.indiesco.activities.INotificacionesView;
+import co.kubo.indiesco.interfaces.INotificacionesPresenter;
+import co.kubo.indiesco.interfaces.INotificacionesView;
 import co.kubo.indiesco.modelo.Notificaciones;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -52,38 +52,43 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
                 switch (code){
                     case "100":
                         notificaciones = response.body().getData();
-                        fecha.add(notificaciones.get(0).getFecha());
-                        String date = notificaciones.get(0).getFecha();
-                        int x = 0;
-                        for (int i = 0; i < notificaciones.size(); i++){
-                            if (!date.equals(notificaciones.get(i).getFecha())){
-                                fecha.add(notificaciones.get(i).getFecha());
-                            }//if
-                        }//for
-                        boolean band = true;
-                        for (int y = 0; y < fecha.size(); y++){
-                            band = true;
+                        if (notificaciones.size() != 0){
+                            fecha.add(notificaciones.get(0).getFecha());
+                            String date = notificaciones.get(0).getFecha();
+                            int x = 0;
                             for (int i = 0; i < notificaciones.size(); i++){
-                                if (notificaciones.get(i).getFecha().equals(fecha.get(y))){
-                                    if (band){
+                                if (!date.equals(notificaciones.get(i).getFecha())){
+                                    fecha.add(notificaciones.get(i).getFecha());
+                                }//if
+                            }//for
+                            boolean band = true;
+                            for (int y = 0; y < fecha.size(); y++){
+                                band = true;
+                                for (int i = 0; i < notificaciones.size(); i++){
+                                    if (notificaciones.get(i).getFecha().equals(fecha.get(y))){
+                                        if (band){
+                                            Notificaciones not = new Notificaciones();
+                                            not.setFecha(notificaciones.get(i).getFecha());
+                                            not.setId_notificacion(notificaciones.get(i).getId_notificacion());
+                                            not.setNotificacion("");
+                                            not.setIsHeader("si");
+                                            band = false;
+                                            holder_notif.add(not);
+                                        }
                                         Notificaciones not = new Notificaciones();
                                         not.setFecha(notificaciones.get(i).getFecha());
                                         not.setId_notificacion(notificaciones.get(i).getId_notificacion());
-                                        not.setNotificacion("");
-                                        not.setIsHeader("si");
+                                        not.setNotificacion(notificaciones.get(i).getNotificacion());
+                                        not.setIsHeader("no");
                                         band = false;
                                         holder_notif.add(not);
                                     }
-                                    Notificaciones not = new Notificaciones();
-                                    not.setFecha(notificaciones.get(i).getFecha());
-                                    not.setId_notificacion(notificaciones.get(i).getId_notificacion());
-                                    not.setNotificacion(notificaciones.get(i).getNotificacion());
-                                    not.setIsHeader("no");
-                                    band = false;
-                                    holder_notif.add(not);
-                                }
-                            }//for2
-                        }//for
+                                }//for2
+                            }//for
+                        }else{
+                            notificaciones = new ArrayList<>();
+                        }
+
                         mostrarNotificaciones();
                         break;
                     case "102":

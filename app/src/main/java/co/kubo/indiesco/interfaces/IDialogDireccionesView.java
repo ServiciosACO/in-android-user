@@ -1,4 +1,4 @@
-package co.kubo.indiesco.activities;
+package co.kubo.indiesco.interfaces;
 
 import java.util.ArrayList;
 

@@ -102,8 +102,8 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/llEditar"
                         android:visibility="gone"
+                        android:id="@+id/llEditar"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -301,14 +301,14 @@
 
                 <Button
                     android:id="@+id/btnCerrarSesion"
-                    android:background="@drawable/boton_borde_rojo"
+                    android:background="@color/colorRojo"
                     android:layout_marginRight="40sp"
                     android:textAllCaps="false"
                     android:layout_marginLeft="40sp"
                     android:layout_marginTop="32sp"
                     android:layout_marginBottom="24sp"
                     android:textSize="15sp"
-                    android:textColor="@color/colorRojo"
+                    android:textColor="@color/colorBlanco"
                     android:text="Cerrar sesión"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

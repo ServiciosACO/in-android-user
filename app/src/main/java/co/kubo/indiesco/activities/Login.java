@@ -1,6 +1,7 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +46,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tvTerminosCondiciones:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+                startActivity(browserIntent);
                 break;
             case R.id.btnCrearCuenta:
                 Intent inRegistro = new Intent(this, Registro.class);

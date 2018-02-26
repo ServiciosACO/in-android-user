@@ -18,6 +18,8 @@ import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.adaptadores.MisDireccionesAdapter;
 import co.kubo.indiesco.dialog.DialogAgregarDir;
+import co.kubo.indiesco.interfaces.IMisDireccionesPresenter;
+import co.kubo.indiesco.interfaces.IMisDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.presenter.MisDireccionesPresenter;
@@ -61,7 +63,7 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.fabAgregar:
-
+                agregarDir();
                 break;
             default:break;
         }//switch

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/llItemCalendario"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvFecha"
+            android:text="08/11"
+            android:gravity="center"
+            android:paddingRight="16sp"
+            android:paddingTop="5sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:gravity="center|left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlanco"
+            android:paddingLeft="16sp"
+            android:paddingTop="28sp"
+            android:paddingBottom="28sp"
+            android:orientation="vertical">
+            <!--What you want to show in SurfaceView-->
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvDir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/texto_15_morado"
+                android:text="Calle 11 # 11-11" />
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvHora"
+                style="@style/texto_13_gris"
+                android:layout_marginTop="6sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:15 am" />
+        </LinearLayout>
+        <WebView
+            android:id="@+id/webViewMap"
+            android:layout_marginBottom="8sp"
+            android:layout_marginTop="8sp"
+            android:layout_marginRight="8sp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </WebView>
+    </LinearLayout>
+</LinearLayout>

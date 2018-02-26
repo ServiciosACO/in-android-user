@@ -20,6 +20,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.utils.Utils;
 
 /**
  * Created by Diego on 12/02/2018.
@@ -28,11 +29,12 @@ import co.kubo.indiesco.R;
 public class DialogDetalleHistorial extends Dialog implements View.OnClickListener {
 
     private Activity activity;
-    private String lat, lng, nServicio, dir, ciudad, tipoTipo, fecha, hora, valor;
+    private String lat, lng, nServicio, dir, ciudad, tipoTipo, fecha, hora, valor, dimension;
     private RespuestaListener respuestaListener;
+    Utils utils = new Utils();
 
     public DialogDetalleHistorial(Activity activity, String lat, String lng, String nServicio, String dir,
-                                  String ciudad, String tipoTipo, String fecha, String hora, String valor,
+                                  String ciudad, String dimension,  String tipoTipo, String fecha, String hora, String valor,
                                   RespuestaListener respuestaListener) {
         super(activity, R.style.ThemeTransparent);
         this.activity = activity;
@@ -41,6 +43,7 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         this.nServicio = nServicio;
         this.dir = dir;
         this.ciudad = ciudad;
+        this.dimension = dimension;
         this.tipoTipo = tipoTipo;
         this.fecha = fecha;
         this.hora = hora;
@@ -73,15 +76,25 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         TextView tvHoraDetalle = (TextView) findViewById(R.id.tvHoraDetalle);
         TextView tvPrecioServicioDet = (TextView) findViewById(R.id.tvPrecioServicioDet);
 
-        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
+        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=280x180&sensor=false";
         webViewHistorial.loadUrl(url);
         tvNoServicioDetHist.setText(nServicio);
         tvDirDetalleHist.setText(dir);
         tvCiudadDetalle.setText(ciudad);
-        tvTipoTipo.setText(tipoTipo);
-        tvFechaDetalle.setText(fecha);
+        tvFechaDetalle.setText(utils.StringToDate2(fecha));
         tvHoraDetalle.setText(hora);
         tvPrecioServicioDet.setText(valor);
+        switch (tipoTipo){
+            case "1":
+                tvTipoTipo.setText("Casa - " + dimension + activity.getResources().getString(R.string.cuadrado));
+                break;
+            case "2":
+                tvTipoTipo.setText("Oficina - " + dimension + activity.getResources().getString(R.string.cuadrado));
+                break;
+            case "3":
+                tvTipoTipo.setText("Finca - " + dimension + activity.getResources().getString(R.string.cuadrado));
+                break;
+        }//switch
 
         Display display = activity.getWindowManager().getDefaultDisplay();
         Point size = new Point();

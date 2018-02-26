@@ -6,10 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -20,8 +22,15 @@ import org.w3c.dom.Text;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogPendienteCalificar;
 import co.kubo.indiesco.modelo.Usuario;
+import co.kubo.indiesco.restAPI.Endpoints;
+import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
 
@@ -64,6 +73,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(imgFotoPerfil);
+
+        pendienteCalificar(usuario.getId_user());
     }
 
     @Override
@@ -82,9 +93,50 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 startActivity(inNot);
                 break;
             case R.id.llCalendario:
-
+                Intent inCal = new Intent(this, Calendario.class);
+                startActivity(inCal);
                 break;
             default:break;
         }//switch
     }//onClick
+
+    private void pendienteCalificar(String uid){
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        final Call<ResponsePendienteCalificar> responsePendienteCalificarCall = endpoints.pendienteCalificar(authToken, uid);
+        responsePendienteCalificarCall.enqueue(new Callback<ResponsePendienteCalificar>() {
+            @Override
+            public void onResponse(Call<ResponsePendienteCalificar> call, Response<ResponsePendienteCalificar> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100": //Servicios pendientes por calificar
+                        new DialogPendienteCalificar(Home.this, new DialogPendienteCalificar.RespuestaListener() {
+                            @Override
+                            public void onIrCalificar() {
+                                Intent goCal = new Intent(Home.this, Calificar.class);
+                                goCal.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(goCal);
+                                finish();
+                            }
+                            @Override
+                            public void onSalir() {
+                                Toast.makeText(Home.this, "Para solicitar un nuevo servicio debe calificar primero", Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
+                        break;
+                    case "102": //No hay pendientes para calificar va a Home
+                        break;
+                    case "120": //auth_token no valido
+                        break;
+                    default: break;
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponsePendienteCalificar> call, Throwable t) {
+                Log.e(TAG, "onFailure pendienteCalificar");
+            }
+        });
+    }//private void pendienteCalificar
+
 }

@@ -10,6 +10,7 @@
     <string name="dimension_2">61m\u00B2 - 70m\u00B2</string>
     <string name="dimension_3">71m\u00B2 - 80m\u00B2</string>
     <string name="dimension_4">80m\u00B2 o más</string>
+    <string name="cuadrado">m\u00B2</string>
 
     <!--Tour-->
     <string name="tour_boton">¡Empecemos!</string>

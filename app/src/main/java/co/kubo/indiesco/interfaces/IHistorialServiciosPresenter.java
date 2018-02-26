@@ -1,4 +1,4 @@
-package co.kubo.indiesco.activities;
+package co.kubo.indiesco.interfaces;
 
 /**
  * Created by Diego on 12/02/2018.

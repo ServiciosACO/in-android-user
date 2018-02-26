@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import co.kubo.indiesco.activities.IHistorialServiciosPresenter;
-import co.kubo.indiesco.activities.IHistorialServiciosView;
+import co.kubo.indiesco.interfaces.IHistorialServiciosPresenter;
+import co.kubo.indiesco.interfaces.IHistorialServiciosView;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -53,7 +53,7 @@ public class HistorialServiciosPresenter implements IHistorialServiciosPresenter
                         mostrarHistorial();
                         break;
                     case "102":
-                        Toast.makeText(context, "No hay datos para mostrar", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "No tiene servicios agendados", Toast.LENGTH_LONG).show();
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":

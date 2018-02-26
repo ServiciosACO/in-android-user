@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogDetalleHistorial;
 import co.kubo.indiesco.modelo.Historial;
+import co.kubo.indiesco.utils.Utils;
+import okhttp3.internal.Util;
 
 /**
  * Created by Diego on 12/02/2018.
@@ -22,6 +24,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
 
     private ArrayList<Historial> historials;
     Activity activity;
+    Utils utils = new Utils();
 
     public HistorialServiciosAdapter(ArrayList<Historial> historials, Activity activity) {
         this.historials = historials;
@@ -37,8 +40,8 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
     @Override
     public void onBindViewHolder(final HistorialServiciosViewHolder holder, int position) {
         final Historial hist = historials.get(position);
-        holder.tvNoServicioHist.setText(String.valueOf(hist.getId_pedido()));
-        holder.tvFechaServicioHist.setText(String.valueOf(hist.getFecha_servicio()));
+        holder.tvNoServicioHist.setText(String.valueOf(hist.getId_solicitud()));
+        holder.tvFechaServicioHist.setText(String.valueOf(utils.StringToDate2(hist.getFecha_transaccion())));
         holder.tvDirServicioHist.setText(String.valueOf(hist.getDireccion()));
         holder.tvPrecioServicio.setText(String.valueOf(hist.getValor()));
 
@@ -46,7 +49,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
             @Override
             public void onClick(View view) {
                 new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getId_pedido(), hist.getDireccion(),
-                        hist.getCiudad(), hist.getId_tipo_inmueble(), hist.getFecha_servicio(), hist.getHora(), hist.getValor(),
+                        hist.getCiudad(), hist.getDimension(), hist.getId_tipo_inmueble(), hist.getFecha_transaccion(), hist.getHora(), hist.getValor(),
                         new DialogDetalleHistorial.RespuestaListener() {
                     @Override
                     public void onSalir() {

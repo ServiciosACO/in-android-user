@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -15,6 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.adaptadores.HistorialServiciosAdapter;
+import co.kubo.indiesco.interfaces.IHistorialServiciosPresenter;
+import co.kubo.indiesco.interfaces.IHistorialServiciosView;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.presenter.HistorialServiciosPresenter;
 

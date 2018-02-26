@@ -12,9 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
-import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,13 +19,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.activities.IDialogDireccionesView;
-import co.kubo.indiesco.activities.IMisDireccionesPresenter;
-import co.kubo.indiesco.activities.IMisDireccionesView;
+import co.kubo.indiesco.interfaces.IDialogDireccionesView;
+import co.kubo.indiesco.interfaces.IMisDireccionesPresenter;
 import co.kubo.indiesco.activities.MisDirecciones;
-import co.kubo.indiesco.activities.SolicitudServicio;
 import co.kubo.indiesco.adaptadores.DialogDireccionesAdapter;
-import co.kubo.indiesco.adaptadores.MisDireccionesAdapter;
 import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.presenter.DialogDireccionesPresenter;
 

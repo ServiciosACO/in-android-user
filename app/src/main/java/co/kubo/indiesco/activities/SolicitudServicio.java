@@ -23,6 +23,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -78,7 +80,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
     private ArrayList<Inmueble> inmuebles = new ArrayList<>();
     private ArrayList<String> valorServicio = new ArrayList<>();
-    private String tipoInmueble = "1", urgente = "no", dimension = "60", id_inmueble = "-1", valorX = "0";
+    private String tipoInmueble = "1", urgente = "no", dimension = "60", id_inmueble = "1", valorX = "0";
     private String id_direccion = "1", comentario = "Sin comentarios", fecha = "1 de enero de 2018", hora = "11:30AM";
     private boolean band1 = false, band2 = true, bandUrgente = true, bandTasarServicio = false;
 
@@ -153,10 +155,11 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
 
         listarTiposInmuebles();
-        String lat = "-4.7026073";
+
+        /*String lat = "-4.7026073";
         String lng = "-74.0436851";
         String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
-        webViewMapServicio.loadUrl(url);
+        webViewMapServicio.loadUrl(url);*/
     }
 
     @Override
@@ -227,6 +230,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                         String urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/" + id_user + "/" + id_solicitud;
                         Intent goPago = new Intent(SolicitudServicio.this, Transaccion.class);
                         goPago.putExtra("url", urlTransaccion);
+                        goPago.putExtra("id_sol", id_solicitud);
                         startActivity(goPago);
                         break;
                     case "102":

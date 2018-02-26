@@ -8,7 +8,6 @@
     android:paddingLeft="24sp"
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <LinearLayout
         android:layout_gravity="center"
         android:gravity="center"
@@ -54,20 +53,19 @@
                 android:background="@color/colorBlanco"
                 style="@style/texto_14_rojo"
                 android:textAllCaps="false"
-                android:paddingLeft="35sp"
-                android:paddingRight="35sp"
-                android:layout_marginRight="16sp"
-                android:layout_width="wrap_content"
+                android:layout_marginRight="8sp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <Button
                 android:id="@+id/btnAceptar"
                 android:text="Aceptar"
                 android:background="@color/colorBlanco"
-                android:paddingLeft="35sp"
-                android:paddingRight="35sp"
                 style="@style/texto_14_verde"
                 android:textAllCaps="false"
-                android:layout_width="wrap_content"
+                android:layout_marginLeft="7sp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>

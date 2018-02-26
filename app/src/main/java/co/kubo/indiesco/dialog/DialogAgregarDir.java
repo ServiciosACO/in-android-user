@@ -17,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.MisDirecciones;
 import co.kubo.indiesco.modelo.Usuario;
@@ -37,6 +40,8 @@ public class DialogAgregarDir extends Dialog implements View.OnClickListener {
     public static final String TAG = "DialogAgregarDir";
     private Activity activity;
     private boolean respuesta;
+    private MapFragment mapaDireccion;
+    private GoogleMap googleMap;
     private RespuestaListener respuestaListener;
     private String dirX, latX = "4.674465", lngX = "-74.057422", complementoX, ciudadX;
 
@@ -67,7 +72,7 @@ public class DialogAgregarDir extends Dialog implements View.OnClickListener {
         btnAgregarDir.setOnClickListener(this);
         LinearLayout llSalir = (LinearLayout) findViewById(R.id.llSalir);
         llSalir.setOnClickListener(this);
-        WebView webViewDir = (WebView) findViewById(R.id.webViewDir);
+        mapaDireccion = (MapFragment) activity.getFragmentManager().findFragmentById(R.id.mapaDireccion);
         EditText tvDir = (EditText) findViewById(R.id.tvDir);
         EditText tvDirComplemento = (EditText) findViewById(R.id.tvDirComplemento);
         dirX = tvDir.getText().toString();

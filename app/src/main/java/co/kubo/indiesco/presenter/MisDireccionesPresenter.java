@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import co.kubo.indiesco.activities.IMisDireccionesPresenter;
-import co.kubo.indiesco.activities.IMisDireccionesView;
+import co.kubo.indiesco.interfaces.IMisDireccionesPresenter;
+import co.kubo.indiesco.interfaces.IMisDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;

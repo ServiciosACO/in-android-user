@@ -7,7 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/color_hint</item>
+        <item name="colorControlActivated">@color/colorEstrellaActiva</item>
+    </style>
 
     <style name="ThemeTransparent" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowIsTranslucent">false</item>

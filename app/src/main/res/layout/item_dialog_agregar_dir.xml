@@ -9,57 +9,63 @@
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:background="@color/colorBlanco"
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <WebView
-                android:id="@+id/webViewDir"
-                android:layout_width="match_parent"
-                android:layout_height="155sp">
-            </WebView>
-        </LinearLayout>
-
-        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@color/colorBlanco"
             android:orientation="vertical"
-            android:layout_marginLeft="24sp"
-            android:layout_marginRight="24sp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <EditText
-                android:id="@+id/tvDir"
-                android:hint="Dirección"
-                android:gravity="center"
-                android:textColorHint="@color/color_hint"
-                android:textSize="15sp"
-                android:layout_marginTop="32sp"
+            android:layout_height="wrap_content">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/tvDirComplemento"
-                android:textColorHint="@color/color_hint"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:hint="Complemento de la dirección"
-                android:layout_marginTop="26sp"
+                android:layout_height="160sp">
+                <fragment
+                    android:id="@+id/mapaDireccion"
+                    class ="com.google.android.gms.maps.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="24sp"
+                android:layout_marginRight="24sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btnAgregarDir"
-                android:layout_marginTop="35sp"
-                android:layout_marginBottom="24sp"
-                android:background="@drawable/boton_borde_naranja"
-                style="@style/texto_15_naranja"
-                android:textAllCaps="false"
-                android:text="Agregar dirección"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/tvDir"
+                    android:hint="Dirección"
+                    android:gravity="center"
+                    android:textColorHint="@color/color_hint"
+                    android:textSize="15sp"
+                    android:layout_marginTop="32sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/tvDirComplemento"
+                    android:textColorHint="@color/color_hint"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:hint="Complemento de la dirección"
+                    android:layout_marginTop="26sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/btnAgregarDir"
+                    android:layout_marginTop="35sp"
+                    android:layout_marginBottom="24sp"
+                    android:background="@drawable/boton_borde_naranja"
+                    style="@style/texto_15_naranja"
+                    android:textAllCaps="false"
+                    android:text="Agregar dirección"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
