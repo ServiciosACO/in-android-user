@@ -1,7 +1,8 @@
 package co.kubo.indiesco.asincronasMapa;
 
+import android.app.Activity;
 import android.os.AsyncTask;
-
+import android.util.Log;
 
 
 import org.json.JSONArray;
@@ -14,8 +15,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import co.kubo.indiesco.activities.Registro;
+import co.kubo.indiesco.utils.Servicios;
 
-public class AsynkObtenerDireccion extends AsyncTask<Void, Void, Boolean> {
+public class AsynkObtenerDireccion extends AsyncTask<Void, Void, String> {
 
     private Registro context = new Registro();
     private String urlServicio = "";
@@ -23,48 +25,72 @@ public class AsynkObtenerDireccion extends AsyncTask<Void, Void, Boolean> {
     private String lon = "";
     private String direccion = "";
     private Boolean band = true;
+    Activity activity;
 
-    public AsynkObtenerDireccion(Registro context, String lat, String lon, Boolean band) {
-        this.context = context;
+    public AsynkObtenerDireccion(String lat, String lon, Activity activity) {
         this.lat = lat;
         this.lon = lon;
-        this.band = band;
+        this.activity = activity;
     }
 
     @Override
     protected void onPreExecute() {
-
     }
 
     @Override
-    protected Boolean doInBackground(Void... params) {
-        String jsonResponse = "";
+    protected String doInBackground(Void... params) {
         try {
-            urlServicio = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&sensor=true";
-            URL url = new URL(urlServicio);
-            DataInputStream dataInput = new DataInputStream(url.openStream());
-            String inputLine;
-            while ((inputLine = dataInput.readLine()) != null) {
-                jsonResponse += inputLine;
-            }
-            dataInput.close();
-            JSONObject catObj = new JSONObject(jsonResponse);
-            JSONArray catArray = catObj.getJSONArray("results");
-            JSONObject catObj1 = catArray.getJSONObject(0);
-            direccion = new String(catObj1.getString("formatted_address").getBytes("ISO-8859-1"), "UTF-8");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+            String request = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&sensor=true";
+
+            return Servicios.getMethod(request, null);
+        } catch (Exception e) {
+            //Log.e(TAG, e.toString());
+            return "";
         }
-        return true;
     }
 
     @Override
-    protected void onPostExecute(Boolean result) {
-        context.valorDireccion(direccion, band);
+    protected void onPostExecute(String result) {
+        String direccion = "";
+        String direccionCorta = "";
+        String ciudad = "";
+        if (!result.isEmpty()) {
+            try {
+                JSONObject mainObject = new JSONObject(result);
+                switch (mainObject.getString("status")) {
+                    case "OK":
+                        direccion = mainObject.getJSONArray("results").getJSONObject(0).getString("formatted_address");
+                        String[] ciudadArray = direccion.split(",");
+                        for (int i = 1; i < ciudadArray.length; i++) {
+                            ciudad += ciudadArray[i].trim();
+                            if (i != ciudadArray.length - 1) {
+                                ciudad += ", ";
+                            }
+                        }
+                        direccion = direccion.replace(", " + ciudad, "");
+                        ciudad = ciudad.replace(", Colombia", "");
+                        try {
+                            String data[] = direccion.split(",");
+                            if (data != null) {
+                                if (data.length > 0) {
+                                    if (data[0].contains(" a ")) {
+                                        String direc[] = data[0].split(" a ");
+                                        direccionCorta = direc[0];
+                                    } else {
+                                        direccionCorta = data[0];
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            direccionCorta = direccion;
+                        }
+                        break;
+                }
+            } catch (Exception e) {
+                //Log.e(TAG, e.toString());
+            }
+        }
+        ((Registro) activity).setDireccion(direccionCorta, ciudad);
     }
-
 }
+

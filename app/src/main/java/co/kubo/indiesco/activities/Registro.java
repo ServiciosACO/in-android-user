@@ -61,6 +61,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -146,6 +147,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     TextInputLayout inputPass2;
     @BindView(R.id.llSplashRegistro)
     LinearLayout llSplashRegistro;
+    @BindView(R.id.imagetrans)
+    ImageView imagetrans;
+
+
     private MapFragment mapaDireccion;
     private GoogleMap googleMap;
     private Boolean cargoMapa = false;
@@ -158,7 +163,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     private Boolean bandPonerDir = true;
     private float zoomActual = 0;
     private Singleton general = Singleton.getInstance();
-    private Boolean bandLista = false;
+    private Boolean bandLista = true;
     private boolean gps_enabled = false;
     private boolean network_enabled = false;
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
@@ -216,6 +221,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             }
         });
 
+        if (mapaDireccion != null) {
+            mapaDireccion.getMapAsync(this);
+        }
+
         Bundle parametros = getIntent().getExtras();
         if (parametros == null) {
             editEmail.setFocusableInTouchMode(true);
@@ -248,7 +257,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                     if (editDireccion.getVisibility() == View.VISIBLE && bandLista == true) {
                         if (valorDireccion.toString().trim().length() >= 3) {
                             if (Utils.checkInternetConnection(Registro.this, true)) {
-                                if (cargarDireccion) {
+                                if (!cargarDireccion) {
                                     cargarDireccion = false;
                                     googleMap.getUiSettings().setScrollGesturesEnabled(false);
                                     AsynkDireccionPalabra asyn = new AsynkDireccionPalabra(Registro.this, "" + latitudDireccion, "" + longitudDireccion, "" + valorDireccion.toString(), "" + getResources().getString(R.string.key_google_maps));
@@ -280,6 +289,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         });
 
     }//onCreate
+
+    /*private void initMap() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }*/
 
     private void setlistenerEditText() {
         editNombre.addTextChangedListener(new TextWatcher() {
@@ -415,6 +430,34 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             public void afterTextChanged(Editable s) {
             }
         });
+
+        imagetrans.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        scrollViewRegistro.requestDisallowInterceptTouchEvent(true);
+                        // Disable touch on transparent view
+                        return false;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        scrollViewRegistro.requestDisallowInterceptTouchEvent(false);
+                        return true;
+
+                    case MotionEvent.ACTION_MOVE:
+                        scrollViewRegistro.requestDisallowInterceptTouchEvent(true);
+                        return false;
+
+                    default:
+                        return true;
+                }
+            }
+        });
+
+
     }
 
     private void validarFABVerde() {
@@ -512,13 +555,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         position = 0;
                         opcionFoto();
                     }
-
                     @Override
                     public void onGaleria() {
                         position = 1;
                         opcionFoto();
                     }
-
                     @Override
                     public void onSalir() {
                         return;
@@ -952,6 +993,19 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             }
         });
 
+        googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+            @Override
+            public void onCameraIdle() {
+                latitudDireccion = googleMap.getCameraPosition().target.latitude;
+                longitudDireccion = googleMap.getCameraPosition().target.longitude;
+                //editDireccion.setAdapter(null);
+                if (Utils.checkInternetConnection(Registro.this, true)) {
+                    AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
+                    asyncDir.execute();
+                }
+            }
+        });
+
         googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
             @Override
             public void onCameraChange(CameraPosition cameraPosition) {
@@ -971,10 +1025,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         latitudDireccion = locationFinal.getLatitude();
                         longitudDireccion = locationFinal.getLongitude();
                         if(!bandPonerDir){
-                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, false);
+                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
                             asyncDir.execute();
                         }else{
-                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, true);
+                            AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
                             asyncDir.execute();
                         }
                         bandPonerDir = true;
@@ -983,6 +1037,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 zoomActual = cameraPosition.zoom;
             }
         });
+    }
+
+    public void setDireccion(String direccion, String ciudad) {
+        if(direccion.length() != 0){
+            editDireccion.setText(direccion.concat(", ").concat(ciudad));
+            this.ciudad = ciudad;
+            this.direccion = direccion;
+        }
     }
 
     public void vacio() {
@@ -1047,7 +1109,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             bandSubir = false;
             //animacionVista(false,200);
         }
-        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, bandDir);
+        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
         asyncDir.execute();
     }
 
@@ -1065,7 +1127,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         ponerDir = false;
                         googleMap.clear();
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitudDireccion, longitudDireccion), 16));
-                        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(Registro.this,"" + latitudDireccion, "" + longitudDireccion, ponerDir);
+                        AsynkObtenerDireccion asyncDir = new AsynkObtenerDireccion(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
                         asyncDir.execute();
                     }
                 }else{
@@ -1172,7 +1234,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         Log.e(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
         googleMap.animateCamera(update);
-        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
         MarkerOptions options = new MarkerOptions()
                 .position(latLng);
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacion));
