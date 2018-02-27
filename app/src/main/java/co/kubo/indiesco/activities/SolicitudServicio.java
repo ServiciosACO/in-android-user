@@ -35,6 +35,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -43,6 +44,7 @@ import co.kubo.indiesco.R;
 import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionPorCoordenadas;
 import co.kubo.indiesco.dialog.DialogDirecciones;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Inmueble;
 import co.kubo.indiesco.modelo.TasarServicio;
 import co.kubo.indiesco.modelo.Usuario;
@@ -86,6 +88,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     @BindView(R.id.tvValor)
     TextView tvValor;
 
+    private DialogProgress dialogProgress;
     private MapFragment mapaDireccion;
     private GoogleMap googleMap;
 
@@ -229,6 +232,10 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
     public void crearServicio(){
         //llValor.setEnabled(false);
+        //if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(SolicitudServicio.this);
+            dialogProgress.show();
+        //}
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -241,6 +248,9 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
         responseCrearServicioCall.enqueue(new Callback<ResponseCrearServicio>() {
             @Override
             public void onResponse(Call<ResponseCrearServicio> call, Response<ResponseCrearServicio> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -262,6 +272,9 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
             }
             @Override
             public void onFailure(Call<ResponseCrearServicio> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure crearServicio");
             }
         });
@@ -269,8 +282,18 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+        new DialogDosOpciones(SolicitudServicio.this, "3", new DialogDosOpciones.RespuestaListener() {
+            @Override
+            public void onCancelar() {
+            }
+            @Override
+            public void onAceptar() {
+                finish();
+            }
+            @Override
+            public void onSalir() {
+            }
+        }).show();
     }//public void onBackPressed
 
     private void tasarServicio(){
@@ -289,7 +312,8 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                         valorServicio = response.body().getData();
                         valorX = valorServicio.get(1);
                         llValor.setVisibility(View.VISIBLE);
-                        tvValor.setText("$" + valorX);
+                        DecimalFormat formateador = new DecimalFormat("###,###");
+                        tvValor.setText("$" + formateador.format(Double.parseDouble(valorX)) + " COP");
                         break;
                     case "102":
                         Log.e(TAG, "tasarServicio, Cod: 102 No hay datos");
@@ -307,6 +331,10 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     }
 
     private void listarTiposInmuebles(){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(SolicitudServicio.this);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -316,6 +344,9 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
         responseInmuebleCall.enqueue(new Callback<ResponseInmueble>() {
             @Override
             public void onResponse(Call<ResponseInmueble> call, Response<ResponseInmueble> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -337,6 +368,9 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
             }
             @Override
             public void onFailure(Call<ResponseInmueble> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "listarTiposInmuebles, onFailure");
             }
         });

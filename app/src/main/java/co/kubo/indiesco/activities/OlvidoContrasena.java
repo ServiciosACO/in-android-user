@@ -23,6 +23,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
@@ -69,6 +70,7 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
     @BindView(R.id.inputPass2)
     TextInputLayout inputPass2;
 
+    private DialogProgress dialogProgress;
     boolean pag1 = true, pag2 = false, pag3 = false, bandCod1 = false, bandCod2 = false,
             bandCod3 = false, bandCod4 = false, bandPass1 = false, bandPass2 = false;
     private String email = "", password = "", RepetirPassword = "", codigo = "", temp = "", codMaster = "0000";
@@ -334,6 +336,10 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
     }//animacion
 
     public void recuperarPass(final String email){
+        //if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(OlvidoContrasena.this);
+            dialogProgress.show();
+        //}
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -342,6 +348,9 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //OK
@@ -364,12 +373,19 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure recuperarPass");
             }
         });
     }//public void validarEmail
 
     public void validarEmail(final String email){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(OlvidoContrasena.this);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -378,6 +394,9 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //Cuenta existe llama servicio recuperarPass
@@ -395,6 +414,9 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure validarEmail");
             }
         });

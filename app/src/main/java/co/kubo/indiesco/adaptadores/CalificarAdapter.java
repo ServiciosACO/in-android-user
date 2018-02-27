@@ -11,10 +11,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.Calificar2;
+import co.kubo.indiesco.activities.OlvidoContrasena;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.PendienteCalificar;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -37,6 +40,7 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
     Activity activity;
     Utils utils = new Utils();
     float serviceCalification = 0;
+    private DialogProgress dialogProgress;
 
     public CalificarAdapter(ArrayList<PendienteCalificar> calificars, Activity activity) {
         this.calificars = calificars;
@@ -56,7 +60,8 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
         holder.tvNoServicioCalificar.setText(cal.getIdSolicitud());
         holder.tvFechaServicioCalificar.setText(utils.StringToDate2(cal.getFechaTransaccion()).replace(" ", "/"));
         holder.tvDirServicioCalificar.setText(cal.getDireccion());
-        holder.tvPrecioServicio.setText(cal.getValor());
+        DecimalFormat formateador = new DecimalFormat("###,###");
+        holder.tvPrecioServicio.setText(formateador.format(Double.parseDouble(String.valueOf(cal.getValor()))) + " COP");
 
         holder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -97,6 +102,10 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
     }
 
     private void enviarCalificacion(String id_solicitud, String serviceCalification, String comentarios, final int adapter_position){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(activity);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -106,6 +115,9 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -125,6 +137,9 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure, enviarCalificacion");
             }
         });

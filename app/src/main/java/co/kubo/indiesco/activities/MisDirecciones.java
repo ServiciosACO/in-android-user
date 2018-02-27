@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.adaptadores.MisDireccionesAdapter;
 import co.kubo.indiesco.dialog.DialogAgregarDir;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.IMisDireccionesPresenter;
 import co.kubo.indiesco.interfaces.IMisDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
@@ -41,8 +42,8 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.fabAgregar)
     FloatingActionButton fabAgregar;
     IMisDireccionesPresenter presenter;
-    
 
+    private DialogProgress dialogProgress;
     private ArrayList<Direccion> direccion = new ArrayList<>();
 
     @Override
@@ -53,7 +54,7 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
         imgBotonVolver.setOnClickListener(this);
         fabAgregar.setOnClickListener(this);
 
-        presenter = new MisDireccionesPresenter(this, getApplicationContext());
+        presenter = new MisDireccionesPresenter(this, getApplicationContext(), MisDirecciones.this);
 
     }
 
@@ -71,9 +72,14 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
     }
 
     private void agregarDir(){
+
         new DialogAgregarDir(MisDirecciones.this, new DialogAgregarDir.RespuestaListener() {
             @Override
             public void onAgregar(String dir, String lat, String lng, String complemento, String ciudad) {
+                if (dialogProgress == null) {
+                    dialogProgress = new DialogProgress(MisDirecciones.this);
+                    dialogProgress.show();
+                }
                 String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
                 RestApiAdapter restApiAdapter = new RestApiAdapter();
                 Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -83,6 +89,9 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
                 responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
                     @Override
                     public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                        if (dialogProgress.isShowing()) {
+                            dialogProgress.dismiss();
+                        }
                         String code = response.body().getCode();
                         switch (code){
                             case "100": //OK
@@ -102,6 +111,9 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
                     }
                     @Override
                     public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                        if (dialogProgress.isShowing()) {
+                            dialogProgress.dismiss();
+                        }
                         Log.e(TAG, "onFailure agregarDir");
                     }
                 });

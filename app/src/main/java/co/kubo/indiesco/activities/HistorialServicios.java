@@ -34,7 +34,7 @@ public class HistorialServicios extends AppCompatActivity implements OnClickList
         setContentView(R.layout.activity_historial_servicios);
         ButterKnife.bind(this);
         imgBotonVolver.setOnClickListener(this);
-        presenter = new HistorialServiciosPresenter(this, getApplicationContext());
+        presenter = new HistorialServiciosPresenter(this, getApplicationContext(), HistorialServicios.this);
 
     }
 

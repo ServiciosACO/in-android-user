@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
@@ -43,12 +44,13 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
         holder.tvNoServicioHist.setText(String.valueOf(hist.getId_solicitud()));
         holder.tvFechaServicioHist.setText(String.valueOf(utils.StringToDate2(hist.getFecha_transaccion())));
         holder.tvDirServicioHist.setText(String.valueOf(hist.getDireccion()));
-        holder.tvPrecioServicio.setText(String.valueOf(hist.getValor()));
+        DecimalFormat formateador = new DecimalFormat("###,###");
+        holder.tvPrecioServicio.setText(formateador.format(Double.parseDouble(String.valueOf(hist.getValor()))) + " COP");
 
         holder.llHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getId_pedido(), hist.getDireccion(),
+                new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getId_solicitud(), hist.getDireccion(),
                         hist.getCiudad(), hist.getDimension(), hist.getId_tipo_inmueble(), hist.getFecha_transaccion(), hist.getHora(), hist.getValor(),
                         new DialogDetalleHistorial.RespuestaListener() {
                     @Override

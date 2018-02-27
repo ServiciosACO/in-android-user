@@ -1,11 +1,14 @@
 package co.kubo.indiesco.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import co.kubo.indiesco.activities.OlvidoContrasena;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.IHistorialServiciosPresenter;
 import co.kubo.indiesco.interfaces.IHistorialServiciosView;
 import co.kubo.indiesco.modelo.Historial;
@@ -27,16 +30,23 @@ public class HistorialServiciosPresenter implements IHistorialServiciosPresenter
     public static final String TAG = "HistorialServiciosPrese";
     private IHistorialServiciosView iHistorialServiciosView;
     private Context context;
+    private Activity activity;
     private ArrayList<Historial> hist = new ArrayList<>();
+    private DialogProgress dialogProgress;
 
-    public HistorialServiciosPresenter(IHistorialServiciosView iHistorialServiciosView, Context context) {
+    public HistorialServiciosPresenter(IHistorialServiciosView iHistorialServiciosView, Context context, Activity activity) {
         this.iHistorialServiciosView = iHistorialServiciosView;
         this.context = context;
+        this.activity = activity;
         obtenerHistorial();
     }
 
     @Override
     public void obtenerHistorial() {
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(context);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -46,6 +56,9 @@ public class HistorialServiciosPresenter implements IHistorialServiciosPresenter
         responseHistorialCall.enqueue(new Callback<ResponseHistorial>() {
             @Override
             public void onResponse(Call<ResponseHistorial> call, Response<ResponseHistorial> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -63,6 +76,9 @@ public class HistorialServiciosPresenter implements IHistorialServiciosPresenter
             }
             @Override
             public void onFailure(Call<ResponseHistorial> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "obtener historial onFailure");
             }
         });

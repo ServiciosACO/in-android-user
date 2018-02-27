@@ -14,7 +14,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.IniciarSesion;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -34,6 +36,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     public static final String TAG = "MisDireccionesAdapter";
     private ArrayList<Direccion> direccion;
     Activity activity;
+    private DialogProgress dialogProgress;
 
     public MisDireccionesAdapter(ArrayList<Direccion> direccion, Activity activity) {
         this.direccion = direccion;
@@ -89,6 +92,10 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     }
 
     private void borrarDir(String id_dir, final int adapter_position){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(activity);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -98,6 +105,9 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -116,6 +126,9 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "borrarDir, onFailure");
             }
         });

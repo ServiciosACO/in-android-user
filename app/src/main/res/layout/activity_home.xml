@@ -16,10 +16,8 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <co.kubo.indiesco.utils.Medium
-            android:id="@+id/tvTituloHeader"
-            style="@style/texto_20_morado"
-            android:text="Inicio"
+        <ImageView
+            android:src="@drawable/logo_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -74,7 +72,7 @@
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
             android:layout_marginBottom="64sp"
-            android:layout_marginTop="36sp"
+            android:layout_marginTop="30sp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -82,7 +80,7 @@
                 android:id="@+id/llSolicitarServ"
                 android:background="@drawable/sombra_home"
                 android:gravity="center"
-                android:elevation="20dp"
+                android:elevation="4sp"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:layout_weight="1"
@@ -142,6 +140,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="8sp"
                     android:layout_weight="1"
+                    android:elevation="4sp"
                     android:background="@drawable/sombra_home"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -185,6 +184,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:elevation="4sp"
                     android:background="@drawable/sombra_home"
                     android:gravity="center"
                     android:orientation="vertical">

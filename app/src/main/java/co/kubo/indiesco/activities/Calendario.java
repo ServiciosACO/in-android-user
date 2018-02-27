@@ -36,7 +36,7 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
         ButterKnife.bind(this);
         imgBotonVolver.setOnClickListener(this);
 
-        presenter = new CalendarioPresenter(this, getApplicationContext());
+        presenter = new CalendarioPresenter(this, getApplicationContext(), Calendario.this);
     }
 
     @Override

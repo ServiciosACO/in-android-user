@@ -6,6 +6,8 @@ import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.EventListener;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
@@ -22,8 +24,6 @@ public class ViewHolderListItemCalendario extends RecyclerView.ViewHolder {
     TextView tvDir;
     @BindView(R.id.tvHora)
     TextView tvHoraCalendar;
-    @BindView(R.id.webViewMap)
-    WebView webViewMap;
     @BindView(R.id.llItemCalendario)
     LinearLayout llItemCalendario;
 
@@ -31,16 +31,14 @@ public class ViewHolderListItemCalendario extends RecyclerView.ViewHolder {
         return llItemCalendario;
     }
 
-    public void setLlItemCalendario(LinearLayout llItemCalendario) {
-        this.llItemCalendario = llItemCalendario;
-    }
+    public void setLlItemCalendario(EventListener eventListener) {
+        this.llItemCalendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-    public WebView getWebViewMap() {
-        return webViewMap;
-    }
-
-    public void setWebViewMap(String url) {
-        webViewMap.loadUrl(url);
+            }
+        });
+        //this.llItemCalendario = llItemCalendario;
     }
 
     public void setTvFecha(String fecha) {
@@ -52,8 +50,6 @@ public class ViewHolderListItemCalendario extends RecyclerView.ViewHolder {
     public void setTvHoraCalendar(String hora) {
         tvHoraCalendar.setText(hora);
     }
-
-
 
     public ViewHolderListItemCalendario(View itemView) {
         super(itemView);

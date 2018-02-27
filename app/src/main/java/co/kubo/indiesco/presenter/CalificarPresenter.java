@@ -1,5 +1,6 @@
 package co.kubo.indiesco.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import co.kubo.indiesco.activities.Calificar;
 import co.kubo.indiesco.activities.Home;
 import co.kubo.indiesco.activities.IniciarSesion;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.ICalendarioView;
 import co.kubo.indiesco.interfaces.ICalificarPresenter;
 import co.kubo.indiesco.interfaces.ICalificarView;
@@ -34,11 +36,14 @@ public class CalificarPresenter implements ICalificarPresenter {
     public static final String TAG = "CalificarPresenter";
     private ICalificarView iCalificarView;
     private Context context;
+    private Activity activity;
     private ArrayList<PendienteCalificar> calificar = new ArrayList<>();
+    private DialogProgress dialogProgress;
 
-    public CalificarPresenter(ICalificarView iCalificarView, Context context) {
+    public CalificarPresenter(ICalificarView iCalificarView, Context context, Activity activity) {
         this.iCalificarView = iCalificarView;
         this.context = context;
+        this.activity = activity;
 
         obtenerCalificar();
     }
@@ -46,6 +51,10 @@ public class CalificarPresenter implements ICalificarPresenter {
 
     @Override
     public void obtenerCalificar() {
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(context);
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(context);
@@ -55,6 +64,9 @@ public class CalificarPresenter implements ICalificarPresenter {
         responsePendienteCalificarCall.enqueue(new Callback<ResponsePendienteCalificar>() {
             @Override
             public void onResponse(Call<ResponsePendienteCalificar> call, Response<ResponsePendienteCalificar> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //Servicios pendientes por calificar
@@ -71,6 +83,9 @@ public class CalificarPresenter implements ICalificarPresenter {
             }
             @Override
             public void onFailure(Call<ResponsePendienteCalificar> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure pendienteCalificar");
             }
         });

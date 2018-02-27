@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
+
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.utils.Utils;
 
@@ -81,9 +83,10 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         tvNoServicioDetHist.setText(nServicio);
         tvDirDetalleHist.setText(dir);
         tvCiudadDetalle.setText(ciudad);
-        tvFechaDetalle.setText(utils.StringToDate2(fecha));
+        tvFechaDetalle.setText(utils.StringToDate2(fecha).replace(" ", "/"));
         tvHoraDetalle.setText(hora);
-        tvPrecioServicioDet.setText(valor);
+        DecimalFormat formateador = new DecimalFormat("###,###");
+        tvPrecioServicioDet.setText(formateador.format(Double.parseDouble(String.valueOf(valor))) + " COP");
         switch (tipoTipo){
             case "1":
                 tvTipoTipo.setText("Casa - " + dimension + activity.getResources().getString(R.string.cuadrado));

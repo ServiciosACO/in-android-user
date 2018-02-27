@@ -34,7 +34,7 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
         ButterKnife.bind(this);
         imgBotonVolver.setOnClickListener(this);
 
-        presenter = new NotificacionesPresenter(this, getApplicationContext());
+        presenter = new NotificacionesPresenter(this, getApplicationContext(), MisNotificaciones.this);
     }
 
 

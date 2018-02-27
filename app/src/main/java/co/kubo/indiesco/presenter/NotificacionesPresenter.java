@@ -1,11 +1,14 @@
 package co.kubo.indiesco.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import co.kubo.indiesco.activities.IniciarSesion;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.INotificacionesPresenter;
 import co.kubo.indiesco.interfaces.INotificacionesView;
 import co.kubo.indiesco.modelo.Notificaciones;
@@ -27,18 +30,25 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
     public static final String TAG = "NotificacionesPresenter";
     private INotificacionesView iNotificacionesView;
     private Context context;
+    private Activity activity;
     private ArrayList<Notificaciones> notificaciones = new ArrayList<>();
     private ArrayList<Notificaciones> holder_notif = new ArrayList<>();
     private ArrayList<String> fecha = new ArrayList<>();
+    private DialogProgress dialogProgress;
 
-    public NotificacionesPresenter(INotificacionesView iNotificacionesView, Context context) {
+    public NotificacionesPresenter(INotificacionesView iNotificacionesView, Context context, Activity activity) {
         this.iNotificacionesView = iNotificacionesView;
         this.context = context;
+        this.activity = activity;
         obtenerNotificaciones();
     }
 
     @Override
     public void obtenerNotificaciones() {
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(context);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -48,6 +58,9 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
         responseNotificacionCall.enqueue(new Callback<ResponseNotificacion>() {
             @Override
             public void onResponse(Call<ResponseNotificacion> call, Response<ResponseNotificacion> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -102,6 +115,9 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
             }
             @Override
             public void onFailure(Call<ResponseNotificacion> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "obtener notificaciones onFailure");
             }
         });

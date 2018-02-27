@@ -17,9 +17,11 @@ import java.util.Date;
 import java.util.EventListener;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.IniciarSesion;
 import co.kubo.indiesco.activities.ViewHolderHeader;
 import co.kubo.indiesco.activities.ViewHolderListItem;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Notificaciones;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -45,6 +47,7 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     Activity activity;
     private String fechaX;
     private int i = 0;
+    private DialogProgress dialogProgress;
 
     public NotificacionesAdapter(ArrayList<Notificaciones> notificaciones, Activity activity){
         this.notificaciones = notificaciones;
@@ -127,6 +130,10 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     public void borrarNotificacion(String id_notif, final int adapter_position, final LinearLayout llBorrar ){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         llBorrar.setEnabled(false);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -138,6 +145,9 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -173,6 +183,9 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "borrarNotificacion onFailure");
             }
         });

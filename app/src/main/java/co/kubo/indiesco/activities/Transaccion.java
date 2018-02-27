@@ -1,10 +1,14 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -14,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
@@ -32,7 +37,9 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
     @BindView(R.id.webViewTransaccion)
     WebView webViewTransaccion;
 
-    String id_solicitud;
+    private String id_solicitud, urlPago;
+    private boolean cancelarTransaccion;
+    private DialogProgress dialogProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +50,68 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         webViewTransaccion.getSettings().setJavaScriptEnabled(true);
 
         Bundle param = getIntent().getExtras();
-        String url = param.getString("url");
+        urlPago = param.getString("url");
         id_solicitud = param.getString("id_sol");
+        cancelarTransaccion = true;
 
-        //Para mostrar la pagina web embebida en la app
-        webViewTransaccion.loadUrl(url);
+        if (Utils.checkInternetConnection(Transaccion.this, true)){
+            initWebView();
+        }
+
+
+        /*//Para mostrar la pagina web embebida en la app
+        webViewTransaccion.loadUrl(urlPago);
         webViewTransaccion.setWebViewClient(new MyWebViewClient());
-        webViewTransaccion.requestFocus();
+        webViewTransaccion.requestFocus();*/
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.imgBotonVolver:
+                if (webViewTransaccion.canGoBack()){
+                    webViewTransaccion.goBack();
+                }else{
+                    handleBackButton();
+                }
+                break;
+
+            default:break;
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && webViewTransaccion.canGoBack()){
+            webViewTransaccion.goBack();
+            return true;
+        }else{
+            handleBackButton();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void handleBackButton(){
+        if (cancelarTransaccion){
+            if (Utils.checkInternetConnection(this, true)){
+                new DialogDosOpciones(Transaccion.this, "2", new DialogDosOpciones.RespuestaListener() {
+                    @Override
+                    public void onCancelar() {
+                    }
+                    @Override
+                    public void onAceptar() {
+                        cancelarServicio();
+                    }
+                    @Override
+                    public void onSalir() {
+                    }
+                }).show();
+            }
+        }else{
+            finish();
+        }
+    }
+    /*
     //Para mostrar la pagina web embebida en la app
     private class MyWebViewClient extends WebViewClient {
         @Override
@@ -59,35 +119,49 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
             view.loadUrl(url);
             return true;
         }
-    }
+    }*/
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.imgBotonVolver:
-                onBackPressed();
-                break;
-            default:break;
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-        /*
-        new DialogDosOpciones(Transaccion.this, "2", new DialogDosOpciones.RespuestaListener() {
+    private void initWebView() {
+        //webViewTransaccion = (WebView) findViewById(R.id.webViewTransaccion);
+        webViewTransaccion.setWebViewClient(new WebViewClient() {
             @Override
-            public void onCancelar() {}
-            @Override
-            public void onAceptar() {
-                if (Utils.checkInternetConnection(Transaccion.this, true))
-                cancelarServicio();
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                if (dialogProgress == null) {
+                    dialogProgress = new DialogProgress(Transaccion.this);
+                    dialogProgress.show();
+                }
+                if (url.contains("resumen_pedido")) {
+                    /*if (isProductos) {
+                        // TODO: 9/08/2017 ir al historial
+                        sqLite.limpiarCarrito();
+                        finish();
+                    } else {
+                        Intent intentHome = new Intent(PagoActivity.this, HomeActivity.class);
+                        intentHome.putExtra(Constantes.INTENT_EXTRA_IR_HISTORIAL, true);
+                        intentHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intentHome);
+                        finish();
+                    }*/
+                }
+                super.onPageStarted(view, url, favicon);
             }
             @Override
-            public void onSalir() {}
-        }).show();
-        */
+            public void onPageFinished(WebView view, String url) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
+                if (url.contains("response")) {
+                    cancelarTransaccion = false;
+                }
+                super.onPageFinished(view, url);
+            }
+        });
+
+        webViewTransaccion.setWebChromeClient(new WebChromeClient());
+        WebSettings settings = webViewTransaccion.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setAllowFileAccess(true);
+        webViewTransaccion.loadUrl(urlPago);
     }
 
     private void cancelarServicio(){

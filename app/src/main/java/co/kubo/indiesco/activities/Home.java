@@ -23,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogPendienteCalificar;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
@@ -51,6 +52,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     TextView tvNserviciosProgramados;
     @BindView(R.id.tvNnotificaciones)
     TextView tvNnotificaciones;
+
+    private DialogProgress dialogProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     }//onClick
 
     private void pendienteCalificar(String uid){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(Home.this);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -108,6 +115,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         responsePendienteCalificarCall.enqueue(new Callback<ResponsePendienteCalificar>() {
             @Override
             public void onResponse(Call<ResponsePendienteCalificar> call, Response<ResponsePendienteCalificar> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //Servicios pendientes por calificar
@@ -121,7 +131,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                             }
                             @Override
                             public void onSalir() {
-                                Toast.makeText(Home.this, "Para solicitar un nuevo servicio debe calificar primero", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Home.this, "Para solicitar un nuevo servicio debe calificar primero", Toast.LENGTH_SHORT).show();
                             }
                         }).show();
                         break;
@@ -134,6 +144,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             }
             @Override
             public void onFailure(Call<ResponsePendienteCalificar> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure pendienteCalificar");
             }
         });

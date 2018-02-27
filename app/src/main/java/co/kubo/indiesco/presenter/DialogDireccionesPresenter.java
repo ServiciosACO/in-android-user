@@ -1,11 +1,14 @@
 package co.kubo.indiesco.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import co.kubo.indiesco.activities.IniciarSesion;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.IDialogDireccionesView;
 import co.kubo.indiesco.interfaces.IMisDireccionesPresenter;
 import co.kubo.indiesco.modelo.Direccion;
@@ -26,16 +29,23 @@ public class DialogDireccionesPresenter implements IMisDireccionesPresenter {
     public static final String TAG = "DialogDirPresenter";
     private IDialogDireccionesView iDialogDireccionesView;
     private Context context;
+    private Activity activity;
     private ArrayList<Direccion> direccion;
+    private DialogProgress dialogProgress;
 
-    public DialogDireccionesPresenter(IDialogDireccionesView iDialogDireccionesView, Context context) {
+    public DialogDireccionesPresenter(IDialogDireccionesView iDialogDireccionesView, Context context, Activity activity) {
         this.iDialogDireccionesView = iDialogDireccionesView;
         this.context = context;
+        this.activity = activity;
         obtenerDirecciones();
     }
 
     @Override
     public void obtenerDirecciones() {
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(context);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -45,6 +55,9 @@ public class DialogDireccionesPresenter implements IMisDireccionesPresenter {
         responseDireccionCall.enqueue(new Callback<ResponseDireccion>() {
             @Override
             public void onResponse(Call<ResponseDireccion> call, Response<ResponseDireccion> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -61,9 +74,11 @@ public class DialogDireccionesPresenter implements IMisDireccionesPresenter {
                         break;
                 }//switch
             }
-
             @Override
             public void onFailure(Call<ResponseDireccion> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "obtener direcciones onFailure");
             }
         });

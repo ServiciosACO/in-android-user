@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -54,6 +55,7 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
     @BindView(R.id.tvNotificacionPass)
     TextView tvNotificacionPass;
 
+    private DialogProgress dialogProgress;
     private String oldPass = "", Pass1 = "", Pass2 = "";
     Animation animShake;
     boolean bandPass1 = false, bandPass2 = false;
@@ -98,6 +100,10 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
     }
 
     private void cambiarPassword(){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(CambiarContrasena.this);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -107,6 +113,9 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //OK
@@ -130,6 +139,9 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure cambiarPassword");
             }
         });

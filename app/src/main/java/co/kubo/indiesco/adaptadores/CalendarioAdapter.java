@@ -1,20 +1,34 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.Home;
+import co.kubo.indiesco.activities.Transaccion;
 import co.kubo.indiesco.activities.ViewHolderHeader;
 import co.kubo.indiesco.activities.ViewHolderHeaderCalendario;
 import co.kubo.indiesco.activities.ViewHolderListItem;
 import co.kubo.indiesco.activities.ViewHolderListItemCalendario;
+import co.kubo.indiesco.dialog.DialogDetalleCalendario;
 import co.kubo.indiesco.modelo.Historial;
+import co.kubo.indiesco.modelo.Usuario;
+import co.kubo.indiesco.restAPI.Endpoints;
+import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
+import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Utils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Diego on 24/02/2018.
@@ -54,11 +68,27 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             String [] splitHora_1 = calendar.get(position).getFecha_transaccion().split(" ");
             String [] splitHora_2 = splitHora_1[1].split(":");
-            String hora = splitHora_2[0].concat(":").concat(splitHora_2[1]);
+            final String hora = splitHora_2[0].concat(":").concat(splitHora_2[1]);
             ((ViewHolderListItemCalendario) holder).setTvHoraCalendar(hora);
 
-            String url = "http://maps.google.com/maps/api/staticmap?center=" + calendar.get(position).getLatitud() + "," + calendar.get(position).getLongitud() + "&zoom=15&size=200x200&sensor=false";
-            ((ViewHolderListItemCalendario) holder).setWebViewMap(url);
+            ((ViewHolderListItemCalendario) holder).getLlItemCalendario().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new DialogDetalleCalendario(activity, calendar.get(position).getLatitud(), calendar.get(position).getLongitud(),
+                            calendar.get(position).getId_solicitud(), calendar.get(position).getDireccion(), calendar.get(position).getCiudad(),
+                            calendar.get(position).getDimension(), calendar.get(position).getId_tipo_inmueble(),
+                            calendar.get(position).getFecha_transaccion(), hora, calendar.get(position).getValor(),
+                            new DialogDetalleCalendario.RespuestaListener() {
+                                @Override
+                                public void onCancelarServicio() {
+                                    cancelarServicio(calendar.get(position).getId_solicitud());
+                                }
+                                @Override
+                                public void onSalir() {
+                                }
+                            }).show();
+                }
+            });
 
         } else if (holder instanceof ViewHolderHeaderCalendario) {
             Utils utils = new Utils();
@@ -88,5 +118,36 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             return true;
         }
     }
+
+    private void cancelarServicio(String id_solicitud){
+        String authToken = SharedPreferenceManager.getAuthToken(activity);
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Usuario usuario = new Usuario();
+        usuario = SharedPreferenceManager.getInfoUsuario(activity);
+        Call<ResponseGeneral> responseGeneralCall = endpoints.cancelarServicio(authToken, id_solicitud, usuario.getId_user());
+        responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
+            @Override
+            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100":
+
+                        break;
+                    case "102":
+                        Toast.makeText(activity, "La solicitud no se puede cancelar", Toast.LENGTH_LONG).show();
+                        Log.e(TAG, "Cod: 102 No se puede cancelar la solicitud");
+                        break;
+                    case "120":
+                        Log.e(TAG, "Cod: 120 auth token invalido");
+                        break;
+                }//switch
+            }
+            @Override
+            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                Log.e(TAG, "cancelarServicio onFailure");
+            }
+        });
+    }//private void cancelarServicio
 
 }

@@ -35,7 +35,7 @@ public class Calificar extends AppCompatActivity implements View.OnClickListener
         ButterKnife.bind(this);
         imgBotonVolver.setOnClickListener(this);
 
-        presenter = new CalificarPresenter(this, getApplicationContext());
+        presenter = new CalificarPresenter(this, getApplicationContext(), Calificar.this);
     }
 
     @Override

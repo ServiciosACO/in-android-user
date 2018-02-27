@@ -80,6 +80,10 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
                 imgBorrar.setImageResource(R.drawable.img_cancel_service);
                 tvMensaje.setText("¿Estás seguro de que deseas cancelar el servicio?");
                 break;
+            case "3":
+                imgBorrar.setImageResource(R.drawable.delete_popup);
+                tvMensaje.setText("Al regresar, perderás tus datos. ¿Deseas volver al inicio?");
+                break;
             default:break;
         }//switch
 

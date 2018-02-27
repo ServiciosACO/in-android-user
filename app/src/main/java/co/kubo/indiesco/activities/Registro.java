@@ -82,6 +82,7 @@ import co.kubo.indiesco.asincronasMapa.AsincronaGetDetalleDireccionGoogle;
 import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionPorCoordenadas;
 import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionesGoogle;
 import co.kubo.indiesco.dialog.DialogImagenPerfil;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.modelo.direccionesGoogleVO;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
@@ -137,7 +138,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     @BindView(R.id.imagetrans)
     ImageView imagetrans;
 
-
+    private DialogProgress dialogProgress;
     private MapFragment mapaDireccion;
     private GoogleMap googleMap;
     private Boolean cargoMapa = false;
@@ -604,6 +605,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     }//opcionFoto
 
     public void validarEmail() {
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(Registro.this);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -612,6 +617,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code) {
                     case "100": //Cuenta exitente va a login
@@ -635,12 +643,19 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
 
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure validarEmail");
             }
         });
     }//public void validarEmail
 
     private void crearCuenta() {
+        //if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(Registro.this);
+            dialogProgress.show();
+        //}
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         final String passSha1 = Utils.sha1Encrypt(password);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
@@ -649,6 +664,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         responseRegistroCall.enqueue(new Callback<ResponseRegistro>() {
             @Override
             public void onResponse(Call<ResponseRegistro> call, Response<ResponseRegistro> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code) {
                     case "100": //OK
@@ -667,12 +685,19 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
 
             @Override
             public void onFailure(Call<ResponseRegistro> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure registro");
             }
         });
     }
 
     private void crearDireccion(final String passSHA1, final String uid) {
+
+        dialogProgress = new DialogProgress(Registro.this);
+        dialogProgress.show();
+
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -680,6 +705,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code) {
                     case "100": //OK
@@ -716,15 +744,21 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         break;
                 }//switch
             }
-
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure registro");
             }
         });
     }
 
     private void crearFoto(final Usuario usuario, String id, File file) {
+
+        dialogProgress = new DialogProgress(Registro.this);
+        dialogProgress.show();
+
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -737,6 +771,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         ResponseFotoCall.enqueue(new Callback<ResponseFoto>() {
             @Override
             public void onResponse(Call<ResponseFoto> call, Response<ResponseFoto> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code) {
                     case "100": //OK
@@ -760,6 +797,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
 
             @Override
             public void onFailure(Call<ResponseFoto> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure crearFoto");
             }
         });

@@ -1,11 +1,14 @@
 package co.kubo.indiesco.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import co.kubo.indiesco.activities.OlvidoContrasena;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.ICalendarioPresenter;
 import co.kubo.indiesco.interfaces.ICalendarioView;
 import co.kubo.indiesco.interfaces.INotificacionesView;
@@ -29,18 +32,25 @@ public class CalendarioPresenter implements ICalendarioPresenter{
     public static final String TAG = "CalendarioPresenter";
     private ICalendarioView iCalendarioView;
     private Context context;
+    Activity activity;
     private ArrayList<Historial> calendario = new ArrayList<>();
     private ArrayList<Historial> holder_calendar = new ArrayList<>();
     private ArrayList<String> fecha = new ArrayList<>();
+    private DialogProgress dialogProgress;
 
-    public CalendarioPresenter(ICalendarioView iCalendarioView, Context context) {
+    public CalendarioPresenter(ICalendarioView iCalendarioView, Context context, Activity activity) {
         this.iCalendarioView = iCalendarioView;
         this.context = context;
+        this.activity = activity;
         obtenerCalendario();
     }
 
     @Override
     public void obtenerCalendario() {
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(activity);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(context);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -50,6 +60,9 @@ public class CalendarioPresenter implements ICalendarioPresenter{
         responseHistorialCall.enqueue(new Callback<ResponseHistorial>() {
             @Override
             public void onResponse(Call<ResponseHistorial> call, Response<ResponseHistorial> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
@@ -73,6 +86,12 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                                         not.setDireccion(calendario.get(i).getDireccion());
                                         not.setCiudad(calendario.get(i).getCiudad());
                                         not.setInmueble(calendario.get(i).getInmueble());
+                                        not.setId_solicitud(calendario.get(i).getId_solicitud());
+                                        not.setValor(calendario.get(i).getValor());
+                                        not.setId_tipo_inmueble(calendario.get(i).getId_tipo_inmueble());
+                                        not.setDimension(calendario.get(i).getDimension());
+                                        not.setLatitud(calendario.get(i).getLatitud());
+                                        not.setLongitud(calendario.get(i).getLongitud());
                                         not.setIsHeader("si");
                                         band = false;
                                         holder_calendar.add(not);
@@ -82,6 +101,12 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                                     not.setDireccion(calendario.get(i).getDireccion());
                                     not.setCiudad(calendario.get(i).getCiudad());
                                     not.setInmueble(calendario.get(i).getInmueble());
+                                    not.setId_solicitud(calendario.get(i).getId_solicitud());
+                                    not.setValor(calendario.get(i).getValor());
+                                    not.setId_tipo_inmueble(calendario.get(i).getId_tipo_inmueble());
+                                    not.setDimension(calendario.get(i).getDimension());
+                                    not.setLatitud(calendario.get(i).getLatitud());
+                                    not.setLongitud(calendario.get(i).getLongitud());
                                     not.setIsHeader("no");
                                     band = false;
                                     holder_calendar.add(not);
@@ -101,6 +126,9 @@ public class CalendarioPresenter implements ICalendarioPresenter{
             }
             @Override
             public void onFailure(Call<ResponseHistorial> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "obtener historial onFailure");
             }
         });
