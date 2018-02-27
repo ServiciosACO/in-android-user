@@ -62,10 +62,18 @@
             <!--What you want to show in SurfaceView-->
             <co.kubo.indiesco.utils.Bold
                 android:id="@+id/tvDir"
+                android:layout_marginBottom="5sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/texto_15_morado"
                 android:text="Calle 11 # 11-11" />
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvComplemento"
+                android:text="Piso 2"
+                android:layout_marginBottom="5sp"
+                style="@style/texto_13_naranja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Regular
                 android:id="@+id/tvCiudad"
                 style="@style/texto_13_gris"
@@ -73,16 +81,6 @@
                 android:layout_height="wrap_content"
                 android:text="Bogotá, Bogotá" />
         </LinearLayout>
-        <WebView
-            android:id="@+id/webViewMap"
-            android:layout_marginBottom="8sp"
-            android:layout_marginTop="8sp"
-            android:layout_marginRight="8sp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </WebView>
     </LinearLayout>
     <!-- Surface View End -->
 </com.daimajia.swipe.SwipeLayout>

@@ -86,7 +86,6 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
             super(itemView);
             tvDir = (TextView) itemView.findViewById(R.id.tvDir);
             tvCiudad = (TextView) itemView.findViewById(R.id.tvCiudad);
-            webViewMap = (WebView) itemView.findViewById(R.id.webViewMap);
             llBorrarDir = (LinearLayout) itemView.findViewById(R.id.llBorrarDir);
         }
     }

@@ -79,6 +79,12 @@
         <item name="android:textColor">@color/colorVerde</item>
     </style>
 
+    <style name="texto_13_naranja">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/colorNaranja</item>
+    </style>
+
+
     <style name="texto_13_gris">
         <item name="android:textSize">13dp</item>
         <item name="android:textColor">@color/colorGris</item>

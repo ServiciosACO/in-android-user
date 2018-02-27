@@ -10,7 +10,7 @@
     <color name="colorMorado">#76608B</color>
     <color name="colorGris">#747474</color>
     <color name="colorVerdeCursor">#ADD013</color>
-    <color name="fondo_registro">#FAFAFA</color>
+    <color name="fondo_registro">#F7F7F7</color>
     <color name="color_hint">#BFBFBF</color>
     <color name="fondo_dialog">#EDEDED</color>
     <color name="colorRojo">#FD444F</color>

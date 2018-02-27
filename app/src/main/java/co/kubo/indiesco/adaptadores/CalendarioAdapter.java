@@ -132,7 +132,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
-
+                        Toast.makeText(activity, "Cancelo el servicio con éxito", Toast.LENGTH_LONG).show();
                         break;
                     case "102":
                         Toast.makeText(activity, "La solicitud no se puede cancelar", Toast.LENGTH_LONG).show();
