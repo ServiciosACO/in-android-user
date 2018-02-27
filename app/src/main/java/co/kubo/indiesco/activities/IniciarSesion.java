@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogPendienteCalificar;
+import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.PendienteCalificar;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
@@ -59,6 +60,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
 
     private String token = "0", plataforma = "a", email = "", contraseña = "";
     private ArrayList<PendienteCalificar> calificar = new ArrayList<>();
+    private DialogProgress dialogProgress;
 
     Utils utils = new Utils();
     Animation anim1, anim2;
@@ -182,6 +184,10 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
     }
 
     public void validarEmail(final String email){
+        if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(IniciarSesion.this);
+            dialogProgress.show();
+        }
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -190,6 +196,9 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //Cuenta exitente va a login
@@ -217,12 +226,19 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure validarEmail");
             }
         });
     }//public void validarEmail
 
     public void login(String password){
+        //if (dialogProgress == null) {
+            dialogProgress = new DialogProgress(IniciarSesion.this);
+            dialogProgress.show();
+        //}
         btnContinuar.setEnabled(false);
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
@@ -232,6 +248,9 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
         responseLoginCall.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 String code = response.body().getCode();
                 switch (code){
                     case "100": //Login correcto
@@ -262,6 +281,9 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
             }
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
                 Log.e(TAG, "onFailure login");
             }
         });

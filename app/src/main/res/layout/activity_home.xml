@@ -80,8 +80,9 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/llSolicitarServ"
-                android:background="@color/colorBlanco"
+                android:background="@drawable/sombra_home"
                 android:gravity="center"
+                android:elevation="20dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:layout_weight="1"
@@ -141,7 +142,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="8sp"
                     android:layout_weight="1"
-                    android:background="@color/colorBlanco"
+                    android:background="@drawable/sombra_home"
                     android:gravity="center"
                     android:orientation="vertical">
                     <ImageView
@@ -184,7 +185,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorBlanco"
+                    android:background="@drawable/sombra_home"
                     android:gravity="center"
                     android:orientation="vertical">
                     <ImageView
