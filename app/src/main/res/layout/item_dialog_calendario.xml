@@ -17,12 +17,13 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <WebView
-                android:id="@+id/webViewCalendar"
+            android:layout_height="155sp">
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:apiKey="@string/key_google_maps"
                 android:layout_width="match_parent"
-                android:layout_height="155sp">
-            </WebView>
+                android:layout_height="match_parent">
+            </com.google.android.gms.maps.MapView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

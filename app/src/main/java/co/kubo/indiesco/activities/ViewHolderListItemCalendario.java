@@ -31,7 +31,7 @@ public class ViewHolderListItemCalendario extends RecyclerView.ViewHolder {
         return llItemCalendario;
     }
 
-    public void setLlItemCalendario(EventListener eventListener) {
+    /*public void setLlItemCalendario(EventListener eventListener) {
         this.llItemCalendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +39,7 @@ public class ViewHolderListItemCalendario extends RecyclerView.ViewHolder {
             }
         });
         //this.llItemCalendario = llItemCalendario;
-    }
+    }*/
 
     public void setTvFecha(String fecha) {
         tvFecha.setText(fecha);

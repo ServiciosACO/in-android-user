@@ -1,6 +1,8 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,14 +21,18 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogPendienteCalificar;
 import co.kubo.indiesco.dialog.DialogProgress;
+import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponseHistorial;
 import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 import retrofit2.Call;
@@ -52,14 +58,27 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     TextView tvNserviciosProgramados;
     @BindView(R.id.tvNnotificaciones)
     TextView tvNnotificaciones;
+    @BindView(R.id.tvVersion)
+    TextView tvVersion;
 
+    private ArrayList<Historial> calendario = new ArrayList<>();
     private DialogProgress dialogProgress;
+    String versionName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionName = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        tvVersion.setText("V" + versionName);
+
         tvMiPerfil.setOnClickListener(this);
         llSolicitarServ.setOnClickListener(this);
         llNotificaciones.setOnClickListener(this);
@@ -77,7 +96,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(imgFotoPerfil);
 
+        //obtenerCalendario();
         pendienteCalificar(usuario.getId_user());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        obtenerCalendario();
     }
 
     @Override
@@ -151,5 +177,37 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }//private void pendienteCalificar
+
+    public void obtenerCalendario() {
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Usuario usuario = new Usuario();
+        usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
+        Call<ResponseHistorial> responseHistorialCall = endpoints.listarHistorial(authToken, usuario.getId_user(), "calendario");
+        responseHistorialCall.enqueue(new Callback<ResponseHistorial>() {
+            @Override
+            public void onResponse(Call<ResponseHistorial> call, Response<ResponseHistorial> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100":
+                        calendario = response.body().getData();
+                        int nMiCalendar = calendario.size();
+                        tvNserviciosProgramados.setText(String.valueOf(nMiCalendar));
+                        break;
+                    case "102":
+                        Log.e(TAG, "Cod: 102 No hay datos");
+                        break;
+                    case "120":
+                        Log.e(TAG, "Cod: 120 auth token invalido");
+                        break;
+                }//switch
+            }
+            @Override
+            public void onFailure(Call<ResponseHistorial> call, Throwable t) {
+                Log.e(TAG, "obtener historial onFailure");
+            }
+        });
+    }
 
 }

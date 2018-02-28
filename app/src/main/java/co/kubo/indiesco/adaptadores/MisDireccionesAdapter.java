@@ -6,15 +6,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.swipe.SwipeLayout;
+
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.activities.IniciarSesion;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Direccion;
@@ -50,10 +52,9 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     @Override
     public void onBindViewHolder(MisDireccionesViewHolder holder, final int position) {
         final Direccion dir = direccion.get(position);
-        holder.tvDir.setText(String.valueOf(dir.getDireccion()));
-        holder.tvCiudad.setText(String.valueOf(dir.getCiudad()));
-        String url = "http://maps.google.com/maps/api/staticmap?center=" + dir.getLatitud() + "," + dir.getLongitud() + "&zoom=15&size=200x200&sensor=false";
-        holder.webViewMap.loadUrl(url);
+        holder.tvDir.setText(dir.getDireccion());
+        holder.tvComplemento.setText(dir.getComplemento());
+        holder.tvCiudad.setText(dir.getCiudad());
 
         holder.llBorrarDir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +70,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                     @Override
                     public void onSalir() {
                     }
-                });
+                }).show();
             }
         });
     }
@@ -79,14 +80,18 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     }
 
     public class MisDireccionesViewHolder extends RecyclerView.ViewHolder{
-        TextView tvDir, tvCiudad;
-        WebView webViewMap;
+        TextView tvDir, tvCiudad, tvComplemento;
         LinearLayout llBorrarDir;
+        SwipeLayout mSwipe;
+        ImageView imgBorrarDir;
         public MisDireccionesViewHolder(View itemView) {
             super(itemView);
             tvDir = (TextView) itemView.findViewById(R.id.tvDir);
+            tvComplemento = (TextView) itemView.findViewById(R.id.tvComplemento);
             tvCiudad = (TextView) itemView.findViewById(R.id.tvCiudad);
             llBorrarDir = (LinearLayout) itemView.findViewById(R.id.llBorrarDir);
+            mSwipe = (SwipeLayout) itemView.findViewById(R.id.mSwipe);
+            imgBorrarDir = (ImageView) itemView.findViewById(R.id.imgBorrarDir);
         }
     }
 

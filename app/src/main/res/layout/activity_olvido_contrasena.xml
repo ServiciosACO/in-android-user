@@ -7,31 +7,7 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
-        android:id="@+id/llHeader"
-        android:layout_marginTop="30sp"
-        android:layout_marginLeft="19sp"
-        android:orientation="horizontal"
-        android:layout_gravity="left"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/imgBotonVolver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/btn_atras" />
-        <co.kubo.indiesco.utils.Medium
-            android:id="@+id/tvTituloHeader"
-            style="@style/texto_20_morado"
-            android:layout_marginLeft="35sp"
-            android:text="@string/olvido_contraseña_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
-    <!--Pagina 1-->
     <ScrollView
         android:visibility="visible"
         android:id="@+id/scrollViewPagina1"
@@ -39,37 +15,68 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="40sp"
-            android:layout_marginRight="40sp"
-            android:orientation="vertical">
-            <co.kubo.indiesco.utils.Bold
-                style="@style/texto_22_morado"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/llHeader"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="19sp"
+                android:orientation="horizontal"
+                android:layout_gravity="left"
                 android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="86sp"
-                android:text="@string/olvido_contraseña_titulo" />
-            <co.kubo.indiesco.utils.Regular
-                style="@style/texto_15_gris"
-                android:gravity="center"
-                android:paddingRight="10sp"
-                android:paddingLeft="10sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48sp"
-                android:text="@string/olvido_contraseña_subtitulo" />
-        </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgBotonVolver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/btn_atras" />
+                <co.kubo.indiesco.utils.Medium
+                    android:id="@+id/tvTituloHeader"
+                    style="@style/texto_20_morado"
+                    android:layout_marginLeft="35sp"
+                    android:text="@string/olvido_contraseña_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/editEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45sp"
-            android:imeOptions="actionGo"
-            android:inputType="textCapSentences"
-            android:textCursorDrawable="@color/colorVerdeCursor" />
+            <!--Pagina 1-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40sp"
+                android:layout_marginRight="40sp"
+                android:orientation="vertical">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_22_morado"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="86sp"
+                    android:text="@string/olvido_contraseña_titulo" />
+                <co.kubo.indiesco.utils.Regular
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:paddingRight="10sp"
+                    android:paddingLeft="10sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48sp"
+                    android:text="@string/olvido_contraseña_subtitulo" />
+            </LinearLayout>
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45sp"
+                android:layout_marginRight="40sp"
+                android:layout_marginLeft="40sp"
+                android:imeOptions="actionGo"
+                android:inputType="textCapSentences"
+                android:textCursorDrawable="@color/colorVerdeCursor" />
+        </LinearLayout>
     </ScrollView>
 
     <!--Pagina 2-->
@@ -251,8 +258,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSiguiente"
-        android:src="@drawable/btn_next"
-        app:backgroundTint="@color/colorNaranja"
+        android:src="@drawable/btn_done"
+        app:backgroundTint="@color/colorVerde"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
         android:layout_gravity="right|bottom"

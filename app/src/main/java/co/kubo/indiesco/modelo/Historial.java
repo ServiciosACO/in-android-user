@@ -56,6 +56,28 @@ public class Historial {
     @SerializedName("inmueble")
     @Expose
     private String inmueble;
+    @SerializedName("calificado")
+    @Expose
+    private String calificado;
+    @SerializedName("calificacion")
+    @Expose
+    private String calificacion;
+
+    public String getCalificado() {
+        return calificado;
+    }
+
+    public void setCalificado(String calificado) {
+        this.calificado = calificado;
+    }
+
+    public String getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(String calificacion) {
+        this.calificacion = calificacion;
+    }
 
     private String isHeader;
 

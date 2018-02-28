@@ -11,8 +11,17 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.DecimalFormat;
 
@@ -25,6 +34,8 @@ import co.kubo.indiesco.utils.Utils;
 
 public class DialogDetalleCalendario extends Dialog implements View.OnClickListener {
 
+    MapView mMapView;
+    GoogleMap map;
     private Activity activity;
     private String lat, lng, nServicio, dir, ciudad, tipoTipo, fecha, hora, valor, dimension;
     private RespuestaListener respuestaListener;
@@ -66,18 +77,31 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }//if
 
-        WebView webViewCalendar = (WebView) findViewById(R.id.webViewCalendar);
+        mMapView = (MapView) findViewById(R.id.mapView);
+        MapsInitializer.initialize(activity);
+        mMapView.onCreate(onSaveInstanceState()); //ojo probar savedInstanceState
+        mMapView.onResume();
+        mMapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                LatLng posisiabsen = new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)); ////your lat lng
+                googleMap.addMarker(new MarkerOptions().position(posisiabsen));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posisiabsen, 15f));
+                googleMap.getUiSettings().setZoomControlsEnabled(true);
+                //googleMap.animateCamera(CameraUpdateFactory.zoomTo(15), 100, null);
+            }
+        });
+
         TextView tvDirDetalle = (TextView) findViewById(R.id.tvDirDetalle);
         TextView tvCiudadDetalle = (TextView) findViewById(R.id.tvCiudadDetalle);
         TextView tvTipoTipo = (TextView) findViewById(R.id.tvTipoTipo);
         TextView tvFechaDetalle = (TextView) findViewById(R.id.tvFechaDetalle);
         TextView tvHoraDetalle = (TextView) findViewById(R.id.tvHoraDetalle);
         TextView tvPrecioServicioDet = (TextView) findViewById(R.id.tvPrecioServicioDet);
+        LinearLayout llSalir = (LinearLayout) findViewById(R.id.llSalir);
+        llSalir.setOnClickListener(this);
         Button btnCancelarServicio = (Button) findViewById(R.id.btnCancelarServicio);
         btnCancelarServicio.setOnClickListener(this);
-
-        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=280x180&sensor=false";
-        webViewCalendar.loadUrl(url);
 
         tvDirDetalle.setText(dir);
         tvCiudadDetalle.setText(ciudad);

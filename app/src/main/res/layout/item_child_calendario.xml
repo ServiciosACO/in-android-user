@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/fondo_registro"
+    android:paddingBottom="16sp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -24,7 +25,7 @@
             android:gravity="center|left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlanco"
+            android:background="@drawable/rounded_edge"
             android:paddingLeft="16sp"
             android:paddingTop="28sp"
             android:paddingBottom="28sp"

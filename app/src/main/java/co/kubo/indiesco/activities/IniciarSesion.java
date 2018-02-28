@@ -107,7 +107,6 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnContinuar:
                 if (validacion()){
-                    btnContinuar.setEnabled(false);
                     animacion();
                 }//if
                 break;
@@ -184,6 +183,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
     }
 
     public void validarEmail(final String email){
+        btnContinuar.setEnabled(false);
         if (dialogProgress == null) {
             dialogProgress = new DialogProgress(IniciarSesion.this);
             dialogProgress.show();
@@ -196,6 +196,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                btnContinuar.setEnabled(true);
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }
@@ -209,7 +210,6 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                         editContraseña.setFocusable(true);
                         break;
                     case "101": //Email no existe va a crear cuenta
-                        btnContinuar.setEnabled(false);
                         Intent goCrear = new Intent(IniciarSesion.this, Registro.class);
                         goCrear.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         goCrear.putExtra("Email", editEmail.getText().toString());
@@ -226,6 +226,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
             }
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                btnContinuar.setEnabled(true);
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }
@@ -235,11 +236,11 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
     }//public void validarEmail
 
     public void login(String password){
+        btnContinuar.setEnabled(false);
         //if (dialogProgress == null) {
             dialogProgress = new DialogProgress(IniciarSesion.this);
             dialogProgress.show();
         //}
-        btnContinuar.setEnabled(false);
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -248,6 +249,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
         responseLoginCall.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                btnContinuar.setEnabled(true);
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }
@@ -281,6 +283,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
             }
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                btnContinuar.setEnabled(true);
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }

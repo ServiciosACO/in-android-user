@@ -2,7 +2,7 @@
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorBlanco"
+    android:background="@color/fondo_registro"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
@@ -37,8 +37,6 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvHistorial"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp"
             android:layout_marginBottom="32sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

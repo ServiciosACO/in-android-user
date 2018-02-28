@@ -38,7 +38,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
     WebView webViewTransaccion;
 
     private String id_solicitud, urlPago;
-    private boolean cancelarTransaccion;
+    private boolean cancelarTransaccion, bandVolver = false;
     private DialogProgress dialogProgress;
 
     @Override
@@ -57,38 +57,47 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         if (Utils.checkInternetConnection(Transaccion.this, true)){
             initWebView();
         }
-
-
-        /*//Para mostrar la pagina web embebida en la app
-        webViewTransaccion.loadUrl(urlPago);
-        webViewTransaccion.setWebViewClient(new MyWebViewClient());
-        webViewTransaccion.requestFocus();*/
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.imgBotonVolver:
-                if (webViewTransaccion.canGoBack()){
-                    webViewTransaccion.goBack();
-                }else{
-                    handleBackButton();
-                }
+                opcionVolver();
                 break;
-
             default:break;
         }
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && webViewTransaccion.canGoBack()){
-            webViewTransaccion.goBack();
-            return true;
-        }else{
-            handleBackButton();
-        }
+        opcionVolver();
         return super.onKeyDown(keyCode, event);
+    }
+
+    private void opcionVolver(){
+        if (cancelarTransaccion){
+            if (webViewTransaccion.canGoBack()){
+                webViewTransaccion.goBack();
+            }else{
+                if (Utils.checkInternetConnection(this, true)) {
+                    new DialogDosOpciones(Transaccion.this, "2", new DialogDosOpciones.RespuestaListener() {
+                        @Override
+                        public void onCancelar() {
+                        }
+                        @Override
+                        public void onAceptar() {
+                            cancelarServicio();
+                        }
+                        @Override
+                        public void onSalir() {
+                        }
+                    }).show();
+                }
+            }
+        }else{
+            irHome();
+        }
     }
 
     private void handleBackButton(){
@@ -108,18 +117,16 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                 }).show();
             }
         }else{
-            finish();
+            irHome();
         }
     }
-    /*
-    //Para mostrar la pagina web embebida en la app
-    private class MyWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
-    }*/
+
+    private void irHome(){
+        Intent intentHome = new Intent(Transaccion.this, Home.class);
+        intentHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intentHome);
+        finish();
+    }
 
     private void initWebView() {
         //webViewTransaccion = (WebView) findViewById(R.id.webViewTransaccion);
@@ -130,19 +137,6 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                     dialogProgress = new DialogProgress(Transaccion.this);
                     dialogProgress.show();
                 }
-                if (url.contains("resumen_pedido")) {
-                    /*if (isProductos) {
-                        // TODO: 9/08/2017 ir al historial
-                        sqLite.limpiarCarrito();
-                        finish();
-                    } else {
-                        Intent intentHome = new Intent(PagoActivity.this, HomeActivity.class);
-                        intentHome.putExtra(Constantes.INTENT_EXTRA_IR_HISTORIAL, true);
-                        intentHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intentHome);
-                        finish();
-                    }*/
-                }
                 super.onPageStarted(view, url, favicon);
             }
             @Override
@@ -152,6 +146,10 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                 }
                 if (url.contains("response")) {
                     cancelarTransaccion = false;
+                    if (bandVolver){
+                        irHome();
+                    }
+                    bandVolver = true;
                 }
                 super.onPageFinished(view, url);
             }
@@ -177,10 +175,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
-                        Intent goHome = new Intent(Transaccion.this, Home.class);
-                        goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(goHome);
-                        finish();
+                        irHome();
                         break;
                     case "102":
                         Toast.makeText(getApplicationContext(), "La solicitud no se puede cancelar", Toast.LENGTH_LONG).show();

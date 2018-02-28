@@ -9,7 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.Home;
@@ -42,6 +46,8 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private ArrayList<Historial> calendar;
     private ArrayList<String> fecha;
     Activity activity;
+    private String hora;
+    Utils utils = new Utils();
 
     public CalendarioAdapter(ArrayList<Historial> calendar, Activity activity){
         this.calendar = calendar;
@@ -68,8 +74,23 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             String [] splitHora_1 = calendar.get(position).getFecha_transaccion().split(" ");
             String [] splitHora_2 = splitHora_1[1].split(":");
-            final String hora = splitHora_2[0].concat(":").concat(splitHora_2[1]);
+            final String time = splitHora_2[0].concat(":").concat(splitHora_2[1]); //Hora militar
+            /**Para cambiar la hora al formato 12 horas*/
+            try {
+                final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+                final Date dateObj = sdf.parse(time);
+                System.out.println(dateObj);
+                System.out.println(new SimpleDateFormat("K:mm a").format(dateObj));
+                hora = new SimpleDateFormat("K:mm a").format(dateObj);
+            } catch (final ParseException e) {
+                e.printStackTrace();
+            }
             ((ViewHolderListItemCalendario) holder).setTvHoraCalendar(hora);
+
+            String fecha_1 = utils.StringToDate2(calendar.get(position).getFecha_transaccion());
+            String[] fecha_2 = fecha_1.split(" ");
+            String fecha = fecha_2[0].concat("/").concat(fecha_2[1]);
+            ((ViewHolderListItemCalendario) holder).setTvFecha(fecha);
 
             ((ViewHolderListItemCalendario) holder).getLlItemCalendario().setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,7 +102,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                             new DialogDetalleCalendario.RespuestaListener() {
                                 @Override
                                 public void onCancelarServicio() {
-                                    cancelarServicio(calendar.get(position).getId_solicitud());
+                                    cancelarServicio(calendar.get(position).getId_solicitud(), position);
                                 }
                                 @Override
                                 public void onSalir() {
@@ -119,7 +140,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    private void cancelarServicio(String id_solicitud){
+    private void cancelarServicio(String id_solicitud, final int adapter_position){
         String authToken = SharedPreferenceManager.getAuthToken(activity);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -133,6 +154,8 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 switch (code){
                     case "100":
                         Toast.makeText(activity, "Cancelo el servicio con éxito", Toast.LENGTH_LONG).show();
+                        calendar.remove(adapter_position);
+                        notifyDataSetChanged();
                         break;
                     case "102":
                         Toast.makeText(activity, "La solicitud no se puede cancelar", Toast.LENGTH_LONG).show();

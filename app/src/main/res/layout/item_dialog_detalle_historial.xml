@@ -19,17 +19,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="155sp">
-            <WebView
-                android:id="@+id/webViewHistorial"
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:apiKey="@string/key_google_maps"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-            </WebView>
+            </com.google.android.gms.maps.MapView>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_marginLeft="24sp"
-            android:layout_marginRight="24sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
@@ -41,6 +40,8 @@
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_22_naranja"
                     android:text="Servicio No. "
+                    android:layout_marginLeft="24sp"
+                    android:layout_marginRight="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Bold
@@ -59,6 +60,7 @@
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Dirección: "
+                    android:layout_marginLeft="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -76,6 +78,7 @@
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Ciudad: "
+                    android:layout_marginLeft="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -93,6 +96,7 @@
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Tipo: "
+                    android:layout_marginLeft="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -110,6 +114,7 @@
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Fecha: "
+                    android:layout_marginLeft="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -127,6 +132,7 @@
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Hora: "
+                    android:layout_marginLeft="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -138,9 +144,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginBottom="33sp"
+                android:layout_marginBottom="22sp"
                 android:orientation="horizontal"
                 android:gravity="center"
+                android:layout_marginLeft="24sp"
+                android:layout_marginRight="24sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
@@ -156,6 +164,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+
+            <RatingBar
+                android:visibility="visible"
+                android:id="@+id/ratingBarDet"
+                android:stepSize="1.0"
+                android:rating="0.0"
+                android:numStars="5"
+                android:isIndicator="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25sp"
+                style="@style/RatingBar"
+                android:progressTint="#F9BB28"
+                android:progressBackgroundTint="@color/color_hint"
+                android:secondaryProgressTint="@color/color_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 

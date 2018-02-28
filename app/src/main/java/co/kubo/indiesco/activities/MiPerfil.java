@@ -1,15 +1,29 @@
 package co.kubo.indiesco.activities;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -51,6 +65,8 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
     @BindView(R.id.btnCerrarSesion)
     Button btnCerrarSesion;
 
+    Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +83,8 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
         tvTerminos.setOnClickListener(this);
         tvLlamanos.setOnClickListener(this);
         btnCerrarSesion.setOnClickListener(this);
+
+        context = MiPerfil.this;
 
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());

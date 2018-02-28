@@ -3,12 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10sp"
+    android:paddingBottom="16sp"
+    android:paddingLeft="16sp"
+    android:paddingRight="16sp">
 
     <LinearLayout
         android:id="@+id/llHistorial"
         android:orientation="vertical"
-        android:background="@color/colorBlanco"
+        android:background="@drawable/rounded_edge"
         android:paddingTop="14sp"
         android:paddingLeft="16sp"
         android:paddingRight="16sp"
@@ -67,6 +71,29 @@
                 android:id="@+id/tvPrecioServicio"
                 android:text="385.500"
                 style="@style/texto_22_verde"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Regular
+                android:visibility="gone"
+                android:id="@+id/tvCalificar"
+                android:gravity="right"
+                android:layout_weight="1.5"
+                style="@style/texto_15_verde"
+                android:text="Calificar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <RatingBar
+                android:visibility="gone"
+                android:id="@+id/ratingBarHist"
+                android:stepSize="1.0"
+                android:rating="2.0"
+                android:numStars="5"
+                style="@style/RatingBarSmall"
+                android:progressTint="#F9BB28"
+                android:progressBackgroundTint="@color/color_hint"
+                android:secondaryProgressTint="@color/color_hint"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
