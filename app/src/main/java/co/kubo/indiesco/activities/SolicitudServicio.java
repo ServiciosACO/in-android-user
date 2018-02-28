@@ -75,8 +75,6 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     TextView tvDimension;
     @BindView(R.id.tvDir)
     TextView tvDir;
-    //@BindView(R.id.webViewMapServicio)
-    //WebView webViewMapServicio;
     @BindView(R.id.FechaServ)
     DatePicker FechaServ;
     @BindView(R.id.imgUrgente)

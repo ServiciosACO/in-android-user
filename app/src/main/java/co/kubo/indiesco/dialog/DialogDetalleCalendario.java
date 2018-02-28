@@ -142,11 +142,12 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
         }//switch
     }
     private void salir(){
-        dismiss();
         if (band){
             respuestaListener.onCancelarServicio();
+            dismiss();
         }else{
             respuestaListener.onSalir();
+            dismiss();
         }
     }//private void salir
 }

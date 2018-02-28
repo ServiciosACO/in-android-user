@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/fondo_registro"
     android:layout_height="match_parent"
@@ -32,19 +33,20 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_marginTop="160sp"
             android:layout_marginBottom="32sp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/img_confirm"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/img_donerating" />
         </LinearLayout>
         <co.kubo.indiesco.utils.Bold
             android:gravity="center"
