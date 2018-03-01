@@ -1,12 +1,17 @@
 package co.kubo.indiesco.activities;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -25,9 +30,14 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
     public static final String TAG = "Calendario";
     @BindView(R.id.imgBotonVolver)
     ImageView imgBotonVolver;
+    @BindView(R.id.imgCal)
+    ImageView imgCal;
     @BindView(R.id.rvCalendar)
     RecyclerView rvCalendar;
+    @BindView(R.id.calendarView)
+    CalendarView calendarView;
     ICalendarioPresenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,7 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_calendario);
         ButterKnife.bind(this);
         imgBotonVolver.setOnClickListener(this);
+        imgCal.setOnClickListener(this);
 
         presenter = new CalendarioPresenter(this, getApplicationContext(), Calendario.this);
     }
@@ -44,6 +55,9 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
         switch (view.getId()){
             case R.id.imgBotonVolver:
                 onBackPressed();
+                break;
+            case R.id.imgCal:
+
                 break;
             default:break;
         }

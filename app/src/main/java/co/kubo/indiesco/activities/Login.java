@@ -48,8 +48,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tvTerminosCondiciones:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-                startActivity(browserIntent);
+                Intent inTerminos = new Intent(Login.this, Terminos.class);
+                startActivity(inTerminos);
                 break;
             case R.id.btnCrearCuenta:
                 Intent inRegistro = new Intent(this, Registro.class);

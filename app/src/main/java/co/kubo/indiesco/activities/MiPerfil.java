@@ -125,8 +125,8 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
                 startActivity(inHistorial);
                 break;
             case R.id.tvTerminos:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-                startActivity(browserIntent);
+                Intent inTerminos = new Intent(MiPerfil.this, Terminos.class);
+                startActivity(inTerminos);
                 break;
             case R.id.tvLlamanos:
                 String phone = "123456789";

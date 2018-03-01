@@ -100,7 +100,8 @@
         <activity
             android:name=".activities.Transaccion"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.Calendario"></activity>
+        <activity android:name=".activities.Calendario" />
+        <activity android:name=".activities.Terminos"></activity>
     </application>
 
 </manifest>
