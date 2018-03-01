@@ -17,4 +17,6 @@
     <color name="fondoDialog">#f28b8e9f</color>
     <color name="colorEstrellaActiva">#F9BF1C</color>
     <color name="colorEstrellaInactiva">#F4F4F4</color>
+    <color name="transparente">#00ffffff</color>
 </resources>
+

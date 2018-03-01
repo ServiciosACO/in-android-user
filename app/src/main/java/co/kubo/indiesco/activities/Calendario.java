@@ -1,5 +1,6 @@
 package co.kubo.indiesco.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -34,10 +38,8 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
     ImageView imgCal;
     @BindView(R.id.rvCalendar)
     RecyclerView rvCalendar;
-    @BindView(R.id.calendarView)
-    CalendarView calendarView;
-    ICalendarioPresenter presenter;
 
+    ICalendarioPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
         imgBotonVolver.setOnClickListener(this);
         imgCal.setOnClickListener(this);
 
+        //Se envia tipo cero al constructor para mostrar toda la lista de servicios en el calendario
         presenter = new CalendarioPresenter(this, getApplicationContext(), Calendario.this);
     }
 
@@ -54,10 +57,13 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.imgBotonVolver:
-                onBackPressed();
+                Intent inHome = new Intent(this, Home.class);
+                startActivity(inHome);
+                finish();
                 break;
             case R.id.imgCal:
-
+                Intent in = new Intent(this, Calendario2.class);
+                startActivity(in);
                 break;
             default:break;
         }

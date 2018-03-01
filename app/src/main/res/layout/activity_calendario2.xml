@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/fondo_registro"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/llHeader"
+
+            android:layout_marginLeft="19sp"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgBotonVolver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                android:layout_gravity="center"
+                android:src="@drawable/btn_atras" />
+            <co.kubo.indiesco.utils.Medium
+                android:id="@+id/tvTituloHeader"
+                style="@style/texto_20_morado"
+                android:layout_marginLeft="35sp"
+                android:text="Mi calendario"
+                android:gravity="center|left"
+                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/imgCal"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_calendar_active" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/llOpcionCalendario"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    android:id="@+id/calendarView"
+                    app:mcv_arrowColor="@color/colorNaranja"
+                    app:mcv_headerTextAppearance="@style/CustomTextAppearanceHeader"
+                    app:mcv_dateTextAppearance="@style/CustomTextAppearanceDate"
+                    app:mcv_weekDayTextAppearance="@style/CustomTextAppearanceWeekDate"
+                    app:mcv_allowClickDaysOutsideCurrentMonth="false"
+                    app:mcv_calendarMode="month"
+                    app:mcv_weekDayLabels="@array/custom_weekdays"
+                    app:mcv_showOtherDates="other_months"
+                    app:mcv_selectionColor="@color/colorNaranja"
+                    android:background="@color/fondo_dialog"
+                    app:mcv_titleAnimationOrientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="329sp"/>
+                <co.kubo.indiesco.utils.Medium
+                    android:id="@+id/tvFechaSeleccionada"
+                    android:gravity="center"
+                    android:paddingTop="15sp"
+                    android:paddingBottom="15sp"
+                    android:text="02 de Marzo de 2018"
+                    style="@style/texto_15_naranja"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:visibility="visible"
+                    android:id="@+id/llSinServicio"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/img_missingcontent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Bold
+                        style="@style/texto_22_morado"
+                        android:text="¡Oops!"
+                        android:gravity="center"
+                        android:layout_marginTop="30sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Regular
+                        android:text="Parece que no hay nada aquí, por favor regresa más tarde"
+                        style="@style/texto_15_gris"
+                        android:gravity="center"
+                        android:layout_marginLeft="40sp"
+                        android:layout_marginRight="40sp"
+                        android:layout_marginBottom="18sp"
+                        android:layout_marginTop="7sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:visibility="gone"
+                    android:id="@+id/rvCalendarCustom"
+                    android:paddingRight="16sp"
+                    android:paddingLeft="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

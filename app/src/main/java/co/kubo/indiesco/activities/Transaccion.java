@@ -100,7 +100,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private void handleBackButton(){
+    /*private void handleBackButton(){
         if (cancelarTransaccion){
             if (Utils.checkInternetConnection(this, true)){
                 new DialogDosOpciones(Transaccion.this, "2", new DialogDosOpciones.RespuestaListener() {
@@ -119,7 +119,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         }else{
             irHome();
         }
-    }
+    }*/
 
     private void irHome(){
         Intent intentHome = new Intent(Transaccion.this, Home.class);

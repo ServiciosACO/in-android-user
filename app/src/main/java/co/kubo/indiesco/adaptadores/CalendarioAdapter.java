@@ -100,14 +100,13 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                             calendar.get(position).getDimension(), calendar.get(position).getId_tipo_inmueble(),
                             calendar.get(position).getFecha_transaccion(), hora, calendar.get(position).getValor(),
                             new DialogDetalleCalendario.RespuestaListener() {
-                                @Override
-                                public void onCancelarServicio() {
-                                    cancelarServicio(calendar.get(position).getId_solicitud(), position);
-                                }
-                                @Override
-                                public void onSalir() {
-                                }
-                            }).show();
+                        @Override
+                        public void onCancelarServicio() {
+                            cancelarServicio(calendar.get(position).getId_solicitud(), position);
+                        }
+                        @Override
+                        public void onSalir() {}
+                    }).show();
                 }
             });
 

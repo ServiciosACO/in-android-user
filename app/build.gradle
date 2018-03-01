@@ -39,6 +39,7 @@ dependencies {
     compile 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b'
     compile 'com.google.android.gms:play-services:11.8.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+    compile 'com.prolificinteractive:material-calendarview:1.4.3'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -13,9 +13,8 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:layout_marginTop="30sp"
+
             android:layout_marginLeft="19sp"
-            android:layout_marginBottom="33sp"
             android:orientation="horizontal"
             android:gravity="left"
             android:layout_width="match_parent"
@@ -24,6 +23,7 @@
                 android:id="@+id/imgBotonVolver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10sp"
                 android:layout_gravity="center"
                 android:src="@drawable/btn_atras" />
             <co.kubo.indiesco.utils.Medium
@@ -31,29 +31,22 @@
                 style="@style/texto_20_morado"
                 android:layout_marginLeft="35sp"
                 android:text="Mi calendario"
+                android:gravity="center|left"
                 android:layout_weight="2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
             <ImageView
                 android:id="@+id/imgCal"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/booked_calendar" />
+                android:src="@drawable/btn_calendar_inactive" />
         </LinearLayout>
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:minDate="01/03/2018"
-
-            android:background="@color/fondo_dialog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
         <android.support.v7.widget.RecyclerView
+            android:visibility="visible"
             android:id="@+id/rvCalendar"
             android:paddingRight="16sp"
-            android:paddingLeft="24sp"
+            android:paddingLeft="16sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

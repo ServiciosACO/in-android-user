@@ -19,6 +19,7 @@ import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseHistorial;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import co.kubo.indiesco.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +34,7 @@ public class CalendarioPresenter implements ICalendarioPresenter{
     private ICalendarioView iCalendarioView;
     private Context context;
     Activity activity;
+    Utils utils = new Utils();
     private ArrayList<Historial> calendario = new ArrayList<>();
     private ArrayList<Historial> holder_calendar = new ArrayList<>();
     private ArrayList<String> fecha = new ArrayList<>();
@@ -116,7 +118,6 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                         mostrarCalendario();
                         break;
                     case "102":
-                        Toast.makeText(context, "No hay datos para mostrar", Toast.LENGTH_LONG).show();
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":
