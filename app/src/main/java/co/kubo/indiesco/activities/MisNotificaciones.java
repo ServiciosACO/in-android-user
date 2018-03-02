@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,9 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
     ImageView imgBotonVolver;
     @BindView(R.id.rvNotificacion)
     RecyclerView rvNotificacion;
+    @BindView(R.id.llSinServicio)
+    LinearLayout llSinServicio;
+
     INotificacionesPresenter presenter;
 
     @Override
@@ -54,6 +58,12 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
     public NotificacionesAdapter crearAdaptadorNotificaciones(ArrayList<Notificaciones> notificaciones) {
         NotificacionesAdapter notificacionesAdapter = new NotificacionesAdapter(notificaciones, MisNotificaciones.this);
         return notificacionesAdapter;
+    }
+
+    @Override
+    public void pintarSinInfo() {
+        llSinServicio.setVisibility(View.VISIBLE);
+        rvNotificacion.setVisibility(View.GONE);
     }
 
     @Override

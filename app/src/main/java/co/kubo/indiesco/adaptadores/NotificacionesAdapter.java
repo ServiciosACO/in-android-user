@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -48,6 +50,7 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private String fechaX;
     private int i = 0;
     private DialogProgress dialogProgress;
+    private String hora;
 
     public NotificacionesAdapter(ArrayList<Notificaciones> notificaciones, Activity activity){
         this.notificaciones = notificaciones;
@@ -73,7 +76,17 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (holder instanceof ViewHolderListItem) {
             String [] splitHora_1 = notificaciones.get(position).getFecha().split(" ");
             String [] splitHora_2 = splitHora_1[1].split(":");
-            String hora = splitHora_2[0].concat(":").concat(splitHora_2[1]);
+            String time = splitHora_2[0].concat(":").concat(splitHora_2[1]);
+            //Para cambiar la hora al formato 12 horas
+            try {
+                final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+                final Date dateObj = sdf.parse(time);
+                System.out.println(dateObj);
+                System.out.println(new SimpleDateFormat("K:mm a").format(dateObj));
+                hora = new SimpleDateFormat("K:mm a").format(dateObj);
+            } catch (final ParseException e) {
+                e.printStackTrace();
+            }
             ((ViewHolderListItem) holder).setTvHora(hora);
             ((ViewHolderListItem) holder).setTvMsj(notificaciones.get(position).getNotificacion());
 

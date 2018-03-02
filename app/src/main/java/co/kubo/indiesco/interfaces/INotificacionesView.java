@@ -14,4 +14,5 @@ public interface INotificacionesView {
     public void generarLinearLayoutVertical();
     public void inicializarAdaptadorRvNotificaciones(NotificacionesAdapter notificacionesAdapter);
     public NotificacionesAdapter crearAdaptadorNotificaciones(ArrayList<Notificaciones> notificaciones);
+    public void pintarSinInfo();
 }

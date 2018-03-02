@@ -61,13 +61,20 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
         DecimalFormat formateador = new DecimalFormat("###,###");
         holder.tvPrecioServicio.setText(formateador.format(Double.parseDouble(String.valueOf(hist.getValor()))) + " COP");
 
-        if (hist.getCalificado().equals("si")){
+        if (hist.getCalificado().equals("no")){
             holder.tvCalificar.setVisibility(View.VISIBLE);
             holder.ratingBarHist.setVisibility(View.GONE);
         }else{
             holder.tvCalificar.setVisibility(View.GONE);
             holder.ratingBarHist.setVisibility(View.VISIBLE);
             holder.ratingBarHist.setRating(Float.valueOf(hist.getCalificacion()));
+        }
+
+        if (hist.getEstado().equals("cancelado_usuario")){
+            holder.tvCalificar.setVisibility(View.VISIBLE);
+            holder.tvCalificar.setText("Cancelado");
+            holder.tvCalificar.setTextColor(activity.getResources().getColor(R.color.colorRojo));
+            holder.ratingBarHist.setVisibility(View.GONE);
         }
 
         holder.llHistorial.setOnClickListener(new View.OnClickListener() {

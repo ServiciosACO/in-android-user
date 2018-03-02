@@ -38,6 +38,9 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
     ImageView imgCal;
     @BindView(R.id.rvCalendar)
     RecyclerView rvCalendar;
+    @BindView(R.id.llSinServicio)
+    LinearLayout llSinServicio;
+
 
     ICalendarioPresenter presenter;
 
@@ -91,5 +94,11 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
     public CalendarioAdapter crearAdaptadorCalendario(ArrayList<Historial> calendario) {
         CalendarioAdapter calendarioAdapter = new CalendarioAdapter(calendario, Calendario.this);
         return calendarioAdapter;
+    }
+
+    @Override
+    public void pintarSinServicio() {
+        llSinServicio.setVisibility(View.VISIBLE);
+        rvCalendar.setVisibility(View.GONE);
     }
 }

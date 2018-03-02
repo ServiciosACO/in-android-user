@@ -85,6 +85,11 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     LinearLayout llValor;
     @BindView(R.id.tvValor)
     TextView tvValor;
+    @BindView(R.id.viewDirInactive)
+    View viewDirInactive;
+    @BindView(R.id.viewDirActive)
+    View viewDirActive;
+
 
     private DialogProgress dialogProgress;
     private MapFragment mapaDireccion;
@@ -171,15 +176,10 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
 
 
         listarTiposInmuebles();
-
-        /*String lat = "-4.7026073";
-        String lng = "-74.0436851";
-        String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
-        webViewMapServicio.loadUrl(url);*/
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(final View view) {
         switch (view.getId()){
             case R.id.imgBotonVolver:
                 onBackPressed();
@@ -207,10 +207,10 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                     @Override
                     public void onSelectDir(String dir, String lat, String lng, String complemento, String ciudad) {
                         setLatitudYLongitud(Double.parseDouble(lat), Double.parseDouble(lng));
+                        tvDir.setText(dir);
+                        viewDirInactive.setVisibility(View.GONE);
+                        viewDirActive.setVisibility(View.VISIBLE);
                         bandDir = true;
-                        //onMapReady(googleMap);
-                        /*String url = "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=200x200&sensor=false";
-                        webViewMapServicio.loadUrl(url);*/
                     }
                     @Override
                     public void onIrMisDir() {
@@ -223,9 +223,22 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 }).show();
                 break;
             case R.id.llValor:
-                crearServicio();
+                //if (validacion()){
+                    crearServicio();
+                //}
                 break;
         }//switch
+    }
+
+    public boolean validacion(){
+        if (Utils.checkInternetConnection(this, true)){
+            return false;
+        }
+        if (!bandDir){
+            Toast.makeText(this, "Debe elegir una dirección valida para crear el servicio", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 
     public void crearServicio(){

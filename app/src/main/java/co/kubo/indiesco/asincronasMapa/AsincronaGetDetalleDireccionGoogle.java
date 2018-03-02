@@ -7,6 +7,7 @@ import android.util.Log;
 import org.json.JSONObject;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.EditarPerfil;
 import co.kubo.indiesco.activities.Registro;
 import co.kubo.indiesco.utils.Servicios;
 
@@ -16,10 +17,12 @@ public class AsincronaGetDetalleDireccionGoogle extends AsyncTask<Void, Void, St
 
     private Activity activity;
     private String placeId;
+    private int tipo;
 
-    public AsincronaGetDetalleDireccionGoogle(Activity activity, String placeId) {
+    public AsincronaGetDetalleDireccionGoogle(Activity activity, String placeId, int tipo) {
         this.activity = activity;
         this.placeId = placeId;
+        this.tipo = tipo;
     }
 
     @Override
@@ -56,6 +59,11 @@ public class AsincronaGetDetalleDireccionGoogle extends AsyncTask<Void, Void, St
                 Log.e(TAG, e.toString());
             }
         }
-        ((Registro) activity).setLatitudYLongitud(latlng);
+        if (tipo == 1){
+            ((Registro) activity).setLatitudYLongitud(latlng);
+        }else{
+            ((EditarPerfil) activity).setLatitudYLongitud(latlng);
+        }
+
     }
 }

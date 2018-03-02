@@ -118,6 +118,7 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                         mostrarCalendario();
                         break;
                     case "102":
+                        iCalendarioView.pintarSinServicio();
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":

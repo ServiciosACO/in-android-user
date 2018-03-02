@@ -62,6 +62,17 @@ public class Historial {
     @SerializedName("calificacion")
     @Expose
     private String calificacion;
+    @SerializedName("estado")
+    @Expose
+    private String estado;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     public String getCalificado() {
         return calificado;

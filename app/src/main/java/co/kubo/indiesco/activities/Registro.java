@@ -401,7 +401,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                     bandDireccionValida = false;
                     if (s.toString().length() >= 2) {
                         if (Utils.checkInternetConnection(Registro.this, true)) {
-                            new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim()).execute();
+                            new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim(), 1).execute();
                             /*if (cargarDireccionesGoogle) {
                                 cargarDireccionesGoogle = false;
                                 new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim()).execute();
@@ -429,7 +429,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 String placeId = ((String[]) arg0.getItemAtPosition(arg2))[1];
                 direccion ="";
                 if (Utils.checkInternetConnection(Registro.this, true)) {
-                    new AsincronaGetDetalleDireccionGoogle(Registro.this, placeId).execute();
+                    new AsincronaGetDetalleDireccionGoogle(Registro.this, placeId, 1).execute();
                 }
             }
         });
@@ -994,7 +994,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 isMapa = false;
                 editDireccion.setAdapter(null);
                 if (Utils.checkInternetConnection(Registro.this, true)) {
-                    AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this);
+                    AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this, 1);
                     asyncDir.execute();
                 }
             }

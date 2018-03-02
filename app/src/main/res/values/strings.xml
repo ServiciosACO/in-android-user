@@ -22,6 +22,10 @@
         <item>S</item>
     </array>
 
+    <!--Solicitud servicio-->
+    <string name="titulo_servicio">Servicio de Limpieza General</string>
+    <string name="descripcion_servicio">Barrido, trapeado de pisos, desempolve, aspirada de muebles y alfombras, lavado de baños ( No incluye lavado de platos y enceres de cocina, lavada de muebles y alfombras)</string>
+
     <!--Tour-->
     <string name="tour_boton">¡Empecemos!</string>
     <string name="tour_titulo_1">Solicita el servicio que necesites</string>

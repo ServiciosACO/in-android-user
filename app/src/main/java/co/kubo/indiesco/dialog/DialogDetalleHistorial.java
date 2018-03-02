@@ -137,7 +137,7 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
                 break;
         }//switch
 
-        if (calificado.equals("no")){
+        if (calificado.equals("si")){
             ratingBarDet.setVisibility(View.VISIBLE);
             ratingBarDet.setRating(Float.valueOf(calificacion));
         }else{

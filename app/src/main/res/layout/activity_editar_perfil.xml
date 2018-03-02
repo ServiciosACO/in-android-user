@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <ScrollView
+        android:visibility="visible"
+        android:id="@+id/scrollViewEdit"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:background="@color/fondo_dialog"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/llHeader"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginLeft="19sp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgBotonVolver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/btn_atras" />
+                    <co.kubo.indiesco.utils.Medium
+                        android:id="@+id/tvTituloHeader"
+                        style="@style/texto_20_morado"
+                        android:layout_marginLeft="35sp"
+                        android:text="Editar perfil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/imgCambiarFoto"
+                            android:layout_marginRight="18sp"
+                            android:src="@drawable/btn_foto_inactive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:id="@+id/imgFoto"
+                            android:src="@drawable/registro_foto"
+                            android:layout_marginBottom="20sp"
+                            android:layout_marginTop="20sp"
+                            android:layout_width="96sp"
+                            android:layout_height="96sp" />
+                        <ImageView
+                            android:id="@+id/imgConfig"
+                            android:layout_marginLeft="18sp"
+                            android:src="@drawable/btn_config_active"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/llEditar"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/editNombre"
+                            android:hint="Nombre"
+                            android:gravity="center"
+                            style="@style/texto_15_gris"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_marginTop="15sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editEmail"
+                            android:hint="Correo electrónico"
+                            style="@style/texto_15_gris"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textEmailAddress"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editCelular"
+                            android:hint="Teléfono celular"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="number"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editDireccion"
+                            android:hint="Dirección"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <EditText
+                            android:id="@+id/editComplemento"
+                            android:hint="Complemento de la dirección"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                        <RelativeLayout
+                            android:id="@+id/fondoMapaDir"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="27sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:background="@color/colorBlanco">
+                            <fragment
+                                android:id="@+id/mapaDireccion"
+                                class ="com.google.android.gms.maps.MapFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                        </RelativeLayout>
+                        <EditText
+                            android:id="@+id/editCiudad"
+                            android:hint="Ciudad"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="textCapSentences"
+                            style="@style/texto_15_gris"
+                            android:gravity="center"
+                            android:textColorHint="@color/color_hint"
+                            android:layout_marginRight="40sp"
+                            android:layout_marginLeft="40sp"
+                            android:layout_marginBottom="100sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textCursorDrawable="@color/colorVerdeCursor" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/llPerfil2"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/editNom"
+                    android:hint="Nombre"
+                    android:gravity="center"
+                    style="@style/texto_15_gris"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:layout_marginTop="20sp"
+                    android:inputType="textCapSentences"
+                    android:textColorHint="@color/colorVerde"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+                <EditText
+                    android:id="@+id/editCorreo"
+                    android:hint="Correo electrónico"
+                    style="@style/texto_15_gris"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:focusable="false"
+                    android:inputType="textEmailAddress"
+                    android:gravity="center"
+                    android:textColorHint="@color/colorVerde"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+                <EditText
+                    android:id="@+id/editTelf"
+                    android:hint="Teléfono celular"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:textColorHint="@color/colorVerde"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+
+                <AutoCompleteTextView
+                    android:visibility="gone"
+                    android:id="@+id/editDir"
+                    android:hint="Dirección"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textCapSentences"
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:textColorHint="@color/colorVerde"
+                    android:textCursorDrawable="@color/colorVerdeCursor"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/editComplementoDir"
+                    android:hint="Complemento de la dirección"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textCapSentences"
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:textColorHint="@color/colorVerde"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/fondoMapDir"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="27sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:background="@color/colorBlanco">
+                    <fragment
+                        android:id="@+id/mapaDir"
+                        class ="com.google.android.gms.maps.MapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imagetrans"
+                        android:layout_alignTop="@+id/mapaDir"
+                        android:layout_alignBottom="@+id/mapaDir"
+                        android:layout_alignEnd="@+id/mapaDir"
+                        android:layout_alignRight="@+id/mapaDir"
+                        android:layout_alignLeft="@+id/mapaDir"
+                        android:layout_alignStart="@+id/mapaDir"/>
+                </RelativeLayout>
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/editCity"
+                    android:hint="Ciudad"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textCapSentences"
+                    style="@style/texto_15_gris"
+                    android:gravity="center"
+                    android:textColorHint="@color/colorVerde"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginBottom="100sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@color/colorVerdeCursor" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabDone"
+        android:elevation="4sp"
+        app:fabSize="auto"
+        android:fitsSystemWindows="true"
+        android:fadeScrollbars="true"
+        android:src="@drawable/btn_done"
+        android:layout_marginVertical="@dimen/fab_margin"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        app:backgroundTint="@color/colorVerde"
+        android:layout_gravity="right|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</android.support.design.widget.CoordinatorLayout>

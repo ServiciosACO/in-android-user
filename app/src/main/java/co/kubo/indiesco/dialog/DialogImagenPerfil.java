@@ -81,6 +81,7 @@ public class DialogImagenPerfil extends Dialog implements View.OnClickListener {
                 break;
             case R.id.llOpImagen:
                 dismiss();
+                respuestaListener.onSalir();
                 break;
         }//switch
     }

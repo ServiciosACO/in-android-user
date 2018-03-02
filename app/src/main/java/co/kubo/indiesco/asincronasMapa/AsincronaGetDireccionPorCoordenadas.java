@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import co.kubo.indiesco.activities.EditarPerfil;
 import co.kubo.indiesco.activities.Registro;
 import co.kubo.indiesco.utils.Servicios;
 
@@ -26,11 +27,13 @@ public class AsincronaGetDireccionPorCoordenadas extends AsyncTask<Void, Void, S
     private String direccion = "";
     private Boolean band = true;
     Activity activity;
+    private int opcion;
 
-    public AsincronaGetDireccionPorCoordenadas(String lat, String lon, Activity activity) {
+    public AsincronaGetDireccionPorCoordenadas(String lat, String lon, Activity activity, int opcion) {
         this.lat = lat;
         this.lon = lon;
         this.activity = activity;
+        this.opcion = opcion;
     }
 
     @Override
@@ -90,7 +93,11 @@ public class AsincronaGetDireccionPorCoordenadas extends AsyncTask<Void, Void, S
                 //Log.e(TAG, e.toString());
             }
         }
-        ((Registro) activity).setDireccion(direccionCorta, ciudad);
+        if (opcion == 1){
+            ((Registro) activity).setDireccion(direccionCorta, ciudad);
+        }else{
+            ((EditarPerfil) activity).setDireccion(direccionCorta, ciudad);
+        }
     }
 }
 

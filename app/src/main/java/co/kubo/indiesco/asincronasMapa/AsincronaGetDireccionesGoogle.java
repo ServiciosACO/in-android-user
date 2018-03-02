@@ -13,6 +13,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.EditarPerfil;
 import co.kubo.indiesco.activities.Registro;
 
 
@@ -22,10 +23,12 @@ public class AsincronaGetDireccionesGoogle extends AsyncTask<Void, Void, String>
 
     private Activity activity;
     private String direccion;
+    private int tipo;
 
-    public AsincronaGetDireccionesGoogle(Activity activity, String direccion) {
+    public AsincronaGetDireccionesGoogle(Activity activity, String direccion, int tipo) {
         this.activity = activity;
         this.direccion = direccion;
+        this.tipo = tipo;
     }
 
     @Override
@@ -83,6 +86,11 @@ public class AsincronaGetDireccionesGoogle extends AsyncTask<Void, Void, String>
                 Log.e(TAG, e.toString());
             }
         }
-        ((Registro) activity).llenarAutocomplete(direcciones);
+        if (tipo == 1){
+            ((Registro) activity).llenarAutocomplete(direcciones);
+        }else{
+            ((EditarPerfil) activity).llenarAutocomplete(direcciones);
+        }
+
     }
 }

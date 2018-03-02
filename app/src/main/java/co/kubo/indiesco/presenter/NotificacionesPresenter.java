@@ -99,13 +99,13 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
                                 }//for2
                             }//for
                         }else{
-                            holder_notif = new ArrayList<>();
+                            iNotificacionesView.pintarSinInfo();
                         }
 
                         mostrarNotificaciones();
                         break;
                     case "102":
-                        Toast.makeText(context, "No hay datos para mostrar", Toast.LENGTH_LONG).show();
+                        iNotificacionesView.pintarSinInfo();
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":

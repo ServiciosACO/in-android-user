@@ -139,7 +139,7 @@ public class DialogAgregarDir extends Dialog implements View.OnClickListener, On
                 //isMapa = false;
                 editDireccion.setAdapter(null);
                 if (Utils.checkInternetConnection(activity, true)) {
-                    AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), activity);
+                    AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), activity, 1);
                     asyncDir.execute();
                 }
             }

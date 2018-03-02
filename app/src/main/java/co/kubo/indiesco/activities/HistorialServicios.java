@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.google.android.gms.vision.text.Line;
 
 import java.util.ArrayList;
 
@@ -26,6 +29,9 @@ public class HistorialServicios extends AppCompatActivity implements OnClickList
     ImageView imgBotonVolver;
     @BindView(R.id.rvHistorial)
     RecyclerView rvHistorial;
+    @BindView(R.id.llSinServicio)
+    LinearLayout llSinServicio;
+
     IHistorialServiciosPresenter presenter;
 
     @Override
@@ -69,5 +75,11 @@ public class HistorialServicios extends AppCompatActivity implements OnClickList
     public HistorialServiciosAdapter crearAdaptadorHistorial(ArrayList<Historial> historials) {
         HistorialServiciosAdapter historialServiciosAdapter = new HistorialServiciosAdapter(historials, HistorialServicios.this);
         return historialServiciosAdapter;
+    }
+
+    @Override
+    public void pintarSinInfo() {
+        llSinServicio.setVisibility(View.VISIBLE);
+        rvHistorial.setVisibility(View.GONE);
     }
 }

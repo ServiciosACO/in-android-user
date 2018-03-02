@@ -13,4 +13,5 @@ public interface IHistorialServiciosView {
     public void generarLinearLayoutVertical();
     public void inicializarAdaptadorRvHistorial(HistorialServiciosAdapter historialServiciosAdapter);
     public HistorialServiciosAdapter crearAdaptadorHistorial(ArrayList<Historial> historials);
+    public void pintarSinInfo();
 }

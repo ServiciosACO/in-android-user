@@ -63,10 +63,14 @@ public class HistorialServiciosPresenter implements IHistorialServiciosPresenter
                 switch (code){
                     case "100":
                         hist = response.body().getData();
-                        mostrarHistorial();
+                        if (hist.size() != 0){
+                            mostrarHistorial();
+                        }else{
+                            iHistorialServiciosView.pintarSinInfo();
+                        }
                         break;
                     case "102":
-                        Toast.makeText(context, "No tiene servicios agendados", Toast.LENGTH_LONG).show();
+                        iHistorialServiciosView.pintarSinInfo();
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":

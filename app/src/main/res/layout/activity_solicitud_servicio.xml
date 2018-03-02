@@ -57,7 +57,7 @@
 
                 <co.kubo.indiesco.utils.Bold
                     android:id="@+id/tvTituloServicio"
-                    android:text="Servicio de Limpieza General"
+                    android:text="@string/titulo_servicio"
                     style="@style/texto_16_morado"
                     android:gravity="left"
                     android:layout_marginTop="24sp"
@@ -66,7 +66,8 @@
                 <co.kubo.indiesco.utils.Regular
                     android:id="@+id/tvSubTituloServicio"
                     android:layout_marginTop="21sp"
-                    android:text="Descripción: Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
+
+                    android:text="@string/descripcion_servicio"
                     style="@style/texto_13_gris"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -133,6 +134,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+                <View
+                    android:id="@+id/viewDirInactive"
+                    android:background="@color/colorGris"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5sp"/>
+                <View
+                    android:visibility="gone"
+                    android:id="@+id/viewDirActive"
+                    android:background="@color/colorVerde"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5sp"/>
 
                 <RelativeLayout
                     android:id="@+id/fondoMapaDir"

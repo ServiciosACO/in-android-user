@@ -14,4 +14,5 @@ public interface ICalendarioView {
     public void generarLinearLayoutVertical();
     public void inicializarAdaptadorRvCalendario(CalendarioAdapter calendarioAdapter);
     public CalendarioAdapter crearAdaptadorCalendario(ArrayList<Historial> calendario);
+    public void pintarSinServicio();
 }

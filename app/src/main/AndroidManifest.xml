@@ -102,13 +102,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Calendario"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Terminos"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Calendario2"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.EditarPerfil"></activity>
     </application>
 
 </manifest>
