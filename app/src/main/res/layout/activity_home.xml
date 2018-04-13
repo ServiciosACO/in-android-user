@@ -67,8 +67,6 @@
             </LinearLayout>
         </LinearLayout>
 
-
-
         <LinearLayout
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
