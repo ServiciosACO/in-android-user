@@ -65,7 +65,9 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.fabAgregar:
-                agregarDir();
+                Intent in = new Intent(MisDirecciones.this, NuevaDireccion.class);
+                startActivity(in);
+                //agregarDir();
                 break;
             default:break;
         }//switch

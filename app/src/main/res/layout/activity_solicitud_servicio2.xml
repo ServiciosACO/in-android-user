@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <ScrollView
+        android:visibility="visible"
+        android:id="@+id/scrollViewSolicitudServ"
+        android:background="@color/fondo_registro"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/llValor"
+        android:orientation="horizontal"
+        android:background="@color/colorRojo"
+        android:layout_marginLeft="8sp"
+        android:layout_marginRight="8sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="16sp"
+            android:paddingTop="12sp"
+            android:paddingBottom="10sp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Regular
+                android:text="Precio del servicio"
+                style="@style/texto_12_blanco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvValor"
+                android:text="$300.000"
+                style="@style/texto_36_blanco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView
+            android:src="@drawable/arrow_grey"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

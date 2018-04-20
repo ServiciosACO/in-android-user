@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.github.daimajia:AndroidSwipeLayout-f66ac6942b">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/4.1/caches/transforms-1/files-1.1/AndroidSwipeLayout-f66ac6942b.aar/69e6200f06294dd583c5ccbac5eca3e2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/4.1/caches/transforms-1/files-1.1/AndroidSwipeLayout-f66ac6942b.aar/69e6200f06294dd583c5ccbac5eca3e2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/4.1/caches/transforms-1/files-1.1/AndroidSwipeLayout-f66ac6942b.aar/581fc181a3f66ab68519c736057f9135/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/4.1/caches/transforms-1/files-1.1/AndroidSwipeLayout-f66ac6942b.aar/581fc181a3f66ab68519c736057f9135/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

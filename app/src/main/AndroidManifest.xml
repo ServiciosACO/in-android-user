@@ -109,7 +109,9 @@
         <activity
             android:name=".activities.Calendario2"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.EditarPerfil"></activity>
+        <activity android:name=".activities.EditarPerfil" />
+        <activity android:name=".activities.SolicitudServicio2" />
+        <activity android:name=".activities.NuevaDireccion"></activity>
     </application>
 
 </manifest>
