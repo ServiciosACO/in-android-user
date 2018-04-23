@@ -66,7 +66,7 @@ public class CalendarioDetalleFechaAdapter extends RecyclerView.Adapter<Calendar
                 new DialogDetalleCalendario(activity, calendar.get(position).getLatitud(), calendar.get(position).getLongitud(),
                         calendar.get(position).getId_solicitud(), calendar.get(position).getDireccion(), calendar.get(position).getCiudad(),
                         calendar.get(position).getDimension(), calendar.get(position).getId_tipo_inmueble(),
-                        calendar.get(position).getFecha_transaccion(), hora, calendar.get(position).getValor(),
+                        calendar.get(position).getFecha_servicio(), hora, calendar.get(position).getValor(),
                         new DialogDetalleCalendario.RespuestaListener() {
                             @Override
                             public void onCancelarServicio() {

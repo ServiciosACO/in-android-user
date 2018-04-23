@@ -70,21 +70,27 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                     case "100":
                         calendario = response.body().getData();
                         fecha.add(calendario.get(0).getFecha_servicio());
-                        String date = calendario.get(0).getFecha_servicio();
+                        String date[] = calendario.get(0).getFecha_servicio().split("-");
                         int x = 0;
                         for (int i = 0; i < calendario.size(); i++){
-                            if (!date.equals(calendario.get(i).getFecha_servicio())){
+                            String month[] = calendario.get(i).getFecha_servicio().split("-");
+                            if (!date[1].equals(month[1])){
                                 fecha.add(calendario.get(i).getFecha_servicio());
+                                date[1] = month[1];
                             }//if
                         }//for
                         boolean band = true;
                         for (int y = 0; y < fecha.size(); y++){
                             band = true;
                             for (int i = 0; i < calendario.size(); i++){
-                                if (calendario.get(i).getFecha_servicio().equals(fecha.get(y))){
+                                String month_date[] = fecha.get(y).split("-");
+                                String month_date_service[] = calendario.get(i).getFecha_servicio().split("-");
+                                if (month_date_service[1].equals(month_date[1])){
                                     if (band){
                                         Historial not = new Historial();
                                         not.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
+                                        not.setFecha_servicio(calendario.get(i).getFecha_servicio());
+                                        not.setHora(calendario.get(i).getHora());
                                         not.setDireccion(calendario.get(i).getDireccion());
                                         not.setCiudad(calendario.get(i).getCiudad());
                                         not.setInmueble(calendario.get(i).getInmueble());
@@ -100,6 +106,8 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                                     }
                                     Historial not = new Historial();
                                     not.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
+                                    not.setFecha_servicio(calendario.get(i).getFecha_servicio());
+                                    not.setHora(calendario.get(i).getHora());
                                     not.setDireccion(calendario.get(i).getDireccion());
                                     not.setCiudad(calendario.get(i).getCiudad());
                                     not.setInmueble(calendario.get(i).getInmueble());

@@ -72,9 +72,10 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (holder instanceof ViewHolderListItemCalendario) {
             ((ViewHolderListItemCalendario) holder).setTvDir(calendar.get(position).getDireccion());
 
-            String [] splitHora_1 = calendar.get(position).getFecha_transaccion().split(" ");
+            /*String [] splitHora_1 = calendar.get(position).getFecha_servicio().split(" ");
             String [] splitHora_2 = splitHora_1[1].split(":");
-            final String time = splitHora_2[0].concat(":").concat(splitHora_2[1]); //Hora militar
+            final String time = splitHora_2[0].concat(":").concat(splitHora_2[1]); //Hora militar*/
+            final String time = calendar.get(position).getHora();
             /**Para cambiar la hora al formato 12 horas*/
             try {
                 final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
@@ -87,7 +88,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
             ((ViewHolderListItemCalendario) holder).setTvHoraCalendar(hora);
 
-            String fecha_1 = utils.StringToDate2(calendar.get(position).getFecha_transaccion());
+            String fecha_1 = utils.StringToDate2(calendar.get(position).getFecha_servicio());
             String[] fecha_2 = fecha_1.split(" ");
             String fecha = fecha_2[0].concat("/").concat(fecha_2[1]);
             ((ViewHolderListItemCalendario) holder).setTvFecha(fecha);
@@ -98,7 +99,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     new DialogDetalleCalendario(activity, calendar.get(position).getLatitud(), calendar.get(position).getLongitud(),
                             calendar.get(position).getId_solicitud(), calendar.get(position).getDireccion(), calendar.get(position).getCiudad(),
                             calendar.get(position).getDimension(), calendar.get(position).getId_tipo_inmueble(),
-                            calendar.get(position).getFecha_transaccion(), hora, calendar.get(position).getValor(),
+                            calendar.get(position).getFecha_servicio(), hora, calendar.get(position).getValor(),
                             new DialogDetalleCalendario.RespuestaListener() {
                         @Override
                         public void onCancelarServicio() {
@@ -112,7 +113,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         } else if (holder instanceof ViewHolderHeaderCalendario) {
             Utils utils = new Utils();
-            String nueva_fecha = utils.StringToDate(calendar.get(position).getFecha_transaccion());
+            String nueva_fecha = utils.StringToDate(calendar.get(position).getFecha_servicio());
             String [] extractMes = nueva_fecha.split(" ");
             String month = extractMes[1];
             ((ViewHolderHeaderCalendario) holder).setTvHeader(month);

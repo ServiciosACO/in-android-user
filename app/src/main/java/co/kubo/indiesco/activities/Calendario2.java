@@ -99,7 +99,7 @@ public class Calendario2 extends AppCompatActivity implements View.OnClickListen
         tvFechaSeleccionada.setText(getSelectedDatesString());
         String fecha_1 = getSelectedDatesString();
         for (int i = 0; i < calendario.size(); i++){
-            String fecha_2 = utils.StringToDate(calendario.get(i).getFecha_transaccion()).replace(" ", " de ");
+            String fecha_2 = utils.StringToDate(calendario.get(i).getFecha_servicio()).replace(" ", " de ");
             if (fecha_1.equals(fecha_2)){
                 band = true;
             }
@@ -186,7 +186,7 @@ public class Calendario2 extends AppCompatActivity implements View.OnClickListen
                         ArrayList<CalendarDay> dates = new ArrayList<>();
                         calendario = response.body().getData();
                         for (int i = 0; i < calendario.size(); i++){
-                            String[] fecha = utils.StringToDate2(calendario.get(i).getFecha_transaccion()).split(" ");
+                            String[] fecha = utils.StringToDate2(calendario.get(i).getFecha_servicio()).split(" ");
                             String day_ = fecha[0];
                             String month = fecha[1];
                             String year = fecha[2];

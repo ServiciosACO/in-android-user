@@ -69,9 +69,10 @@ public class Calendario2Presenter implements ICalendario2Presenter {
                     case "100":
                         calendario = response.body().getData();
                         for (int i = 0; i < calendario.size(); i++){
-                            if (_fecha.equals(utils.StringToDate(calendario.get(i).getFecha_transaccion()).replace(" ", " de "))){
+                            if (_fecha.equals(utils.StringToDate(calendario.get(i).getFecha_servicio()).replace(" ", " de "))){
                                 Historial holder_hist = new Historial();
                                 holder_hist.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
+                                holder_hist.setFecha_servicio(calendario.get(i).getFecha_servicio());
                                 holder_hist.setHora(calendario.get(i).getHora());
                                 holder_hist.setDireccion(calendario.get(i).getDireccion());
                                 holder_hist.setCiudad(calendario.get(i).getCiudad());
