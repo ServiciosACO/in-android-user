@@ -277,7 +277,7 @@ public class EditarPerfil extends AppCompatActivity implements View.OnClickListe
                 if (!isMapa) {
                     bandDireccionValida = false;
                     if (s.toString().length() >= 2) {
-                        if (Utils.checkInternetConnection(EditarPerfil.this, true)) {
+                        if (utils.checkInternetConnection(EditarPerfil.this, true)) {
                             new AsincronaGetDireccionesGoogle(EditarPerfil.this, s.toString().trim(), 0).execute();
                             /*if (cargarDireccionesGoogle) {
                                 cargarDireccionesGoogle = false;
@@ -305,7 +305,7 @@ public class EditarPerfil extends AppCompatActivity implements View.OnClickListe
                 }
                 String placeId = ((String[]) arg0.getItemAtPosition(arg2))[1];
                 direccion ="";
-                if (Utils.checkInternetConnection(EditarPerfil.this, true)) {
+                if (utils.checkInternetConnection(EditarPerfil.this, true)) {
                     new AsincronaGetDetalleDireccionGoogle(EditarPerfil.this, placeId, 0).execute();
                 }
             }
@@ -338,7 +338,7 @@ public class EditarPerfil extends AppCompatActivity implements View.OnClickListe
     }//onClick
 
     private Boolean validacion() {
-        if (!Utils.checkInternetConnection(this, true)) {
+        if (!utils.checkInternetConnection(this, true)) {
             return false;
         }
         /*if (editNom.getText().toString().trim().equalsIgnoreCase("")) {
@@ -424,7 +424,7 @@ public class EditarPerfil extends AppCompatActivity implements View.OnClickListe
                 longitudDireccion = googleMap.getCameraPosition().target.longitude;
                 isMapa = false;
                 editDir.setAdapter(null);
-                if (Utils.checkInternetConnection(EditarPerfil.this, true)) {
+                if (utils.checkInternetConnection(EditarPerfil.this, true)) {
                     AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), EditarPerfil.this, 0);
                     asyncDir.execute();
                 }

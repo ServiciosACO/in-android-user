@@ -52,7 +52,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener {
     }
 
     fun validation() : Boolean{
-        if (!Utils.checkInternetConnection(this@NuevaDireccion, true)){
+        if (!utils.checkInternetConnection(this@NuevaDireccion, true)){
             return false
         }
         if (editDireccion.text.trim().toString() == ""){

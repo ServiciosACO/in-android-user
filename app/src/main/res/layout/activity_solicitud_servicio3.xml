@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <!--<ScrollView
+        android:visibility="visible"
+        android:id="@+id/scrollViewSolicitudServ"
+        android:background="@color/fondo_registro"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/llHeader"
+                android:paddingTop="20sp"
+                android:background="@color/header"
+                android:orientation="horizontal"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgBotonVolver"
+                    android:padding="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/btn_atras" />
+                <co.kubo.indiesco.utils.Medium
+                    android:id="@+id/tvTituloHeader"
+                    android:layout_gravity="center"
+                    style="@style/texto_20_morado"
+                    android:layout_marginLeft="35sp"
+                    android:text="Solicitar Servicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/fondo_registro"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/llNoServices"
+                    android:visibility="visible"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/main_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Regular
+                        style="@style/texto_15_gris"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginEnd="50dp"
+                        android:gravity="center"
+                        android:text="Agrega todos los servicios de limpieza que necesites"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Medium
+                        android:id="@+id/tvAddService"
+                        android:background="@drawable/rounded_button_green"
+                        style="@style/texto_15_blanco"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="80dp"
+                        android:text="+ Agregar servicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llServices"
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_marginLeft="16sp"
+                                android:id="@+id/imgFotoPerfil"
+                                android:src="@drawable/registro_foto"
+                                android:layout_width="72sp"
+                                android:layout_height="72sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginLeft="16sp"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <co.kubo.indiesco.utils.Bold
+                                android:id="@+id/tvNombrePerfil"
+                                android:text="Tony Barajas"
+                                style="@style/texto_22_morado"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <co.kubo.indiesco.utils.Regular
+                                android:id="@+id/tvTelf"
+                                android:text="Teléfono: 123 456 7890"
+                                android:padding="5sp"
+                                style="@style/texto_15_morado"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:hint="Escribe tu cupón"
+                            android:textColorHint="@color/azul"
+                            android:textColor="@color/azul"
+                            android:paddingTop="11dp"
+                            android:paddingStart="17dp"
+                            android:paddingBottom="11dp"
+                            android:background="@drawable/rounded_button_white"
+                            android:layout_weight="0.7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp"/>
+                        <co.kubo.indiesco.utils.Bold
+                            android:id="@+id/tvValidateCoupon"
+                            android:text="Validar"
+                            android:gravity="center"
+                            style="@style/texto_15_blanco"
+                            android:background="@color/azul"
+                            android:paddingTop="11dp"
+                            android:paddingBottom="12dp"
+                            android:paddingStart="30dp"
+                            android:paddingEnd="30dp"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvCart"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </android.support.v7.widget.RecyclerView>
+                    <LinearLayout
+                        android:id="@+id/llValor"
+                        android:layout_gravity="bottom"
+                        android:orientation="horizontal"
+                        android:background="@color/colorRojo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:paddingLeft="16sp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <co.kubo.indiesco.utils.Bold
+                                android:id="@+id/tvValor"
+                                android:gravity="center|start"
+                                android:text="Total: $385.5000"
+                                style="@style/texto_20_blanco"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="20dp"/>
+                            <co.kubo.indiesco.utils.Medium
+                                style="@style/texto_15_blanco"
+                                android:text="-$49.382"
+                                android:gravity="center|start"
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <co.kubo.indiesco.utils.Medium
+                                android:id="@+id/tvPayment"
+                                style="@style/texto_15_blanco"
+                                android:text="Pagar"
+                                android:background="@color/red_label"
+                                android:padding="18dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    <!--</ScrollView>-->
+</LinearLayout>

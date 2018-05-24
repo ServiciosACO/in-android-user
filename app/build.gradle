@@ -5,7 +5,7 @@ android {
     buildToolsVersion "27.0.2"
     defaultConfig {
         applicationId "co.kubo.indiesco"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -36,10 +36,11 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     //compile 'com.daimajia.swipelayout:library:1.2.0@aar'
-    compile 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b'
+    compile 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b' //for swipe
     compile 'com.google.android.gms:play-services:11.8.0'
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
-    compile 'com.prolificinteractive:material-calendarview:1.4.3'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+' //for show progress dialog with gif
+    compile 'com.prolificinteractive:material-calendarview:1.4.3' //for calendar
+    compile 'com.loopeer.lib:shadow:0.0.4-beta2' //To adding shadow to layout
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 

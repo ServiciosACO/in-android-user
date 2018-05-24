@@ -50,6 +50,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     LinearLayout llCalendario;
     @BindView(R.id.llNotificaciones)
     LinearLayout llNotificaciones;
+    @BindView(R.id.llExcedente)
+    LinearLayout llExcedente;
     @BindView(R.id.tvMiPerfil)
     TextView tvMiPerfil;
     @BindView(R.id.tvNombrePerfil)
@@ -78,11 +80,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             e.printStackTrace();
         }
         tvVersion.setText("V" + versionName);
-
-        tvMiPerfil.setOnClickListener(this);
-        llSolicitarServ.setOnClickListener(this);
-        llNotificaciones.setOnClickListener(this);
-        llCalendario.setOnClickListener(this);
+        setListeners();
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
         tvNombrePerfil.setText(usuario.getName());
@@ -100,6 +98,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         pendienteCalificar(usuario.getId_user());
     }
 
+    private void setListeners() {
+        llExcedente.setOnClickListener(this);
+        tvMiPerfil.setOnClickListener(this);
+        llSolicitarServ.setOnClickListener(this);
+        llNotificaciones.setOnClickListener(this);
+        llCalendario.setOnClickListener(this);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -114,7 +120,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 startActivity(in);
                 break;
             case R.id.llSolicitarServ:
-                Intent inServ = new Intent(Home.this, SolicitudServicio.class);
+                Intent inServ = new Intent(Home.this, SolicitudServicio3.class);
                 startActivity(inServ);
                 break;
             case R.id.llNotificaciones:
@@ -124,6 +130,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             case R.id.llCalendario:
                 Intent inCal = new Intent(this, Calendario.class);
                 startActivity(inCal);
+                break;
+            case R.id.llExcedente:
+                Intent inExc = new Intent(this, Excedentes.class);
+                startActivity(inExc);
                 break;
             default:break;
         }//switch

@@ -100,6 +100,7 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
     private static final int REQUEST_EXTERNAL_STORAGE = 2, OPTION_CAMERA = 0;
     private static int takeImage = 2, selectImage = 7;
     private File file;
+    Utils utils = new Utils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -387,7 +388,7 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
             File fileSec = new File(myDir, "foto.jpg");
             if (fileSec.exists())
                 fileSec.delete();
-            if (Utils.checkInternetConnection(MiPerfil.this, true)) {
+            if (utils.checkInternetConnection(MiPerfil.this, true)) {
                 bandFoto = true;
                 try {
                     Picasso

@@ -37,6 +37,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
     @BindView(R.id.webViewTransaccion)
     WebView webViewTransaccion;
 
+    Utils utils = new Utils();
     private String id_solicitud, urlPago;
     private boolean cancelarTransaccion, bandVolver = false;
     private DialogProgress dialogProgress;
@@ -54,7 +55,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         id_solicitud = param.getString("id_sol");
         cancelarTransaccion = true;
 
-        if (Utils.checkInternetConnection(Transaccion.this, true)){
+        if (utils.checkInternetConnection(Transaccion.this, true)){
             initWebView();
         }
     }
@@ -80,7 +81,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
             if (webViewTransaccion.canGoBack()){
                 webViewTransaccion.goBack();
             }else{
-                if (Utils.checkInternetConnection(this, true)) {
+                if (utils.checkInternetConnection(this, true)) {
                     new DialogDosOpciones(Transaccion.this, "2", new DialogDosOpciones.RespuestaListener() {
                         @Override
                         public void onCancelar() {

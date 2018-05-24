@@ -90,7 +90,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     @BindView(R.id.viewDirActive)
     View viewDirActive;
 
-
+    Utils utils = new Utils();
     private DialogProgress dialogProgress;
     private MapFragment mapaDireccion;
     private GoogleMap googleMap;
@@ -231,7 +231,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     }
 
     public boolean validacion(){
-        if (Utils.checkInternetConnection(this, true)){
+        if (utils.checkInternetConnection(this, true)){
             return false;
         }
         if (!bandDir){

@@ -1,0 +1,79 @@
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/miSwipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp">
+    <!-- Bottom View Start-->
+    <LinearLayout
+        android:id="@+id/llEraseCart"
+        android:orientation="vertical"
+        android:background="@color/colorRojo"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:weightSum="10">
+        <!--What you want to show-->
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/btn_delete"
+            android:layout_margin="35sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Medium
+            style="@style/texto_12_blanco"
+            android:gravity="center"
+            android:text="Eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <!-- Bottom View End-->
+
+    <!-- Surface View Start -->
+    <LinearLayout
+        android:id="@+id/llItemCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="16dp"
+        android:paddingStart="16sp"
+        android:paddingTop="14dp"
+        android:background="@color/colorBlanco"
+        android:orientation="vertical">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Bold
+                android:text="Vivienda"
+                style="@style/texto_15_naranja"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Regular
+                android:text="08/02/2018"
+                style="@style/texto_13_gris"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <co.kubo.indiesco.utils.Regular
+            android:text="Calle 24 #12 - 05"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Regular
+            android:text="Mediano (56m - 75m )"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Bold
+            android:text="Subtotal: $385.5000"
+            style="@style/texto_22_verde"
+            android:layout_marginBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <!-- Surface View End -->
+</com.daimajia.swipe.SwipeLayout>

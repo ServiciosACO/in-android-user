@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <co.kubo.indiesco.utils.Medium
+        android:background="@drawable/border_rounded_line"
+        android:gravity="center"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        style="@style/texto_15_verde"
+        android:text="Agregar otro servicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

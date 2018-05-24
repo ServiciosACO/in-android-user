@@ -155,7 +155,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 return false;
             }
             //return (!Utils.checkInternetConnection(this, true));
-            if (!Utils.checkInternetConnection(this, true)){
+            if (!utils.checkInternetConnection(this, true)){
                 return false;
             }
             return true;
@@ -165,7 +165,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                 return false;
             }
             //return (!Utils.checkInternetConnection(this, true));
-            if (!Utils.checkInternetConnection(this, true)){
+            if (!utils.checkInternetConnection(this, true)){
                 return false;
             }
             return true;

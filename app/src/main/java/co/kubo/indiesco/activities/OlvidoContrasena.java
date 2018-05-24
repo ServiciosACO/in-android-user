@@ -272,7 +272,7 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
             editEmail.setError("Debe ingresar un correo electrónico valido");
             return false;
         }
-        if (!Utils.checkInternetConnection(this, true)){
+        if (!utils.checkInternetConnection(this, true)){
             return false;
         }
         return true;
@@ -293,7 +293,7 @@ public class OlvidoContrasena extends AppCompatActivity implements View.OnClickL
             inputPass2.startAnimation(animShake);
             return false;
         }
-        if (!Utils.checkInternetConnection(this, true)){
+        if (!utils.checkInternetConnection(this, true)){
             return false;
         }
         return true;

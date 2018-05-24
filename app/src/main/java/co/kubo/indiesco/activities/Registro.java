@@ -400,7 +400,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 if (!isMapa) {
                     bandDireccionValida = false;
                     if (s.toString().length() >= 2) {
-                        if (Utils.checkInternetConnection(Registro.this, true)) {
+                        if (utils.checkInternetConnection(Registro.this, true)) {
                             new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim(), 1).execute();
                             /*if (cargarDireccionesGoogle) {
                                 cargarDireccionesGoogle = false;
@@ -428,7 +428,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 }
                 String placeId = ((String[]) arg0.getItemAtPosition(arg2))[1];
                 direccion ="";
-                if (Utils.checkInternetConnection(Registro.this, true)) {
+                if (utils.checkInternetConnection(Registro.this, true)) {
                     new AsincronaGetDetalleDireccionGoogle(Registro.this, placeId, 1).execute();
                 }
             }
@@ -446,7 +446,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     }//validarFABVerde
 
     private Boolean validacion() {
-        if (!Utils.checkInternetConnection(this, true)) {
+        if (!utils.checkInternetConnection(this, true)) {
             return false;
         }
         if (editNombre.getText().toString().trim().equalsIgnoreCase("")) {
@@ -950,7 +950,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             File fileSec = new File(myDir, "foto.jpg");
             if (fileSec.exists())
                 fileSec.delete();
-            if (Utils.checkInternetConnection(Registro.this, true)) {
+            if (utils.checkInternetConnection(Registro.this, true)) {
                 bandFoto = true;
                 try {
                     Picasso
@@ -993,7 +993,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 longitudDireccion = googleMap.getCameraPosition().target.longitude;
                 isMapa = false;
                 editDireccion.setAdapter(null);
-                if (Utils.checkInternetConnection(Registro.this, true)) {
+                if (utils.checkInternetConnection(Registro.this, true)) {
                     AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this, 1);
                     asyncDir.execute();
                 }

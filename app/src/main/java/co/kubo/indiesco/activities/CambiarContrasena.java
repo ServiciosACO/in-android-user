@@ -55,6 +55,7 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
     @BindView(R.id.tvNotificacionPass)
     TextView tvNotificacionPass;
 
+    Utils utils = new Utils();
     private DialogProgress dialogProgress;
     private String oldPass = "", Pass1 = "", Pass2 = "";
     Animation animShake;
@@ -174,7 +175,7 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
             editpass2.setError("La contraseña debe tener mínimo 8 dígitos");
             return false;
         }
-        if (!Utils.checkInternetConnection(this, true)){
+        if (!utils.checkInternetConnection(this, true)){
             return false;
         }
         return true;

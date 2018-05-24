@@ -90,6 +90,11 @@
         <item name="android:textColor">@color/colorNegro</item>
     </style>
 
+    <style name="texto_15_negro">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/colorNegro</item>
+    </style>
+
     <style name="texto_13_rojo">
         <item name="android:textSize">13dp</item>
         <item name="android:textColor">@color/colorRojo</item>
@@ -129,6 +134,16 @@
     <style name="texto_22_morado">
         <item name="android:textSize">22dp</item>
         <item name="android:textColor">@color/colorMorado</item>
+    </style>
+
+    <style name="texto_22_blanco">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="texto_20_blanco">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
     <style name="texto_22_naranja">

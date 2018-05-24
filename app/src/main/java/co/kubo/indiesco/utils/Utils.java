@@ -20,7 +20,7 @@ public class Utils {
     public Utils() {
     }
 
-    public static boolean checkInternetConnection(Activity context, boolean showToast) {
+    public boolean checkInternetConnection(Activity context, boolean showToast) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected()) {
             return true;

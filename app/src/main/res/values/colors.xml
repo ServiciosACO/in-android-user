@@ -7,16 +7,22 @@
     <color name="colorNegro">#000000</color>
     <color name="colorNaranja">#FC8E0F</color>
     <color name="colorVerde">#ADD013</color>
+    <color name="colorVerde_80">#a3add013</color>
     <color name="colorMorado">#76608B</color>
     <color name="colorGris">#747474</color>
     <color name="colorVerdeCursor">#ADD013</color>
     <color name="fondo_registro">#F7F7F7</color>
     <color name="color_hint">#BFBFBF</color>
+    <color name="color_hint_80">#a1bfbfbf</color>
     <color name="fondo_dialog">#EDEDED</color>
     <color name="colorRojo">#FD444F</color>
     <color name="fondoDialog">#f28b8e9f</color>
     <color name="colorEstrellaActiva">#F9BF1C</color>
     <color name="colorEstrellaInactiva">#F4F4F4</color>
     <color name="transparente">#00ffffff</color>
+    <color name="shadow">#31000000</color>
+    <color name="header">#12000000</color>
+    <color name="azul">#4CC6DD</color>
+    <color name="red_label">#770000</color>
 </resources>
 

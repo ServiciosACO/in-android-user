@@ -55,6 +55,7 @@ public class DialogAgregarDir extends Dialog implements View.OnClickListener, On
     private RespuestaListener respuestaListener;
     private String dirX, latX = "4.674465", lngX = "-74.057422", complementoX, ciudadX;
     private Double latitudDireccion, longitudDireccion;
+    Utils utils = new Utils();
 
     public DialogAgregarDir(Activity activity, RespuestaListener respuestaListener) {
         super(activity, R.style.ThemeTransparent);
@@ -138,7 +139,7 @@ public class DialogAgregarDir extends Dialog implements View.OnClickListener, On
                 longitudDireccion = googleMap.getCameraPosition().target.longitude;
                 //isMapa = false;
                 editDireccion.setAdapter(null);
-                if (Utils.checkInternetConnection(activity, true)) {
+                if (utils.checkInternetConnection(activity, true)) {
                     AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), activity, 1);
                     asyncDir.execute();
                 }

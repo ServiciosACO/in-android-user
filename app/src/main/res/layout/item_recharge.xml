@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.loopeer.shadow.ShadowView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
+    app:shadowColor="@color/shadow"
+    app:shadowAlpha="70"
+    app:shadowDx="0"
+    app:shadowDy="4"
+    app:shadowMargin="5dp"
+    app:shadowRadius="14dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/llItemRecharge"
+        android:background="@color/colorBlanco"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <co.kubo.indiesco.utils.Bold
+            android:id="@+id/tvDate"
+            style="@style/texto_13_negro"
+            android:text="08/02/2018"
+            android:lines="1"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginBottom="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvMeasure"
+            style="@style/texto_13_gris"
+            android:text="56 m"
+            android:lines="1"
+            android:maxLines="1"
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Bold
+            android:id="@+id/tvRecharge"
+            style="@style/texto_22_verde"
+            android:text="Recargo: $38.000"
+            android:lines="1"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.loopeer.shadow.ShadowView>

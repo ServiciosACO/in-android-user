@@ -48,7 +48,7 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCanceledOnTouchOutside(true);
+        setCanceledOnTouchOutside(false);
         setContentView(R.layout.item_dialog_borrar_dir);
         Window window = this.getWindow();
         if (window != null){
