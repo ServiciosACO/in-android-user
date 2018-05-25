@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:http="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <co.kubo.indiesco.utils.Regular
+        android:text="Selecciona las siguientes opciones"
+        android:gravity="center"
+        style="@style/texto_15_gris"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.loopeer.shadow.ShadowView
+        android:id="@+id/shadow_view"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        app:shadowColor="@color/shadow"
+        app:shadowAlpha="70"
+        app:shadowDx="0"
+        app:shadowDy="4"
+        app:shadowMargin="5dp"
+        app:shadowRadius="14dp">
+        <LinearLayout
+            android:elevation="4sp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_18_blue"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="13dp"
+                android:text="Habitaciónes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Regular
+                android:text="¿Tienes una habitación principal?"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ToggleButton
+                android:background="@drawable/toggle_yes_no"
+                android:textOff=""
+                android:textOn=""
+                android:text=""
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp" />
+
+            <LinearLayout
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <co.kubo.indiesco.utils.Regular
+                    android:text="¿Cuántas habitaciones comunes hay?"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgMinus"
+                        android:src="@drawable/btn_remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Regular
+                        style="@style/texto_15_gris"
+                        android:textColorHint="@color/color_hint"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:hint="Cantidad"
+                        android:background="@color/transparente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:id="@+id/imgPlus"
+                        android:src="@drawable/btn_add2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <view
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/color_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.loopeer.shadow.ShadowView>
+</LinearLayout>

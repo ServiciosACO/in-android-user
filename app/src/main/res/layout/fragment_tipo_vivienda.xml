@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <co.kubo.indiesco.utils.Regular
+        android:text="Selecciona las siguientes opciones"
+        android:gravity="center"
+        style="@style/texto_15_gris"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.loopeer.shadow.ShadowView
+        android:id="@+id/shadow_view"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        app:shadowColor="@color/shadow"
+        app:shadowAlpha="70"
+        app:shadowDx="0"
+        app:shadowDy="4"
+        app:shadowMargin="5dp"
+        app:shadowRadius="14dp">
+        <LinearLayout
+            android:elevation="4sp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_18_blue"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="13dp"
+                android:text="Tipo de vivienda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvTipoVivienda"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@color/colorNaranjaOpaco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgCheckHome"
+                        android:visibility="invisible"
+                        android:src="@drawable/btn_done"
+                        android:layout_gravity="end"
+                        android:padding="7dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@drawable/btn_delete"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Bold
+                        android:text="Casa"
+                        android:gravity="center"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginTop="10dp"
+                        style="@style/texto_18_blanco"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@color/colorNaranjaOpaco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgCheckApto"
+                        android:visibility="invisible"
+                        android:src="@drawable/btn_done"
+                        android:layout_gravity="end"
+                        android:padding="7dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@drawable/btn_delete"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Bold
+                        android:text="Apartamento"
+                        android:gravity="center"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginTop="10dp"
+                        style="@style/texto_18_blanco"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.loopeer.shadow.ShadowView>
+</LinearLayout>

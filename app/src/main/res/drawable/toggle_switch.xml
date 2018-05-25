@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/switch_active"
+        android:state_checked="true">
+        <color android:color="@color/colorBlanco" />
+    </item>
+    <item
+        android:drawable="@drawable/switch_inactive"
+        android:state_checked="false">
+        <color android:color="@color/colorBlanco" />
+    </item>
+</selector>

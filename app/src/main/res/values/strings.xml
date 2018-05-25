@@ -12,6 +12,11 @@
     <string name="dimension_4">80m\u00B2 o más</string>
     <string name="cuadrado">m\u00B2</string>
 
+    <string name="dimension_11">Pequeña (50m\u00B2 - 60m\u00B2)</string>
+    <string name="dimension_21">Mediana (61m\u00B2 - 70m\u00B2)</string>
+    <string name="dimension_31">Grande (71m\u00B2 - 80m\u00B2)</string>
+    <string name="dimension_41">Extragrande (80m\u00B2 o más)</string>
+
     <array name="custom_weekdays">
         <item>D</item>
         <item>L</item>
@@ -68,5 +73,8 @@
 
     <!--Home-->
     <string name="home_ver_perfil"><u>Mi perfil</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

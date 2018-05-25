@@ -63,12 +63,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener {
     }
 
     fun agregarDireccion() {
-        if (dialogProgress == null) {
-            dialogProgress = DialogProgress(this@NuevaDireccion)
-            dialogProgress.show()
-        } else {
-            dialogProgress.show()
-        }
+        dialogProgress = DialogProgress(this@NuevaDireccion)
+        dialogProgress.show()
+
         val authToken = SharedPreferenceManager.getAuthToken(applicationContext)
         val restApiAdapter = RestApiAdapter()
         val endpoints = restApiAdapter.establecerConexionRestApiSinGson()

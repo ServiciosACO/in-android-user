@@ -3,6 +3,9 @@ package co.kubo.indiesco.modelo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Diego on 8/02/2018.
  */
@@ -10,17 +13,20 @@ import com.google.gson.annotations.SerializedName;
 public class Inmueble {
     @SerializedName("id_tipo_inmueble")
     @Expose
-    private String id_tipo_inmueble;
+    private String idTipoInmueble;
     @SerializedName("inmueble")
     @Expose
     private String inmueble;
+    @SerializedName("dimesiones")
+    @Expose
+    private ArrayList<Dimensiones> dimesiones = null;
 
-    public String getId_tipo_inmueble() {
-        return id_tipo_inmueble;
+    public String getIdTipoInmueble() {
+        return idTipoInmueble;
     }
 
-    public void setId_tipo_inmueble(String id_tipo_inmueble) {
-        this.id_tipo_inmueble = id_tipo_inmueble;
+    public void setIdTipoInmueble(String idTipoInmueble) {
+        this.idTipoInmueble = idTipoInmueble;
     }
 
     public String getInmueble() {
@@ -29,5 +35,13 @@ public class Inmueble {
 
     public void setInmueble(String inmueble) {
         this.inmueble = inmueble;
+    }
+
+    public ArrayList<Dimensiones> getDimesiones() {
+        return dimesiones;
+    }
+
+    public void setDimesiones(ArrayList<Dimensiones> dimesiones) {
+        this.dimesiones = dimesiones;
     }
 }

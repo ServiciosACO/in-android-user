@@ -6,10 +6,12 @@
     <color name="colorBlanco">#ffffff</color>
     <color name="colorNegro">#000000</color>
     <color name="colorNaranja">#FC8E0F</color>
+    <color name="colorNaranjaOpaco">#FFC583</color>
     <color name="colorVerde">#ADD013</color>
     <color name="colorVerde_80">#a3add013</color>
     <color name="colorMorado">#76608B</color>
     <color name="colorGris">#747474</color>
+    <color name="borde_gris">#95989A</color>
     <color name="colorVerdeCursor">#ADD013</color>
     <color name="fondo_registro">#F7F7F7</color>
     <color name="color_hint">#BFBFBF</color>

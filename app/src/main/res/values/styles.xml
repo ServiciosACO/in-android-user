@@ -60,6 +60,16 @@
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
+    <style name="texto_18_red">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorRojo</item>
+    </style>
+
+    <style name="texto_18_blue">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/azul</item>
+    </style>
+
     <style name="texto_15_blanco">
         <item name="android:textSize">15dp</item>
         <item name="android:textColor">@color/colorBlanco</item>
@@ -169,6 +179,11 @@
     <style name="texto_12_gris_hint">
         <item name="android:textSize">12dp</item>
         <item name="android:textColor">@color/color_hint</item>
+    </style>
+
+    <style name="texto_12_gris">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/colorGris</item>
     </style>
 
     <style name="texto_15_morado">
