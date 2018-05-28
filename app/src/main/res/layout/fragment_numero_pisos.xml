@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:http="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <co.kubo.indiesco.utils.Regular
+        android:text="Selecciona las siguientes opciones"
+        android:gravity="center"
+        style="@style/texto_15_gris"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.loopeer.shadow.ShadowView
+        android:id="@+id/shadow_view"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        app:shadowColor="@color/shadow"
+        app:shadowAlpha="70"
+        app:shadowDx="0"
+        app:shadowDy="4"
+        app:shadowMargin="5dp"
+        app:shadowRadius="14dp">
+        <LinearLayout
+            android:elevation="4sp"
+            android:layout_gravity="center|top"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_18_blue"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="13dp"
+                android:text="Número de pisos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                style="@style/texto_15_gris"
+                android:textColorHint="@color/color_hint"
+                android:gravity="center"
+                android:hint="Cantidad"
+                android:background="@color/transparente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <view
+                android:layout_marginTop="11dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/color_hint"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+        </LinearLayout>
+    </com.loopeer.shadow.ShadowView>
+</LinearLayout>
