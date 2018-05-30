@@ -35,7 +35,7 @@
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/imgSelectInmueble"
-            android:src="@drawable/calendar_log_org"
+            android:src="@drawable/dot_inactive"
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

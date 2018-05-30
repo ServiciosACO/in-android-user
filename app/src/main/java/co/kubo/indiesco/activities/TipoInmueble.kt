@@ -90,7 +90,7 @@ class TipoInmueble : AppCompatActivity(), IShowOption, View.OnClickListener {
         when (v!!.id){
             R.id.rlNext -> {
                 if (validation()){
-                    val intent = Intent (this, SolicitudServicio3 :: class.java)
+                    val intent = Intent (this, AddService :: class.java)
                     intent.putExtra("type", flag)
                     startActivity(intent)
                 }

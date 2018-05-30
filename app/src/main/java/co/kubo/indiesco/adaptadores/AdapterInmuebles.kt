@@ -33,14 +33,16 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<Inmueble>, private 
 
 
         holder.imgSelectInmueble.setOnClickListener{
-            holder.imgSelectInmueble.setImageResource(R.drawable.ayuda_scroll)
-            if (temp.inmueble == "vivienda"){
+            holder.imgSelectInmueble.setImageResource(R.drawable.dot_inactive)
+            holder.imgSelectInmueble.setImageResource(R.drawable.dot_resting)
+            if (temp.inmueble == "Casa"){
                 flag = 0
                 iShowOption.option(flag)
             } else {
                 flag = 1
                 iShowOption.option(flag)
             }
+            pos = position
         }
     }
 

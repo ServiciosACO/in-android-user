@@ -39,80 +39,133 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/llServices"
-                android:visibility="visible"
+            <RelativeLayout
+                android:id="@+id/rlService"
                 android:orientation="vertical"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewPager"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <RadioGroup
+                    android:id="@+id/radiogroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="#ffffff"
+                    android:layout_gravity="center_horizontal|top"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radioButton"
+                        android:layout_marginEnd="6dp"
+                        android:button="@drawable/radio_button2"
+                        android:checked="true" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:button="@drawable/radio_button2"
+                        android:id="@+id/radioButton2" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:button="@drawable/radio_button2"
+                        android:id="@+id/radioButton3" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:button="@drawable/radio_button2"
+                        android:id="@+id/radioButton4" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:button="@drawable/radio_button2"
+                        android:id="@+id/radioButton5" />
+                </RadioGroup>
+            </RelativeLayout>
+            <!--<LinearLayout
+                android:id="@+id/llServices"
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 </android.support.v4.view.ViewPager>
-                <RelativeLayout
-                    android:id="@+id/rlValor"
-                    android:layout_gravity="bottom"
+            </LinearLayout>-->
+            <RelativeLayout
+                android:id="@+id/rlValor"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:background="@color/color_hint_80"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/llLinear"
                     android:orientation="horizontal"
-                    android:background="@color/color_hint_80"
+                    android:paddingLeft="16sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:id="@+id/llLinear"
-                        android:orientation="horizontal"
-                        android:paddingLeft="16sp"
+                    <co.kubo.indiesco.utils.Bold
+                        android:visibility="invisible"
+                        android:gravity="center|start"
+                        android:text="Total: $0"
+                        style="@style/texto_20_blanco"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <co.kubo.indiesco.utils.Bold
-                            android:visibility="invisible"
-                            android:gravity="center|start"
-                            android:text="Total: $0"
-                            style="@style/texto_20_blanco"
-                            android:layout_weight="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <co.kubo.indiesco.utils.Medium
-                            android:visibility="invisible"
-                            style="@style/texto_15_blanco"
-                            android:text="Siguiente"
-                            android:padding="18dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:background="@color/color_hint"
-                        android:layout_alignBottom="@+id/llLinear"
-                        android:layout_alignTop="@+id/llLinear"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"/>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:paddingLeft="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Medium
+                        android:visibility="invisible"
+                        style="@style/texto_15_blanco"
+                        android:text="Siguiente"
+                        android:padding="18dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/color_hint"
+                    android:layout_alignBottom="@+id/llLinear"
+                    android:layout_alignTop="@+id/llLinear"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:paddingLeft="16sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <co.kubo.indiesco.utils.Bold
+                        android:id="@+id/tvValor"
+                        android:gravity="center|start"
+                        android:text="Total: $0"
+                        style="@style/texto_20_blanco"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <co.kubo.indiesco.utils.Bold
-                            android:id="@+id/tvValor"
-                            android:gravity="center|start"
-                            android:text="Total: $0"
-                            style="@style/texto_20_blanco"
-                            android:layout_weight="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <co.kubo.indiesco.utils.Medium
-                            android:id="@+id/tvNext"
-                            style="@style/texto_15_blanco"
-                            android:text="Siguiente"
-                            android:padding="18dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Medium
+                        android:id="@+id/tvNext"
+                        style="@style/texto_15_blanco"
+                        android:text="Siguiente"
+                        android:padding="18dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -119,7 +119,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 tipoInmueble = spinnerInmueble.getItemAtPosition(i).toString();
-                id_inmueble = inmuebles.get(i).getId_tipo_inmueble();
+                id_inmueble = inmuebles.get(i).getIdTipoInmueble();
                 band1 = true;
                 tasarServicio();
             }

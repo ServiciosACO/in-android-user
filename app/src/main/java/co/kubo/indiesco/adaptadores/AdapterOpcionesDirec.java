@@ -41,4 +41,7 @@ public class AdapterOpcionesDirec extends ArrayAdapter<direccionesGoogleVO> {
         ciudadDur.setText(getItem(posicion).getCiudad());
         return convertView;
     }
+
+
+
 }

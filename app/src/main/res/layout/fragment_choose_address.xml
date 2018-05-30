@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <co.kubo.indiesco.utils.Regular
+        android:text="Selecciona las siguientes opciones"
+        android:gravity="center"
+        style="@style/texto_15_gris"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.loopeer.shadow.ShadowView
+        android:id="@+id/shadow_view"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        app:shadowColor="@color/shadow"
+        app:shadowAlpha="70"
+        app:shadowDx="0"
+        app:shadowDy="4"
+        app:shadowMargin="5dp"
+        app:shadowRadius="14dp">
+        <LinearLayout
+            android:elevation="4sp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_18_blue"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="13dp"
+                android:text="Escoge tu dirección"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvDimensiones"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+            <co.kubo.indiesco.utils.Medium
+                style="@style/texto_15_verde"
+                android:padding="15dp"
+                android:gravity="center"
+                android:text="Ir a mis direcciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.loopeer.shadow.ShadowView>
+</LinearLayout>

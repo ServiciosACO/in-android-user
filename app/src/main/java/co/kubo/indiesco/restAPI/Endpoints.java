@@ -1,5 +1,7 @@
 package co.kubo.indiesco.restAPI;
 
+import com.google.gson.JsonElement;
+
 import co.kubo.indiesco.modelo.Foto;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.restAPI.modelo.ResponseAuthToken;
@@ -29,6 +31,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 /**
@@ -36,6 +39,24 @@ import retrofit2.http.Url;
  */
 
 public interface Endpoints {
+
+    @GET("https://maps.googleapis.com/maps/api/place/details/json")
+    Call<JsonElement> ubicacionDireccion(@Query("placeid") String placeId,
+                                         @Query("sensor") String sensor,
+                                         @Query("key") String key);
+
+    @GET("http://maps.googleapis.com/maps/api/geocode/json")
+    Call<JsonElement> obtenerDireccion(@Query("latlng") String latlng ,
+                                       @Query("sensor") String sensor);
+
+    @GET("https://maps.googleapis.com/maps/api/place/autocomplete/json")
+    Call<JsonElement> direccionPalabra(@Query("input") String direccion,
+                                       @Query("sensor") String sensor,
+                                       @Query("key") String key,
+                                       @Query("location") String latlon,
+                                       @Query("radius") String radius,
+                                       @Query("components") String components,
+                                       @Query("language") String language);
 
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_ACTUALIZAR_CONTRASEÑA)

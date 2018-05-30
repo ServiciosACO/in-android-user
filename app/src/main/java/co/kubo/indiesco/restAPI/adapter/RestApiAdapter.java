@@ -12,13 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RestApiAdapter {
-    public Endpoints establecerConexionRestApi(Gson gson){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ConstantesRestApi.URL_BASE)
-                .addConverterFactory(GsonConverterFactory.create(gson)) //para deserializar los datos
-                .build();
-        return retrofit.create(Endpoints.class);
-    }
+
     public Endpoints establecerConexionRestApiSinGson(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ConstantesRestApi.URL_BASE)
