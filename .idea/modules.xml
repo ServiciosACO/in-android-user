@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/indiesco.iml" filepath="$PROJECT_DIR$/indiesco.iml" />
       <module fileurl="file://$PROJECT_DIR$/indiesco_android.iml" filepath="$PROJECT_DIR$/indiesco_android.iml" />
-      <module fileurl="file://E:\projects\indiesco\indiesco_android.iml" filepath="E:\projects\indiesco\indiesco_android.iml" />
     </modules>
   </component>
 </project>

@@ -1,12 +1,22 @@
 package co.kubo.indiesco.activities
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Point
 import android.location.Geocoder
+import android.location.Location
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityCompat.checkSelfPermission
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import co.kubo.indiesco.Manifest
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterAutocomplete
 import co.kubo.indiesco.adaptadores.AdapterAutocomplete2
@@ -24,12 +34,12 @@ import retrofit2.Response
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.gson.JsonElement
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -51,7 +61,13 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     var bandDirCorrecto = false
     var valorDireccion = ""
     var ciudadDireccion = "Bogota"
-
+    var idDireccion = "-"
+    var cargoMap = false
+    var zoomActual = 0F
+    var bandPonerDir = true
+    //lateinit var trackerLocation : LocationServiceDireccion
+    var encontrarUbicacion = 0
+    var mapaDireccion : MapFragment ?= null
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -88,13 +104,12 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     fun agregarDireccion() {
         dialogProgress = DialogProgress(this@NuevaDireccion)
         dialogProgress.show()
-
         val authToken = SharedPreferenceManager.getAuthToken(applicationContext)
         val restApiAdapter = RestApiAdapter()
         val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
         var usuario = Usuario()
         usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
-        val responseGeneralCall = endpoints.agregarDireccion(authToken, usuario.id_user, direccion,
+        val responseGeneralCall = endpoints.agregarDireccion(authToken, usuario.id_user, valorDireccion,
                 latitudStr, longitudStr, complemento, ciudad)
         responseGeneralCall.enqueue(object : Callback<ResponseGeneral> {
             override fun onResponse(call: Call<ResponseGeneral>, response: Response<ResponseGeneral>) {
@@ -137,13 +152,36 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     private fun setListeners() {
         imgBotonVolver.setOnClickListener(this)
         btnAgregarDir.setOnClickListener(this)
-    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nueva_direccion)
-        dialogProgress = DialogProgress(this@NuevaDireccion)
-        setListeners()
+        editDireccion.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+            override fun onTextChanged(valorDireccion: CharSequence?, start: Int, before: Int, count: Int) {
+                var valorCambio = 0
+                if (before > count){
+                    valorCambio = before - count
+                } else if (before < count){
+                    valorCambio = count - before
+                } else {
+                    valorCambio = 0
+                }
+                if (valorCambio < 2){
+                    if (valorDireccion.toString().trim().length >= 2){
+                        if (utils.checkInternetConnection(this@NuevaDireccion, true)){
+                            if (!cargarDireccion) {
+                                cargarDireccion = false
+                                googleMap!!.uiSettings.isScrollGesturesEnabled = false
+                                direccionPalabra(latitudDireccion.toString(),longitudDireccion.toString(), valorDireccion.toString(), resources.getString(R.string.key_google_maps))
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
 
     /**Autocomplete map*/
@@ -283,6 +321,57 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
 
     override fun onMapReady(map: GoogleMap?) {
         googleMap = map
+        if (googleMap != null) {
+            googleMap!!.mapType = GoogleMap.MAP_TYPE_NORMAL
+            googleMap!!.uiSettings.isScrollGesturesEnabled = true
+        }
+        googleMap!!.setOnMapLoadedCallback(object : GoogleMap.OnMapLoadedCallback{
+            override fun onMapLoaded() {
+                cargoMap = true
+
+            }
+        })
+
+        googleMap!!.setOnCameraChangeListener {
+            if (cargoMap && cargarDireccion) {
+                if (zoomActual == it.zoom) {
+                    cargarDireccion = false
+                    var locationFinal = Location("punto final")
+                    var visibleRegion = googleMap!!.projection.visibleRegion
+                    var x = googleMap!!.projection.toScreenLocation(visibleRegion.farRight)
+                    var y = googleMap!!.projection.toScreenLocation(visibleRegion.nearLeft)
+                    var centerPoint = Point(x.x / 2, y.y / 2)
+                    var centerFromPoint = googleMap!!.projection.fromScreenLocation(centerPoint)
+                    if (centerFromPoint.latitude != 0.0 && centerFromPoint.longitude != 0.0) {
+                        locationFinal.latitude = centerFromPoint.latitude
+                        locationFinal.longitude = centerFromPoint.longitude
+                    }
+                    latitudDireccion = locationFinal.latitude
+                    longitudDireccion = locationFinal.longitude
+                    if (!bandPonerDir) {
+                        obtenerDireccion(latitudDireccion.toString(), longitudDireccion.toString(), false)
+                    } else {
+                        obtenerDireccion(latitudDireccion.toString(), longitudDireccion.toString(), true)
+                    }
+                    bandPonerDir = true
+                }
+            }
+            zoomActual = it.zoom
+        }
+    }
+
+    fun posicionInicial() {
+        var ponerDir = true
+        if (latitudDireccion == 0.0 && longitudDireccion == 0.0) {
+            ponerDir = idDireccion == "-"
+        } else {
+            ponerDir = false
+        }
+        if (googleMap != null) {
+            googleMap!!.clear()
+            googleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitudDireccion!!, longitudDireccion!!), 16F))
+        }
+        obtenerDireccion(latitudDireccion.toString(),longitudDireccion.toString(), ponerDir)
     }
 
     fun guardarCoordenadas(lat: String, log: String, bandDir: Boolean) {
@@ -300,7 +389,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         obtenerDireccion(lat, log, bandDir)
     }
 
-    fun valorDireccion(direccion: String ,bandPonerDir:  Boolean ) {
+    fun valorDireccion(direccion: String ,bandPonerDir: Boolean ) {
         cargarDireccion = true
         bandDirCorrecto = true
         try {
@@ -337,15 +426,64 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     }
 
     fun llenarAutocomplete(lista: ArrayList<Array<String>>) {
-        //cargarDireccionesGoogle = true
+        cargarDireccion = true
         val adapter = AdapterAutocomplete(this, R.layout.item_direccion_google, R.id.txtItemDireccionGoogle, lista)
         editDireccion.setAdapter(adapter)
     }
     fun llenarAutocomplete2(lista: ArrayList<String>) {
-        //cargarDireccionesGoogle = true
-        val adapter = AdapterAutocomplete2(this, R.layout.item_direccion_google, R.id.txtItemDireccionGoogle, lista)
+        cargarDireccion = true
+        val adapter = ArrayAdapter(this@NuevaDireccion, R.layout.item_direccion_google, lista)
         editDireccion.setAdapter(adapter)
+        /*val adapter = AdapterAutocomplete2(this, R.layout.item_direccion_google, R.id.txtItemDireccionGoogle, lista)
+        editDireccion.setAdapter(adapter)*/
     }
 
+    fun validarPermisos(perm: String,requestCode: Int) {
+        if (checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
+                ActivityCompat.requestPermissions(this, Array<String>(1){perm}, requestCode)
+            } else {
+                ActivityCompat.requestPermissions(this, Array<String>(1){perm}, requestCode)
+            }
+        } else {
+            //trackerLocation = new LocationServiceDireccion(AgregarDireccionMapa.this)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when(requestCode){
+            encontrarUbicacion -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //trackerLocation = new LocationServiceDireccion(AgregarDireccionMapa.this)
+                }
+                return
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_nueva_direccion)
+        dialogProgress = DialogProgress(this@NuevaDireccion)
+        setListeners()
+
+        mapaDireccion = fragmentManager.findFragmentById(R.id.mapaDireccion) as MapFragment?
+        if (mapaDireccion != null) {
+            mapaDireccion!!.getMapAsync(this)
+        }
+        cargoMap = true
+        cargarDireccion = false
+        //bandSubir = false
+        //bandLista = false
+        bandPonerDir = true
+        latitudDireccion = 0.0
+        longitudDireccion = 0.0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            validarPermisos(android.Manifest.permission.ACCESS_FINE_LOCATION, encontrarUbicacion)
+        } else {
+            //trackerLocation = LocationServiceDireccion(this)
+        }
+    }
 }
 

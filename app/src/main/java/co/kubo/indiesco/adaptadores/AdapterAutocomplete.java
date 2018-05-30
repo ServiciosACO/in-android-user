@@ -22,9 +22,6 @@ public class AdapterAutocomplete extends ArrayAdapter<String[]> {
 
     private Context context;
     private ArrayList<String[]> items, itemsSugerencias, itemsTemp;
- for(i in 0..(array.length() - 1){
-
-                    }
 
     public AdapterAutocomplete(Context context, int resource, int textViewResourceId, ArrayList<String[]> items) {
         super(context, resource, textViewResourceId, items);
