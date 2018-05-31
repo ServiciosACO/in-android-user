@@ -74,7 +74,9 @@ public class AsincronaGetDireccionesGoogle extends AsyncTask<Void, Void, String>
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             if (i < 5) {
-                                String nombreDireccion = new String(jsonObject.getString("description").getBytes("ISO-8859-1"), "UTF-8").replace(", " +"Colombia", "");
+                                String nombreDireccion = new String(jsonObject.getString("description")
+                                        .getBytes("ISO-8859-1"), "UTF-8")
+                                        .replace(", " +"Colombia", "");
                                 direcciones.add(new String[]{nombreDireccion, jsonObject.getString("place_id")});
                             } else {
                                 break;

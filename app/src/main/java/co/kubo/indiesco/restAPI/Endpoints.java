@@ -45,8 +45,9 @@ public interface Endpoints {
                                          @Query("sensor") String sensor,
                                          @Query("key") String key);
 
-    @GET("http://maps.googleapis.com/maps/api/geocode/json")
-    Call<JsonElement> obtenerDireccion(@Query("latlng") String latlng ,
+    @GET("https://maps.googleapis.com/maps/api/geocode/json")
+    Call<JsonElement> obtenerDireccion(@Query("key") String key,
+                                       @Query("latlng") String latlng,
                                        @Query("sensor") String sensor);
 
     @GET("https://maps.googleapis.com/maps/api/place/autocomplete/json")

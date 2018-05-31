@@ -6,6 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -38,16 +39,51 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginTop="5sp"
+            <RelativeLayout
+                android:id="@+id/fondoMapaDir"
                 android:layout_width="match_parent"
-                android:layout_height="230sp">
+                android:layout_height="230dp"
+                android:background="@color/colorBlanco">
                 <fragment
                     android:id="@+id/mapaDireccion"
                     class ="com.google.android.gms.maps.MapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-            </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal|bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@drawable/location_pin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </LinearLayout>
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imagetrans"
+                    android:layout_alignTop="@+id/mapaDireccion"
+                    android:layout_alignBottom="@+id/mapaDireccion"
+                    android:layout_alignEnd="@+id/mapaDireccion"
+                    android:layout_alignRight="@+id/mapaDireccion"
+                    android:layout_alignLeft="@+id/mapaDireccion"
+                    android:layout_alignStart="@+id/mapaDireccion"/>
+
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -62,7 +98,7 @@
                     android:maxLines="1"
                     android:inputType="textCapSentences"
                     style="@style/texto_15_gris"
-                    android:gravity="center"
+                    android:paddingStart="20dp"
                     android:textColorHint="@color/color_hint"
                     android:textCursorDrawable="@color/colorVerdeCursor"
                     android:layout_marginTop="32sp"
@@ -72,8 +108,9 @@
                     android:id="@+id/editDirComplemento"
                     android:textColorHint="@color/color_hint"
                     android:textSize="15sp"
-                    android:gravity="center"
+                    android:paddingStart="20dp"
                     android:maxLines="1"
+                    android:inputType="textCapSentences"
                     android:imeOptions="actionDone"
                     android:hint="Complemento de la dirección"
                     android:layout_marginTop="26sp"
