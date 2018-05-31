@@ -22,6 +22,10 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgProperty"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
         <co.kubo.indiesco.utils.Bold
             android:id="@+id/tvInmueble"
             android:gravity="center"
@@ -33,11 +37,12 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <ImageView
-            android:id="@+id/imgSelectInmueble"
-            android:src="@drawable/dot_inactive"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:background="@drawable/select_property"
+            android:button="@color/transparente"
+            android:checked="false"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
     </LinearLayout>
 </com.loopeer.shadow.ShadowView>

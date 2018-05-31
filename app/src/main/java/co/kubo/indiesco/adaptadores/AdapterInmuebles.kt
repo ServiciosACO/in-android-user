@@ -6,21 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.TextView
 import co.kubo.indiesco.R
-import co.kubo.indiesco.modelo.Inmueble
+import co.kubo.indiesco.activities.CircleTransform
+import co.kubo.indiesco.modelo.InmuebleVO
+import co.kubo.indiesco.utils.Singleton
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 
 /**
  * Created by estacion on 24/05/18.
  */
-class AdapterInmuebles(private val inmuebleArray : ArrayList<Inmueble>, private val activity: Activity,
+class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, private val activity: Activity,
                        private val iShowOption: IShowOption)
     : RecyclerView.Adapter<AdapterInmuebles.InmuebleViewHolder>() {
 
-    var flag = 0
-    var flag2 = false
     var pos = 0
-
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): InmuebleViewHolder {
         val v = LayoutInflater.from(parent!!.context).inflate(R.layout.item_inmueble, parent, false)
         return InmuebleViewHolder(v)
@@ -28,21 +31,23 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<Inmueble>, private 
 
     override fun onBindViewHolder(holder: InmuebleViewHolder?, position: Int) {
         var temp = inmuebleArray[position]
-        holder!!.tvInmueble.text = temp.inmueble
+        holder!!.tvInmueble.text = temp.categoria
+        Picasso.with(activity)
+                .load(temp.imagen)
+                .into(holder.imgProperty)
 
-
-
-        holder.imgSelectInmueble.setOnClickListener{
-            holder.imgSelectInmueble.setImageResource(R.drawable.dot_inactive)
-            holder.imgSelectInmueble.setImageResource(R.drawable.dot_resting)
-            if (temp.inmueble == "Casa"){
-                flag = 0
-                iShowOption.option(flag)
-            } else {
-                flag = 1
-                iShowOption.option(flag)
+        holder.radioButton.isChecked = temp.check
+        holder.radioButton.setOnClickListener{
+            for (item in inmuebleArray.indices){
+                inmuebleArray[item].check = false
             }
-            pos = position
+            notifyDataSetChanged()
+            temp.check = true
+            if (temp.categoria == "Vivienda"){
+                iShowOption.option(0)
+            } else {
+                iShowOption.option(1)
+            }
         }
     }
 
@@ -52,7 +57,8 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<Inmueble>, private 
 
     class InmuebleViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
         var tvInmueble = itemView!!.findViewById<TextView>(R.id.tvInmueble)
-        var imgSelectInmueble = itemView!!.findViewById<ImageView>(R.id.imgSelectInmueble)
+        var radioButton = itemView!!.findViewById<RadioButton>(R.id.radioButton)
+        var imgProperty = itemView!!.findViewById<ImageView>(R.id.imgProperty)
     }
 }
 

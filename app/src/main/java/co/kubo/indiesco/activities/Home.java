@@ -95,7 +95,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 .into(imgFotoPerfil);
 
         //obtenerCalendario();
-        pendienteCalificar(usuario.getId_user());
+        //TODO: pendienteCalificar(usuario.getId_user());
     }
 
     private void setListeners() {
@@ -109,7 +109,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        obtenerCalendario();
+        //TODO: obtenerCalendario();
     }
 
     @Override

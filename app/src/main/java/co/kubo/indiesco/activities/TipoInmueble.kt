@@ -11,11 +11,12 @@ import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterInmuebles
 import co.kubo.indiesco.adaptadores.IShowOption
 import co.kubo.indiesco.dialog.DialogProgress
-import co.kubo.indiesco.modelo.Inmueble
+import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseInmueble
 import co.kubo.indiesco.utils.SharedPreferenceManager
+import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import kotlinx.android.synthetic.main.activity_tipo_inmueble.*
 import retrofit2.Call
@@ -32,7 +33,9 @@ class TipoInmueble : AppCompatActivity(), IShowOption, View.OnClickListener {
     val utils = Utils()
     private var flag = 2
 
-    var inmuebles = ArrayList<Inmueble>()
+    val singleton = Singleton.getInstance()
+
+    var inmuebles = ArrayList<InmuebleVO>()
 
     private fun listarTiposInmuebles() {
         dialogProgress = DialogProgress(this@TipoInmueble)
@@ -54,6 +57,7 @@ class TipoInmueble : AppCompatActivity(), IShowOption, View.OnClickListener {
                         llNoInmueble.visibility = View.GONE
                         rvInmueble.visibility = View.VISIBLE
                         inmuebles = response.body()!!.data
+                        singleton.data = inmuebles
                         adapter = AdapterInmuebles(inmuebles, this@TipoInmueble, this@TipoInmueble)
                         rvInmueble.adapter = adapter
                     }

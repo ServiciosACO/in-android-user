@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-import co.kubo.indiesco.modelo.Inmueble;
-import co.kubo.indiesco.modelo.Login;
+import co.kubo.indiesco.modelo.InmuebleVO;
 
 /**
  * Created by Diego on 8/02/2018.
@@ -18,7 +17,7 @@ public class ResponseInmueble {
     private String code;
     @SerializedName("data")
     @Expose
-    private ArrayList<Inmueble> data;
+    private ArrayList<InmuebleVO> data;
 
     public String getCode() {
         return code;
@@ -28,11 +27,11 @@ public class ResponseInmueble {
         this.code = code;
     }
 
-    public ArrayList<Inmueble> getData() {
+    public ArrayList<InmuebleVO> getData() {
         return data;
     }
 
-    public void setData(ArrayList<Inmueble> data) {
+    public void setData(ArrayList<InmuebleVO> data) {
         this.data = data;
     }
 }

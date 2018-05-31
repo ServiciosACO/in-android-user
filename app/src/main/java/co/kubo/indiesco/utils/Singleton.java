@@ -1,5 +1,9 @@
 package co.kubo.indiesco.utils;
 
+import java.util.ArrayList;
+
+import co.kubo.indiesco.modelo.InmuebleVO;
+
 /**
  * Created by estacion on 23/02/18.
  */
@@ -15,6 +19,16 @@ public class Singleton {
 
     Double latitud;
     Double longitud;
+
+    private ArrayList<InmuebleVO> data = new ArrayList<>();
+
+    public ArrayList<InmuebleVO> getData() {
+        return data;
+    }
+
+    public void setData(ArrayList<InmuebleVO> data) {
+        this.data = data;
+    }
 
     public Double getLatitud() {
         return latitud;

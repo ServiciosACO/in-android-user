@@ -316,7 +316,17 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         googleMap!!.setOnMapLoadedCallback {
             cargoMap = true
         }
-        googleMap!!.setOnCameraChangeListener {
+
+        googleMap!!.setOnCameraIdleListener {
+            latitudDireccion = googleMap!!.cameraPosition.target.latitude
+            longitudDireccion = googleMap!!.cameraPosition.target.longitude
+            editDireccion.setAdapter(null)
+            if (bandPonerDir) {
+                obtenerDireccion(latitudDireccion.toString(), longitudDireccion.toString(), true)
+            }
+            bandPonerDir = true
+        }
+        /*googleMap!!.setOnCameraChangeListener {
             if (cargoMap && cargarDireccion) {
                 if (zoomActual == it.zoom) {
                     //cargarDireccion = false
@@ -336,16 +346,11 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                     if (bandPonerDir) {
                         obtenerDireccion(latitudDireccion.toString(), longitudDireccion.toString(), true)
                     }
-                    /*if (!bandPonerDir) {
-                        obtenerDireccion(latitudDireccion.toString(), longitudDireccion.toString(), false)
-                    } else {
-                        obtenerDireccion(latitudDireccion.toString(), longitudDireccion.toString(), true)
-                    }*/
                     bandPonerDir = true
                 }
             }
             zoomActual = it.zoom
-        }
+        }*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

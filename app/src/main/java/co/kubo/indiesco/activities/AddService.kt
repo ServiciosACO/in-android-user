@@ -13,39 +13,58 @@ import java.util.ArrayList
 
 class AddService : AppCompatActivity(), View.OnClickListener {
 
+
     override fun onClick(v: View?) {
         when (v!!.id){
             R.id.imgBotonVolver -> {
-
+                onBackPressed()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
     }
 
     private fun setListeners() {
         imgBotonVolver.setOnClickListener(this)
     }
 
-    private fun agregarFragments(): ArrayList<Fragment> {
+    private fun agregarFragments(flag: Int): ArrayList<Fragment> {
         val fragments = ArrayList<Fragment>()
-        fragments.add(TipoViviendaFragment())
-        fragments.add(DimensionesFragment())
-        fragments.add(RoomsFragment())
-        fragments.add(EspaciosPrincipalesFragment())
-        fragments.add(EspaciosSecuendariosFragment())
-        fragments.add(ChooseAddressFragment())
-        fragments.add(DireccionFragment())
-        fragments.add(ServiceTimeFragment())
+        when (flag){
+            0 ->{
+                fragments.add(TipoViviendaFragment())
+                fragments.add(DimensionesFragment())
+                fragments.add(RoomsFragment())
+                fragments.add(EspaciosPrincipalesFragment())
+                fragments.add(EspaciosSecuendariosFragment())
+                fragments.add(ChooseAddressFragment())
+                //fragments.add(DireccionFragment())
+                fragments.add(ServiceTimeFragment())
+            }
+            1 -> {
+                fragments.add(NumeroPisosFragment())
+                fragments.add(ChooseAddressFragment())
+                //fragments.add(DireccionFragment())
+                fragments.add(ServiceTimeFragment())
+            }
+        }
         return fragments
     }
 
-    private fun setUpViewPager() {
-        viewPager.adapter = PageAdapter(supportFragmentManager, agregarFragments())
+    private fun setUpViewPager(flag: Int) {
+        viewPager.adapter = PageAdapter(supportFragmentManager, agregarFragments(flag))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_service)
-        setUpViewPager()
+
+        var params = intent.extras
+        var flag = params.getInt("type", 0)
+        setUpViewPager(flag)
         setListeners()
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

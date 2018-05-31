@@ -1,18 +1,11 @@
 package co.kubo.indiesco.activities;
 
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
-import android.location.Location;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -31,22 +24,17 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionPorCoordenadas;
 import co.kubo.indiesco.dialog.DialogDirecciones;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
-import co.kubo.indiesco.modelo.Inmueble;
-import co.kubo.indiesco.modelo.TasarServicio;
+import co.kubo.indiesco.modelo.InmuebleVO;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
@@ -55,7 +43,6 @@ import co.kubo.indiesco.restAPI.modelo.ResponseInmueble;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Utils;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -95,7 +82,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
     private MapFragment mapaDireccion;
     private GoogleMap googleMap;
 
-    private ArrayList<Inmueble> inmuebles = new ArrayList<>();
+    private ArrayList<InmuebleVO> inmuebleVOS = new ArrayList<>();
     private ArrayList<String> valorServicio = new ArrayList<>();
     private String tipoInmueble = "1", urgente = "no", dimension = "60", id_inmueble = "1", valorX = "0";
     private String id_direccion = "1", comentario = "Sin comentarios", fecha = "1 de enero de 2018", hora = "11:30AM";
@@ -119,7 +106,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 tipoInmueble = spinnerInmueble.getItemAtPosition(i).toString();
-                id_inmueble = inmuebles.get(i).getIdTipoInmueble();
+                //id_inmueble = inmuebleVOS.get(i).getIdTipoInmueble();
                 band1 = true;
                 tasarServicio();
             }
@@ -361,13 +348,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 String code = response.body().getCode();
                 switch (code){
                     case "100":
-                        inmuebles = response.body().getData();
-                        ArrayList<String> tipoInm = new ArrayList<>();
-                        for (int i = 0; i < inmuebles.size(); i++){
-                            tipoInm.add(inmuebles.get(i).getInmueble());
-                        }//for
-                        ArrayAdapter<String> inmuebleArrayAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, tipoInm);
-                        spinnerInmueble.setAdapter(inmuebleArrayAdapter);
+
                         break;
                     case "102":
                         Log.e(TAG, "Cod: 102 No hay datos");
