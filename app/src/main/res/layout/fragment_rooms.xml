@@ -48,16 +48,49 @@
                 android:layout_marginStart="13dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <ToggleButton
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgMinus1"
+                    android:src="@drawable/btn_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    style="@style/texto_15_gris"
+                    android:textColorHint="@color/color_hint"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:hint="Cantidad"
+                    android:background="@color/transparente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/imgPlus1"
+                    android:src="@drawable/btn_add2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/color_hint"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <!--<ToggleButton
                 android:background="@drawable/toggle_yes_no"
                 android:textOff=""
                 android:textOn=""
                 android:text=""
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="28dp" />
-
+                android:layout_height="28dp" />-->
             <LinearLayout
                 android:layout_marginTop="24dp"
                 android:orientation="vertical"
@@ -78,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/imgMinus"
+                        android:id="@+id/imgMinus2"
                         android:src="@drawable/btn_remove"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -92,7 +125,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ImageView
-                        android:id="@+id/imgPlus"
+                        android:id="@+id/imgPlus2"
                         android:src="@drawable/btn_add2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

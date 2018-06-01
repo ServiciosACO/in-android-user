@@ -13,7 +13,7 @@ import co.kubo.indiesco.R
 class RoomsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_dimensiones, container, false)
+        val v = inflater.inflate(R.layout.fragment_rooms, container, false)
 
         return v
     }

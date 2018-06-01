@@ -23,4 +23,5 @@ class InmuebleTipos {
     val dimesiones: List<InmuebleDimensiones>? = null
 
     var active = false
+
 }

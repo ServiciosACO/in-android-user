@@ -28,6 +28,16 @@ public class InmuebleVO {
 
     Boolean check = false;
 
+    int nPisos = 0;
+
+    public int getnPisos() {
+        return nPisos;
+    }
+
+    public void setnPisos(int nPisos) {
+        this.nPisos = nPisos;
+    }
+
     public Boolean getCheck() {
         return check;
     }

@@ -20,6 +20,41 @@ public class Singleton {
     Double latitud;
     Double longitud;
 
+    private String posTipoInmueble, idTipoInmueble;
+    private String posDimension, idDimension;
+
+    public String getPosDimension() {
+        return posDimension;
+    }
+
+    public void setPosDimension(String posDimension) {
+        this.posDimension = posDimension;
+    }
+
+    public String getIdDimension() {
+        return idDimension;
+    }
+
+    public void setIdDimension(String idDimension) {
+        this.idDimension = idDimension;
+    }
+
+    public String getIdTipoInmueble() {
+        return idTipoInmueble;
+    }
+
+    public void setIdTipoInmueble(String idTipoInmueble) {
+        this.idTipoInmueble = idTipoInmueble;
+    }
+
+    public String getPosTipoInmueble() {
+        return posTipoInmueble;
+    }
+
+    public void setPosTipoInmueble(String posTipoInmueble) {
+        this.posTipoInmueble = posTipoInmueble;
+    }
+
     private ArrayList<InmuebleVO> data = new ArrayList<>();
 
     public ArrayList<InmuebleVO> getData() {

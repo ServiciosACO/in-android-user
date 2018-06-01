@@ -66,4 +66,16 @@ public class SharedPreferenceManager {
         SharedPreferences prefs = context.getSharedPreferences(NOMBRE_ARCHIVO, Context.MODE_PRIVATE);
         return prefs.getBoolean("isLoged", false);
     }
+
+    public String getFirebaseToken(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(NOMBRE_ARCHIVO, Context.MODE_PRIVATE);
+        return prefs.getString("token_firebase", "0");
+    }
+
+    public void setFirebaseToken(Context context, String token) {
+        SharedPreferences prefs = context.getSharedPreferences(NOMBRE_ARCHIVO, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("token_firebase", token);
+        editor.apply();
+    }
 }//public class SharedPreferenceManager

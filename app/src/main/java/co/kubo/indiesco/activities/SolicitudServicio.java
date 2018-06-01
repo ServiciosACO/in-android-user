@@ -211,7 +211,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.llValor:
                 //if (validacion()){
-                    crearServicio();
+                    //crearServicio();
                 //}
                 break;
         }//switch
@@ -228,12 +228,9 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
         return true;
     }
 
-    public void crearServicio(){
-        //llValor.setEnabled(false);
-        //if (dialogProgress == null) {
-            dialogProgress = new DialogProgress(SolicitudServicio.this);
-            dialogProgress.show();
-        //}
+    /*public void crearServicio(){
+        dialogProgress = new DialogProgress(SolicitudServicio.this);
+        dialogProgress.show();
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -276,7 +273,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
                 Log.e(TAG, "onFailure crearServicio");
             }
         });
-    }
+    }*/
 
     @Override
     public void onBackPressed() {

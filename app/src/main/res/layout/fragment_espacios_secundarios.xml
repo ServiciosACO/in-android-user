@@ -47,7 +47,14 @@
                 android:layout_marginStart="13dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <ScrollView
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvEspaciosSec"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+            <!--<ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
@@ -100,7 +107,6 @@
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
-
                     <LinearLayout
                         android:orientation="horizontal"
                         android:gravity="center"
@@ -145,7 +151,6 @@
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
-
                     <LinearLayout
                         android:orientation="horizontal"
                         android:gravity="center"
@@ -190,7 +195,6 @@
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
-
                     <LinearLayout
                         android:orientation="horizontal"
                         android:gravity="center"
@@ -235,7 +239,6 @@
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
-
                     <LinearLayout
                         android:orientation="horizontal"
                         android:gravity="center"
@@ -280,9 +283,8 @@
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
-
                 </LinearLayout>
-            </ScrollView>
+            </ScrollView>-->
         </LinearLayout>
     </com.loopeer.shadow.ShadowView>
 </LinearLayout>

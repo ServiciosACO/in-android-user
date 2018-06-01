@@ -28,4 +28,9 @@ public class ConstantesRestApi {
     public static final String URL_REGISTRAR_SALTO_TX = "servicios/registrar_salto_tx/";
     public static final String URL_CALIFICAR_SERVICIO = "servicios/calificar_servicio/";
     public static final String URL_PENDIENTE_CALIFICAR = "servicios/pendientes_calificar/";
+    public static final String URL_ACTUALIZAR_TOKEN_FIREBASE = "cuenta/actualizar_token/";
+    public static final String URL_VALIDAR_CUPON = "servicios/validar_codigo_descuento/";
+    public static final String URL_CREAR_RECARGO = "recargos/crear_recargo";
+    public static final String URL_HISTORIAL_RECARGO = "recargos/historial_recargos/{uid}/{offset}";
+
 }

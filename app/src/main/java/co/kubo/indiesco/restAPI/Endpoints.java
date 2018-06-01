@@ -147,14 +147,11 @@ public interface Endpoints {
     @POST(ConstantesRestApi.URL_CREAR_SERVICIO)
     Call<ResponseCrearServicio> crearServicio(@Header("X-AC-Auth-Token") String authToken,
                                               @Field("uid") String uid,
-                                              @Field("id_tipo_inmueble") String id_tipo_inmueble,
-                                              @Field("dimension") String dimension,
-                                              @Field("valor") String valor,
-                                              @Field("id_direccion") String id_direccion,
-                                              @Field("fecha_servicio") String fecha_servicio,
-                                              @Field("urgente") String urgente,
-                                              @Field("hora") String hora,
-                                              @Field("comentario") String comentario);
+                                              @Field("valor_compra") int valor_compra,
+                                              @Field("id_codigo_descuento") int id_codigo_descuento,
+                                              @Field("descuento") int descuento,
+                                              @Field("cantidad_fechas") int cantidad_fechas,
+                                              @Field("servicios") String servicios);
 
     @GET(ConstantesRestApi.URL_LISTAR_HISTORIAL + "{uid}/{tipo}")
     Call<ResponseHistorial> listarHistorial(@Header("X-AC-Auth-Token") String authToken,
@@ -196,5 +193,20 @@ public interface Endpoints {
                                             @Field("id_solicitud") String id_solicitud,
                                             @Field("calificacion") String calificacion,
                                             @Field("comentario") String comentario);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_VALIDAR_CUPON)
+    Call<ResponseGeneral> validarCupon(@Header("X-AC-Auth-Token") String authToken,
+                                               @Field("uid") String uid,
+                                               @Field("codigo_descuento") String codigo_descuento);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_ACTUALIZAR_TOKEN_FIREBASE)
+    Call<ResponseGeneral> actualizarTokenFirebase(@Header("X-AC-Auth-Token") String authToken,
+                                                  @Field("uid") String uid,
+                                                  @Field("token") String token,
+                                                  @Field("plataforma") String plataforma);
+
+
 
 }//Endpoints

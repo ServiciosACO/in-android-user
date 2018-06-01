@@ -77,7 +77,8 @@
                         android:src="@drawable/btn_remove"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                    <EditText
+                    <co.kubo.indiesco.utils.Regular
+                        android:id="@+id/tvQtyFloor"
                         style="@style/texto_15_gris"
                         android:textColorHint="@color/color_hint"
                         android:gravity="center"

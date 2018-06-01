@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.modelo.InmuebleVO
+import co.kubo.indiesco.utils.Singleton
 import com.squareup.picasso.Picasso
 
 /**
@@ -17,6 +18,8 @@ import com.squareup.picasso.Picasso
  */
 class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private val activity: Activity)
     :RecyclerView.Adapter<AdapterVivienda.ViviendaViewHolder>() {
+
+    val singleton = Singleton.getInstance()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViviendaViewHolder {
         val v = LayoutInflater.from(parent!!.context).inflate(R.layout.item_tipo_vivienda, parent, false)
@@ -48,9 +51,10 @@ class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private
                 inmuebleArray[0].tiposInmuebles[item].active = false
             }
             inmuebleArray[0].tiposInmuebles[position].active = true
+            singleton.posTipoInmueble = position.toString()
+            singleton.idTipoInmueble = temp.idTipoInmueble
             notifyDataSetChanged()
         }
-
     }
 
     class ViviendaViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){

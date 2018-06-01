@@ -6,8 +6,9 @@
     android:paddingBottom="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <co.kubo.indiesco.utils.Bold
+        android:id="@+id/tvDimension"
         android:background="@color/colorNaranjaOpaco"
-        android:drawableRight="@drawable/btn_done"
+        android:drawableRight="@drawable/ic_selected"
         android:paddingStart="20dp"
         android:paddingEnd="15dp"
         android:paddingTop="15dp"
