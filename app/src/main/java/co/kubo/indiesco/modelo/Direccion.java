@@ -27,6 +27,16 @@ public class Direccion {
     @Expose
     private String ciudad;
 
+    boolean check = false;
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
     public String getCiudad() {
         return ciudad;
     }

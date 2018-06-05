@@ -5,11 +5,15 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.View
+import android.widget.LinearLayout
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.PageAdapter
 import co.kubo.indiesco.fragment.*
 import kotlinx.android.synthetic.main.activity_add_service.*
 import java.util.ArrayList
+import android.R.interpolator.linear
+
+
 
 class AddService : AppCompatActivity(), View.OnClickListener {
 
@@ -18,6 +22,26 @@ class AddService : AppCompatActivity(), View.OnClickListener {
         when (v!!.id){
             R.id.imgBotonVolver -> {
                 onBackPressed()
+            }
+            R.id.tvNext -> {
+                var pos = viewPager.currentItem
+                when (pos){
+                    0 -> {
+                        viewPager.currentItem = 1
+                    }
+                    1 -> {
+                        viewPager.currentItem = 2
+                    }
+                    2 -> {
+                        viewPager.currentItem = 3
+                    }
+                    3 -> {
+                        viewPager.currentItem = 4
+                    }
+                    4 -> {
+                        viewPager.currentItem = 5
+                    }
+                }
             }
         }
     }
@@ -29,6 +53,7 @@ class AddService : AppCompatActivity(), View.OnClickListener {
 
     private fun setListeners() {
         imgBotonVolver.setOnClickListener(this)
+        tvNext.setOnClickListener(this)
     }
 
     private fun agregarFragments(flag: Int): ArrayList<Fragment> {
@@ -37,9 +62,9 @@ class AddService : AppCompatActivity(), View.OnClickListener {
             0 ->{
                 fragments.add(TipoViviendaFragment())
                 fragments.add(DimensionesFragment())
-                fragments.add(RoomsFragment())
+                //fragments.add(RoomsFragment())
                 fragments.add(EspaciosPrincipalesFragment())
-                fragments.add(EspaciosSecuendariosFragment())
+                //fragments.add(EspaciosSecuendariosFragment())
                 fragments.add(ChooseAddressFragment())
                 //fragments.add(DireccionFragment())
                 fragments.add(ServiceTimeFragment())
@@ -71,11 +96,37 @@ class AddService : AppCompatActivity(), View.OnClickListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    0 -> radiogroup.check(R.id.radioButton)
-                    1 -> radiogroup.check(R.id.radioButton2)
-                    2,5 -> radiogroup.check(R.id.radioButton3)
-                    6 -> radiogroup.check(R.id.radioButton4)
-                    7 -> radiogroup.check(R.id.radioButton5)
+                    0 -> {
+                        radiogroup.check(R.id.radioButton)
+                        tvValor.visibility = View.INVISIBLE
+                        llProgress.layoutParams.width = 106
+                        llProgress.requestLayout()
+                    }
+                    1 -> {
+                        radiogroup.check(R.id.radioButton2)
+                        tvValor.visibility = View.INVISIBLE
+                        llProgress.layoutParams.width = 213
+                        llProgress.requestLayout()
+                    }
+
+                    2 -> {
+                        radiogroup.check(R.id.radioButton3)
+                        tvValor.visibility = View.VISIBLE
+                        llProgress.layoutParams.width = 257
+                        llProgress.requestLayout()
+                    }
+                    3 -> {
+                        radiogroup.check(R.id.radioButton4)
+                        tvValor.visibility = View.VISIBLE
+                        llProgress.layoutParams.width = 300
+                        llProgress.requestLayout()
+                    }
+                    4 -> {
+                        radiogroup.check(R.id.radioButton5)
+                        tvValor.visibility = View.VISIBLE
+                        llProgress.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
+                        llProgress.requestLayout()
+                    }
                     else -> {
                     }
                 }//switch

@@ -3,6 +3,7 @@ package co.kubo.indiesco.utils;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.modelo.InmuebleVO;
+import co.kubo.indiesco.modelo.ServiceResumen;
 
 /**
  * Created by estacion on 23/02/18.
@@ -11,7 +12,6 @@ import co.kubo.indiesco.modelo.InmuebleVO;
 public class Singleton {
     private static Singleton INSTANCE = new Singleton();
     Singleton() {
-
     }
     public static Singleton getInstance() {
         return INSTANCE;
@@ -20,8 +20,37 @@ public class Singleton {
     Double latitud;
     Double longitud;
 
+    private ArrayList<InmuebleVO> data = new ArrayList<>();
+    private ArrayList<ServiceResumen> resumen = new ArrayList<>();
+    private int position = 0;
+
     private String posTipoInmueble, idTipoInmueble;
     private String posDimension, idDimension;
+    private String idDir;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public ArrayList<ServiceResumen> getResumen() {
+        return resumen;
+    }
+
+    public void setResumen(ArrayList<ServiceResumen> resumen) {
+        this.resumen = resumen;
+    }
+
+    public String getIdDir() {
+        return idDir;
+    }
+
+    public void setIdDir(String idDir) {
+        this.idDir = idDir;
+    }
 
     public String getPosDimension() {
         return posDimension;
@@ -54,8 +83,6 @@ public class Singleton {
     public void setPosTipoInmueble(String posTipoInmueble) {
         this.posTipoInmueble = posTipoInmueble;
     }
-
-    private ArrayList<InmuebleVO> data = new ArrayList<>();
 
     public ArrayList<InmuebleVO> getData() {
         return data;

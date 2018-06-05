@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
 import co.kubo.indiesco.R
@@ -37,7 +38,7 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
                 .into(holder.imgProperty)
 
         holder.radioButton.isChecked = temp.check
-        holder.radioButton.setOnClickListener{
+        holder.llItemInmueble.setOnClickListener{
             for (item in inmuebleArray.indices){
                 inmuebleArray[item].check = false
             }
@@ -59,6 +60,7 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
         var tvInmueble = itemView!!.findViewById<TextView>(R.id.tvInmueble)
         var radioButton = itemView!!.findViewById<RadioButton>(R.id.radioButton)
         var imgProperty = itemView!!.findViewById<ImageView>(R.id.imgProperty)
+        var llItemInmueble = itemView!!.findViewById<LinearLayout>(R.id.llItemInmueble)
     }
 }
 

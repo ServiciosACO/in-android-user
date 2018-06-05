@@ -273,10 +273,10 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                 if (data.isNotEmpty() && bandPonerDir) {
                     if (data[0].contains(" a ")) {
                         var direc = data[0].split(" a ")
-                        editDireccion.setText(direc[0])
+                        editDireccion.setText(direc[0], false)
                         valorDireccion = direc[0]
                     } else {
-                        editDireccion.setText(data[0])
+                        editDireccion.setText(data[0], false)
                         valorDireccion = data[0]
                     }
                 }

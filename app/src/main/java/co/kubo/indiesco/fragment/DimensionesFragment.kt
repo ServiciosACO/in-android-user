@@ -82,7 +82,11 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
         if (isVisibleToUser){
             Log.e("fragment", "Visible")
             inmuebles = singleton.data
-            posInmueble = singleton.posTipoInmueble.toInt()
+            try{
+                posInmueble = singleton.posTipoInmueble.toInt()
+            }catch (e: Exception){
+                posInmueble = 0
+            }
 
             if (inmuebles[posInmueble].getnPisos() != 0){
                 tvQtyFloor!!.text = inmuebles[posInmueble].getnPisos().toString()

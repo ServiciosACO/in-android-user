@@ -62,6 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvPpalRoom"
                     style="@style/texto_15_gris"
                     android:textColorHint="@color/color_hint"
                     android:gravity="center"
@@ -116,6 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <co.kubo.indiesco.utils.Regular
+                        android:id="@+id/tvCommunRoom"
                         style="@style/texto_15_gris"
                         android:textColorHint="@color/color_hint"
                         android:gravity="center"

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import co.kubo.indiesco.R
-import co.kubo.indiesco.interfaces.IListeners
 import co.kubo.indiesco.utils.Utils
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
@@ -56,18 +55,22 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
     }
 
     override fun onDateSelected(widget: MaterialCalendarView, date: CalendarDay, selected: Boolean) {
-        Toast.makeText(applicationContext, "$date", Toast.LENGTH_LONG).show()
+
+        var dateStr = getSelectedDatesString()
+
+        Toast.makeText(applicationContext, dateStr, Toast.LENGTH_LONG).show()
         llNext.setBackgroundColor(resources.getColor(R.color.colorVerde))
         flag = 1
     }
 
-    private fun getSelectedDatesString(){
+    private fun getSelectedDatesString(): String{
         val date = calendarView.selectedDate
         if (date == null){
             dateStr = ""
         } else {
-            dateStr = utils.DateToString(calendarView.selectedDate.date).replace(" ", " de ")
+            dateStr = utils.DateToString3(calendarView.selectedDate.date).replace(" ", "-")
         }
+        return dateStr
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

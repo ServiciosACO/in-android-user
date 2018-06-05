@@ -129,4 +129,32 @@ public class Utils {
         }
         return datetime;
     }//public String DateToString
+
+    public String StringToDate3(String fecha){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = null;
+        try {
+            date = format.parse(fecha);
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return DateToString3(date);
+    }
+    public String DateToString3 (java.util.Date date){
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy MM dd");
+        String datetime="";
+        try {
+            datetime = dateformat.format(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return datetime;
+    }//public String DateToString
+
+
 }

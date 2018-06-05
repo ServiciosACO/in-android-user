@@ -137,12 +137,15 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/llProgress"
+                    android:orientation="vertical"
                     android:background="@color/color_hint"
                     android:layout_alignBottom="@+id/llLinear"
                     android:layout_alignTop="@+id/llLinear"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:id="@+id/llFooter"
                     android:orientation="horizontal"
                     android:paddingLeft="16sp"
                     android:layout_weight="1"

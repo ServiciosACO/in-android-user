@@ -2,10 +2,12 @@
 <LinearLayout
     android:orientation="horizontal"
     android:gravity="center"
+    android:layout_marginBottom="25dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <co.kubo.indiesco.utils.Bold
+        android:id="@+id/tvEspacios"
         style="@style/texto_18_red"
         android:text="Cocina"
         android:textStyle="bold"
@@ -25,11 +27,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvQty"
             style="@style/texto_15_gris"
             android:textColorHint="@color/color_hint"
             android:gravity="center"
             android:layout_weight="1"
-            android:hint="0"
+            android:hint="00"
             android:background="@color/transparente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

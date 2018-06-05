@@ -1,0 +1,47 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llItem"
+    android:gravity="center|left"
+    android:background="#ffffff"
+    android:paddingLeft="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="18sp"
+    android:paddingBottom="18dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <co.kubo.indiesco.utils.Bold
+        android:id="@+id/tvDir"
+        android:layout_marginBottom="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/texto_15_morado"
+        android:text="Calle 11 # 11-11" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvComplemento"
+            android:text="Piso 2"
+            android:layout_marginBottom="5sp"
+            style="@style/texto_13_naranja"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:background="@drawable/select_property"
+            android:button="@color/transparente"
+            android:checked="false"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
+
+    <co.kubo.indiesco.utils.Regular
+        android:id="@+id/tvCiudad"
+        style="@style/texto_13_gris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bogotá, Bogotá" />
+</LinearLayout>

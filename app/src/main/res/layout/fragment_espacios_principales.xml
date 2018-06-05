@@ -39,7 +39,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginStart="13dp"
-                android:text="Espacios principales"
+                android:text="Espacios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Regular

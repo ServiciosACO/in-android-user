@@ -18,4 +18,6 @@ class InmuebleEspacios {
     @SerializedName("valor")
     @Expose
     val valor: String? = null
+
+    var qty = 0
 }
