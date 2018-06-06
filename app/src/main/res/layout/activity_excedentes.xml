@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content" />
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvCart"
+                    android:id="@+id/rvRecargo"
                     android:visibility="gone"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
@@ -159,6 +159,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/llValor"
                     android:layout_gravity="bottom"
                     android:orientation="horizontal"

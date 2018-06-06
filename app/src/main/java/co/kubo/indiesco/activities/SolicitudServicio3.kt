@@ -11,6 +11,7 @@ import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseCodigoDescuento
 import co.kubo.indiesco.utils.SharedPreferenceManager
+import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import kotlinx.android.synthetic.main.activity_solicitud_servicio3.*
 import retrofit2.Call
@@ -20,6 +21,7 @@ import retrofit2.Response
 class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
 
     lateinit var dialogProgress : DialogProgress
+    val singleton = Singleton.getInstance()
     val sharedPreferenceManager = SharedPreferenceManager()
     val utils = Utils()
     var codigo = ""
@@ -77,7 +79,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                 if (response!!.isSuccessful){
                     when (response.body()!!.code){
                         "100" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_selected,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_check,0)
                             when (response.body()!!.data!![0].tipo_codigo){
                                 1 -> { //valor
                                     tvDiscount.visibility = View.VISIBLE
@@ -91,19 +93,19 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                             }
                         }
                         "101" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_selected,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
                             Toast.makeText(applicationContext, "El código ingresado ya fue redimido", Toast.LENGTH_LONG).show()
                         }
                         "102" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_selected,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
                             Toast.makeText(applicationContext, "El código ingresado no es válido", Toast.LENGTH_LONG).show()
                         }
                         "103" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_selected,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
                             Toast.makeText(applicationContext, "El código ingresado expiró", Toast.LENGTH_LONG).show()
                         }
                         "104" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_selected,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
                             Toast.makeText(applicationContext, "El código ingresado no es válido", Toast.LENGTH_LONG).show()
                         }
                         "120" -> {

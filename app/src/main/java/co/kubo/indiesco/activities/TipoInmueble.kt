@@ -79,7 +79,7 @@ class TipoInmueble : AppCompatActivity(), IShowOption, View.OnClickListener {
         })
     }
 
-    override fun option(flag: Int) {
+    override fun option(flag: Int, pos : Int) {
         this.flag = flag
         llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
         rlNext.setBackgroundColor(resources.getColor(R.color.colorVerde_80))

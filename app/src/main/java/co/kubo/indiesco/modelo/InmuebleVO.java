@@ -22,6 +22,9 @@ public class InmuebleVO {
     @SerializedName("tipo_cobro")
     @Expose
     private String tipoCobro;
+    @SerializedName("valor_mt2")
+    @Expose
+    private String valor_mt2;
     @SerializedName("tipos_inmuebles")
     @Expose
     private ArrayList<InmuebleTipos> tiposInmuebles = null;
@@ -29,6 +32,14 @@ public class InmuebleVO {
     Boolean check = false;
 
     int nPisos = 0;
+
+    public String getValor_mt2() {
+        return valor_mt2;
+    }
+
+    public void setValor_mt2(String valor_mt2) {
+        this.valor_mt2 = valor_mt2;
+    }
 
     public int getnPisos() {
         return nPisos;

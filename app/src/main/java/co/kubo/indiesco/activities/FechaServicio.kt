@@ -8,9 +8,11 @@ import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.utils.Utils
 import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.CalendarMode
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
 import kotlinx.android.synthetic.main.activity_fecha_servicio.*
+import java.util.*
 
 class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedListener {
 
@@ -55,9 +57,7 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
     }
 
     override fun onDateSelected(widget: MaterialCalendarView, date: CalendarDay, selected: Boolean) {
-
         var dateStr = getSelectedDatesString()
-
         Toast.makeText(applicationContext, dateStr, Toast.LENGTH_LONG).show()
         llNext.setBackgroundColor(resources.getColor(R.color.colorVerde))
         flag = 1
@@ -77,5 +77,12 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fecha_servicio)
         setListeners()
+        var currentDate = Calendar.getInstance().time
+        var currentDateStr = utils.DateToString3(currentDate).replace(" ", "-")
+        var splitDate = currentDateStr.split("-")
+        calendarView.state().edit()
+                .setMinimumDate(CalendarDay.from(splitDate[0].toInt(), splitDate[1].toInt()-1, splitDate[2].toInt()))
+                .commit()
+
     }
 }

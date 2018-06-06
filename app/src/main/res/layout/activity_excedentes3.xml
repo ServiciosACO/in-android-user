@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/llHeader"
+            android:paddingTop="20sp"
+            android:background="@color/header"
+            android:orientation="horizontal"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgBotonVolver"
+                android:padding="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/btn_atras" />
+            <co.kubo.indiesco.utils.Medium
+                android:id="@+id/tvTituloHeader"
+                android:layout_gravity="center"
+                style="@style/texto_20_morado"
+                android:layout_marginLeft="35sp"
+                android:text="Excedente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/fondo_registro"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/llServices"
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <co.kubo.indiesco.utils.Regular
+                        android:gravity="center"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginEnd="55dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="24dp"
+                        android:text="Ingresa el número de metros cuadrados extra"
+                        style="@style/texto_15_gris"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <co.kubo.indiesco.utils.Bold
+                            style="@style/texto_22_naranja"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="24dp"
+                            android:paddingStart="30dp"
+                            android:text="@string/m_extras"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:paddingStart="30dp"
+                            android:paddingEnd="30dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/imgMinus"
+                                android:src="@drawable/btn_remove"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <co.kubo.indiesco.utils.Regular
+                                android:id="@+id/tvQty"
+                                style="@style/texto_15_verde"
+                                android:textColorHint="@color/color_hint"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:hint="Cantidad"
+                                android:background="@color/transparente"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                            <ImageView
+                                android:id="@+id/imgPlus"
+                                android:src="@drawable/btn_add2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <View
+                            android:layout_marginStart="16dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@color/color_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llValor"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal"
+                    android:background="@color/colorRojo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:paddingLeft="16sp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <co.kubo.indiesco.utils.Bold
+                            android:id="@+id/tvValor"
+                            android:gravity="center|start"
+                            android:text="Total: $0"
+                            style="@style/texto_20_blanco"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <co.kubo.indiesco.utils.Medium
+                            android:id="@+id/tvPayment"
+                            style="@style/texto_15_blanco"
+                            android:text="Pagar"
+                            android:background="@color/red_label"
+                            android:padding="18dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

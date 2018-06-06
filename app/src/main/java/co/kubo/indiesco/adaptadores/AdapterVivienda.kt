@@ -16,7 +16,8 @@ import com.squareup.picasso.Picasso
 /**
  * Created by estacion on 31/05/18.
  */
-class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private val activity: Activity)
+class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private val activity: Activity,
+                      private val iVivieda: IVivieda)
     :RecyclerView.Adapter<AdapterVivienda.ViviendaViewHolder>() {
 
     val singleton = Singleton.getInstance()
@@ -54,6 +55,7 @@ class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private
             singleton.posTipoInmueble = position.toString()
             singleton.idTipoInmueble = temp.idTipoInmueble
             notifyDataSetChanged()
+            iVivieda.viviendaCheck()
         }
     }
 
@@ -63,4 +65,8 @@ class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private
         var imgVivienda = itemView!!.findViewById<ImageView>(R.id.imgVivienda)
         var tvVivienda = itemView!!.findViewById<TextView>(R.id.tvVivienda)
     }
+}
+
+interface IVivieda{
+    fun viviendaCheck()
 }

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import co.kubo.indiesco.R
+import co.kubo.indiesco.adaptadores.IAddress
 import co.kubo.indiesco.adaptadores.MisDireccionesAdapter
 import co.kubo.indiesco.adaptadores.MisDireccionesAdapter2
 import co.kubo.indiesco.dialog.DialogProgress
@@ -35,6 +36,7 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
     private var dialogProgress : DialogProgress ?= null
     lateinit var llm : LinearLayoutManager
     lateinit var adapter : MisDireccionesAdapter2
+    lateinit var iAddress : IAddress
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -62,7 +64,7 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
                 when (code) {
                     "100" -> {
                         direccion = response.body()!!.data
-                        adapter = MisDireccionesAdapter2(direccion, activity)
+                        adapter = MisDireccionesAdapter2(direccion, activity, iAddress)
                         rvAddress!!.adapter = adapter
                     }
                     "102" -> {
@@ -84,6 +86,7 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_choose_address, container, false)
+        iAddress = (activity as? IAddress)!!
 
         var fabAgregar = v.findViewById<FloatingActionButton>(R.id.fabAgregar)
         rvAddress = v.findViewById<RecyclerView>(R.id.rvAddress)

@@ -113,9 +113,6 @@
             android:name=".activities.EditarPerfil"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.SolicitudServicio2"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.NuevaDireccion"
             android:screenOrientation="portrait" />
         <activity
@@ -128,25 +125,31 @@
             android:name=".activities.Excedentes"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activities.Excedentes2"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.FechaServicio"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TipoInmueble"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.AddService"/>
+        <activity android:name=".activities.AddService" />
 
         <service android:name=".fcm.NotificacionIDTokenService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
         <service android:name=".fcm.NotificationService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".activities.Excedentes3"
+            android:label="@string/title_activity_excedentes3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

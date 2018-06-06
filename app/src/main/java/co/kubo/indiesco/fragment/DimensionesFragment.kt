@@ -14,6 +14,8 @@ import android.widget.TextView
 import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterDimensiones
+import co.kubo.indiesco.adaptadores.IDimension
+import co.kubo.indiesco.adaptadores.IVivieda
 import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.utils.Singleton
 
@@ -28,6 +30,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
     lateinit var adapter : AdapterDimensiones
     var posInmueble = 0
     var nPisos = 0
+    lateinit var iDimension : IDimension
 
     private var rvDimensiones : RecyclerView ?= null
     private var tvQtyFloor : TextView ?= null
@@ -45,6 +48,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
                 }
             }
             R.id.imgPlus -> {
+                iDimension.dimensionCheck(3)
                 if (inmuebles[posInmueble].getnPisos() > 2){
                     Toast.makeText(activity, "Debe tener máximo 3 pisos", Toast.LENGTH_SHORT).show()
                 } else {
@@ -59,6 +63,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_dimensiones, container, false)
+        iDimension = (activity as? IDimension)!!
         var imgMinus = v.findViewById<ImageView>(R.id.imgMinus)
         var imgPlus  = v.findViewById<ImageView>(R.id.imgPlus)
         tvQtyFloor = v.findViewById(R.id.tvQtyFloor)
@@ -70,7 +75,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
         inmuebles = singleton.data
         llm = LinearLayoutManager(activity)
         rvDimensiones!!.layoutManager = llm
-        adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble)
+        adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
         rvDimensiones!!.adapter = adapter
         Log.e("fragment", "onCreateView")
 
@@ -80,6 +85,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         if (isVisibleToUser){
+            iDimension = (activity as? IDimension)!!
             Log.e("fragment", "Visible")
             inmuebles = singleton.data
             try{
@@ -94,7 +100,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
 
             llm = LinearLayoutManager(activity)
             rvDimensiones!!.layoutManager = llm
-            adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble)
+            adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
             rvDimensiones!!.adapter = adapter
         } else {
             Log.e("fragment", "No visible")

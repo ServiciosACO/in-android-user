@@ -41,10 +41,12 @@ public class MisDireccionesAdapter2 extends RecyclerView.Adapter<MisDireccionesA
     Activity activity;
     private DialogProgress dialogProgress;
     private Singleton singleton = Singleton.getInstance();
+    private IAddress iAddress;
 
-    public MisDireccionesAdapter2(ArrayList<Direccion> direccion, Activity activity) {
+    public MisDireccionesAdapter2(ArrayList<Direccion> direccion, Activity activity, IAddress iAddress) {
         this.direccion = direccion;
         this.activity = activity;
+        this.iAddress = iAddress;
     }
     @Override
     public MisDireccionesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -68,6 +70,7 @@ public class MisDireccionesAdapter2 extends RecyclerView.Adapter<MisDireccionesA
                 notifyDataSetChanged();
                 dir.setCheck(true);
                 singleton.setIdDir(dir.getId_direccion());
+                iAddress.AddressCheck();
             }
         });
 
@@ -91,3 +94,4 @@ public class MisDireccionesAdapter2 extends RecyclerView.Adapter<MisDireccionesA
         }
     }
 }
+

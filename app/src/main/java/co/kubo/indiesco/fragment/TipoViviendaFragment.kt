@@ -1,5 +1,6 @@
 package co.kubo.indiesco.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterVivienda
+import co.kubo.indiesco.adaptadores.IVivieda
 
 import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.utils.Singleton
@@ -31,12 +33,14 @@ class TipoViviendaFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_tipo_vivienda, container, false)
 
+        var iVivieda = (activity as? IVivieda)
+
         inmuebles = singleton.data
         var rvTipoVivienda = v.findViewById<RecyclerView>(R.id.rvTipoVivienda)
 
         glm = GridLayoutManager(activity, 2)
         rvTipoVivienda.layoutManager = glm
-        adapter = AdapterVivienda(inmuebles, activity!!)
+        adapter = AdapterVivienda(inmuebles, activity!!, iVivieda!!)
         rvTipoVivienda.adapter = adapter
         return v
     }

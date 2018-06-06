@@ -11,6 +11,7 @@
     <string name="dimension_3">71m\u00B2 - 80m\u00B2</string>
     <string name="dimension_4">80m\u00B2 o más</string>
     <string name="cuadrado">m\u00B2</string>
+    <string name="m_extras">M\u00B2 extras</string>
 
     <string name="dimension_11">Pequeña (50m\u00B2 - 60m\u00B2)</string>
     <string name="dimension_21">Mediana (61m\u00B2 - 70m\u00B2)</string>
@@ -76,5 +77,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_excedentes3">Excedentes3</string>
 
 </resources>

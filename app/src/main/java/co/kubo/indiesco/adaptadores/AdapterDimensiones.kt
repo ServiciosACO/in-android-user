@@ -13,7 +13,8 @@ import co.kubo.indiesco.utils.Singleton
 /**
  * Created by estacion on 1/06/18.
  */
-class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, private val activity: Activity, private val posInmueble: Int)
+class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, private val activity: Activity,
+                         private val posInmueble: Int, private val iDimension: IDimension)
     : RecyclerView.Adapter<AdapterDimensiones.DimensionesViewHolder>() {
 
     val singleton = Singleton.getInstance()
@@ -47,9 +48,14 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
             singleton.idDimension = temp.idDimension
             singleton.posDimension = position.toString()
             notifyDataSetChanged()
+            iDimension.dimensionCheck(2)
         }
     }
     class DimensionesViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
         var tvDimension = itemView!!.findViewById<TextView>(R.id.tvDimension)
     }
+}
+
+interface IDimension{
+    fun dimensionCheck(num: Int)
 }

@@ -45,9 +45,9 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
             notifyDataSetChanged()
             temp.check = true
             if (temp.categoria == "Vivienda"){
-                iShowOption.option(0)
+                iShowOption.option(0, position)
             } else {
-                iShowOption.option(1)
+                iShowOption.option(1, position)
             }
         }
     }
@@ -65,5 +65,5 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
 }
 
 interface IShowOption{
-    fun option(flag: Int)
+    fun option(flag: Int, pos : Int)
 }

@@ -49,7 +49,7 @@
                 android:layout_height="match_parent">
                 <LinearLayout
                     android:id="@+id/llNoServices"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:orientation="vertical"
                     android:gravity="center"
                     android:layout_width="match_parent"
@@ -83,7 +83,7 @@
 
                 <LinearLayout
                     android:id="@+id/llServices"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">

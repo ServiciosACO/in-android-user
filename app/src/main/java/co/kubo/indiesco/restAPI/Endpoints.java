@@ -16,6 +16,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseLogin;
 import co.kubo.indiesco.restAPI.modelo.ResponseNotificacion;
 import co.kubo.indiesco.restAPI.modelo.ResponsePedido;
 import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
+import co.kubo.indiesco.restAPI.modelo.ResponseRecargo;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.Constantes;
@@ -210,6 +211,17 @@ public interface Endpoints {
                                                   @Field("token") String token,
                                                   @Field("plataforma") String plataforma);
 
+    @GET(ConstantesRestApi.URL_HISTORIAL_RECARGO)
+    Call<ResponseRecargo> getRecargos(@Header("X-AC-Auth-Token") String authToken,
+                                      @Path("uid") String uid,
+                                      @Path("offset") int offset);
 
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_CREAR_RECARGO)
+    Call<ResponseGeneral> createRecharge(@Header("X-AC-Auth-Token") String authToken,
+                                         @Field("uid") String uid,
+                                         @Field("mts") int mts,
+                                         @Field("valor") int valor);
 
 }//Endpoints
