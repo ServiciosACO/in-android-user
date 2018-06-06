@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import co.kubo.indiesco.modelo.Foto;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.restAPI.modelo.ResponseAuthToken;
+import co.kubo.indiesco.restAPI.modelo.ResponseCodigoDescuento;
 import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseDireccion;
 import co.kubo.indiesco.restAPI.modelo.ResponseFoto;
@@ -40,6 +41,7 @@ import retrofit2.http.Url;
 
 public interface Endpoints {
 
+    //<editor-fold desc="Google Maps API">
     @GET("https://maps.googleapis.com/maps/api/place/details/json")
     Call<JsonElement> ubicacionDireccion(@Query("placeid") String placeId,
                                          @Query("sensor") String sensor,
@@ -58,6 +60,7 @@ public interface Endpoints {
                                        @Query("radius") String radius,
                                        @Query("components") String components,
                                        @Query("language") String language);
+    //</editor-fold>
 
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_ACTUALIZAR_CONTRASEÑA)
@@ -196,7 +199,7 @@ public interface Endpoints {
 
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_VALIDAR_CUPON)
-    Call<ResponseGeneral> validarCupon(@Header("X-AC-Auth-Token") String authToken,
+    Call<ResponseCodigoDescuento> validarCupon(@Header("X-AC-Auth-Token") String authToken,
                                                @Field("uid") String uid,
                                                @Field("codigo_descuento") String codigo_descuento);
 

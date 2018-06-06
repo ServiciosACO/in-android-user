@@ -32,6 +32,7 @@ import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.restAPI.modelo.ResponseHistorial;
 import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
@@ -72,7 +73,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-
+        setTokenFirebase();
         try {
             PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             versionName = packageInfo.versionName;
@@ -220,4 +221,33 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
+    private void setTokenFirebase(){
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Usuario usuario = new Usuario();
+        SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager();
+        usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
+        Call<ResponseGeneral> responseGeneralCall = endpoints.actualizarTokenFirebase(authToken,
+                usuario.getId_user(), sharedPreferenceManager.getFirebaseToken(this), "a");
+        responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
+            @Override
+            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (response.isSuccessful()){
+                    switch (response.body().getCode()){
+                        case "100":
+                            Log.e(TAG, "setTokenFirebase onResponse OK");
+                            break;
+                        case "102":
+                            Log.e(TAG, "setTokenFirebase onResponse Fallo");
+                            break;
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                Log.e(TAG, "setTokenFirebase onFailure");
+            }
+        });
+    }
 }

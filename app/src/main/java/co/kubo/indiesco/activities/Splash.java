@@ -46,4 +46,5 @@ public class Splash extends AppCompatActivity {
             }//run
         },Constantes.tiempoSplash);
     }//protected void onCreate
+
 }
