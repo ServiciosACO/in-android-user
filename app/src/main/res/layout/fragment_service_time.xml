@@ -50,15 +50,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ImageView
+                        android:id="@+id/imgTime"
                         android:layout_gravity="center"
                         android:src="@drawable/img_day"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+
                     <TimePicker
                         android:id="@+id/timePicker"
                         android:timePickerMode="spinner"
                         style="@style/TimePickerTheme"
-
                         android:layout_marginTop="15sp"
                         android:layout_marginBottom="12sp"
                         android:layout_width="match_parent"
@@ -77,6 +78,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                         <ToggleButton
+                            android:id="@+id/toggleButton"
+                            android:checked="false"
                             android:background="@drawable/toggle_switch"
                             android:textOff=""
                             android:textOn=""

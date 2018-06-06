@@ -228,6 +228,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
         return true;
     }
 
+    //<editor-fold desc="crearServicio">
     /*public void crearServicio(){
         dialogProgress = new DialogProgress(SolicitudServicio.this);
         dialogProgress.show();
@@ -274,6 +275,7 @@ public class SolicitudServicio extends AppCompatActivity implements View.OnClick
             }
         });
     }*/
+    //</editor-fold>DG
 
     @Override
     public void onBackPressed() {
