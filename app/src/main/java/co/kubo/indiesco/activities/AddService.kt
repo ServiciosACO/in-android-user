@@ -1,31 +1,83 @@
 package co.kubo.indiesco.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import co.kubo.indiesco.R
-import co.kubo.indiesco.adaptadores.IAddress
-import co.kubo.indiesco.adaptadores.IDimension
-import co.kubo.indiesco.adaptadores.PageAdapter
+import co.kubo.indiesco.adaptadores.*
 import co.kubo.indiesco.fragment.*
+import co.kubo.indiesco.modelo.Espacios
+import co.kubo.indiesco.modelo.InmuebleEspacios
+import co.kubo.indiesco.modelo.ServiceResumen
+import co.kubo.indiesco.utils.Singleton
 import kotlinx.android.synthetic.main.activity_add_service.*
+import java.text.DecimalFormat
 import java.util.ArrayList
-import co.kubo.indiesco.adaptadores.IVivieda
 
 
-class AddService : AppCompatActivity(), View.OnClickListener, IVivieda, IDimension, IAddress {
+class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
+        IDimension, IAddress, IEspacios, ITime {
 
+    val df = DecimalFormat("$###,###")
+    val singleton = Singleton.getInstance()
     var flagVivienda = false
     var flagDimensiones = false
     var flagEspacios = false
     var flagAddress = false
     var flagTime = false
+    var totalCost = 0.0
 
     var flag1 = false
     var flag2 = false
+
+    override fun checkTime() {
+        if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios){
+            flagTime = true
+            llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
+            rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
+        } else {
+            flagTime = false
+            llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
+            rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
+        }
+    }
+
+    override fun espaciosCheck(flag: Boolean, posInm: Int, posDim: Int) {
+        if (flag){
+            llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
+            rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
+        } else {
+            llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
+            rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
+        }
+        flagEspacios = flag
+        var data = singleton.data
+        var total = 0.0
+        for (item in data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!!.indices){
+            if (data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty != 0
+                    && data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].tipo == "valor"){
+                var cost = data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty *
+                        data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].valor!!.toDouble()
+                total += cost
+            }
+        }
+        for (item in data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!!.indices){
+            if (data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty != 0
+                    && data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].tipo == "porcentaje"){
+                var percent = data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty *
+                        data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].valor!!.toDouble()
+                var percent_aux = percent + 1
+                total *= percent_aux
+            }
+        }
+        tvValor.text = "Total: ${df.format(total)}"
+        totalCost = total
+    }
 
     override fun AddressCheck() {
         flagAddress = true
@@ -51,7 +103,6 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda, IDimensi
         flagVivienda = true
     }
 
-
     override fun onClick(v: View?) {
         when (v!!.id){
             R.id.imgBotonVolver -> {
@@ -73,7 +124,44 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda, IDimensi
                         viewPager.currentItem = 4
                     }
                     4 -> {
-                        //Ir a SolicitudServicio3
+                        if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios && flagTime){
+                            var position = singleton.position
+                            var arrayResumen = singleton.resumen
+                            var serviceResumen = ServiceResumen()
+                            serviceResumen.category = singleton.data[0].categoria
+                            serviceResumen.date = singleton.fecha
+                            serviceResumen.address = singleton.direccion
+                            serviceResumen.id_direccion = singleton.idDir
+                            serviceResumen.dimension = singleton.dimension
+                            serviceResumen.id_dimension = singleton.idDimension
+                            serviceResumen.totalCost = totalCost.toString()
+                            serviceResumen.urgente = singleton.urgente
+                            serviceResumen.comentario = "ok"
+                            serviceResumen.pisos = singleton.getnPisos()
+                            serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                            serviceResumen.tipo_cobro = "espacios"
+
+                            var espacios_aux = Espacios()
+                            espacios_aux.id_espacio
+
+                            var data = singleton.data
+                            var posInm = singleton.posTipoInmueble
+                            var posDim = singleton.posDimension
+                            for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                    espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                    serviceResumen.espacios.add(espacios_aux)
+                                }
+                            }
+                            arrayResumen.add(serviceResumen)
+                            singleton.position = position + 1
+                            //Ir a SolicitudServicio3
+                            val intent = Intent(this, SolicitudServicio3 :: class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(applicationContext, "Debe elegir todas las opciones para crear el servicio", Toast.LENGTH_LONG).show()
+                        }
                     }
                 }
             }

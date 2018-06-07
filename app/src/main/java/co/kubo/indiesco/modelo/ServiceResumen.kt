@@ -17,5 +17,5 @@ class ServiceResumen {
     var dimension = ""
     var id_dimension = ""
     var totalCost = ""
-    var espacios = ArrayList<Dimension>()
+    var espacios = ArrayList<Espacios>()
 }

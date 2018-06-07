@@ -4,7 +4,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <LinearLayout
         android:orientation="vertical"
         android:background="@color/colorBlanco"
@@ -69,7 +68,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
         <LinearLayout
             android:gravity="center"
             android:layout_marginBottom="36sp"
@@ -87,7 +85,6 @@
                 android:secondaryProgressTint="@color/color_hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
         <LinearLayout
             android:layout_marginBottom="27sp"

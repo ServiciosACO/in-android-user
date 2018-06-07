@@ -70,6 +70,7 @@ public class MisDireccionesAdapter2 extends RecyclerView.Adapter<MisDireccionesA
                 notifyDataSetChanged();
                 dir.setCheck(true);
                 singleton.setIdDir(dir.getId_direccion());
+                singleton.setDireccion(dir.getDireccion());
                 iAddress.AddressCheck();
             }
         });

@@ -9,11 +9,11 @@ import com.google.gson.annotations.SerializedName
 class CodigoDescuento {
     @SerializedName("id_codigo_descuento")
     @Expose
-    var id_codigo_descuento: Int? = null
-    @SerializedName("valor_codigo")
-    @Expose
-    var valor_codigo: Int? = null
+    val idCodigoDescuento: String? = null
     @SerializedName("tipo_codigo")
     @Expose
-    var tipo_codigo: Int? = null
+    val tipoCodigo: String? = null
+    @SerializedName("valor")
+    @Expose
+    val valor: String? = null
 }

@@ -45,6 +45,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
                     --nPisos
                     tvQtyFloor!!.text = nPisos.toString()
                     inmuebles[posInmueble].setnPisos(nPisos)
+                    singleton.setnPisos(nPisos.toString())
                 }
             }
             R.id.imgPlus -> {
@@ -56,6 +57,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
                     ++nPisos
                     tvQtyFloor!!.text = nPisos.toString()
                     inmuebles[posInmueble].setnPisos(nPisos)
+                    singleton.setnPisos(nPisos.toString())
                 }
             }
         }

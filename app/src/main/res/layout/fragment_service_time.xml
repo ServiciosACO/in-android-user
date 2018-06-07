@@ -58,12 +58,12 @@
 
                     <TimePicker
                         android:id="@+id/timePicker"
-                        android:timePickerMode="spinner"
                         style="@style/TimePickerTheme"
-                        android:layout_marginTop="15sp"
-                        android:layout_marginBottom="12sp"
                         android:layout_width="match_parent"
-                        android:layout_height="130sp"/>
+                        android:layout_height="130sp"
+                        android:layout_marginBottom="12sp"
+                        android:layout_marginTop="15sp"
+                        android:timePickerMode="spinner" />
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_marginBottom="29dp"

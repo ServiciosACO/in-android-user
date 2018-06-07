@@ -3,9 +3,11 @@ package co.kubo.indiesco.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import co.kubo.indiesco.R
+import co.kubo.indiesco.adaptadores.AdapterResumenServicio
 import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
@@ -17,14 +19,20 @@ import kotlinx.android.synthetic.main.activity_solicitud_servicio3.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
 
 class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
 
+    val df = DecimalFormat("$###,###")
     lateinit var dialogProgress : DialogProgress
     val singleton = Singleton.getInstance()
     val sharedPreferenceManager = SharedPreferenceManager()
     val utils = Utils()
     var codigo = ""
+
+    lateinit var llm : LinearLayoutManager
+    private lateinit var adapter: AdapterResumenServicio
+    var total = 0.0
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -80,15 +88,17 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                     when (response.body()!!.code){
                         "100" -> {
                             editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_check,0)
-                            when (response.body()!!.data!![0].tipo_codigo){
-                                1 -> { //valor
+                            when (response.body()!!.data!!.tipoCodigo){
+                                "1" -> { //valor
                                     tvDiscount.visibility = View.VISIBLE
-                                    tvDiscount.text = (response.body()!!.data!![0].valor_codigo!! * -1).toString()
+                                    tvDiscount.text = (response.body()!!.data!!.valor!!.toDouble() * -1).toString()
+                                    total -= response.body()!!.data!!.valor!!.toDouble()
                                 }
-                                2 -> { //porcentaje
-                                    var total = tvPayment.text.toString().toDouble()
+                                "2" -> { //porcentaje
                                     tvDiscount.visibility = View.VISIBLE
-                                    tvDiscount.text = ((response.body()!!.data!![0].valor_codigo!!*total) * -1).toString()
+                                    tvDiscount.text = (((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1).toString()
+                                    var code_percent = (response.body()!!.data!!.valor!!.toDouble()/100)
+                                    total -= (total * code_percent)
                                 }
                             }
                         }
@@ -133,5 +143,24 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_solicitud_servicio3)
         setListeners()
+
+        var resumen = singleton.resumen
+        if (resumen.isNotEmpty() || resumen.size != 0){
+            llServices.visibility = View.VISIBLE
+            llNoServices.visibility = View.GONE
+
+            llm = LinearLayoutManager(this)
+            rvResumen.layoutManager = llm
+            adapter = AdapterResumenServicio(resumen, this)
+            rvResumen.adapter = adapter
+            for (item in resumen.indices){
+                var unitPrice = resumen[item].totalCost.toDouble()
+                total += unitPrice
+            }
+            tvValor.text = "Total: ${df.format(total)}"
+        } else {
+            llServices.visibility = View.GONE
+            llNoServices.visibility = View.VISIBLE
+        }
     }
 }

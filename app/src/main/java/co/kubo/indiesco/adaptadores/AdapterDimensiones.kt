@@ -9,6 +9,7 @@ import android.widget.TextView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.utils.Singleton
+import kotlin.math.sin
 
 /**
  * Created by estacion on 1/06/18.
@@ -46,6 +47,7 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
             }
             inmuebleArray[0].tiposInmuebles[posInmueble].dimesiones!![position].checkDim = true
             singleton.idDimension = temp.idDimension
+            singleton.dimension = temp.dimension
             singleton.posDimension = position.toString()
             notifyDataSetChanged()
             iDimension.dimensionCheck(2)

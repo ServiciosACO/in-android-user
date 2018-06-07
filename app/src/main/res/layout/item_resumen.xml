@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.loopeer.shadow.ShadowView
+    android:id="@+id/shadow_view"
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    app:shadowColor="@color/shadow"
+    app:shadowAlpha="70"
+    app:shadowDx="0"
+    app:shadowDy="4"
+    app:shadowMargin="5dp"
+    app:shadowRadius="14dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/llResumen"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_edge"
+        android:paddingTop="14sp"
+        android:paddingLeft="16sp"
+        android:paddingRight="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginBottom="8sp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvTipoVivienda"
+                style="@style/texto_15_naranja"
+                android:text="Vivienda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvFecha"
+                android:text="11/02/2018"
+                android:gravity="right"
+                style="@style/texto_13_gris"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="8sp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvDir"
+                android:text="Calle 24 #12-05"
+                style="@style/texto_13_gris"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvDimension"
+            android:text="Mediano"
+            style="@style/texto_13_gris"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginBottom="24sp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvCost"
+                android:text="$385.500"
+                style="@style/texto_22_verde"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</com.loopeer.shadow.ShadowView>

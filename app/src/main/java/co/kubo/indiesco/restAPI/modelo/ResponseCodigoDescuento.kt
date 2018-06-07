@@ -10,8 +10,9 @@ import com.google.gson.annotations.SerializedName
 class ResponseCodigoDescuento {
     @SerializedName("code")
     @Expose
-    var code: String? = null
+    val code: String? = null
     @SerializedName("data")
     @Expose
-    var data: ArrayList<CodigoDescuento>? = null
+    val data: CodigoDescuento? = null
+
 }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterEspacios
+import co.kubo.indiesco.adaptadores.IEspacios
 import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.utils.Singleton
 
@@ -31,6 +32,8 @@ class EspaciosPrincipalesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_espacios_principales, container, false)
 
+        var iEspacios = (activity as? IEspacios)!!
+
         try{
             posInmueble = singleton.posTipoInmueble.toInt()
             posDim = singleton.posDimension.toInt()
@@ -42,7 +45,7 @@ class EspaciosPrincipalesFragment : Fragment() {
         inmuebles = singleton.data
         llm = LinearLayoutManager(activity)
         rvEspaciosPpal!!.layoutManager = llm
-        adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim)
+        adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
         rvEspaciosPpal!!.adapter = adapter
 
         return v

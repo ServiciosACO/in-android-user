@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName
  * Created by estacion on 31/05/18.
  */
 class InmuebleEspacios {
+    @SerializedName("id_espacio")
+    @Expose
+    val id_espacio: String? = null
     @SerializedName("espacio")
     @Expose
     val espacio: String? = null

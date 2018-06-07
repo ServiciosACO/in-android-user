@@ -25,8 +25,59 @@ public class Singleton {
     private int position = 0;
 
     private String posTipoInmueble, idTipoInmueble;
-    private String posDimension, idDimension;
-    private String idDir;
+    private String posDimension, idDimension, dimension;
+    private String idDir, direccion;
+    private String hora, urgente;
+    private String fecha;
+    private String nPisos;
+
+    public String getnPisos() {
+        return nPisos;
+    }
+
+    public void setnPisos(String nPisos) {
+        this.nPisos = nPisos;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getUrgente() {
+        return urgente;
+    }
+
+    public void setUrgente(String urgente) {
+        this.urgente = urgente;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
 
     public int getPosition() {
         return position;

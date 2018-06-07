@@ -15,7 +15,7 @@ import co.kubo.indiesco.utils.Singleton
  * Created by estacion on 1/06/18.
  */
 class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private val activity: Activity,
-                      private val posInmueble: Int, private val posDim: Int)
+                      private val posInmueble: Int, private val posDim: Int, private val iEspacios: IEspacios)
     : RecyclerView.Adapter<AdapterEspacios.EspaciosViewHolder>() {
 
     val singleton = Singleton.getInstance()
@@ -40,6 +40,18 @@ class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private
             ++qty
             holder!!.tvQty.text = qty.toString()
             data[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![position].qty = qty
+            //Para colocar en verde la barra de progreso
+            var flag = false
+            for (item in data[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices){
+                if (data[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![item].qty != 0){
+                    flag = true
+                }
+                if (flag){
+                    iEspacios.espaciosCheck(true, posInmueble, posDim)
+                } else {
+                    iEspacios.espaciosCheck(false, posInmueble, posDim)
+                }
+            }
         }
 
         holder!!.imgMinus0.setOnClickListener{
@@ -53,6 +65,18 @@ class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private
                 holder!!.tvQty.text = qty.toString()
                 data[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![position].qty = qty
             }
+            //Para colocar en verde la barra de progreso
+            var flag = false
+            for (item in data[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices){
+                if (data[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![item].qty != 0){
+                    flag = true
+                }
+                if (flag){
+                    iEspacios.espaciosCheck(true, posInmueble, posDim)
+                } else {
+                    iEspacios.espaciosCheck(false, posInmueble, posDim)
+                }
+            }
         }
     }
     class EspaciosViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
@@ -61,4 +85,7 @@ class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private
         var tvQty = itemView!!.findViewById<TextView>(R.id.tvQty)
         var imgPlus0 = itemView!!.findViewById<ImageView>(R.id.imgPlus0)
     }
+}
+interface IEspacios{
+    fun espaciosCheck(flag: Boolean, posInm: Int, posDim: Int)
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import co.kubo.indiesco.R
+import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.CalendarMode
@@ -19,6 +20,7 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
     var flag = 0
     val utils = Utils()
     var dateStr = ""
+    var singleton = Singleton.getInstance()
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -58,7 +60,8 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
 
     override fun onDateSelected(widget: MaterialCalendarView, date: CalendarDay, selected: Boolean) {
         var dateStr = getSelectedDatesString()
-        Toast.makeText(applicationContext, dateStr, Toast.LENGTH_LONG).show()
+        //Toast.makeText(applicationContext, dateStr, Toast.LENGTH_LONG).show()
+        singleton.fecha = dateStr
         llNext.setBackgroundColor(resources.getColor(R.color.colorVerde))
         flag = 1
     }
