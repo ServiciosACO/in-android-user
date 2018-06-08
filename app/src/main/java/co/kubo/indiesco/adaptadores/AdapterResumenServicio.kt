@@ -38,6 +38,7 @@ class AdapterResumenServicio(private val resumen : ArrayList<ServiceResumen>, pr
         holder.tvDir.text            = temp.address
         holder.tvDimension.text      = temp.dimension
         holder.tvCost.text           = "Subtotal: ${df.format(temp.totalCost.toDouble())}"
+
     }
 
     class ResumenServicioViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){

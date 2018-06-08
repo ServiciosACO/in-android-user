@@ -11,6 +11,7 @@ import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral
+import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2
 import co.kubo.indiesco.utils.SharedPreferenceManager
 
 import kotlinx.android.synthetic.main.activity_excedentes3.*
@@ -94,25 +95,26 @@ class Excedentes3 : AppCompatActivity(), View.OnClickListener {
         var endpoints = restApiAdapter.establecerConexionRestApiSinGson()
         var usuario = Usuario()
         usuario = SharedPreferenceManager.getInfoUsuario(this)
-        var id = usuario.id_user
-        var responseGeneral : Call<ResponseGeneral> = endpoints.createRecharge(authToken,
-                usuario.id_user, nMetros, total.toInt())
-        responseGeneral.enqueue(object : Callback<ResponseGeneral>{
-            override fun onFailure(call: Call<ResponseGeneral>?, t: Throwable?) {
+        var id_user = usuario.id_user
+        var responseRecargo2Call : Call<ResponseRecargo2> = endpoints.createRecharge(authToken, usuario.id_user, nMetros, total.toInt())
+        responseRecargo2Call.enqueue(object : Callback<ResponseRecargo2>{
+            override fun onFailure(call: Call<ResponseRecargo2>?, t: Throwable?) {
                 if (dialogProgress.isShowing)
                     dialogProgress.dismiss()
             }
 
-            override fun onResponse(call: Call<ResponseGeneral>?, response: Response<ResponseGeneral>?) {
+            override fun onResponse(call: Call<ResponseRecargo2>?, response: Response<ResponseRecargo2>?) {
                 if (dialogProgress.isShowing)
                     dialogProgress.dismiss()
                 if(response!!.isSuccessful){
                     when (response.body()!!.code){
                         "100" -> {
-                            Toast.makeText(applicationContext, "Recargo creado con éxito", Toast.LENGTH_LONG).show()
-                            val intent = Intent(applicationContext, Excedentes :: class.java)
-                            startActivity(intent)
-                            finish()
+                            var id_solicitud = response.body()!!.data!!.id_recargo
+                            var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud/recargo"
+                            var goPago = Intent(applicationContext, Transaccion :: class.java)
+                            goPago.putExtra("url", urlTransaccion)
+                            goPago.putExtra("id_sol", id_solicitud.toString())
+                            startActivity(goPago)
                         }
                     }
                 }

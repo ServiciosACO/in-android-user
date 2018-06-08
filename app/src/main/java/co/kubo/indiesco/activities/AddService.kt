@@ -141,14 +141,15 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                             serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                             serviceResumen.tipo_cobro = "espacios"
 
-                            var espacios_aux = Espacios()
-                            espacios_aux.id_espacio
+
 
                             var data = singleton.data
                             var posInm = singleton.posTipoInmueble
                             var posDim = singleton.posDimension
+                            var arrayEspacios = ArrayList<Espacios>()
                             for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
                                 if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                    var espacios_aux = Espacios()
                                     espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
                                     serviceResumen.espacios.add(espacios_aux)
                                 }

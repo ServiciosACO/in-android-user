@@ -17,6 +17,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseNotificacion;
 import co.kubo.indiesco.restAPI.modelo.ResponsePedido;
 import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
 import co.kubo.indiesco.restAPI.modelo.ResponseRecargo;
+import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.Constantes;
@@ -219,9 +220,9 @@ public interface Endpoints {
 
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_CREAR_RECARGO)
-    Call<ResponseGeneral> createRecharge(@Header("X-AC-Auth-Token") String authToken,
-                                         @Field("uid") String uid,
-                                         @Field("mts") int mts,
-                                         @Field("valor") int valor);
+    Call<ResponseRecargo2> createRecharge(@Header("X-AC-Auth-Token") String authToken,
+                                          @Field("uid") String uid,
+                                          @Field("mts") int mts,
+                                          @Field("valor") int valor);
 
 }//Endpoints

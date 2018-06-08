@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import co.kubo.indiesco.R
+import co.kubo.indiesco.adaptadores.AdapterResumen
 import co.kubo.indiesco.adaptadores.AdapterResumenServicio
 import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
@@ -37,7 +38,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
     var descuento = 0
 
     lateinit var llm : LinearLayoutManager
-    private lateinit var adapter: AdapterResumenServicio
+    private lateinit var adapter: AdapterResumen
     var total = 0.0
 
     override fun onClick(v: View?) {
@@ -115,17 +116,15 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                 if (response!!.isSuccessful){
                     when(response.body()!!.code){
                         "100" -> {
-                            Toast.makeText(applicationContext, "Solicitud exitosa", Toast.LENGTH_LONG).show()
                             var id_solicitud = response.body()!!.data.idSolicitud
-                            var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud"
+                            var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud/servicio"
                             var goPago = Intent(applicationContext, Transaccion :: class.java)
                             goPago.putExtra("url", urlTransaccion)
-                            goPago.putExtra("id_sol", id_solicitud)
+                            goPago.putExtra("id_sol", id_solicitud.toString())
                             startActivity(goPago)
                         }
                         "102" ->
                             Toast.makeText(applicationContext, "No fue posible crear el servicio, intente de nuevo", Toast.LENGTH_LONG).show()
-
                     }
                 }
             }
@@ -230,9 +229,11 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
             llServices.visibility = View.VISIBLE
             llNoServices.visibility = View.GONE
 
+            rvResumen.setHasFixedSize(false) //Set it to true if you are adding or removing items
+            // in the Recycler-View and that doesn’t change it’s height or the width.
             llm = LinearLayoutManager(this)
             rvResumen.layoutManager = llm
-            adapter = AdapterResumenServicio(resumen, this)
+            adapter = AdapterResumen(resumen, this)
             rvResumen.adapter = adapter
             for (item in resumen.indices){
                 var unitPrice = resumen[item].totalCost.toDouble()
