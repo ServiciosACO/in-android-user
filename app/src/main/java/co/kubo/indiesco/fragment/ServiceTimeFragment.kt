@@ -41,11 +41,14 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         val v = inflater.inflate(R.layout.fragment_service_time, container, false)
         val iTime = (activity as? ITime)!!
 
+        singleton.urgente = "no"
         imgTime = v.findViewById(R.id.imgTime)
         timePicker = v.findViewById(R.id.timePicker)
         toggleButton = v.findViewById(R.id.toggleButton)
         toggleButton.setOnClickListener(this)
 
+        var time = "${timePicker.currentHour.toString()}:${timePicker.currentMinute.toString()}"
+        singleton.hora = time
         if (timePicker.currentHour < 12){
             AM_PM = "AM"
             imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))

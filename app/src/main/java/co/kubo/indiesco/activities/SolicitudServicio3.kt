@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterResumenServicio
@@ -12,10 +13,13 @@ import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseCodigoDescuento
+import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import kotlinx.android.synthetic.main.activity_solicitud_servicio3.*
+import org.json.JSONArray
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +33,8 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
     val sharedPreferenceManager = SharedPreferenceManager()
     val utils = Utils()
     var codigo = ""
+    var id_codigo_descuento = 0
+    var descuento = 0
 
     lateinit var llm : LinearLayoutManager
     private lateinit var adapter: AdapterResumenServicio
@@ -50,9 +56,84 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.tvPayment -> {
-                
+                var resumen = singleton.resumen
+                var reqBody = ""
+                var jsonArray = JSONArray()
+                for (item in resumen.indices){
+                    var jsonObject = JSONObject()
+                    jsonObject.put("id_tipo_inmueble", resumen[item].id_tipo_inmueble)
+                    jsonObject.put("id_dimension", resumen[item].id_dimension)
+                    jsonObject.put("pisos", resumen[item].pisos)
+                    jsonObject.put("valor", total.toString())
+                    jsonObject.put("id_direccion", resumen[item].id_direccion)
+                    jsonObject.put("fecha_servicio", resumen[item].date)
+                    jsonObject.put("urgente", resumen[item].urgente)
+                    jsonObject.put("hora", resumen[item].hora)
+                    jsonObject.put("comentario", resumen[item].comentario)
+                    jsonObject.put("tipo_cobro", "espacios")
+                    var jsonArrayEspacios = JSONArray()
+                    for (i in resumen[item].espacios.indices){
+                        var jsonObjectEspacios = JSONObject()
+                        jsonObjectEspacios.put("id_espacio", resumen[item].espacios[i].id_espacio)
+                        jsonArrayEspacios.put(jsonObjectEspacios)
+                    }
+                    var aux = jsonArrayEspacios.toString().replace("\"[", "[")
+                            .replace("]\"", "]")
+                            .replace("\\\"","\"")
+                    jsonObject.put("espacios", aux)
+                    jsonArray.put(jsonObject)
+                }
+                reqBody = jsonArray.toString().replace("\"[", "[")
+                        .replace("]\"", "]")
+                        .replace("\\\"","\"")
+                var cantidad_fechas = resumen.size
+                crearServicio(reqBody, cantidad_fechas)
             }
         }
+    }
+
+    fun crearServicio(reqBody: String, cantidad_fechas: Int) {
+        dialogProgress = DialogProgress(this)
+        dialogProgress.show()
+        var authToken = SharedPreferenceManager.getAuthToken(applicationContext)
+        var restApiAdapter = RestApiAdapter()
+        var endpoints = restApiAdapter.establecerConexionRestApiSinGson()
+        var usuario = Usuario()
+        usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
+        var id_user = usuario.id_user
+        val responseCrearServicio : Call<ResponseCrearServicio> = endpoints.crearServicio(authToken, id_user,
+                total.toInt(), id_codigo_descuento, descuento, cantidad_fechas, reqBody)
+        responseCrearServicio.enqueue(object : Callback<ResponseCrearServicio>{
+            override fun onFailure(call: Call<ResponseCrearServicio>?, t: Throwable?) {
+                if (dialogProgress.isShowing)
+                    dialogProgress.dismiss()
+            }
+
+            override fun onResponse(call: Call<ResponseCrearServicio>?, response: Response<ResponseCrearServicio>?) {
+                if (dialogProgress.isShowing)
+                    dialogProgress.dismiss()
+                if (response!!.isSuccessful){
+                    when(response.body()!!.code){
+                        "100" -> {
+                            Toast.makeText(applicationContext, "Solicitud exitosa", Toast.LENGTH_LONG).show()
+                            var id_solicitud = response.body()!!.data.idSolicitud
+                            var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud"
+                            var goPago = Intent(applicationContext, Transaccion :: class.java)
+                            goPago.putExtra("url", urlTransaccion)
+                            goPago.putExtra("id_sol", id_solicitud)
+                            startActivity(goPago)
+                        }
+                        "102" ->
+                            Toast.makeText(applicationContext, "No fue posible crear el servicio, intente de nuevo", Toast.LENGTH_LONG).show()
+
+                    }
+                }
+            }
+        })
+    }
+
+    private fun hideSoftKeyboard() {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 
     fun validation(): Boolean{
@@ -162,5 +243,6 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
             llServices.visibility = View.GONE
             llNoServices.visibility = View.VISIBLE
         }
+        hideSoftKeyboard()
     }
 }
