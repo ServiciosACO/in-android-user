@@ -92,7 +92,7 @@
                     <co.kubo.indiesco.utils.Regular
                         android:id="@+id/tvInfo"
                         style="@style/texto_13_gris"
-                        android:text="Recuerda que los servicios urgentes tienen recargo y debes solicitarlos con mínimo 5 horas de anticipación"
+                        android:text="Recuerda que los servicios urgentes tienen recargo y debes solicitarlos con mínimo 2 horas de anticipación"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="9dp"

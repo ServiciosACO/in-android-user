@@ -140,8 +140,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                             serviceResumen.pisos = singleton.getnPisos()
                             serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                             serviceResumen.tipo_cobro = "espacios"
-
-
+                            serviceResumen.hora = singleton.hora
 
                             var data = singleton.data
                             var posInm = singleton.posTipoInmueble
