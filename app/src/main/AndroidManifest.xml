@@ -149,7 +149,8 @@
         <activity
             android:name=".activities.Excedentes3"
             android:label="@string/title_activity_excedentes3"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.AddService2"></activity>
     </application>
 
 </manifest>

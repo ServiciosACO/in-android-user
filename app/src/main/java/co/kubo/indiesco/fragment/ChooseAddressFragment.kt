@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.IAddress
@@ -84,6 +85,10 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
         })
     }
 
+    private fun hideKeyboard() {
+        activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_choose_address, container, false)
         iAddress = (activity as? IAddress)!!
@@ -97,6 +102,15 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
 
         obtenerDirecciones()
         return v
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser){
+            hideKeyboard()
+        } else {
+            Log.e("fragment", "No visible")
+        }
     }
 
 }

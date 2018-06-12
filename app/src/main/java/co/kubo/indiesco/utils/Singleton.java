@@ -24,12 +24,29 @@ public class Singleton {
     private ArrayList<ServiceResumen> resumen = new ArrayList<>();
     private int position = 0;
 
-    private String posTipoInmueble, idTipoInmueble;
+    private String posTipoInmueble, idTipoInmueble, categoria;
     private String posDimension, idDimension, dimension;
     private String idDir, direccion;
     private String hora, urgente;
     private String fecha;
     private String nPisos;
+    private String posCat;
+
+    public String getPosCat() {
+        return posCat;
+    }
+
+    public void setPosCat(String posCat) {
+        this.posCat = posCat;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
     public String getnPisos() {
         return nPisos;

@@ -28,11 +28,11 @@ class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private
     }
 
     override fun getItemCount(): Int {
-        return inmuebleArray[0].tiposInmuebles.size
+        return inmuebleArray[singleton.posCat.toInt()].tiposInmuebles.size
     }
 
     override fun onBindViewHolder(holder: ViviendaViewHolder?, position: Int) {
-        var temp = inmuebleArray[0].tiposInmuebles[position]
+        var temp = inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[position]
 
         holder!!.tvVivienda.text = temp.inmueble
         Picasso.with(activity)
@@ -48,10 +48,10 @@ class AdapterVivienda(private val inmuebleArray : ArrayList<InmuebleVO>, private
         }
 
         holder.llItem.setOnClickListener{
-            for (item in inmuebleArray[0].tiposInmuebles.indices){
-                inmuebleArray[0].tiposInmuebles[item].active = false
+            for (item in inmuebleArray[singleton.posCat.toInt()].tiposInmuebles.indices){
+                inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[item].active = false
             }
-            inmuebleArray[0].tiposInmuebles[position].active = true
+            inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[position].active = true
             singleton.posTipoInmueble = position.toString()
             singleton.idTipoInmueble = temp.idTipoInmueble
             notifyDataSetChanged()

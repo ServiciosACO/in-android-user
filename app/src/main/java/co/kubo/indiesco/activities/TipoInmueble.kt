@@ -94,9 +94,15 @@ class TipoInmueble : AppCompatActivity(), IShowOption, View.OnClickListener {
         when (v!!.id){
             R.id.rlNext -> {
                 if (validation()){
-                    val intent = Intent (this, AddService :: class.java)
-                    intent.putExtra("type", flag)
-                    startActivity(intent)
+                    if (flag == 0){
+                        val intent = Intent (this, AddService :: class.java)
+                        intent.putExtra("type", flag)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent (this, AddService2 :: class.java)
+                        intent.putExtra("type", flag)
+                        startActivity(intent)
+                    }
                 }
             }
             R.id.imgBotonVolver -> {

@@ -71,17 +71,21 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                     jsonObject.put("urgente", resumen[item].urgente)
                     jsonObject.put("hora", resumen[item].hora)
                     jsonObject.put("comentario", resumen[item].comentario)
-                    jsonObject.put("tipo_cobro", "espacios")
-                    var jsonArrayEspacios = JSONArray()
-                    for (i in resumen[item].espacios.indices){
-                        var jsonObjectEspacios = JSONObject()
-                        jsonObjectEspacios.put("id_espacio", resumen[item].espacios[i].id_espacio)
-                        jsonArrayEspacios.put(jsonObjectEspacios)
+                    jsonObject.put("tipo_cobro", resumen[item].tipo_cobro)
+                    if (resumen[item].category == "Vivienda"){
+                        var jsonArrayEspacios = JSONArray()
+                        for (i in resumen[item].espacios.indices){
+                            var jsonObjectEspacios = JSONObject()
+                            jsonObjectEspacios.put("id_espacio", resumen[item].espacios[i].id_espacio)
+                            jsonArrayEspacios.put(jsonObjectEspacios)
+                        }
+                        var aux = jsonArrayEspacios.toString().replace("\"[", "[")
+                                .replace("]\"", "]")
+                                .replace("\\\"","\"")
+                        jsonObject.put("espacios", aux)
+                    } else {
+                        jsonObject.put("espacios", "[]")
                     }
-                    var aux = jsonArrayEspacios.toString().replace("\"[", "[")
-                            .replace("]\"", "]")
-                            .replace("\\\"","\"")
-                    jsonObject.put("espacios", aux)
                     jsonArray.put(jsonObject)
                 }
                 reqBody = jsonArray.toString().replace("\"[", "[")
@@ -102,7 +106,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
         var usuario = Usuario()
         usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
         var id_user = usuario.id_user
-        val responseCrearServicio : Call<ResponseCrearServicio> = endpoints.crearServicio(authToken, id_user,
+         val responseCrearServicio : Call<ResponseCrearServicio> = endpoints.crearServicio(authToken, id_user,
                 total.toInt(), id_codigo_descuento, descuento, cantidad_fechas, reqBody)
         responseCrearServicio.enqueue(object : Callback<ResponseCrearServicio>{
             override fun onFailure(call: Call<ResponseCrearServicio>?, t: Throwable?) {

@@ -128,7 +128,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                             var position = singleton.position
                             var arrayResumen = singleton.resumen
                             var serviceResumen = ServiceResumen()
-                            serviceResumen.category = singleton.data[0].categoria
+                            serviceResumen.category = singleton.categoria
                             serviceResumen.date = singleton.fecha
                             serviceResumen.address = singleton.direccion
                             serviceResumen.id_direccion = singleton.idDir
@@ -244,7 +244,6 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
                         }
                     }
-
                     2 -> { //Espacios
                         radiogroup.check(R.id.radioButton3)
                         tvValor.visibility = View.VISIBLE

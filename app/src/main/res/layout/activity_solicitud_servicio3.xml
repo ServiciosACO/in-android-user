@@ -20,7 +20,6 @@
             <LinearLayout
                 android:id="@+id/llHeader"
                 android:paddingTop="20sp"
-                android:background="@color/header"
                 android:orientation="horizontal"
                 android:layout_gravity="left"
                 android:gravity="left"
@@ -55,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <ImageView
-                        android:src="@drawable/main_service"
+                        android:src="@drawable/cart_empty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <co.kubo.indiesco.utils.Regular

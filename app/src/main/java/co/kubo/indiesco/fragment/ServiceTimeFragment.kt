@@ -14,8 +14,6 @@ import co.kubo.indiesco.utils.Singleton
 import android.widget.NumberPicker
 import android.annotation.SuppressLint
 
-
-
 /**
  * Created by estacion on 28/05/18.
  */
@@ -131,10 +129,6 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             singleton.hora = time
 
         }
-
-
-
-
         return v
     }
 
@@ -156,8 +150,6 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             }
             singleton.hora = time
             iTime.checkTime()
-
-
 
         } else {
             Log.e("fragment", "No visible")

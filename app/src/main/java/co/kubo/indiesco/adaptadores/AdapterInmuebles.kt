@@ -25,6 +25,8 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
     : RecyclerView.Adapter<AdapterInmuebles.InmuebleViewHolder>() {
 
     var pos = 0
+    var singleton = Singleton.getInstance()
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): InmuebleViewHolder {
         val v = LayoutInflater.from(parent!!.context).inflate(R.layout.item_inmueble, parent, false)
         return InmuebleViewHolder(v)
@@ -44,6 +46,8 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
             }
             notifyDataSetChanged()
             temp.check = true
+            singleton.categoria = inmuebleArray[position].categoria
+            singleton.posCat = position.toString()
             if (temp.categoria == "Vivienda"){
                 iShowOption.option(0, position)
             } else {

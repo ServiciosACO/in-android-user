@@ -12,7 +12,6 @@
         <LinearLayout
             android:id="@+id/llHeader"
             android:paddingTop="20sp"
-            android:background="@color/header"
             android:orientation="horizontal"
             android:layout_gravity="left"
             android:gravity="left"
