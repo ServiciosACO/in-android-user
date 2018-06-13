@@ -37,14 +37,15 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
     MapView mMapView;
     GoogleMap map;
     private Activity activity;
-    private String lat, lng, nServicio, dir, ciudad, tipoTipo, fecha, hora, valor, dimension;
+    private String lat, lng, nServicio, dir, ciudad, tipoTipo, fecha, hora, valor, dimension, estado;
     private RespuestaListener respuestaListener;
     Utils utils = new Utils();
     private boolean band;
 
     public DialogDetalleCalendario(Activity activity, String lat, String lng, String nServicio, String dir,
-                                  String ciudad, String dimension,  String tipoTipo, String fecha, String hora, String valor,
-                                  RespuestaListener respuestaListener) {
+                                   String ciudad, String dimension,  String tipoTipo, String fecha, String hora,
+                                   String valor, String estado,
+                                   RespuestaListener respuestaListener) {
         super(activity, R.style.ThemeTransparent);
         this.activity = activity;
         this.lat = lat;
@@ -57,6 +58,7 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
         this.fecha = fecha;
         this.hora = hora;
         this.valor = valor;
+        this.estado = estado;
         this.respuestaListener = respuestaListener;
     }
 
@@ -102,6 +104,9 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
         llSalir.setOnClickListener(this);
         Button btnCancelarServicio = (Button) findViewById(R.id.btnCancelarServicio);
         btnCancelarServicio.setOnClickListener(this);
+
+        if (estado.equals("cancelado_usuario"))
+            btnCancelarServicio.setVisibility(View.GONE);
 
         tvDirDetalle.setText(dir);
         tvCiudadDetalle.setText(ciudad);

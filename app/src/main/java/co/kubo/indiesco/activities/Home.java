@@ -95,8 +95,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(imgFotoPerfil);
 
-        //obtenerCalendario();
-        //TODO: pendienteCalificar(usuario.getId_user());
+        obtenerCalendario();
+        pendienteCalificar(usuario.getId_user());
     }
 
     private void setListeners() {

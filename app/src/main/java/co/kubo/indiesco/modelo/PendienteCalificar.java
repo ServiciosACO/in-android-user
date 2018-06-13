@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class PendienteCalificar {
-    @SerializedName("id_solicitud")
+    @SerializedName("id_solicitud_item")
     @Expose
     private String idSolicitud;
     @SerializedName("id_tipo_inmueble")

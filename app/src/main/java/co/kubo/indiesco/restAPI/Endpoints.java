@@ -143,9 +143,9 @@ public interface Endpoints {
     Call<ResponseGeneral> validarEmail(@Header("X-AC-Auth-Token") String authToken,
                                        @Url String url);
 
-    @GET(ConstantesRestApi.URL_CANCELAR_SERVICIO + "{id_solicitud}/{uid}")
+    @GET(ConstantesRestApi.URL_CANCELAR_SERVICIO + "{id_solicitud_item}/{uid}")
     Call<ResponseGeneral> cancelarServicio(@Header("X-AC-Auth-Token") String authToken,
-                                           @Path("id_solicitud") String id_solicitud,
+                                           @Path("id_solicitud_item") int id_solicitud_item,
                                            @Path("uid") String uid);
 
     @FormUrlEncoded
@@ -195,7 +195,7 @@ public interface Endpoints {
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO)
     Call<ResponseGeneral> calificarServicio(@Header("X-AC-Auth-Token") String authToken,
-                                            @Field("id_solicitud") String id_solicitud,
+                                            @Field("id_solicitud_item") String id_solicitud_item,
                                             @Field("calificacion") String calificacion,
                                             @Field("comentario") String comentario);
 

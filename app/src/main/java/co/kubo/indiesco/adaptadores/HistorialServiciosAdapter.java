@@ -55,8 +55,8 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
     @Override
     public void onBindViewHolder(final HistorialServiciosViewHolder holder, int position) {
         final Historial hist = historials.get(position);
-        holder.tvNoServicioHist.setText(String.valueOf(hist.getId_solicitud()));
-        holder.tvFechaServicioHist.setText(String.valueOf(utils.StringToDate2(hist.getFecha_transaccion())).replace(" ", "/"));
+        holder.tvNoServicioHist.setText(String.valueOf(hist.getIdSolicitudItem()));
+        holder.tvFechaServicioHist.setText(String.valueOf(utils.StringToDate2(hist.getFechaServicio())).replace(" ", "/"));
         holder.tvDirServicioHist.setText(String.valueOf(hist.getDireccion()));
         DecimalFormat formateador = new DecimalFormat("###,###");
         holder.tvPrecioServicio.setText(formateador.format(Double.parseDouble(String.valueOf(hist.getValor()))) + " COP");
@@ -80,8 +80,8 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
         holder.llHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getId_solicitud(), hist.getDireccion(),
-                        hist.getCiudad(), hist.getDimension(), hist.getId_tipo_inmueble(), hist.getFecha_transaccion(), hist.getHora(),
+                new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getIdSolicitudItem(), hist.getDireccion(),
+                        hist.getCiudad(), hist.getDimension(), hist.getIdTipoInmueble(), hist.getFechaServicio(), hist.getHora(),
                         hist.getValor(), hist.getCalificado(), hist.getCalificacion(),
                         new DialogDetalleHistorial.RespuestaListener() {
                     @Override

@@ -58,7 +58,7 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
         final PendienteCalificar cal = calificars.get(position);
 
         holder.tvNoServicioCalificar.setText(cal.getIdSolicitud());
-        holder.tvFechaServicioCalificar.setText(utils.StringToDate2(cal.getFechaTransaccion()).replace(" ", "/"));
+        holder.tvFechaServicioCalificar.setText(utils.StringToDate2(cal.getFechaServicio()).replace(" ", "/"));
         holder.tvDirServicioCalificar.setText(cal.getDireccion());
         DecimalFormat formateador = new DecimalFormat("###,###");
         holder.tvPrecioServicio.setText(formateador.format(Double.parseDouble(String.valueOf(cal.getValor()))) + " COP");

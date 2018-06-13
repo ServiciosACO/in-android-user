@@ -69,10 +69,9 @@ public class Calendario2Presenter implements ICalendario2Presenter {
                     case "100":
                         calendario = response.body().getData();
                         for (int i = 0; i < calendario.size(); i++){
-                            if (_fecha.equals(utils.StringToDate(calendario.get(i).getFecha_servicio()).replace(" ", " de "))){
+                            if (_fecha.equals(utils.StringToDate(calendario.get(i).getFechaServicio()).replace(" ", " de "))){
                                 Historial holder_hist = new Historial();
-                                holder_hist.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
-                                holder_hist.setFecha_servicio(calendario.get(i).getFecha_servicio());
+                                holder_hist.setFechaServicio(calendario.get(i).getFechaServicio());
                                 holder_hist.setHora(calendario.get(i).getHora());
                                 holder_hist.setDireccion(calendario.get(i).getDireccion());
                                 holder_hist.setCiudad(calendario.get(i).getCiudad());
@@ -80,10 +79,11 @@ public class Calendario2Presenter implements ICalendario2Presenter {
                                 holder_hist.setLatitud(calendario.get(i).getLatitud());
                                 holder_hist.setDimension(calendario.get(i).getDimension());
                                 holder_hist.setInmueble(calendario.get(i).getInmueble());
-                                holder_hist.setId_tipo_inmueble(calendario.get(i).getId_tipo_inmueble());
-                                holder_hist.setId_solicitud(calendario.get(i).getId_solicitud());
-                                holder_hist.setId_pedido(calendario.get(i).getId_pedido());
-                                holder_hist.setId_direccion(calendario.get(i).getId_direccion());
+                                holder_hist.setIdTipoInmueble(calendario.get(i).getIdTipoInmueble());
+                                holder_hist.setIdSolicitudItem(calendario.get(i).getIdSolicitudItem());
+                                //holder_hist.setId_pedido(calendario.get(i).getId_pedido());
+                                holder_hist.setEstado(calendario.get(i).getEstado());
+                                holder_hist.setIdDireccion(calendario.get(i).getIdDireccion());
                                 holder_hist.setValor(calendario.get(i).getValor());
                                 holder_calendar.add(holder_hist);
                             }

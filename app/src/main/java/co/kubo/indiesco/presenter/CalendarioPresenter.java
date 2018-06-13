@@ -69,13 +69,13 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                 switch (code){
                     case "100":
                         calendario = response.body().getData();
-                        fecha.add(calendario.get(0).getFecha_servicio());
-                        String date[] = calendario.get(0).getFecha_servicio().split("-");
+                        fecha.add(calendario.get(0).getFechaServicio());
+                        String date[] = calendario.get(0).getFechaServicio().split("-");
                         int x = 0;
                         for (int i = 0; i < calendario.size(); i++){
-                            String month[] = calendario.get(i).getFecha_servicio().split("-");
+                            String month[] = calendario.get(i).getFechaServicio().split("-");
                             if (!date[1].equals(month[1])){
-                                fecha.add(calendario.get(i).getFecha_servicio());
+                                fecha.add(calendario.get(i).getFechaServicio());
                                 date[1] = month[1];
                             }//if
                         }//for
@@ -84,39 +84,42 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                             band = true;
                             for (int i = 0; i < calendario.size(); i++){
                                 String month_date[] = fecha.get(y).split("-");
-                                String month_date_service[] = calendario.get(i).getFecha_servicio().split("-");
+                                String month_date_service[] = calendario.get(i).getFechaServicio().split("-");
                                 if (month_date_service[1].equals(month_date[1])){
                                     if (band){
                                         Historial not = new Historial();
-                                        not.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
-                                        not.setFecha_servicio(calendario.get(i).getFecha_servicio());
+                                        not.setFechaServicio(calendario.get(i).getFechaServicio());
                                         not.setHora(calendario.get(i).getHora());
                                         not.setDireccion(calendario.get(i).getDireccion());
                                         not.setCiudad(calendario.get(i).getCiudad());
                                         not.setInmueble(calendario.get(i).getInmueble());
-                                        not.setId_solicitud(calendario.get(i).getId_solicitud());
+                                        not.setIdSolicitudItem(calendario.get(i).getIdSolicitudItem());
                                         not.setValor(calendario.get(i).getValor());
-                                        not.setId_tipo_inmueble(calendario.get(i).getId_tipo_inmueble());
+                                        not.setIdTipoInmueble(calendario.get(i).getIdTipoInmueble());
                                         not.setDimension(calendario.get(i).getDimension());
                                         not.setLatitud(calendario.get(i).getLatitud());
                                         not.setLongitud(calendario.get(i).getLongitud());
+                                        not.setUrgente(calendario.get(i).getUrgente());
+                                        not.setIdDireccion(calendario.get(i).getIdDireccion());
                                         not.setIsHeader("si");
                                         band = false;
                                         holder_calendar.add(not);
                                     }
                                     Historial not = new Historial();
-                                    not.setFecha_transaccion(calendario.get(i).getFecha_transaccion());
-                                    not.setFecha_servicio(calendario.get(i).getFecha_servicio());
+                                    not.setFechaServicio(calendario.get(i).getFechaServicio());
                                     not.setHora(calendario.get(i).getHora());
                                     not.setDireccion(calendario.get(i).getDireccion());
                                     not.setCiudad(calendario.get(i).getCiudad());
                                     not.setInmueble(calendario.get(i).getInmueble());
-                                    not.setId_solicitud(calendario.get(i).getId_solicitud());
+                                    not.setIdSolicitudItem(calendario.get(i).getIdSolicitudItem());
                                     not.setValor(calendario.get(i).getValor());
-                                    not.setId_tipo_inmueble(calendario.get(i).getId_tipo_inmueble());
+                                    not.setIdTipoInmueble(calendario.get(i).getIdTipoInmueble());
                                     not.setDimension(calendario.get(i).getDimension());
                                     not.setLatitud(calendario.get(i).getLatitud());
                                     not.setLongitud(calendario.get(i).getLongitud());
+                                    not.setUrgente(calendario.get(i).getUrgente());
+                                    not.setIdDireccion(calendario.get(i).getIdDireccion());
+                                    not.setEstado(calendario.get(i).getEstado());
                                     not.setIsHeader("no");
                                     band = false;
                                     holder_calendar.add(not);

@@ -201,7 +201,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
-        Call<ResponseGeneral> responseGeneralCall = endpoints.cancelarServicio(authToken, id_solicitud, usuario.getId_user());
+        Call<ResponseGeneral> responseGeneralCall = endpoints.cancelarServicio(authToken, Integer.parseInt(id_solicitud), usuario.getId_user());
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {

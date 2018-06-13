@@ -64,13 +64,13 @@ public class CalendarioDetalleFechaAdapter extends RecyclerView.Adapter<Calendar
             @Override
             public void onClick(View view) {
                 new DialogDetalleCalendario(activity, calendar.get(position).getLatitud(), calendar.get(position).getLongitud(),
-                        calendar.get(position).getId_solicitud(), calendar.get(position).getDireccion(), calendar.get(position).getCiudad(),
-                        calendar.get(position).getDimension(), calendar.get(position).getId_tipo_inmueble(),
-                        calendar.get(position).getFecha_servicio(), hora, calendar.get(position).getValor(),
+                        calendar.get(position).getIdSolicitudItem(), calendar.get(position).getDireccion(), calendar.get(position).getCiudad(),
+                        calendar.get(position).getDimension(), calendar.get(position).getIdTipoInmueble(),
+                        calendar.get(position).getFechaServicio(), hora, calendar.get(position).getValor(), calendar.get(position).getEstado(),
                         new DialogDetalleCalendario.RespuestaListener() {
                             @Override
                             public void onCancelarServicio() {
-                                cancelarServicio(calendar.get(position).getId_solicitud(), position);
+                                cancelarServicio(calendar.get(position).getIdSolicitudItem(), position);
                             }
                             @Override
                             public void onSalir() {}
@@ -99,7 +99,7 @@ public class CalendarioDetalleFechaAdapter extends RecyclerView.Adapter<Calendar
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(activity);
-        Call<ResponseGeneral> responseGeneralCall = endpoints.cancelarServicio(authToken, id_solicitud, usuario.getId_user());
+        Call<ResponseGeneral> responseGeneralCall = endpoints.cancelarServicio(authToken, Integer.parseInt(id_solicitud), usuario.getId_user());
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
