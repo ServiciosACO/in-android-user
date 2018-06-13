@@ -32,5 +32,6 @@ public class ConstantesRestApi {
     public static final String URL_VALIDAR_CUPON = "servicios/validar_codigo_descuento/";
     public static final String URL_CREAR_RECARGO = "recargos/crear_recargo";
     public static final String URL_HISTORIAL_RECARGO = "recargos/historial_recargos/{uid}/{offset}";
+    public static final String URL_CANCEL_TRANSACTION = "servicios/cancelar_transaccion/{id_solicitud}/{tipo}";
 
 }

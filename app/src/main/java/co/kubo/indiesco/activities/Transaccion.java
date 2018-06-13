@@ -38,7 +38,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
     WebView webViewTransaccion;
 
     Utils utils = new Utils();
-    private String id_solicitud, urlPago;
+    private String id_solicitud, urlPago, type;
     private boolean cancelarTransaccion, bandVolver = false;
     private DialogProgress dialogProgress;
 
@@ -53,6 +53,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         Bundle param = getIntent().getExtras();
         urlPago = param.getString("url");
         id_solicitud = param.getString("id_sol");
+        type = param.getString("type");
         cancelarTransaccion = true;
 
         if (utils.checkInternetConnection(Transaccion.this, true)){
@@ -88,7 +89,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                         }
                         @Override
                         public void onAceptar() {
-                            cancelarServicio();
+                            cancelTransaction();
                         }
                         @Override
                         public void onSalir() {
@@ -161,6 +162,37 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         settings.setJavaScriptEnabled(true);
         settings.setAllowFileAccess(true);
         webViewTransaccion.loadUrl(urlPago);
+    }
+
+    private void cancelTransaction(){
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Usuario usuario = new Usuario();
+        usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
+        Call<ResponseGeneral> responseGeneralCall = endpoints.cancelTransaction(authToken, Integer.parseInt(id_solicitud), type);
+        responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
+            @Override
+            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                String code = response.body().getCode();
+                switch (code){
+                    case "100":
+                        irHome();
+                        break;
+                    case "102":
+                        Toast.makeText(getApplicationContext(), "La solicitud no se puede cancelar", Toast.LENGTH_LONG).show();
+                        Log.e(TAG, "Cod: 102 No se puede cancelar la solicitud");
+                        break;
+                    case "120":
+                        Log.e(TAG, "Cod: 120 auth token invalido");
+                        break;
+                }//switch
+            }
+            @Override
+            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+                Log.e(TAG, "cancelarServicio onFailure");
+            }
+        });
     }
 
     private void cancelarServicio(){

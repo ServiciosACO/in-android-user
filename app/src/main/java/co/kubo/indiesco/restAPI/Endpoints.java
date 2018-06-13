@@ -217,6 +217,11 @@ public interface Endpoints {
                                       @Path("uid") String uid,
                                       @Path("offset") int offset);
 
+    @GET(ConstantesRestApi.URL_CANCEL_TRANSACTION)
+    Call<ResponseGeneral> cancelTransaction(@Header("X-AC-Auth-Token") String authToken,
+                                      @Path("id_solicitud") int id_solicitud,
+                                      @Path("tipo") String tipo);
+
 
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_CREAR_RECARGO)
@@ -224,5 +229,7 @@ public interface Endpoints {
                                           @Field("uid") String uid,
                                           @Field("mts") int mts,
                                           @Field("valor") int valor);
+
+
 
 }//Endpoints

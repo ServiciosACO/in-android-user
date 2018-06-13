@@ -123,6 +123,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                             var id_solicitud = response.body()!!.data.idSolicitud
                             var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud/servicio"
                             var goPago = Intent(applicationContext, Transaccion :: class.java)
+                            goPago.putExtra("type", "servicio")
                             goPago.putExtra("url", urlTransaccion)
                             goPago.putExtra("id_sol", id_solicitud.toString())
                             startActivity(goPago)

@@ -112,6 +112,7 @@ class Excedentes3 : AppCompatActivity(), View.OnClickListener {
                             var id_solicitud = response.body()!!.data!!.id_recargo
                             var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud/recargo"
                             var goPago = Intent(applicationContext, Transaccion :: class.java)
+                            goPago.putExtra("type", "recargo")
                             goPago.putExtra("url", urlTransaccion)
                             goPago.putExtra("id_sol", id_solicitud.toString())
                             startActivity(goPago)

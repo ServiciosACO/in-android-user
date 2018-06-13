@@ -229,30 +229,6 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     }
 
     /**Autocomplete map*/
-    fun parseo(array: JSONArray) : ArrayList<String>  {
-        var lista = ArrayList<String>()
-        var lista2 = ArrayList<direccionesGoogleVO>()
-        for(i in 0 until array.length()){
-            try {
-                var obj = array.getJSONObject(i)
-                var dato = direccionesGoogleVO()
-                var datosCiudad = obj.getString("description").split(",")
-                if (datosCiudad.size >= 2) {
-                    dato.description = datosCiudad[0].trim()
-                    dato.ciudad = datosCiudad[1].trim()
-                } else {
-                    dato.description = datosCiudad[0].trim()
-                    dato.ciudad = " "
-                }
-                dato.placeId = obj.getString("place_id")
-                lista2.add(dato)
-                lista.add(obj.getString("place_id"))
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-        }
-            return lista
-    }
 
     fun guardarCoordenadas(lat: String, log: String, bandDir: Boolean) {
         latitudDireccion = lat.toDouble()
