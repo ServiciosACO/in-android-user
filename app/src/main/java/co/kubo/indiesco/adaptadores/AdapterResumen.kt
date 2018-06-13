@@ -7,11 +7,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import co.kubo.indiesco.modelo.ServiceResumen
 import co.kubo.indiesco.R
 import co.kubo.indiesco.activities.FechaServicio
+import co.kubo.indiesco.dialog.DialogDosOpciones
+import co.kubo.indiesco.utils.Singleton
 import kotlinx.android.synthetic.main.item_resumen.view.*
 import java.text.DecimalFormat
 
@@ -26,6 +29,8 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
     private val TYPE_ITEM = 1
     private val TYPE_FOOTER = 2
     val df = DecimalFormat("$###,###")
+
+    val singleton = Singleton.getInstance()
 
     override fun getItemViewType(position: Int): Int {
         /*if (isPositionHeader(position)) {
@@ -76,6 +81,21 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
             holder.tvDimension.text      = temp.dimension
             holder.tvCost.text           = "Subtotal: ${df.format(temp.totalCost.toDouble())}"
 
+            holder.imgRemove.setOnClickListener{
+                DialogDosOpciones(activity,"8", object : DialogDosOpciones.RespuestaListener{
+                    override fun onCancelar() {
+                    }
+                    override fun onAceptar() {
+                        mList.removeAt(position)
+                        notifyDataSetChanged()
+                        var pos = singleton.position
+                        singleton.position = pos - 1
+                    }
+                    override fun onSalir() {
+                    }
+                }).show()
+            }
+
         }else if (holder is FooterViewHolder) {
             //your code here
             holder.tvAddService.setOnClickListener{
@@ -103,6 +123,7 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
         val tvDir           = itemView!!.findViewById<TextView>(R.id.tvDir)
         val tvDimension     = itemView!!.findViewById<TextView>(R.id.tvDimension)
         val tvCost          = itemView!!.findViewById<TextView>(R.id.tvCost)
+        val imgRemove       = itemView!!.findViewById<ImageView>(R.id.imgRemove)
     }
 
     class FooterViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){

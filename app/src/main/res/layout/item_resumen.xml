@@ -64,16 +64,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <LinearLayout
-            android:layout_marginBottom="24sp"
+            android:layout_marginBottom="18sp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <co.kubo.indiesco.utils.Bold
                 android:id="@+id/tvCost"
                 android:text="$385.500"
+                android:layout_gravity="center"
                 style="@style/texto_22_verde"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/imgRemove"
+                android:padding="6dp"
+                android:src="@drawable/btn_delete_red"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>

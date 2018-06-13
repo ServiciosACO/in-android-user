@@ -100,6 +100,10 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
                 imgBorrar.setImageResource(R.drawable.img_timerror);
                 tvMensaje.setText("La hora seleccionada no puede ser inferior a la actual");
                 break;
+            case "8":
+                imgBorrar.setImageResource(R.drawable.delete_popup);
+                tvMensaje.setText("¿Esta seguro de eliminar este servicio de la lista?");
+                break;
             default:break;
         }//switch
 
