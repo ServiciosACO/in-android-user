@@ -40,9 +40,9 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
     }
 
     public interface RespuestaListener {
-        void onCancelar();
-        void onAceptar();
-        void onSalir();
+        public void onCancelar();
+        public void onAceptar();
+        public void onSalir();
     }
 
     @Override
@@ -83,6 +83,22 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
             case "3":
                 imgBorrar.setImageResource(R.drawable.delete_popup);
                 tvMensaje.setText("Al regresar, perderás tus datos. ¿Deseas volver al inicio?");
+                break;
+            case "4":
+                imgBorrar.setImageResource(R.drawable.img_timerror);
+                tvMensaje.setText("Nuestro servicio se encuentra únicamente disponible de 6 AM a 6 PM");
+                break;
+            case "5":
+                imgBorrar.setImageResource(R.drawable.img_timerror);
+                tvMensaje.setText("El servicio urgente debe solicitarse con mínimo 2 horas de anticipación");
+                break;
+            case "6":
+                imgBorrar.setImageResource(R.drawable.img_timerror);
+                tvMensaje.setText("El servicio debe solicitarse con minimo 5 horas de anticipación");
+                break;
+            case "7":
+                imgBorrar.setImageResource(R.drawable.img_timerror);
+                tvMensaje.setText("La hora seleccionada no puede ser inferior a la actual");
                 break;
             default:break;
         }//switch

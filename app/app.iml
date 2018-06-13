@@ -164,6 +164,7 @@
     <orderEntry type="library" name="com.google.android.gms:play-services-iid-license-11.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.8.0@jar" level="project" />
+    <orderEntry type="library" name="joda-time:joda-time:2.9.9:no-tzdb@jar" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-appindexing-license-11.8.0" level="project" />
     <orderEntry type="library" name="com.jakewharton:butterknife-8.5.1" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-ads-11.8.0" level="project" />
@@ -277,6 +278,7 @@
     <orderEntry type="library" name="org.jetbrains.kotlin:kotlin-stdlib:1.2.30@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-nearby-11.8.0" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-appinvite-11.8.0" level="project" />
+    <orderEntry type="library" name="net.danlew:android.joda-2.9.9.4" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.7@jar" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-analytics-impl-license-11.8.0" level="project" />
     <orderEntry type="library" name="com.squareup.okio:okio:1.13.0@jar" level="project" />

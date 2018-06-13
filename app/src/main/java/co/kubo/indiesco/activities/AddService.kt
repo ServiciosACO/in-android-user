@@ -10,14 +10,21 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.*
+import co.kubo.indiesco.dialog.DialogDosOpciones
 import co.kubo.indiesco.fragment.*
 import co.kubo.indiesco.modelo.Espacios
-import co.kubo.indiesco.modelo.InmuebleEspacios
 import co.kubo.indiesco.modelo.ServiceResumen
 import co.kubo.indiesco.utils.Singleton
 import kotlinx.android.synthetic.main.activity_add_service.*
+import java.sql.Time
 import java.text.DecimalFormat
-import java.util.ArrayList
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.util.*
+import org.joda.time.DateTime
+import org.joda.time.Hours
+import org.joda.time.Minutes
 
 
 class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
@@ -125,40 +132,179 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     }
                     4 -> {
                         if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios && flagTime){
-                            var position = singleton.position
-                            var arrayResumen = singleton.resumen
-                            var serviceResumen = ServiceResumen()
-                            serviceResumen.category = singleton.categoria
-                            serviceResumen.date = singleton.fecha
-                            serviceResumen.address = singleton.direccion
-                            serviceResumen.id_direccion = singleton.idDir
-                            serviceResumen.dimension = singleton.dimension
-                            serviceResumen.id_dimension = singleton.idDimension
-                            serviceResumen.totalCost = totalCost.toString()
-                            serviceResumen.urgente = singleton.urgente
-                            serviceResumen.comentario = "ok"
-                            serviceResumen.pisos = singleton.getnPisos()
-                            serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
-                            serviceResumen.tipo_cobro = "espacios"
-                            serviceResumen.hora = singleton.hora
+                            val df = SimpleDateFormat("yyyy-MM-dd")
+                            val currentDate = df.format(Calendar.getInstance().time)
+                            var splitTime = singleton.hora.split(":")
+                            if (splitTime[0].toInt() < 6 || splitTime[0].toInt() > 18){
+                                DialogDosOpciones(this@AddService, "4", object : DialogDosOpciones.RespuestaListener{
+                                    override fun onCancelar() {}
+                                    override fun onAceptar() {}
+                                    override fun onSalir() {}
+                                }).show()
+                            } else {
+                                if (currentDate == singleton.fecha){
+                                    //current time
+                                    val format = SimpleDateFormat("HHmm") //this is format in military time
+                                    val currentTime = format.format(Calendar.getInstance().time) //get current time
+                                    var currentTimetime = format.parse(currentTime) as Date //convert string time in Date time
 
-                            var data = singleton.data
-                            var posInm = singleton.posTipoInmueble
-                            var posDim = singleton.posDimension
-                            var arrayEspacios = ArrayList<Espacios>()
-                            for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
-                                if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
-                                    var espacios_aux = Espacios()
-                                    espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
-                                    serviceResumen.espacios.add(espacios_aux)
+                                    //selected time
+                                    var strHora = splitTime[0] + splitTime[1] //string time
+                                    if (splitTime[0].length == 1)
+                                        strHora = "0$strHora"
+                                    val selectedTime = format.parse(strHora) as Date //to convert String military time in time
+
+                                    val jdSelectedTime = DateTime(selectedTime)
+                                    val jdCurrentTime = DateTime(currentTimetime)
+
+                                    var diff = jdSelectedTime.compareTo(jdCurrentTime)
+                                    when (diff){
+                                        -1 -> {
+                                            DialogDosOpciones(this@AddService, "7", object : DialogDosOpciones.RespuestaListener{
+                                                override fun onCancelar() {}
+                                                override fun onAceptar() {}
+                                                override fun onSalir() {}
+                                            }).show()
+                                        }
+                                        1 -> {
+                                            when(singleton.urgente){
+
+                                                "si" -> {
+                                                    var millisSelectedTime = selectedTime.time
+                                                    var millisCurrentTime = currentTimetime.time
+                                                    //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
+                                                    var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
+                                                    if (diffMillis > 120){
+                                                        var position = singleton.position
+                                                        var arrayResumen = singleton.resumen
+                                                        var serviceResumen = ServiceResumen()
+                                                        serviceResumen.category = singleton.categoria
+                                                        serviceResumen.date = singleton.fecha
+                                                        serviceResumen.address = singleton.direccion
+                                                        serviceResumen.id_direccion = singleton.idDir
+                                                        serviceResumen.dimension = singleton.dimension
+                                                        serviceResumen.id_dimension = singleton.idDimension
+                                                        serviceResumen.totalCost = totalCost.toString()
+                                                        serviceResumen.urgente = singleton.urgente
+                                                        serviceResumen.comentario = "ok"
+                                                        serviceResumen.pisos = singleton.getnPisos()
+                                                        serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                                        serviceResumen.tipo_cobro = "espacios"
+                                                        serviceResumen.hora = singleton.hora
+
+                                                        var data = singleton.data
+                                                        var posInm = singleton.posTipoInmueble
+                                                        var posDim = singleton.posDimension
+                                                        var arrayEspacios = ArrayList<Espacios>()
+                                                        for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                                            if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                                                var espacios_aux = Espacios()
+                                                                espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                                serviceResumen.espacios.add(espacios_aux)
+                                                            }
+                                                        }
+                                                        arrayResumen.add(serviceResumen)
+                                                        singleton.position = position + 1
+                                                        //Ir a SolicitudServicio3
+                                                        val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                                        startActivity(intent)
+                                                        finish()
+                                                    } else {
+                                                        DialogDosOpciones(this@AddService, "5", object : DialogDosOpciones.RespuestaListener{
+                                                            override fun onCancelar() {}
+                                                            override fun onAceptar() {}
+                                                            override fun onSalir() {}
+                                                        }).show()
+                                                    }
+                                                }
+                                                "no" -> {
+                                                    var millisSelectedTime = selectedTime.time
+                                                    var millisCurrentTime = currentTimetime.time
+                                                    //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
+                                                    var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
+                                                    if (diffMillis > 300){
+                                                        var position = singleton.position
+                                                        var arrayResumen = singleton.resumen
+                                                        var serviceResumen = ServiceResumen()
+                                                        serviceResumen.category = singleton.categoria
+                                                        serviceResumen.date = singleton.fecha
+                                                        serviceResumen.address = singleton.direccion
+                                                        serviceResumen.id_direccion = singleton.idDir
+                                                        serviceResumen.dimension = singleton.dimension
+                                                        serviceResumen.id_dimension = singleton.idDimension
+                                                        serviceResumen.totalCost = totalCost.toString()
+                                                        serviceResumen.urgente = singleton.urgente
+                                                        serviceResumen.comentario = "ok"
+                                                        serviceResumen.pisos = singleton.getnPisos()
+                                                        serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                                        serviceResumen.tipo_cobro = "espacios"
+                                                        serviceResumen.hora = singleton.hora
+
+                                                        var data = singleton.data
+                                                        var posInm = singleton.posTipoInmueble
+                                                        var posDim = singleton.posDimension
+                                                        var arrayEspacios = ArrayList<Espacios>()
+                                                        for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                                            if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                                                var espacios_aux = Espacios()
+                                                                espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                                serviceResumen.espacios.add(espacios_aux)
+                                                            }
+                                                        }
+                                                        arrayResumen.add(serviceResumen)
+                                                        singleton.position = position + 1
+                                                        //Ir a SolicitudServicio3
+                                                        val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                                        startActivity(intent)
+                                                        finish()
+                                                    } else {
+                                                        DialogDosOpciones(this@AddService, "6", object : DialogDosOpciones.RespuestaListener{
+                                                            override fun onCancelar() {}
+                                                            override fun onAceptar() {}
+                                                            override fun onSalir() {}
+                                                        }).show()
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    var position = singleton.position
+                                    var arrayResumen = singleton.resumen
+                                    var serviceResumen = ServiceResumen()
+                                    serviceResumen.category = singleton.categoria
+                                    serviceResumen.date = singleton.fecha
+                                    serviceResumen.address = singleton.direccion
+                                    serviceResumen.id_direccion = singleton.idDir
+                                    serviceResumen.dimension = singleton.dimension
+                                    serviceResumen.id_dimension = singleton.idDimension
+                                    serviceResumen.totalCost = totalCost.toString()
+                                    serviceResumen.urgente = singleton.urgente
+                                    serviceResumen.comentario = "ok"
+                                    serviceResumen.pisos = singleton.getnPisos()
+                                    serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                    serviceResumen.tipo_cobro = "espacios"
+                                    serviceResumen.hora = singleton.hora
+
+                                    var data = singleton.data
+                                    var posInm = singleton.posTipoInmueble
+                                    var posDim = singleton.posDimension
+                                    var arrayEspacios = ArrayList<Espacios>()
+                                    for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                        if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                            var espacios_aux = Espacios()
+                                            espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                            serviceResumen.espacios.add(espacios_aux)
+                                        }
+                                    }
+                                    arrayResumen.add(serviceResumen)
+                                    singleton.position = position + 1
+                                    //Ir a SolicitudServicio3
+                                    val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                    startActivity(intent)
+                                    finish()
                                 }
                             }
-                            arrayResumen.add(serviceResumen)
-                            singleton.position = position + 1
-                            //Ir a SolicitudServicio3
-                            val intent = Intent(this, SolicitudServicio3 :: class.java)
-                            startActivity(intent)
-                            finish()
                         } else {
                             Toast.makeText(applicationContext, "Debe elegir todas las opciones para crear el servicio", Toast.LENGTH_LONG).show()
                         }

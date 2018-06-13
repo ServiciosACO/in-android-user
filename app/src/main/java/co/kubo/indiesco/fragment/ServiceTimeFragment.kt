@@ -49,9 +49,6 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             val field = classForid.getField("minute")
             val minutePicker = timePicker.findViewById(field.getInt(null)) as NumberPicker
 
-            val fieldHour = classForid.getField("hour")
-            val hourPicker = timePicker.findViewById(fieldHour.getInt(null)) as NumberPicker
-
             minutePicker.minValue = 0
             minutePicker.maxValue = 3
             var displayedValues = ArrayList<String>()
@@ -83,9 +80,9 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         toggleButton = v.findViewById(R.id.toggleButton)
         toggleButton.setOnClickListener(this)
 
-        timePicker.setIs24HourView(true)
         setTimePickerInterval(timePicker)
-
+        timePicker.currentHour = 5
+        timePicker.currentMinute = 0
         var minute = timePicker.currentMinute.toString().length
         var time = ""
         when(minute){
@@ -116,18 +113,24 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
             }
 
-            var minute = timePicker.currentMinute.toString().length
+            var minute = timePicker.currentMinute.toString()
             var time = ""
             when(minute){
-                1 -> {
-                    time = "${timePicker.currentHour}:0${timePicker.currentMinute}"
+                "0" -> {
+                    time = "${timePicker.currentHour}:00"
                 }
-                2 -> {
-                    time = "${timePicker.currentHour}:${timePicker.currentMinute}"
+                "1" -> {
+                    //time = "${timePicker.currentHour}:${timePicker.currentMinute}"
+                    time = "${timePicker.currentHour}:30"
+                }
+                "2" -> {
+                    time = "${timePicker.currentHour}:00"
+                }
+                "3" -> {
+                    time = "${timePicker.currentHour}:30"
                 }
             }
             singleton.hora = time
-
         }
         return v
     }
@@ -138,14 +141,22 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         super.setUserVisibleHint(isVisibleToUser)
         if (isVisibleToUser){
             val iTime = (activity as? ITime)!!
-            var minute = timePicker.currentMinute.toString().length
+            setTimePickerInterval(timePicker)
+            var minute = timePicker.currentMinute.toString()
             var time = ""
             when(minute){
-                1 -> {
-                    time = "${timePicker.currentHour}:0${timePicker.currentMinute}"
+                "0" -> {
+                    time = "${timePicker.currentHour}:00"
                 }
-                2 -> {
-                    time = "${timePicker.currentHour}:${timePicker.currentMinute}"
+                "1" -> {
+                    //time = "${timePicker.currentHour}:${timePicker.currentMinute}"
+                    time = "${timePicker.currentHour}:30"
+                }
+                "2" -> {
+                    time = "${timePicker.currentHour}:00"
+                }
+                "3" -> {
+                    time = "${timePicker.currentHour}:30"
                 }
             }
             singleton.hora = time
