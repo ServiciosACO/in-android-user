@@ -15,6 +15,7 @@ import co.kubo.indiesco.fragment.*
 import co.kubo.indiesco.modelo.Espacios
 import co.kubo.indiesco.modelo.ServiceResumen
 import co.kubo.indiesco.utils.Singleton
+import co.kubo.indiesco.utils.Utils
 import kotlinx.android.synthetic.main.activity_add_service.*
 import java.sql.Time
 import java.text.DecimalFormat
@@ -41,6 +42,8 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
 
     var flag1 = false
     var flag2 = false
+
+    var utils = Utils()
 
     override fun checkTime() {
         if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios){
@@ -306,7 +309,15 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                 }
                             }
                         } else {
-                            Toast.makeText(applicationContext, "Debe elegir todas las opciones para crear el servicio", Toast.LENGTH_LONG).show()
+                            if (!flagVivienda){
+                                Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
+                            } else if (!flagDimensiones){
+                                Toast.makeText(applicationContext, "Elije las dimensiones", Toast.LENGTH_LONG).show()
+                            } else if(!flagEspacios){
+                                Toast.makeText(applicationContext, "Elije los espacios", Toast.LENGTH_LONG).show()
+                            } else if (!flagAddress){
+                                Toast.makeText(applicationContext, "Elije la dirección", Toast.LENGTH_LONG).show()
+                            }
                         }
                     }
                 }
@@ -315,8 +326,19 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
     }
 
     override fun onBackPressed() {
-        finish()
+        if (validation()){
+            val intent = Intent (this, TipoInmueble :: class.java)
+            startActivity(intent)
+            finish()
+        }
         super.onBackPressed()
+    }
+
+    private fun validation(): Boolean {
+        if (!utils.checkInternetConnection(this@AddService, true)){
+            return false
+        }
+        return true
     }
 
     private fun setListeners() {
