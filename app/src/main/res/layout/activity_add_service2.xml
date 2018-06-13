@@ -84,6 +84,12 @@
                         android:layout_marginEnd="6dp"
                         android:button="@drawable/radio_button2"
                         android:id="@+id/radioButton4" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:button="@drawable/radio_button2"
+                        android:id="@+id/radioButton5" />
                 </RadioGroup>
             </RelativeLayout>
             <RelativeLayout
