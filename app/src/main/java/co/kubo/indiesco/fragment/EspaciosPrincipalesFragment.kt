@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,8 @@ class EspaciosPrincipalesFragment : Fragment() {
     lateinit var llm : LinearLayoutManager
     lateinit var adapter : AdapterEspacios
 
+    lateinit var iEspacios: IEspacios
+
     var posInmueble = 0
     var posDim = 0
 
@@ -31,9 +34,7 @@ class EspaciosPrincipalesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_espacios_principales, container, false)
-
-        var iEspacios = (activity as? IEspacios)!!
-
+        iEspacios = (activity as? IEspacios)!!
         try{
             posInmueble = singleton.posTipoInmueble.toInt()
             posDim = singleton.posDimension.toInt()
@@ -49,6 +50,28 @@ class EspaciosPrincipalesFragment : Fragment() {
         rvEspaciosPpal!!.adapter = adapter
 
         return v
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser){
+            iEspacios = (activity as? IEspacios)!!
+
+            inmuebles = singleton.data
+            try{
+                posInmueble = singleton.posTipoInmueble.toInt()
+                posDim = singleton.posDimension.toInt()
+            }catch (e: Exception){
+                posInmueble = 0
+            }
+
+            llm = LinearLayoutManager(activity)
+            rvEspaciosPpal!!.layoutManager = llm
+            adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
+            rvEspaciosPpal!!.adapter = adapter
+        } else {
+            Log.e("fragment", "No visible")
+        }
     }
 
 }

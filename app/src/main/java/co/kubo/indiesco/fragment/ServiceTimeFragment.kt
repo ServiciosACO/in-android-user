@@ -25,6 +25,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     lateinit var toggleButton : ToggleButton
     var AM_PM = "AM"
     val TIME_PICKER_INTERVAL = 30
+    lateinit var iTime : ITime
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -36,6 +37,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                     toggleButton.isChecked = false
                     singleton.urgente = "no"
                 }
+                iTime.checkTime()
             }
         }
     }
@@ -72,7 +74,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_service_time, container, false)
-        val iTime = (activity as? ITime)!!
+        iTime = (activity as? ITime)!!
 
         singleton.urgente = "no"
         imgTime = v.findViewById(R.id.imgTime)

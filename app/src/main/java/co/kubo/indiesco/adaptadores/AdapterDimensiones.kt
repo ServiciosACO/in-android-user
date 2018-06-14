@@ -26,11 +26,11 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
     }
 
     override fun getItemCount(): Int {
-        return inmuebleArray[0].tiposInmuebles[posInmueble].dimesiones!!.size
+        return inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[posInmueble].dimesiones!!.size
     }
 
     override fun onBindViewHolder(holder: DimensionesViewHolder?, position: Int) {
-        var temp = inmuebleArray[0].tiposInmuebles[posInmueble].dimesiones!![position]
+        var temp = inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[posInmueble].dimesiones!![position]
         holder!!.tvDimension.text = temp.dimension
 
         if (temp.checkDim){
@@ -42,10 +42,10 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
         }
 
         holder.tvDimension.setOnClickListener{
-            for (item in inmuebleArray[0].tiposInmuebles[posInmueble].dimesiones!!.indices){
-                inmuebleArray[0].tiposInmuebles[posInmueble].dimesiones!![item].checkDim = false
+            for (item in inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[posInmueble].dimesiones!!.indices){
+                inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[posInmueble].dimesiones!![item].checkDim = false
             }
-            inmuebleArray[0].tiposInmuebles[posInmueble].dimesiones!![position].checkDim = true
+            inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[posInmueble].dimesiones!![position].checkDim = true
             singleton.idDimension = temp.idDimension
             singleton.dimension = temp.dimension
             singleton.posDimension = position.toString()

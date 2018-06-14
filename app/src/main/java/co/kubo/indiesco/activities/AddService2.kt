@@ -24,6 +24,7 @@ import org.joda.time.DateTime
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.sinh
 
 class AddService2 : AppCompatActivity(), View.OnClickListener,
         IAddress, ITime, INpisos, IVivieda, IDimension {
@@ -53,6 +54,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
         }
+        calculateTotal()
     }
 
     override fun viviendaCheck() {
@@ -70,6 +72,10 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
+        calculateTotal()
+    }
+
+    fun calculateTotal(){
         var data = singleton.data
         var total = 0.0
         var precio = data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].precio
@@ -86,7 +92,17 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                 total *= 1.16
             }
         }
-
+        when(singleton.urgente){
+            "si" -> {
+                total += (total * 0.5)
+                singleton.flagUrgente = true
+            }
+            "no" -> {
+                if (singleton.flagUrgente){
+                    singleton.flagUrgente = false
+                }
+            }
+        }
 
         tvValor.text = "Total: ${df.format(total)}"
         totalCost = total
@@ -102,6 +118,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
+        calculateTotal()
     }
 
     override fun AddressCheck() {

@@ -24,14 +24,33 @@ public class Singleton {
     private ArrayList<ServiceResumen> resumen = new ArrayList<>();
     private int position = 0;
 
-    private String posTipoInmueble, idTipoInmueble, categoria;
-    private String posDimension, idDimension, dimension;
+    private String posTipoInmueble = "0", idTipoInmueble, categoria;
+    private String posDimension = "0", idDimension, dimension;
     private String idDir, direccion;
     private String hora, urgente;
     private String fecha;
-    private String nMetros;
-    private String nPisos;
+    private String nMetros = "0";
+    private String nPisos = "0";
     private String posCat;
+    private Boolean flagUrgente = false;
+
+    private Double difUrgente = 0.0;
+
+    public Double getDifUrgente() {
+        return difUrgente;
+    }
+
+    public void setDifUrgente(Double difUrgente) {
+        this.difUrgente = difUrgente;
+    }
+
+    public Boolean getFlagUrgente() {
+        return flagUrgente;
+    }
+
+    public void setFlagUrgente(Boolean flagUrgente) {
+        this.flagUrgente = flagUrgente;
+    }
 
     public String getnPisos() {
         return nPisos;

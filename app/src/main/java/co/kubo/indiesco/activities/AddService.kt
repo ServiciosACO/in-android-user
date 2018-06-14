@@ -55,6 +55,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
+        calculateTotal()
     }
 
     override fun espaciosCheck(flag: Boolean, posInm: Int, posDim: Int) {
@@ -66,25 +67,53 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
         flagEspacios = flag
+        calculateTotal()
+    }
+
+    fun calculateTotal(){
         var data = singleton.data
         var total = 0.0
-        for (item in data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!!.indices){
-            if (data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty != 0
-                    && data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].tipo == "valor"){
-                var cost = data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty *
-                        data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].valor!!.toDouble()
+        for (item in data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.indices){
+            if (data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty != 0
+                    && data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].tipo == "valor"){
+                var cost = data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty *
+                        data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].valor!!.toDouble()
                 total += cost
             }
         }
-        for (item in data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!!.indices){
-            if (data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty != 0
-                    && data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].tipo == "porcentaje"){
-                var percent = data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].qty *
-                        data[0].tiposInmuebles[posInm].dimesiones!![posDim].espacios!![item].valor!!.toDouble()
+        for (item in data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.indices){
+            if (data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty != 0
+                    && data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].tipo == "porcentaje"){
+                var percent = data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty *
+                        data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].valor!!.toDouble()
                 var percent_aux = percent + 1
                 total *= percent_aux
             }
         }
+
+        when(singleton.getnPisos()){
+            "1" -> {
+                total *= 1.1
+            }
+            "2" -> {
+                total *= 1.13
+            }
+            "3" -> {
+                total *= 1.16
+            }
+        }
+        when(singleton.urgente){
+            "si" -> {
+                total += (total * 0.5)
+                singleton.flagUrgente = true
+            }
+            "no" -> {
+                if (singleton.flagUrgente){
+                    singleton.flagUrgente = false
+                }
+            }
+        }
+
         tvValor.text = "Total: ${df.format(total)}"
         totalCost = total
     }
@@ -105,6 +134,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
         }
+        calculateTotal()
     }
 
     override fun viviendaCheck() {
