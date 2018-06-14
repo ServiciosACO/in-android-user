@@ -210,6 +210,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                         singleton.position = position + 1
                                                         //Ir a SolicitudServicio3
                                                         val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                                         startActivity(intent)
                                                         finish()
                                                     } else {
@@ -258,6 +259,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                         singleton.position = position + 1
                                                         //Ir a SolicitudServicio3
                                                         val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                                         startActivity(intent)
                                                         finish()
                                                     } else {
@@ -304,6 +306,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                     singleton.position = position + 1
                                     //Ir a SolicitudServicio3
                                     val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                     startActivity(intent)
                                     finish()
                                 }

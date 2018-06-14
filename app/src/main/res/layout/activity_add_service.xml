@@ -154,6 +154,7 @@
                     android:layout_height="wrap_content">
                     <co.kubo.indiesco.utils.Bold
                         android:id="@+id/tvValor"
+                        android:visibility="invisible"
                         android:gravity="center|start"
                         android:text="Total: $0"
                         style="@style/texto_20_blanco"

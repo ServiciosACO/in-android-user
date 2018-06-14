@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import co.kubo.indiesco.R
+import co.kubo.indiesco.utils.Singleton
 
 /**
  * Created by estacion on 31/05/18.
@@ -17,7 +18,8 @@ import co.kubo.indiesco.R
 class NumeroPisosFragment : Fragment() {
 
     lateinit var iNpisos: INpisos
-    var nPisos = ""
+    var nMetros = ""
+    var singleton = Singleton.getInstance()
 
     private fun hideKeyboard() {
         activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
@@ -26,16 +28,18 @@ class NumeroPisosFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_numero_pisos, container, false)
         iNpisos = (activity as? INpisos)!!
-        var editQtyPisos = v.findViewById<EditText>(R.id.editQtyPisos)
-        editQtyPisos.addTextChangedListener(object : TextWatcher {
+        var editQtyMetros = v.findViewById<EditText>(R.id.editQtyMetros)
+        editQtyMetros.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
                 if(count > 0){
-                    nPisos = editQtyPisos.text.toString()
+                    nMetros = editQtyMetros.text.toString()
+                    singleton.setnMetros(nMetros)
                     iNpisos.checkNPisos(true)
                 } else {
-                    nPisos = editQtyPisos.text.toString()
+                    nMetros = editQtyMetros.text.toString()
+                    singleton.setnMetros("0")
                     iNpisos.checkNPisos(false)
                 }
             }

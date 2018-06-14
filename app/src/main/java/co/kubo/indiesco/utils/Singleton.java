@@ -29,8 +29,17 @@ public class Singleton {
     private String idDir, direccion;
     private String hora, urgente;
     private String fecha;
+    private String nMetros;
     private String nPisos;
     private String posCat;
+
+    public String getnPisos() {
+        return nPisos;
+    }
+
+    public void setnPisos(String nPisos) {
+        this.nPisos = nPisos;
+    }
 
     public String getPosCat() {
         return posCat;
@@ -48,12 +57,12 @@ public class Singleton {
         this.categoria = categoria;
     }
 
-    public String getnPisos() {
-        return nPisos;
+    public String getnMetros() {
+        return nMetros;
     }
 
-    public void setnPisos(String nPisos) {
-        this.nPisos = nPisos;
+    public void setnMetros(String nMetros) {
+        this.nMetros = nMetros;
     }
 
     public String getDimension() {

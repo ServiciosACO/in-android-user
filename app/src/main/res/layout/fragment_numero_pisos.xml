@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <EditText
-                android:id="@+id/editQtyPisos"
+                android:id="@+id/editQtyMetros"
                 style="@style/texto_15_gris"
                 android:textColorHint="@color/color_hint"
                 android:gravity="center"

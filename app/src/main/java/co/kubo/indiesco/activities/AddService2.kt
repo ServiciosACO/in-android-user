@@ -70,6 +70,26 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
+        var data = singleton.data
+        var total = 0.0
+        var precio = data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].precio
+        var qty = singleton.getnMetros().toInt()
+        total = qty * precio!!.toDouble()
+        when(singleton.getnPisos()){
+            "1" -> {
+                total *= 1.1
+            }
+            "2" -> {
+                total *= 1.13
+            }
+            "3" -> {
+                total *= 1.16
+            }
+        }
+
+
+        tvValor.text = "Total: ${df.format(total)}"
+        totalCost = total
     }
 
     override fun checkTime() {
@@ -178,6 +198,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                                         singleton.position = position + 1
                                                         //Ir a SolicitudServicio3
                                                         val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                                         startActivity(intent)
                                                         finish()
                                                     } else {
@@ -217,6 +238,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                                         singleton.position = position + 1
                                                         //Ir a SolicitudServicio3
                                                         val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                                         startActivity(intent)
                                                         finish()
                                                     } else {
@@ -254,6 +276,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                     singleton.position = position + 1
                                     //Ir a SolicitudServicio3
                                     val intent = Intent(this, SolicitudServicio3 :: class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                     startActivity(intent)
                                     finish()
                                 }
@@ -349,7 +372,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         }
                     }
                     2 -> { //Numero de pisos
-                        radiogroup.check(R.id.radioButton2)
+                        radiogroup.check(R.id.radioButton3)
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = 257
                         llProgress.requestLayout()
@@ -362,7 +385,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         }
                     }
                     3 -> { //Direccion
-                        radiogroup.check(R.id.radioButton3)
+                        radiogroup.check(R.id.radioButton4)
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = 300
                         llProgress.requestLayout()
@@ -375,7 +398,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         }
                     }
                     4 -> { //Tiempo
-                        radiogroup.check(R.id.radioButton4)
+                        radiogroup.check(R.id.radioButton5)
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
                         llProgress.requestLayout()
