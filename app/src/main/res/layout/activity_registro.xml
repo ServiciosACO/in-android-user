@@ -230,7 +230,7 @@
                     android:id="@+id/inputPass2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorBlanco"
+                    android:textColorHint="@color/color_hint"
                     app:passwordToggleDrawable="@drawable/icon_selector"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/colorGris">

@@ -19,38 +19,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df7823c-c4f5-4d20-aedb-887cde12f39b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio3.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio3.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/NumeroPisosFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/NumeroPisosFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_service.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_service.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_service2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_service2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_numero_pisos.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_numero_pisos.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MiPerfil.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MiPerfil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -143,219 +122,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AddService.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="88" column="25" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="88" selection-end-column="25" />
-              <folding>
-                <element signature="e#1402#1914#0" expanded="false" />
-                <element signature="e#1495#1698#1" expanded="false" />
-                <element signature="e#1704#1908#1" expanded="false" />
-                <element signature="e#3760#3950#0" expanded="false" />
-                <element signature="e#3994#4328#0" expanded="false" />
-                <element signature="e#4112#4322#1" expanded="false" />
-                <element signature="e#4363#4554#0" expanded="false" />
-                <element signature="e#4591#20969#0" expanded="false" />
-                <element signature="e#4651#4698#0" expanded="false" />
-                <element signature="e#4829#4902#0" expanded="false" />
-                <element signature="e#4928#5001#0" expanded="false" />
-                <element signature="e#5027#5100#0" expanded="false" />
-                <element signature="e#5126#5199#0" expanded="false" />
-                <element signature="e#5225#20921#0" expanded="false" />
-                <element signature="e#7394#7668#0" expanded="false" />
-                <element signature="e#8417#11907#1" expanded="false" />
-                <element signature="e#10527#11197#1" expanded="false" />
-                <element signature="e#10688#11139#1" expanded="false" />
-                <element signature="e#11913#12439#1" expanded="false" />
-                <element signature="e#12055#12377#0" expanded="false" />
-                <element signature="e#13071#16561#1" expanded="false" />
-                <element signature="e#15181#15851#1" expanded="false" />
-                <element signature="e#15342#15793#1" expanded="false" />
-                <element signature="e#16567#17093#1" expanded="false" />
-                <element signature="e#16709#17031#0" expanded="false" />
-                <element signature="e#18999#19549#1" expanded="false" />
-                <element signature="e#19140#19511#1" expanded="false" />
-                <element signature="e#20161#20899#1" expanded="false" />
-                <element signature="e#20209#20359#1" expanded="false" />
-                <element signature="e#20386#20535#1" expanded="false" />
-                <element signature="e#20558#20704#1" expanded="false" />
-                <element signature="e#20727#20873#1" expanded="false" />
-                <element signature="e#21004#21200#0" expanded="false" />
-                <element signature="e#21031#21164#1" expanded="false" />
-                <element signature="e#21240#21370#0" expanded="false" />
-                <element signature="e#21308#21344#1" expanded="false" />
-                <element signature="e#21403#21498#0" expanded="false" />
-                <element signature="e#21565#22395#0" expanded="false" />
-                <element signature="e#21650#22107#0" expanded="false" />
-                <element signature="e#22125#22354#0" expanded="false" />
-                <element signature="e#22439#22534#0" expanded="false" />
-                <element signature="e#23420#23643#1" expanded="false" />
-                <element signature="e#23649#23872#1" expanded="false" />
-                <element signature="e#23920#24685#0" expanded="false" />
-                <element signature="e#24211#24434#1" expanded="false" />
-                <element signature="e#24440#24663#1" expanded="false" />
-                <element signature="e#24711#25468#0" expanded="false" />
-                <element signature="e#24994#25217#1" expanded="false" />
-                <element signature="e#25223#25446#1" expanded="false" />
-                <element signature="e#25494#26251#0" expanded="false" />
-                <element signature="e#25777#26000#1" expanded="false" />
-                <element signature="e#26006#26229#1" expanded="false" />
-                <element signature="e#26277#27061#0" expanded="false" />
-                <element signature="e#26587#26810#1" expanded="false" />
-                <element signature="e#26816#27039#1" expanded="false" />
-                <element signature="e#27090#27113#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_add_service.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_service.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="156" column="53" lean-forward="false" selection-start-line="156" selection-start-column="53" selection-end-line="156" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddService2.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="85" column="16" lean-forward="false" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
-              <folding>
-                <element signature="e#1794#1985#0" expanded="false" />
-                <element signature="e#3014#3473#0" expanded="false" />
-                <element signature="e#3054#3257#1" expanded="false" />
-                <element signature="e#3263#3467#1" expanded="false" />
-                <element signature="e#3507#3697#0" expanded="false" />
-                <element signature="e#3734#17220#0" expanded="false" />
-                <element signature="e#3795#3842#0" expanded="false" />
-                <element signature="e#3870#17204#0" expanded="false" />
-                <element signature="e#3975#4049#0" expanded="false" />
-                <element signature="e#4075#4149#0" expanded="false" />
-                <element signature="e#4175#4249#0" expanded="false" />
-                <element signature="e#4275#4349#0" expanded="false" />
-                <element signature="e#4375#17172#0" expanded="false" />
-                <element signature="e#4478#16402#1" expanded="false" />
-                <element signature="e#4789#5172#1" expanded="false" />
-                <element signature="e#4908#5134#0" expanded="false" />
-                <element signature="e#5178#16376#1" expanded="false" />
-                <element signature="e#5247#14393#1" expanded="false" />
-                <element signature="e#6397#6852#0" expanded="false" />
-                <element signature="e#6528#6802#0" expanded="false" />
-                <element signature="e#6898#14321#0" expanded="false" />
-                <element signature="e#7026#10601#0" expanded="false" />
-                <element signature="e#7551#10018#1" expanded="false" />
-                <element signature="e#10024#10551#1" expanded="false" />
-                <element signature="e#10167#10489#0" expanded="false" />
-                <element signature="e#10658#14233#0" expanded="false" />
-                <element signature="e#11183#13650#1" expanded="false" />
-                <element signature="e#13656#14183#1" expanded="false" />
-                <element signature="e#13799#14121#0" expanded="false" />
-                <element signature="e#14399#16346#1" expanded="false" />
-                <element signature="e#16408#17150#1" expanded="false" />
-                <element signature="e#16456#16606#1" expanded="false" />
-                <element signature="e#16633#16782#1" expanded="false" />
-                <element signature="e#16803#16955#1" expanded="false" />
-                <element signature="e#16978#17124#1" expanded="false" />
-                <element signature="e#17260#17391#0" expanded="false" />
-                <element signature="e#17329#17365#1" expanded="false" />
-                <element signature="e#17426#17622#0" expanded="false" />
-                <element signature="e#17453#17586#1" expanded="false" />
-                <element signature="e#17655#17750#0" expanded="false" />
-                <element signature="e#18167#18263#0" expanded="false" />
-                <element signature="e#20729#20952#1" expanded="false" />
-                <element signature="e#20958#21181#1" expanded="false" />
-                <element signature="e#21512#21735#1" expanded="false" />
-                <element signature="e#21741#21964#1" expanded="false" />
-                <element signature="e#22324#22547#1" expanded="false" />
-                <element signature="e#22553#22776#1" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DimensionesFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/DimensionesFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="47" column="58" lean-forward="false" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
-              <folding>
-                <element signature="e#35#685#0" expanded="true" />
-                <element signature="e#687#730#0" expanded="false" />
-                <element signature="e#3501#3580#0" expanded="false" />
-                <element signature="e#3600#3647#0" expanded="false" />
-                <element signature="e#3705#3802#1" expanded="false" />
-                <element signature="e#4052#4107#1" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NumeroPisosFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/NumeroPisosFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="41" column="40" lean-forward="false" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-              <folding>
-                <element signature="e#35#380#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_numero_pisos.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_numero_pisos.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="46" column="33" lean-forward="false" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Singleton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="35" column="31" lean-forward="false" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-              <folding>
-                <element signature="e#939#940#0" expanded="true" />
-                <element signature="e#983#984#0" expanded="true" />
-                <element signature="e#1019#1020#0" expanded="true" />
-                <element signature="e#1355#1356#0" expanded="true" />
-                <element signature="e#1385#1386#0" expanded="true" />
-                <element signature="e#1431#1432#0" expanded="true" />
-                <element signature="e#1469#1470#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_add_service2.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_service2.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="143" column="53" lean-forward="false" selection-start-line="143" selection-start-column="53" selection-end-line="143" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -2256,8 +2023,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/Espacios.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponseCodigoDescuento.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/CodigoDescuento.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponseRecargo2.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_button_footer.xml" />
@@ -2307,6 +2072,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/NumeroPisosFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MiPerfil.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml" />
       </list>
     </option>
   </component>
@@ -2439,7 +2206,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1527648952800" />
-    <property name="device.picker.selection" value="ZY322HMVNG" />
+    <property name="device.picker.selection" value="ZY223BT34N" />
     <property name="DEBUGGABLE_DEVICE" value="motorola-moto_c-ZY322HMVNG" />
     <property name="DEBUGGABLE_PROCESS" value="co.kubo.indiesco" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
@@ -2567,7 +2334,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528993003906" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528994872875" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2614,7 +2381,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528993003906" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528994872876" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2796,7 +2563,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528993003907" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1528994872877" />
       </method>
     </configuration>
     <list size="2">
@@ -2839,7 +2606,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="990" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2852,7 +2618,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66306955" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.66306955" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48920864" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3078,32 +2844,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dimensiones.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterDimensiones.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/RecargoVO.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponseRecargo.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -3336,6 +3076,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="21" column="48" lean-forward="true" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3359,6 +3100,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3697,7 +3439,7 @@
         <state relative-caret-position="558">
           <caret line="41" column="40" lean-forward="false" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
           <folding>
-            <element signature="e#35#380#0" expanded="true" />
+            <element signature="e#35#380#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3707,7 +3449,7 @@
         <state relative-caret-position="309">
           <caret line="47" column="58" lean-forward="false" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
           <folding>
-            <element signature="e#35#685#0" expanded="true" />
+            <element signature="e#35#685#0" expanded="false" />
             <element signature="e#687#730#0" expanded="false" />
             <element signature="e#3501#3580#0" expanded="false" />
             <element signature="e#3600#3647#0" expanded="false" />
@@ -3720,56 +3462,169 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="85" column="16" lean-forward="false" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
+          <caret line="85" column="29" lean-forward="false" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
           <folding>
             <element signature="e#1794#1985#0" expanded="false" />
-            <element signature="e#3014#3473#0" expanded="false" />
-            <element signature="e#3054#3257#1" expanded="false" />
-            <element signature="e#3263#3467#1" expanded="false" />
-            <element signature="e#3507#3697#0" expanded="false" />
-            <element signature="e#3734#17220#0" expanded="false" />
-            <element signature="e#3795#3842#0" expanded="false" />
-            <element signature="e#3870#17204#0" expanded="false" />
-            <element signature="e#3975#4049#0" expanded="false" />
-            <element signature="e#4075#4149#0" expanded="false" />
-            <element signature="e#4175#4249#0" expanded="false" />
-            <element signature="e#4275#4349#0" expanded="false" />
-            <element signature="e#4375#17172#0" expanded="false" />
-            <element signature="e#4478#16402#1" expanded="false" />
-            <element signature="e#4789#5172#1" expanded="false" />
-            <element signature="e#4908#5134#0" expanded="false" />
-            <element signature="e#5178#16376#1" expanded="false" />
-            <element signature="e#5247#14393#1" expanded="false" />
-            <element signature="e#6397#6852#0" expanded="false" />
-            <element signature="e#6528#6802#0" expanded="false" />
-            <element signature="e#6898#14321#0" expanded="false" />
-            <element signature="e#7026#10601#0" expanded="false" />
-            <element signature="e#7551#10018#1" expanded="false" />
-            <element signature="e#10024#10551#1" expanded="false" />
-            <element signature="e#10167#10489#0" expanded="false" />
-            <element signature="e#10658#14233#0" expanded="false" />
-            <element signature="e#11183#13650#1" expanded="false" />
-            <element signature="e#13656#14183#1" expanded="false" />
-            <element signature="e#13799#14121#0" expanded="false" />
-            <element signature="e#14399#16346#1" expanded="false" />
-            <element signature="e#16408#17150#1" expanded="false" />
-            <element signature="e#16456#16606#1" expanded="false" />
-            <element signature="e#16633#16782#1" expanded="false" />
-            <element signature="e#16803#16955#1" expanded="false" />
-            <element signature="e#16978#17124#1" expanded="false" />
-            <element signature="e#17260#17391#0" expanded="false" />
-            <element signature="e#17329#17365#1" expanded="false" />
-            <element signature="e#17426#17622#0" expanded="false" />
-            <element signature="e#17453#17586#1" expanded="false" />
-            <element signature="e#17655#17750#0" expanded="false" />
-            <element signature="e#18167#18263#0" expanded="false" />
-            <element signature="e#20729#20952#1" expanded="false" />
-            <element signature="e#20958#21181#1" expanded="false" />
-            <element signature="e#21512#21735#1" expanded="false" />
-            <element signature="e#21741#21964#1" expanded="false" />
-            <element signature="e#22324#22547#1" expanded="false" />
-            <element signature="e#22553#22776#1" expanded="false" />
+            <element signature="e#3084#3543#0" expanded="false" />
+            <element signature="e#3124#3327#1" expanded="false" />
+            <element signature="e#3333#3537#1" expanded="false" />
+            <element signature="e#3577#3767#0" expanded="false" />
+            <element signature="e#3804#17290#0" expanded="false" />
+            <element signature="e#3865#3912#0" expanded="false" />
+            <element signature="e#3940#17274#0" expanded="false" />
+            <element signature="e#4045#4119#0" expanded="false" />
+            <element signature="e#4145#4219#0" expanded="false" />
+            <element signature="e#4245#4319#0" expanded="false" />
+            <element signature="e#4345#4419#0" expanded="false" />
+            <element signature="e#4445#17242#0" expanded="false" />
+            <element signature="e#4548#16472#1" expanded="false" />
+            <element signature="e#4859#5242#1" expanded="false" />
+            <element signature="e#4978#5204#0" expanded="false" />
+            <element signature="e#5248#16446#1" expanded="false" />
+            <element signature="e#5317#14463#1" expanded="false" />
+            <element signature="e#6467#6922#0" expanded="false" />
+            <element signature="e#6598#6872#0" expanded="false" />
+            <element signature="e#6968#14391#0" expanded="false" />
+            <element signature="e#7096#10671#0" expanded="false" />
+            <element signature="e#7621#10088#1" expanded="false" />
+            <element signature="e#10094#10621#1" expanded="false" />
+            <element signature="e#10237#10559#0" expanded="false" />
+            <element signature="e#10728#14303#0" expanded="false" />
+            <element signature="e#11253#13720#1" expanded="false" />
+            <element signature="e#13726#14253#1" expanded="false" />
+            <element signature="e#13869#14191#0" expanded="false" />
+            <element signature="e#14469#16416#1" expanded="false" />
+            <element signature="e#16478#17220#1" expanded="false" />
+            <element signature="e#16526#16676#1" expanded="false" />
+            <element signature="e#16703#16852#1" expanded="false" />
+            <element signature="e#16873#17025#1" expanded="false" />
+            <element signature="e#17048#17194#1" expanded="false" />
+            <element signature="e#17330#17461#0" expanded="false" />
+            <element signature="e#17399#17435#1" expanded="false" />
+            <element signature="e#17496#17692#0" expanded="false" />
+            <element signature="e#17523#17656#1" expanded="false" />
+            <element signature="e#17725#17820#0" expanded="false" />
+            <element signature="e#18237#18333#0" expanded="false" />
+            <element signature="e#20799#21022#1" expanded="false" />
+            <element signature="e#21028#21251#1" expanded="false" />
+            <element signature="e#21582#21805#1" expanded="false" />
+            <element signature="e#21811#22034#1" expanded="false" />
+            <element signature="e#22394#22617#1" expanded="false" />
+            <element signature="e#22623#22846#1" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MiPerfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="187" column="35" lean-forward="false" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
+          <folding>
+            <element signature="method#onCreate#0;class#MiPerfil#0" expanded="false" />
+            <element signature="class#5134:5928" expanded="false" />
+            <element signature="method#onCamara#0;class#5134:5928" expanded="false" />
+            <element signature="method#onGaleria#0;class#5134:5928" expanded="false" />
+            <element signature="method#onSalir#0;class#5134:5928" expanded="false" />
+            <element signature="method#opcionFoto#0;class#MiPerfil#0" expanded="false" />
+            <element signature="method#onRequestPermissionsResult#0;class#MiPerfil#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#MiPerfil#0" expanded="false" />
+            <element signature="method#guardarFoto#0;class#MiPerfil#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MiPerfil#0" expanded="false" />
+            <element signature="method#crearFoto#0;class#MiPerfil#0" expanded="false" />
+            <element signature="class#20013:21392" expanded="false" />
+            <element signature="method#onResponse#0;class#20013:21392" expanded="false" />
+            <element signature="method#onFailure#0;class#20013:21392" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <folding>
+            <element signature="method#setlistenerEditText#0;class#Registro#0" expanded="false" />
+            <element signature="class#9336:9923" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#9336:9923" expanded="false" />
+            <element signature="method#onTextChanged#0;class#9336:9923" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#9336:9923" expanded="false" />
+            <element signature="class#9971:10565" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#9971:10565" expanded="false" />
+            <element signature="method#onTextChanged#0;class#9971:10565" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#9971:10565" expanded="false" />
+            <element signature="class#10615:11196" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#10615:11196" expanded="false" />
+            <element signature="method#onTextChanged#0;class#10615:11196" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#10615:11196" expanded="false" />
+            <element signature="class#11248:11829" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#11248:11829" expanded="false" />
+            <element signature="method#onTextChanged#0;class#11248:11829" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#11248:11829" expanded="false" />
+            <element signature="class#11878:12465" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#11878:12465" expanded="false" />
+            <element signature="method#onTextChanged#0;class#11878:12465" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#11878:12465" expanded="false" />
+            <element signature="class#12513:13098" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#12513:13098" expanded="false" />
+            <element signature="method#onTextChanged#0;class#12513:13098" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#12513:13098" expanded="false" />
+            <element signature="class#13146:13731" expanded="false" />
+            <element signature="method#beforeTextChanged#0;class#13146:13731" expanded="false" />
+            <element signature="method#onTextChanged#0;class#13146:13731" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#13146:13731" expanded="false" />
+            <element signature="class#14912:16104" expanded="false" />
+            <element signature="method#onTextChanged#0;class#14912:16104" expanded="false" />
+            <element signature="method#validarFABVerde#0;class#Registro#0" expanded="false" />
+            <element signature="method#validacion#0;class#Registro#0" expanded="false" />
+            <element signature="method#onClick#0;class#Registro#0" expanded="false" />
+            <element signature="class#20848:21381" expanded="false" />
+            <element signature="method#onCamara#0;class#20848:21381" expanded="false" />
+            <element signature="method#onGaleria#0;class#20848:21381" expanded="false" />
+            <element signature="method#onBackPressed#0;class#Registro#0" expanded="false" />
+            <element signature="method#splashRegistro#0;class#Registro#0" expanded="false" />
+            <element signature="method#opcionFoto#0;class#Registro#0" expanded="false" />
+            <element signature="method#validarEmail#0;class#Registro#0" expanded="false" />
+            <element signature="class#25281:26921" expanded="false" />
+            <element signature="method#onResponse#0;class#25281:26921" expanded="false" />
+            <element signature="method#onFailure#0;class#25281:26921" expanded="false" />
+            <element signature="method#crearCuenta#0;class#Registro#0" expanded="false" />
+            <element signature="class#27615:28841" expanded="false" />
+            <element signature="method#onResponse#0;class#27615:28841" expanded="false" />
+            <element signature="method#onFailure#0;class#27615:28841" expanded="false" />
+            <element signature="method#crearDireccion#0;class#Registro#0" expanded="false" />
+            <element signature="class#29465:31901" expanded="false" />
+            <element signature="method#onResponse#0;class#29465:31901" expanded="false" />
+            <element signature="method#onFailure#0;class#29465:31901" expanded="false" />
+            <element signature="method#crearFoto#0;class#Registro#0" expanded="false" />
+            <element signature="class#32714:34272" expanded="false" />
+            <element signature="method#onResponse#0;class#32714:34272" expanded="false" />
+            <element signature="method#onFailure#0;class#32714:34272" expanded="false" />
+            <element signature="method#onRequestPermissionsResult#0;class#Registro#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#Registro#0" expanded="false" />
+            <element signature="method#guardarFoto#0;class#Registro#0" expanded="false" />
+            <element signature="method#hideSoftKeyboard#0;class#Registro#0" expanded="false" />
+            <element signature="docComment;method#onMapReady#0;class#Registro#0" expanded="false" />
+            <element signature="method#onMapReady#0;class#Registro#0" expanded="false" />
+            <element signature="method#getDeviceLocation#0;class#Registro#0" expanded="false" />
+            <element signature="method#getLocationPermission#0;class#Registro#0" expanded="false" />
+            <element signature="method#checkLocation#0;class#Registro#0" expanded="false" />
+            <element signature="method#moveCamera#0;class#Registro#0" expanded="false" />
+            <element signature="docComment;method#llenarAutocomplete#0;class#Registro#0" expanded="false" />
+            <element signature="method#llenarAutocomplete#0;class#Registro#0" expanded="false" />
+            <element signature="method#setLatitudYLongitud#0;class#Registro#0" expanded="false" />
+            <element signature="method#setDireccion#0;class#Registro#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="232" column="60" lean-forward="false" selection-start-line="232" selection-start-column="60" selection-end-line="232" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>

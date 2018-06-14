@@ -185,7 +185,7 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
                 startActivity(inTerminos);
                 break;
             case R.id.tvLlamanos:
-                String phone = "123456789";
+                String phone = "+570357292413";
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 startActivity(intent);
                 break;
