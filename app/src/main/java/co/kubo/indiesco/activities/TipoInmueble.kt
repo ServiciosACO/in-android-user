@@ -112,6 +112,7 @@ class TipoInmueble : AppCompatActivity(), IShowOption, View.OnClickListener {
     }
 
     override fun onBackPressed() {
+        finish()
         super.onBackPressed()
     }
 

@@ -325,6 +325,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
     override fun onBackPressed() {
         if (validation()){
             val intent = Intent (this, TipoInmueble :: class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
             finish()
         }

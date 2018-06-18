@@ -70,6 +70,7 @@
                             android:layout_width="96sp"
                             android:layout_height="96sp" />
                         <ImageView
+                            android:visibility="invisible"
                             android:id="@+id/imgConfig"
                             android:layout_marginLeft="18sp"
                             android:src="@drawable/btn_config_inactive"

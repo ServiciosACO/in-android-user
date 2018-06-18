@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 style="@style/texto_20_morado"
                 android:layout_marginLeft="35sp"
-                android:text="Excedente"
+                android:text="Agregar recargo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
