@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content" />
                 <RadioButton
                     android:id="@+id/radioButton"
+                    android:enabled="false"
                     android:background="@drawable/select_property"
                     android:button="@color/transparente"
                     android:checked="false"

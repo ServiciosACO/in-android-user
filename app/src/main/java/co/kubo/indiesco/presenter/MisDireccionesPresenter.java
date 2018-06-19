@@ -63,10 +63,13 @@ public class MisDireccionesPresenter implements IMisDireccionesPresenter {
                 switch (code){
                     case "100":
                         direccion = response.body().getData();
+                        if (direccion.size() == 5){
+                            iMisDireccionesView.disableButtonAddAddress(false);
+                        }
                         mostrarDirecciones();
                         break;
                     case "102":
-                        Toast.makeText(context, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show();
+                        iMisDireccionesView.noAddresses();
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":

@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvTipo"
                 style="@style/texto_18_blue"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="24dp"

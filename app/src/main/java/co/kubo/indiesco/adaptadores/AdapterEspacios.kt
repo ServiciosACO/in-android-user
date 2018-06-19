@@ -34,6 +34,33 @@ class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private
         holder!!.tvEspacios.text = temp.espacio
         holder!!.tvQty.text = temp.qty.toString()
 
+        when(temp.espacio) {
+            "1 Piso" -> {
+                holder.imgPlus0.isEnabled = false
+                holder.imgMinus0.isEnabled = false
+                if (singleton.getnPisos() == 1.toString()){
+                    holder.tvQty.text = "1"
+                }
+            }
+            "2 Piso" -> {
+                holder.imgPlus0.isEnabled = false
+                holder.imgMinus0.isEnabled = false
+                if (singleton.getnPisos() == 2.toString()){
+                    holder.tvQty.text = "1"
+                }
+            }
+            "3 Piso" -> {
+                holder.imgPlus0.isEnabled = false
+                holder.imgMinus0.isEnabled = false
+                if (singleton.getnPisos() == 3.toString()){
+                    holder.tvQty.text = "1"
+                }
+            }
+            else -> {
+
+            }
+        }
+
         holder!!.imgPlus0.setOnClickListener{
             var data = singleton.data
             var qty = data[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![position].qty

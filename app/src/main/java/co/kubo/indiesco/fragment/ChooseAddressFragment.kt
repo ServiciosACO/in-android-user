@@ -1,5 +1,6 @@
 package co.kubo.indiesco.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
@@ -10,8 +11,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.LinearLayout
 import android.widget.Toast
 import co.kubo.indiesco.R
+import co.kubo.indiesco.activities.NuevaDireccion
 import co.kubo.indiesco.adaptadores.IAddress
 import co.kubo.indiesco.adaptadores.MisDireccionesAdapter
 import co.kubo.indiesco.adaptadores.MisDireccionesAdapter2
@@ -21,6 +24,7 @@ import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseDireccion
 import co.kubo.indiesco.utils.SharedPreferenceManager
+import com.google.android.gms.vision.text.Line
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,16 +37,25 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
 
     var TAG = "ChooseAddressFragment"
     var rvAddress : RecyclerView ?= null
+    var llNoAddress : LinearLayout ?= null
     private var direccion: ArrayList<Direccion>? = null
     private var dialogProgress : DialogProgress ?= null
     lateinit var llm : LinearLayoutManager
     lateinit var adapter : MisDireccionesAdapter2
     lateinit var iAddress : IAddress
+    var fabAgregar : FloatingActionButton ?= null
+    var flag = true
 
     override fun onClick(v: View?) {
         when (v!!.id){
             R.id.fabAgregar -> {
-
+                if (flag){
+                    val intent = Intent(activity, NuevaDireccion::class.java)
+                    intent.putExtra("activity",2)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(activity, "Has llegado al máximo de direcciones que puedes agregar", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
@@ -67,9 +80,12 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
                         direccion = response.body()!!.data
                         adapter = MisDireccionesAdapter2(direccion, activity, iAddress)
                         rvAddress!!.adapter = adapter
+                        if (direccion!!.size == 5){
+                            flag = false
+                        }
                     }
                     "102" -> {
-                        Toast.makeText(context, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show()
+                        llNoAddress!!.visibility = View.VISIBLE
                         Log.e(TAG, "Cod: 102 No hay datos")
                     }
                     "120" -> Log.e(TAG, "Cod: 120 auth token invalido")
@@ -93,9 +109,10 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
         val v = inflater.inflate(R.layout.fragment_choose_address, container, false)
         iAddress = (activity as? IAddress)!!
 
-        var fabAgregar = v.findViewById<FloatingActionButton>(R.id.fabAgregar)
+        fabAgregar = v.findViewById<FloatingActionButton>(R.id.fabAgregar)
         rvAddress = v.findViewById<RecyclerView>(R.id.rvAddress)
-        fabAgregar.setOnClickListener(this)
+        llNoAddress = v.findViewById<LinearLayout>(R.id.llNoAddress)
+        fabAgregar!!.setOnClickListener(this)
 
         llm = LinearLayoutManager(activity)
         rvAddress!!.layoutManager = llm
@@ -108,6 +125,7 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
         super.setUserVisibleHint(isVisibleToUser)
         if (isVisibleToUser){
             hideKeyboard()
+            obtenerDirecciones()
         } else {
             Log.e("fragment", "No visible")
         }

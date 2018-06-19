@@ -410,8 +410,12 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent inDir = new Intent(this, Home.class);
+        inDir.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        inDir.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(inDir);
         finish();
+        super.onBackPressed();
     }
 
     private void crearFoto(File file) {

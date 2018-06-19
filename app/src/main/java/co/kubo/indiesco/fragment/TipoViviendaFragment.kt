@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterVivienda
 import co.kubo.indiesco.adaptadores.IVivieda
@@ -37,6 +38,8 @@ class TipoViviendaFragment : Fragment(), View.OnClickListener {
 
         inmuebles = singleton.data
         var rvTipoVivienda = v.findViewById<RecyclerView>(R.id.rvTipoVivienda)
+        var tvTipo = v.findViewById<TextView>(R.id.tvTipo)
+        tvTipo.text = "Tipo de ${singleton.categoria}"
 
         glm = GridLayoutManager(activity, 2)
         rvTipoVivienda.layoutManager = glm

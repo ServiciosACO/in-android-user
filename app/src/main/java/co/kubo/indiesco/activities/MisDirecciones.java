@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,6 +42,10 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
     RecyclerView rvDir;
     @BindView(R.id.fabAgregar)
     FloatingActionButton fabAgregar;
+    @BindView(R.id.llNoAddress)
+    LinearLayout llNoAddress;
+
+    Boolean flag = true;
     IMisDireccionesPresenter presenter;
 
     private DialogProgress dialogProgress;
@@ -65,16 +70,19 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.fabAgregar:
-                Intent in = new Intent(MisDirecciones.this, NuevaDireccion.class);
-                startActivity(in);
-                //agregarDir();
+                if (flag){
+                    Intent in = new Intent(MisDirecciones.this, NuevaDireccion.class);
+                    startActivity(in);
+                } else {
+                    Toast.makeText(this, "Has llegado al máximo de direcciones que puedes agregar", Toast.LENGTH_LONG).show();
+                }
+
                 break;
             default:break;
         }//switch
     }
 
     private void agregarDir(){
-
         new DialogAgregarDir(MisDirecciones.this, new DialogAgregarDir.RespuestaListener() {
             @Override
             public void onAgregar(String dir, String lat, String lng, String complemento, String ciudad) {
@@ -133,6 +141,16 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    public void noAddresses(){
+        llNoAddress.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void disableButtonAddAddress(Boolean flagButton) {
+        flag = flagButton;
+    }
+
+    @Override
     public void generarLinearLayoutVertical() {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -146,7 +164,7 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public MisDireccionesAdapter crearAdaptadorDirecciones(ArrayList<Direccion> direccions) {
-        MisDireccionesAdapter misDireccionesAdapter = new MisDireccionesAdapter(direccions, MisDirecciones.this);
+        MisDireccionesAdapter misDireccionesAdapter = new MisDireccionesAdapter(direccions, MisDirecciones.this, this);
         return misDireccionesAdapter;
     }
 }

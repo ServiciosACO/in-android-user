@@ -29,6 +29,40 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="16dp"
             android:text="Escoge tu dirección" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/llNoAddress"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/img_missingcontent"
+                android:layout_gravity="center"
+                android:layout_marginTop="5sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_22_morado"
+                android:text="¡Oops!"
+                android:gravity="center"
+                android:layout_marginTop="30sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Regular
+                android:text="Parece que no hay nada aquí, por favor regresa más tarde"
+                style="@style/texto_15_gris"
+                android:gravity="center"
+                android:layout_marginLeft="40sp"
+                android:layout_marginRight="40sp"
+                android:layout_marginBottom="18sp"
+                android:layout_marginTop="7sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvAddress"
             android:layout_width="match_parent"

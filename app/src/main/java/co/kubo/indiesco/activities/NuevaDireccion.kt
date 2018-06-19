@@ -81,6 +81,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     var band2 = true
     val DEFAULT_ZOOM = 16F
 
+    var page = 0
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -129,12 +130,24 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                 val code = response.body()!!.code
                 when (code) {
                     "100" -> { //OK
-                        Toast.makeText(applicationContext, "Se agregó la dirección con éxito", Toast.LENGTH_LONG).show()
-                        //Para refrescar la pantalla con la nueva data
-                        val intent = Intent(this@NuevaDireccion, MisDirecciones::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        startActivity(intent)
-                        finish()
+                        if (page == 2){
+                            Toast.makeText(applicationContext, "Se agregó la dirección con éxito", Toast.LENGTH_LONG).show()
+                            onBackPressed()
+                            /*
+                            //Para refrescar la pantalla con la nueva data
+                            val intent = Intent(this@NuevaDireccion, MisDirecciones::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            startActivity(intent)
+                            finish()
+                            */
+                        } else {
+                            Toast.makeText(applicationContext, "Se agregó la dirección con éxito", Toast.LENGTH_LONG).show()
+                            //Para refrescar la pantalla con la nueva data
+                            val intent = Intent(this@NuevaDireccion, MisDirecciones::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            startActivity(intent)
+                            finish()
+                        }
                     }
                     "102" -> { //Fallo
                         Toast.makeText(applicationContext, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show()
@@ -335,6 +348,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         dialogProgress = DialogProgress(this@NuevaDireccion)
         setListeners()
         hideKeyboard()
+
+        var params = intent.extras
+        page = params.getInt("activity", 0)
 
         mapaDireccion = fragmentManager.findFragmentById(R.id.mapaDireccion) as MapFragment?
         if (mapaDireccion != null) {

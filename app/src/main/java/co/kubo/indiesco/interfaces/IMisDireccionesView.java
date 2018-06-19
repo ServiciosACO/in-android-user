@@ -15,4 +15,6 @@ public interface IMisDireccionesView {
     public void generarLinearLayoutVertical();
     public void inicializarAdaptadorRvDirecciones(MisDireccionesAdapter misDireccionesAdapter);
     public MisDireccionesAdapter crearAdaptadorDirecciones(ArrayList<Direccion> direccions);
+    void noAddresses();
+    void disableButtonAddAddress(Boolean flagButton);
 }

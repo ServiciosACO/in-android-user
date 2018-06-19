@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
+import co.kubo.indiesco.interfaces.IMisDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -39,10 +40,12 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     private ArrayList<Direccion> direccion;
     Activity activity;
     private DialogProgress dialogProgress;
+    IMisDireccionesView iMisDireccionesView;
 
-    public MisDireccionesAdapter(ArrayList<Direccion> direccion, Activity activity) {
+    public MisDireccionesAdapter(ArrayList<Direccion> direccion, Activity activity, IMisDireccionesView iMisDireccionesView) {
         this.direccion = direccion;
         this.activity = activity;
+        this.iMisDireccionesView = iMisDireccionesView;
     }
     @Override
     public MisDireccionesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -118,6 +121,12 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                         Toast.makeText(activity, "Elimino la dirección con éxito", Toast.LENGTH_LONG).show();
                         direccion.remove(adapter_position);
                         notifyDataSetChanged();
+                        if (direccion.isEmpty()){
+                            iMisDireccionesView.noAddresses();
+                        }
+                        if (direccion.size() < 5){
+                            iMisDireccionesView.disableButtonAddAddress(true);
+                        }
                         break;
                     case "102":
                         Toast.makeText(activity, "Ha ocurrido un error intente de nuevo", Toast.LENGTH_SHORT).show();
