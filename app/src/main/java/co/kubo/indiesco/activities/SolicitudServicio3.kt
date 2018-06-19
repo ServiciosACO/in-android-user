@@ -18,6 +18,9 @@ import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_solicitud_servicio3.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -231,6 +234,20 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_solicitud_servicio3)
         setListeners()
+
+        var usuario = Usuario()
+        usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
+        tvNombrePerfil.text = usuario.name
+        tvTelf.text = usuario.celular
+        Picasso
+                .with(applicationContext)
+                .load(usuario.foto)
+                .placeholder(resources.getDrawable(R.drawable.registro_foto))
+                .error(resources.getDrawable(R.drawable.registro_foto))
+                .transform(CircleTransform())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .into(imgFotoPerfil)
 
         var resumen = singleton.resumen
         if (resumen.isNotEmpty() || resumen.size != 0){
