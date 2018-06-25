@@ -47,9 +47,9 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
                     inmuebles[posInmueble].setnPisos(nPisos)
                     singleton.setnPisos(nPisos.toString())
                 }
+                iDimension.dimensionCheck(3)
             }
             R.id.imgPlus -> {
-                iDimension.dimensionCheck(3)
                 if (inmuebles[posInmueble].getnPisos() > 2){
                     Toast.makeText(activity, "Debe tener máximo 3 pisos", Toast.LENGTH_SHORT).show()
                 } else {
@@ -59,6 +59,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
                     inmuebles[posInmueble].setnPisos(nPisos)
                     singleton.setnPisos(nPisos.toString())
                 }
+                iDimension.dimensionCheck(3)
             }
         }
     }

@@ -31,7 +31,7 @@ import org.joda.time.Minutes
 class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
         IDimension, IAddress, IEspacios, ITime {
 
-    val df = DecimalFormat("$###,###")
+    val df = DecimalFormat("$###,###.##")
     val singleton = Singleton.getInstance()
     var flagVivienda = false
     var flagDimensiones = false
@@ -81,27 +81,35 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                 total += cost
             }
         }
+        var percentAux = 0.0
         for (item in data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.indices){
             if (data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty != 0
                     && data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].tipo == "porcentaje"){
                 var percent = data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty *
                         data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].valor!!.toDouble()
+                percentAux += percent
+                /*var percent = data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty *
+                        data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].valor!!.toDouble()
                 var percent_aux = percent + 1
-                total *= percent_aux
+                total *= percent_aux*/
             }
         }
 
         when(singleton.getnPisos()){
             "1" -> {
-                total *= 1.1
+                percentAux += singleton.priceFloorOne
+                //total *= 1.1
             }
             "2" -> {
-                total *= 1.13
+                percentAux += singleton.priceFloorTwo
+                //total *= 1.13
             }
             "3" -> {
-                total *= 1.16
+                percentAux += singleton.priceFloorThree
+                //total *= 1.16
             }
         }
+        total += (total * percentAux)
         when(singleton.urgente){
             "si" -> {
                 total += (total * 0.5)
@@ -451,7 +459,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     }
                     1 -> { //Dimensiones
                         radiogroup.check(R.id.radioButton2)
-                        tvValor.visibility = View.INVISIBLE
+                        tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = 213
                         llProgress.requestLayout()
                         if (flagDimensiones){

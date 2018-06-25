@@ -23,7 +23,7 @@ class InmuebleDimensiones {
     val precio: String? = null
     @SerializedName("espacios")
     @Expose
-    val espacios: List<InmuebleEspacios>? = null
+    val espacios: ArrayList<InmuebleEspacios>? = null
 
     var checkDim = false
 }

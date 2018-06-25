@@ -33,6 +33,33 @@ public class Singleton {
     private String nPisos = "0";
     private String posCat;
     private Boolean flagUrgente = false;
+    private Double priceFloorOne;
+    private Double priceFloorTwo;
+    private Double priceFloorThree;
+
+    public Double getPriceFloorOne() {
+        return priceFloorOne;
+    }
+
+    public void setPriceFloorOne(Double priceFloorOne) {
+        this.priceFloorOne = priceFloorOne;
+    }
+
+    public Double getPriceFloorTwo() {
+        return priceFloorTwo;
+    }
+
+    public void setPriceFloorTwo(Double priceFloorTwo) {
+        this.priceFloorTwo = priceFloorTwo;
+    }
+
+    public Double getPriceFloorThree() {
+        return priceFloorThree;
+    }
+
+    public void setPriceFloorThree(Double priceFloorThree) {
+        this.priceFloorThree = priceFloorThree;
+    }
 
     private Double difUrgente = 0.0;
 

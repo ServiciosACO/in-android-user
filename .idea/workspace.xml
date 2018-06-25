@@ -11,7 +11,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="BookmarkManager">
@@ -22,11 +22,24 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio3.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio3.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterEspacios.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterEspacios.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/DimensionesFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/DimensionesFragment.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/EspaciosPrincipalesFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/EspaciosPrincipalesFragment.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleDimensiones.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleDimensiones.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleTipos.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleTipos.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/SharedPreferenceManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/SharedPreferenceManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_espacios.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_espacios.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -119,88 +132,98 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="SolicitudServicio3.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio3.kt">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AddService.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="249" column="35" lean-forward="false" selection-start-line="249" selection-start-column="35" selection-end-line="249" selection-end-column="35" />
-              <folding>
-                <element signature="e#1728#1775#0" expanded="false" />
-                <element signature="e#1972#2137#0" expanded="false" />
-                <element signature="e#2007#2123#1" expanded="false" />
-                <element signature="e#2168#4270#0" expanded="false" />
-                <element signature="e#2340#3991#1" expanded="false" />
-                <element signature="e#3180#3841#1" expanded="false" />
-                <element signature="e#3307#3573#1" expanded="false" />
-                <element signature="e#3847#3927#1" expanded="false" />
-                <element signature="e#4349#6435#0" expanded="false" />
-                <element signature="e#5053#6428#0" expanded="false" />
-                <element signature="e#5141#5247#0" expanded="false" />
-                <element signature="e#5365#6418#0" expanded="false" />
-                <element signature="e#5502#6404#1" expanded="false" />
-                <element signature="e#5587#6188#0" expanded="false" />
-                <element signature="e#6472#6570#0" expanded="false" />
-                <element signature="e#6601#6873#0" expanded="false" />
-                <element signature="e#6676#6712#1" expanded="false" />
-                <element signature="e#6749#6847#1" expanded="false" />
-                <element signature="e#6912#10467#0" expanded="false" />
-                <element signature="e#7509#10460#0" expanded="false" />
-                <element signature="e#7599#7705#0" expanded="false" />
-                <element signature="e#7826#10450#0" expanded="false" />
-                <element signature="e#7963#10436#1" expanded="false" />
-                <element signature="e#8049#9111#0" expanded="false" />
-                <element signature="e#8270#8591#0" expanded="false" />
-                <element signature="e#8631#9055#0" expanded="false" />
-                <element signature="e#9145#9408#0" expanded="false" />
-                <element signature="e#9442#9702#0" expanded="false" />
-                <element signature="e#9736#9990#0" expanded="false" />
-                <element signature="e#10024#10284#0" expanded="false" />
-                <element signature="e#10318#10396#0" expanded="false" />
-                <element signature="e#10753#10947#0" expanded="false" />
-                <element signature="e#11855#12541#1" expanded="false" />
-                <element signature="e#12358#12475#1" expanded="false" />
-                <element signature="e#12547#12655#1" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MiPerfil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MiPerfil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="134" column="31" lean-forward="false" selection-start-line="122" selection-start-column="8" selection-end-line="134" selection-end-column="31" />
-              <folding>
-                <element signature="method#onClick#0;class#MiPerfil#0" expanded="false" />
-                <element signature="class#5134:5928" expanded="false" />
-                <element signature="method#onCamara#0;class#5134:5928" expanded="false" />
-                <element signature="method#onGaleria#0;class#5134:5928" expanded="false" />
-                <element signature="method#onSalir#0;class#5134:5928" expanded="false" />
-                <element signature="method#opcionFoto#0;class#MiPerfil#0" expanded="false" />
-                <element signature="method#onRequestPermissionsResult#0;class#MiPerfil#0" expanded="false" />
-                <element signature="method#onActivityResult#0;class#MiPerfil#0" expanded="false" />
-                <element signature="method#guardarFoto#0;class#MiPerfil#0" expanded="false" />
-                <element signature="method#onBackPressed#0;class#MiPerfil#0" expanded="false" />
-                <element signature="method#crearFoto#0;class#MiPerfil#0" expanded="false" />
-                <element signature="class#20207:21586" expanded="false" />
-                <element signature="method#onResponse#0;class#20207:21586" expanded="false" />
-                <element signature="method#onFailure#0;class#20207:21586" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_solicitud_servicio3.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_solicitud_servicio3.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="101" column="62" lean-forward="false" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="62" />
+            <state relative-caret-position="160">
+              <caret line="33" column="39" lean-forward="false" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
+        </entry>
+      </file>
+      <file leaf-file-name="FechaServicio.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/FechaServicio.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TipoInmueble.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/TipoInmueble.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="740">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Endpoints.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="165" column="43" lean-forward="false" selection-start-line="165" selection-start-column="43" selection-end-line="165" selection-end-column="43" />
+              <folding>
+                <element signature="docComment;class#Endpoints#0" expanded="false" />
+                <element signature="e#1641#1679#0" expanded="false" />
+                <element signature="e#3261#3276#0" expanded="false" />
+                <element signature="e#3851#3866#0" expanded="false" />
+                <element signature="e#5698#5713#0" expanded="false" />
+                <element signature="e#6271#6281#0" expanded="false" />
+                <element signature="e#6690#6705#0" expanded="false" />
+                <element signature="e#7729#7744#0" expanded="false" />
+                <element signature="e#8850#8865#0" expanded="false" />
+                <element signature="e#10533#10548#0" expanded="false" />
+                <element signature="e#10966#10981#0" expanded="false" />
+                <element signature="e#11299#11314#0" expanded="false" />
+                <element signature="e#12271#12286#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConstantesRestApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="26" column="92" lean-forward="false" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdapterDimensiones.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterDimensiones.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DimensionesFragment.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/DimensionesFragment.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="61" column="44" lean-forward="false" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdapterEspacios.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterEspacios.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="700">
+              <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -2105,13 +2128,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calendario2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/Historial.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/PendienteCalificar.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java" />
@@ -2133,11 +2149,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/ServiceTimeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterDimensiones.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_dimensiones.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_excedentes3.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_mi_perfil.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/TipoInmueble.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterEspacios.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_historial_servicios.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_mis_direcciones.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/MisDireccionesAdapter.java" />
@@ -2145,7 +2159,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MisDirecciones.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/MisDireccionesPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MiPerfil.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_tipo_vivienda.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/TipoViviendaFragment.kt" />
@@ -2153,9 +2166,19 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_mis_direcciones2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/ChooseAddressFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_solicitud_servicio3.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio3.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/SharedPreferenceManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_espacios.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleTipos.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleDimensiones.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/EspaciosPrincipalesFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterEspacios.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/DimensionesFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" />
       </list>
     </option>
   </component>
@@ -2183,6 +2206,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2211,8 +2235,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2297,12 +2319,57 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="fragment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adaptadores" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco_android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2311,7 +2378,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1527648952800" />
     <property name="device.picker.selection" value="ZY322HMVNG" />
-    <property name="DEBUGGABLE_DEVICE" value="motorola-motog3-ZY223BT34N" />
+    <property name="DEBUGGABLE_DEVICE" value="motorola-moto_c-ZY322HMVNG" />
     <property name="DEBUGGABLE_PROCESS" value="co.kubo.indiesco" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="DEBUGGER_ID" value="Auto" />
@@ -2440,7 +2507,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529448919544" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529940413108" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2488,7 +2555,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529448919544" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529940413108" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2520,6 +2587,27 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -2650,7 +2738,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529448919546" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1529940413109" />
       </method>
     </configuration>
     <list size="2">
@@ -2712,12 +2800,12 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664436" sideWeight="0.5053305" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22785486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18783352" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44244605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44244605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2825,6 +2913,42 @@
           <properties />
           <option name="timeStamp" value="297" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt</url>
+          <line>144</line>
+          <properties />
+          <option name="timeStamp" value="308" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt</url>
+          <line>125</line>
+          <properties />
+          <option name="timeStamp" value="309" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt</url>
+          <line>80</line>
+          <properties />
+          <option name="timeStamp" value="312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt</url>
+          <line>83</line>
+          <properties />
+          <option name="timeStamp" value="313" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt</url>
+          <line>111</line>
+          <properties />
+          <option name="timeStamp" value="314" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt</url>
+          <line>112</line>
+          <properties />
+          <option name="timeStamp" value="315" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleHistorial.java</url>
           <line>120</line>
@@ -2921,8 +3045,32 @@
           <properties />
           <option name="timeStamp" value="302" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java</url>
+          <line>248</line>
+          <properties />
+          <option name="timeStamp" value="303" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java</url>
+          <line>194</line>
+          <properties />
+          <option name="timeStamp" value="304" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java</url>
+          <line>203</line>
+          <properties />
+          <option name="timeStamp" value="305" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java</url>
+          <line>202</line>
+          <properties />
+          <option name="timeStamp" value="306" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="303" />
+      <option name="time" value="316" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -2931,221 +3079,37 @@
         <watch expression="position" />
       </configuration>
       <configuration name="Remote">
-        <watch expression="currentTime" />
-        <watch expression="selectedTime" />
-        <watch expression="currentTimetime" />
-        <watch expression="singleton.difUrgente" />
+        <watch expression="pos1" />
+        <watch expression="pos2" />
+        <watch expression="pos3" />
+        <watch expression="inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices" />
+        <watch expression="total" />
+        <watch expression="singleton.getnPisos()" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterAutocomplete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="38" column="61" lean-forward="false" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_direccion_google.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_nueva_direccion.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="93" column="37" lean-forward="false" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="184" column="30" lean-forward="true" selection-start-line="184" selection-start-column="30" selection-end-line="184" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Excedentes.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="92" column="45" lean-forward="false" selection-start-line="92" selection-start-column="45" selection-end-line="92" selection-end-column="45" />
-          <folding>
-            <element signature="e#1093#2830#0" expanded="false" />
-            <element signature="e#1628#2823#0" expanded="false" />
-            <element signature="e#1710#1816#0" expanded="false" />
-            <element signature="e#1922#2813#0" expanded="false" />
-            <element signature="e#2059#2799#1" expanded="false" />
-            <element signature="e#2144#2759#0" expanded="false" />
-            <element signature="e#2253#2420#1" expanded="false" />
-            <element signature="e#2425#2733#1" expanded="false" />
-            <element signature="e#2867#3153#0" expanded="false" />
-            <element signature="e#2932#3054#0" expanded="false" />
-            <element signature="e#3090#3137#0" expanded="false" />
-            <element signature="e#3188#3242#0" expanded="false" />
-            <element signature="e#3275#3384#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tipo_inmueble.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Excedentes3.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="127" column="48" lean-forward="true" selection-start-line="127" selection-start-column="48" selection-end-line="127" selection-end-column="48" />
-          <folding>
-            <element signature="e#993#2099#0" expanded="false" />
-            <element signature="e#1052#1099#0" expanded="false" />
-            <element signature="e#1128#1416#0" expanded="false" />
-            <element signature="e#1150#1229#0" expanded="false" />
-            <element signature="e#1249#1300#0" expanded="false" />
-            <element signature="e#1446#1798#0" expanded="false" />
-            <element signature="e#1468#1547#0" expanded="false" />
-            <element signature="e#1567#1618#0" expanded="false" />
-            <element signature="e#1651#1784#1" expanded="false" />
-            <element signature="e#1829#2083#0" expanded="false" />
-            <element signature="e#1864#2009#1" expanded="false" />
-            <element signature="e#2015#2069#1" expanded="false" />
-            <element signature="e#2134#2188#0" expanded="false" />
-            <element signature="e#2217#2442#0" expanded="false" />
-            <element signature="e#2231#2294#0" expanded="false" />
-            <element signature="e#2314#2349#0" expanded="false" />
-            <element signature="e#2466#2647#0" expanded="false" />
-            <element signature="e#2671#4468#0" expanded="false" />
-            <element signature="e#3278#4461#0" expanded="false" />
-            <element signature="e#3361#3467#0" expanded="false" />
-            <element signature="e#3575#4451#0" expanded="false" />
-            <element signature="e#3711#4437#1" expanded="false" />
-            <element signature="e#3797#4397#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_excedentes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_excedentes3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Excedentes2.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
           <caret line="125" column="49" lean-forward="false" selection-start-line="125" selection-start-column="49" selection-end-line="125" selection-end-column="49" />
-          <folding>
-            <element signature="e#1422#1551#0" expanded="false" />
-            <element signature="e#1583#1881#0" expanded="false" />
-            <element signature="e#1652#1688#1" expanded="false" />
-            <element signature="e#1711#1855#1" expanded="false" />
-            <element signature="e#1922#3780#0" expanded="false" />
-            <element signature="e#2467#3773#0" expanded="false" />
-            <element signature="e#2573#3494#0" expanded="false" />
-            <element signature="e#2621#2685#1" expanded="false" />
-            <element signature="e#2795#3149#0" expanded="false" />
-            <element signature="e#3178#3382#0" expanded="false" />
-            <element signature="e#3575#3763#0" expanded="false" />
-            <element signature="e#3623#3687#1" expanded="false" />
-            <element signature="e#3817#4244#0" expanded="false" />
-            <element signature="e#3868#4145#0" expanded="false" />
-            <element signature="e#3903#4131#1" expanded="false" />
-            <element signature="e#4181#4228#0" expanded="false" />
-            <element signature="e#4277#4372#0" expanded="false" />
-            <element signature="e#4407#4461#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mi_perfil.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
           <caret line="72" column="57" lean-forward="false" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AgregarServicio.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterDimensiones.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-220">
-          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleTipos.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleDimensiones.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleEspacios.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="24" column="15" lean-forward="false" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3153,50 +3117,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
           <caret line="41" column="40" lean-forward="false" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/DimensionesFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="24" column="6" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/EspaciosPrincipalesFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterEspacios.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_historial_servicios.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="68" column="23" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="68" selection-end-column="23" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/HistorialServicios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="39" column="53" lean-forward="false" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3204,7 +3141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3212,7 +3148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="127" column="76" lean-forward="false" selection-start-line="127" selection-start-column="76" selection-end-line="127" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3220,48 +3155,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
           <caret line="66" column="77" lean-forward="false" selection-start-line="66" selection-start-column="77" selection-end-line="66" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/FechaServicio.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="28" column="53" lean-forward="false" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/TipoInmueble.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="31" column="40" lean-forward="false" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
-          <folding>
-            <element signature="e#1360#3272#0" expanded="false" />
-            <element signature="e#1906#3265#0" expanded="false" />
-            <element signature="e#2012#2986#0" expanded="false" />
-            <element signature="e#2060#2124#1" expanded="false" />
-            <element signature="e#2234#2641#0" expanded="false" />
-            <element signature="e#2670#2874#0" expanded="false" />
-            <element signature="e#3067#3255#0" expanded="false" />
-            <element signature="e#3115#3179#1" expanded="false" />
-            <element signature="e#3320#3507#0" expanded="false" />
-            <element signature="e#3540#3635#0" expanded="false" />
-            <element signature="e#4270#4317#0" expanded="false" />
-            <element signature="e#4368#4422#0" expanded="false" />
-            <element signature="e#4454#4753#0" expanded="false" />
-            <element signature="e#4524#4560#1" expanded="false" />
-            <element signature="e#4583#4727#1" expanded="false" />
-            <element signature="e#4810#5049#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3269,7 +3162,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="48" column="67" lean-forward="false" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3277,26 +3169,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-100">
           <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_tipo_vivienda.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
           <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="39" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/TipoViviendaFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
           <caret line="41" column="52" lean-forward="false" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3389,30 +3278,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mis_direcciones.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="667">
           <caret line="77" column="23" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="77" selection-end-column="23" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_address.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="40" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MisDirecciones.java">
@@ -3428,48 +3314,39 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inmueble.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="487">
           <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="35" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_mis_direcciones.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="55" column="8" lean-forward="false" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_mis_direcciones2.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
           <caret line="47" column="43" lean-forward="false" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/ChooseAddressFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="127" column="32" lean-forward="false" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
-          <folding>
-            <element signature="e#2939#3005#1" expanded="false" />
-            <element signature="e#3829#4019#0" expanded="false" />
-            <element signature="e#3879#3945#1" expanded="false" />
-            <element signature="e#4069#4178#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3605,212 +3482,199 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_service.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="427" column="46" lean-forward="false" selection-start-line="427" selection-start-column="46" selection-end-line="427" selection-end-column="46" />
-          <folding>
-            <element signature="e#1402#1939#0" expanded="false" />
-            <element signature="e#1495#1698#1" expanded="false" />
-            <element signature="e#1704#1908#1" expanded="false" />
-            <element signature="e#2013#2447#0" expanded="false" />
-            <element signature="e#2032#2207#1" expanded="false" />
-            <element signature="e#2213#2388#1" expanded="false" />
-            <element signature="e#2473#4873#0" expanded="false" />
-            <element signature="e#2676#3353#1" expanded="false" />
-            <element signature="e#2982#3343#1" expanded="false" />
-            <element signature="e#3497#4235#1" expanded="false" />
-            <element signature="e#3808#4225#1" expanded="false" />
-            <element signature="e#4293#4337#0" expanded="false" />
-            <element signature="e#4357#4402#0" expanded="false" />
-            <element signature="e#4422#4467#0" expanded="false" />
-            <element signature="e#4531#4630#0" expanded="false" />
-            <element signature="e#4651#4778#0" expanded="false" />
-            <element signature="e#4695#4764#1" expanded="false" />
-            <element signature="e#4907#5097#0" expanded="false" />
-            <element signature="e#5141#5500#0" expanded="false" />
-            <element signature="e#5259#5469#1" expanded="false" />
-            <element signature="e#5535#5726#0" expanded="false" />
-            <element signature="e#5763#22141#0" expanded="false" />
-            <element signature="e#5823#5870#0" expanded="false" />
-            <element signature="e#5898#22125#0" expanded="false" />
-            <element signature="e#6001#6074#0" expanded="false" />
-            <element signature="e#6100#6173#0" expanded="false" />
-            <element signature="e#6199#6272#0" expanded="false" />
-            <element signature="e#6298#6371#0" expanded="false" />
-            <element signature="e#6397#22093#0" expanded="false" />
-            <element signature="e#6518#21327#1" expanded="false" />
-            <element signature="e#6829#7211#1" expanded="false" />
-            <element signature="e#6947#7173#0" expanded="false" />
-            <element signature="e#7217#21301#1" expanded="false" />
-            <element signature="e#7286#18475#1" expanded="false" />
-            <element signature="e#8436#8890#0" expanded="false" />
-            <element signature="e#8566#8840#0" expanded="false" />
-            <element signature="e#8936#18403#0" expanded="false" />
-            <element signature="e#9064#13661#0" expanded="false" />
-            <element signature="e#9589#13079#1" expanded="false" />
-            <element signature="e#11699#12369#1" expanded="false" />
-            <element signature="e#11860#12311#1" expanded="false" />
-            <element signature="e#13085#13611#1" expanded="false" />
-            <element signature="e#13227#13549#0" expanded="false" />
-            <element signature="e#13718#18315#0" expanded="false" />
-            <element signature="e#14243#17733#1" expanded="false" />
-            <element signature="e#16353#17023#1" expanded="false" />
-            <element signature="e#16514#16965#1" expanded="false" />
-            <element signature="e#17739#18265#1" expanded="false" />
-            <element signature="e#17881#18203#0" expanded="false" />
-            <element signature="e#18481#21271#1" expanded="false" />
-            <element signature="e#20171#20721#1" expanded="false" />
-            <element signature="e#20312#20683#1" expanded="false" />
-            <element signature="e#21333#22071#1" expanded="false" />
-            <element signature="e#21381#21531#1" expanded="false" />
-            <element signature="e#21558#21707#1" expanded="false" />
-            <element signature="e#21730#21876#1" expanded="false" />
-            <element signature="e#21899#22045#1" expanded="false" />
-            <element signature="e#22176#22884#0" expanded="false" />
-            <element signature="e#22255#22568#0" expanded="false" />
-            <element signature="e#22290#22554#1" expanded="false" />
-            <element signature="e#22586#22643#0" expanded="false" />
-            <element signature="e#22661#22718#0" expanded="false" />
-            <element signature="e#22736#22793#0" expanded="false" />
-            <element signature="e#22811#22868#0" expanded="false" />
-            <element signature="e#22924#23054#0" expanded="false" />
-            <element signature="e#22992#23028#1" expanded="false" />
-            <element signature="e#23087#23182#0" expanded="false" />
-            <element signature="e#23249#24079#0" expanded="false" />
-            <element signature="e#23334#23791#0" expanded="false" />
-            <element signature="e#23809#24038#0" expanded="false" />
-            <element signature="e#24123#24218#0" expanded="false" />
-            <element signature="e#24589#28940#0" expanded="false" />
-            <element signature="e#24754#28837#0" expanded="false" />
-            <element signature="e#24815#25578#0" expanded="false" />
-            <element signature="e#25104#25327#1" expanded="false" />
-            <element signature="e#25333#25556#1" expanded="false" />
-            <element signature="e#25604#26369#0" expanded="false" />
-            <element signature="e#25895#26118#1" expanded="false" />
-            <element signature="e#26124#26347#1" expanded="false" />
-            <element signature="e#26395#27152#0" expanded="false" />
-            <element signature="e#26678#26901#1" expanded="false" />
-            <element signature="e#26907#27130#1" expanded="false" />
-            <element signature="e#27178#27935#0" expanded="false" />
-            <element signature="e#27461#27684#1" expanded="false" />
-            <element signature="e#27690#27913#1" expanded="false" />
-            <element signature="e#27961#28745#0" expanded="false" />
-            <element signature="e#28271#28494#1" expanded="false" />
-            <element signature="e#28500#28723#1" expanded="false" />
-            <element signature="e#28774#28797#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_solicitud_servicio.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="93" column="53" lean-forward="true" selection-start-line="93" selection-start-column="53" selection-end-line="93" selection-end-column="53" />
-          <folding>
-            <element signature="class#4001:4503" expanded="false" />
-            <element signature="method#onItemSelected#0;class#4001:4503" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#4001:4503" expanded="false" />
-            <element signature="class#4695:6710" expanded="false" />
-            <element signature="method#onProgressChanged#0;class#4695:6710" expanded="false" />
-            <element signature="method#onStartTrackingTouch#0;class#4695:6710" expanded="false" />
-            <element signature="method#onStopTrackingTouch#0;class#4695:6710" expanded="false" />
-            <element signature="method#onClick#0;class#SolicitudServicio#0" expanded="false" />
-            <element signature="class#7744:8620" expanded="false" />
-            <element signature="method#onSelectDir#0;class#7744:8620" expanded="false" />
-            <element signature="method#onIrMisDir#0;class#7744:8620" expanded="false" />
-            <element signature="method#onSalir#0;class#7744:8620" expanded="false" />
-            <element signature="e#8700#8720#0" expanded="false" />
-            <element signature="method#validacion#0;class#SolicitudServicio#0" expanded="false" />
-            <element signature="e#9163#9199#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#SolicitudServicio#0" expanded="false" />
-            <element signature="class#11867:12163" expanded="false" />
-            <element signature="method#onCancelar#0;class#11867:12163" expanded="false" />
-            <element signature="method#onSalir#0;class#11867:12163" expanded="false" />
-            <element signature="method#tasarServicio#0;class#SolicitudServicio#0" expanded="false" />
-            <element signature="class#12783:13983" expanded="false" />
-            <element signature="method#onResponse#0;class#12783:13983" expanded="false" />
-            <element signature="method#onFailure#0;class#12783:13983" expanded="false" />
-            <element signature="method#listarTiposInmuebles#0;class#SolicitudServicio#0" expanded="false" />
-            <element signature="class#14680:15697" expanded="false" />
-            <element signature="method#onResponse#0;class#14680:15697" expanded="false" />
-            <element signature="method#onFailure#0;class#14680:15697" expanded="false" />
-            <element signature="method#onMapReady#0;class#SolicitudServicio#0" expanded="false" />
-            <element signature="method#setLatitudYLongitud#0;class#SolicitudServicio#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MiPerfil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="738">
           <caret line="134" column="31" lean-forward="false" selection-start-line="122" selection-start-column="8" selection-end-line="134" selection-end-column="31" />
-          <folding>
-            <element signature="method#onClick#0;class#MiPerfil#0" expanded="false" />
-            <element signature="class#5134:5928" expanded="false" />
-            <element signature="method#onCamara#0;class#5134:5928" expanded="false" />
-            <element signature="method#onGaleria#0;class#5134:5928" expanded="false" />
-            <element signature="method#onSalir#0;class#5134:5928" expanded="false" />
-            <element signature="method#opcionFoto#0;class#MiPerfil#0" expanded="false" />
-            <element signature="method#onRequestPermissionsResult#0;class#MiPerfil#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#MiPerfil#0" expanded="false" />
-            <element signature="method#guardarFoto#0;class#MiPerfil#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#MiPerfil#0" expanded="false" />
-            <element signature="method#crearFoto#0;class#MiPerfil#0" expanded="false" />
-            <element signature="class#20207:21586" expanded="false" />
-            <element signature="method#onResponse#0;class#20207:21586" expanded="false" />
-            <element signature="method#onFailure#0;class#20207:21586" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_solicitud_servicio3.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
+        <state relative-caret-position="707">
           <caret line="101" column="62" lean-forward="false" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/adapter/RestApiAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="46" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Splash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="39" column="56" lean-forward="false" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/SharedPreferenceManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/IniciarSesion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3363">
+          <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="65" column="32" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="84" column="22" lean-forward="false" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="79" column="31" lean-forward="false" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
+          <folding>
+            <element signature="method#onCreate#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#onClick#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#onKeyDown#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#opcionVolver#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#2807:3246" expanded="false" />
+            <element signature="method#onCancelar#0;class#2807:3246" expanded="false" />
+            <element signature="method#onSalir#0;class#2807:3246" expanded="false" />
+            <element signature="method#irHome#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#initWebView#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#4426:5323" expanded="false" />
+            <element signature="method#onPageStarted#0;class#4426:5323" expanded="false" />
+            <element signature="method#onPageFinished#0;class#4426:5323" expanded="false" />
+            <element signature="method#cancelTransaction#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#6167:7129" expanded="false" />
+            <element signature="method#onResponse#0;class#6167:7129" expanded="false" />
+            <element signature="method#onFailure#0;class#6167:7129" expanded="false" />
+            <element signature="method#cancelarServicio#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#7718:8680" expanded="false" />
+            <element signature="method#onResponse#0;class#7718:8680" expanded="false" />
+            <element signature="method#onFailure#0;class#7718:8680" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_espacios.xml">
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleEspacios.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleDimensiones.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleTipos.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="39" column="38" lean-forward="false" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+          <folding>
+            <element signature="e#1122#1123#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1364#1365#0" expanded="true" />
+            <element signature="e#1414#1415#0" expanded="true" />
+            <element signature="e#1456#1457#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/EspaciosPrincipalesFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="70" column="41" lean-forward="false" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio3.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="249" column="35" lean-forward="false" selection-start-line="249" selection-start-column="35" selection-end-line="249" selection-end-column="35" />
+        <state relative-caret-position="80">
+          <caret line="31" column="69" lean-forward="true" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
           <folding>
+            <element signature="e#1668#4286#0" expanded="false" />
             <element signature="e#1728#1775#0" expanded="false" />
+            <element signature="e#1809#1934#0" expanded="false" />
             <element signature="e#1972#2137#0" expanded="false" />
             <element signature="e#2007#2123#1" expanded="false" />
             <element signature="e#2168#4270#0" expanded="false" />
@@ -3841,11 +3705,91 @@
             <element signature="e#9736#9990#0" expanded="false" />
             <element signature="e#10024#10284#0" expanded="false" />
             <element signature="e#10318#10396#0" expanded="false" />
+            <element signature="e#10502#10728#0" expanded="false" />
             <element signature="e#10753#10947#0" expanded="false" />
+            <element signature="e#11004#12688#0" expanded="false" />
             <element signature="e#11855#12541#1" expanded="false" />
             <element signature="e#12358#12475#1" expanded="false" />
             <element signature="e#12547#12655#1" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterEspacios.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterDimensiones.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/FechaServicio.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="26" column="92" lean-forward="false" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="165" column="43" lean-forward="false" selection-start-line="165" selection-start-column="43" selection-end-line="165" selection-end-column="43" />
+          <folding>
+            <element signature="docComment;class#Endpoints#0" expanded="false" />
+            <element signature="e#1641#1679#0" expanded="false" />
+            <element signature="e#3261#3276#0" expanded="false" />
+            <element signature="e#3851#3866#0" expanded="false" />
+            <element signature="e#5698#5713#0" expanded="false" />
+            <element signature="e#6271#6281#0" expanded="false" />
+            <element signature="e#6690#6705#0" expanded="false" />
+            <element signature="e#7729#7744#0" expanded="false" />
+            <element signature="e#8850#8865#0" expanded="false" />
+            <element signature="e#10533#10548#0" expanded="false" />
+            <element signature="e#10966#10981#0" expanded="false" />
+            <element signature="e#11299#11314#0" expanded="false" />
+            <element signature="e#12271#12286#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/TipoInmueble.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fragment/DimensionesFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="61" column="44" lean-forward="false" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="33" column="39" lean-forward="false" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>

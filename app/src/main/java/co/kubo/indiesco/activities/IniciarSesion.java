@@ -188,7 +188,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
             dialogProgress = new DialogProgress(IniciarSesion.this);
             dialogProgress.show();
         }
-        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        final String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
         String url = ConstantesRestApi.URL_VALIDAR_EMAIL + email;
@@ -221,6 +221,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(IniciarSesion.this, "Su cuenta se encuentra inactiva", Toast.LENGTH_LONG).show();
                         break;
                     case "120": //auth_token no valido
+
                         break;
                 }//switch
             }

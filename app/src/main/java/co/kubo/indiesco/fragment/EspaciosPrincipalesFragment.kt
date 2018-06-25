@@ -28,6 +28,9 @@ class EspaciosPrincipalesFragment : Fragment() {
 
     var posInmueble = 0
     var posDim = 0
+    var pos1 = -1
+    var pos2 = -1
+    var pos3 = -1
 
     var rvEspaciosPpal : RecyclerView ?= null
 
@@ -46,6 +49,32 @@ class EspaciosPrincipalesFragment : Fragment() {
         inmuebles = singleton.data
         llm = LinearLayoutManager(activity)
         rvEspaciosPpal!!.layoutManager = llm
+        for (i in inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices) {
+            if (inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].espacio == "1 Piso") {
+                pos1 = i
+                singleton.priceFloorOne = inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].valor!!.toDouble()
+                inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.removeAt(i)
+                break
+            }
+        }
+        for (i in inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices) {
+            if (inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].espacio == "2 Piso") {
+                pos1 = i
+                singleton.priceFloorTwo = inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].valor!!.toDouble()
+                inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.removeAt(i)
+                break
+            }
+        }
+        for (i in inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices) {
+            if (inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].espacio == "3 Piso") {
+                pos1 = i
+                singleton.priceFloorThree = inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].valor!!.toDouble()
+                inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.removeAt(i)
+                break
+            }
+        }
+
+
         adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
         rvEspaciosPpal!!.adapter = adapter
 
@@ -67,6 +96,29 @@ class EspaciosPrincipalesFragment : Fragment() {
 
             llm = LinearLayoutManager(activity)
             rvEspaciosPpal!!.layoutManager = llm
+
+            for (i in inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices) {
+                if (inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].espacio == "1 Piso") {
+                    pos1 = i
+                    inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.removeAt(i)
+                    break
+                }
+            }
+            for (i in inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices) {
+                if (inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].espacio == "2 Piso") {
+                    pos1 = i
+                    inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.removeAt(i)
+                    break
+                }
+            }
+            for (i in inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.indices) {
+                if (inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!![i].espacio == "3 Piso") {
+                    pos1 = i
+                    inmuebles[0].tiposInmuebles[posInmueble].dimesiones!![posDim].espacios!!.removeAt(i)
+                    break
+                }
+            }
+
             adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
             rvEspaciosPpal!!.adapter = adapter
         } else {

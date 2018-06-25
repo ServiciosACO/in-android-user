@@ -20,7 +20,7 @@ class InmuebleTipos {
     val imagen: String? = null
     @SerializedName("dimesiones")
     @Expose
-    val dimesiones: List<InmuebleDimensiones>? = null
+    val dimesiones: ArrayList<InmuebleDimensiones>? = null
 
     var active = false
 

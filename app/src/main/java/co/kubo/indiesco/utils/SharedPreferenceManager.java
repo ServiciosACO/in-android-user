@@ -36,7 +36,7 @@ public class SharedPreferenceManager {
 
     public static String getAuthToken(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(NOMBRE_ARCHIVO, Context.MODE_PRIVATE);
-        return prefs.getString("authToken", "");
+        return prefs.getString("authToken", "0");
     }
 
     public static void setInfoUsuario(Context context, Usuario usuario) {

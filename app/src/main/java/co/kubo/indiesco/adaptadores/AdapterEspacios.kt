@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.modelo.InmuebleVO
@@ -34,7 +35,7 @@ class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private
         holder!!.tvEspacios.text = temp.espacio
         holder!!.tvQty.text = temp.qty.toString()
 
-        when(temp.espacio) {
+        /*when(temp.espacio) {
             "1 Piso" -> {
                 holder.imgPlus0.isEnabled = false
                 holder.imgMinus0.isEnabled = false
@@ -57,9 +58,9 @@ class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private
                 }
             }
             else -> {
-
+                holder.llItem.visibility = View.VISIBLE
             }
-        }
+        }*/
 
         holder!!.imgPlus0.setOnClickListener{
             var data = singleton.data
@@ -107,6 +108,7 @@ class AdapterEspacios(private val inmuebleArray : ArrayList<InmuebleVO>, private
         }
     }
     class EspaciosViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
+        var llItem = itemView!!.findViewById<LinearLayout>(R.id.llItem)
         var tvEspacios = itemView!!.findViewById<TextView>(R.id.tvEspacios)
         var imgMinus0 = itemView!!.findViewById<ImageView>(R.id.imgMinus0)
         var tvQty = itemView!!.findViewById<TextView>(R.id.tvQty)
