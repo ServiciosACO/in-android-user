@@ -185,117 +185,134 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                         }
                                         1 -> {
                                             when(singleton.urgente){
-
                                                 "si" -> {
-                                                    var millisSelectedTime = selectedTime.time
-                                                    var millisCurrentTime = currentTimetime.time
-                                                    //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
-                                                    var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
-                                                    if (diffMillis > 120){
-                                                        var position = singleton.position
-                                                        var arrayResumen = singleton.resumen
-                                                        var serviceResumen = ServiceResumen()
-                                                        serviceResumen.category = singleton.categoria
-                                                        serviceResumen.date = singleton.fecha
-                                                        serviceResumen.address = singleton.direccion
-                                                        serviceResumen.id_direccion = singleton.idDir
-                                                        serviceResumen.dimension = singleton.dimension
-                                                        serviceResumen.id_dimension = singleton.idDimension
-                                                        serviceResumen.totalCost = totalCost.toString()
-                                                        serviceResumen.urgente = singleton.urgente
-                                                        serviceResumen.comentario = "ok"
-                                                        serviceResumen.pisos = 0.toString()
-                                                        serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
-                                                        serviceResumen.tipo_cobro = "pisos"
-                                                        serviceResumen.hora = singleton.hora
-                                                        var espacios_aux = Espacios()
-                                                        serviceResumen.espacios.add(espacios_aux)
-                                                        arrayResumen.add(serviceResumen)
+                                                    DialogDosOpciones(this@AddService2, "9", object : DialogDosOpciones.RespuestaListener{
+                                                        override fun onCancelar() {}
+                                                        override fun onAceptar() {
+                                                            var millisSelectedTime = selectedTime.time
+                                                            var millisCurrentTime = currentTimetime.time
+                                                            //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
+                                                            var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
+                                                            if (diffMillis > 120){
+                                                                var position = singleton.position
+                                                                var arrayResumen = singleton.resumen
+                                                                var serviceResumen = ServiceResumen()
+                                                                serviceResumen.category = singleton.categoria
+                                                                serviceResumen.date = singleton.fecha
+                                                                serviceResumen.address = singleton.direccion
+                                                                serviceResumen.id_direccion = singleton.idDir
+                                                                serviceResumen.dimension = singleton.dimension
+                                                                serviceResumen.id_dimension = singleton.idDimension
+                                                                serviceResumen.totalCost = totalCost.toString()
+                                                                serviceResumen.urgente = singleton.urgente
+                                                                serviceResumen.comentario = "ok"
+                                                                serviceResumen.pisos = 0.toString()
+                                                                serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                                                serviceResumen.tipo_cobro = "pisos"
+                                                                serviceResumen.hora = singleton.hora
+                                                                var espacios_aux = Espacios()
+                                                                serviceResumen.espacios.add(espacios_aux)
+                                                                arrayResumen.add(serviceResumen)
 
-                                                        singleton.position = position + 1
-                                                        //Ir a SolicitudServicio3
-                                                        val intent = Intent(this, SolicitudServicio3 :: class.java)
-                                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                                        startActivity(intent)
-                                                        finish()
-                                                    } else {
-                                                        DialogDosOpciones(this@AddService2, "5", object : DialogDosOpciones.RespuestaListener{
-                                                            override fun onCancelar() {}
-                                                            override fun onAceptar() {}
-                                                            override fun onSalir() {}
-                                                        }).show()
-                                                    }
+                                                                singleton.position = position + 1
+                                                                //Ir a SolicitudServicio3
+                                                                val intent = Intent(applicationContext, SolicitudServicio3 :: class.java)
+                                                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                                                startActivity(intent)
+                                                                finish()
+                                                            } else {
+                                                                DialogDosOpciones(this@AddService2, "5", object : DialogDosOpciones.RespuestaListener{
+                                                                    override fun onCancelar() {}
+                                                                    override fun onAceptar() {}
+                                                                    override fun onSalir() {}
+                                                                }).show()
+                                                            }
+                                                        }
+                                                        override fun onSalir() {}
+                                                    }).show()
                                                 }
                                                 "no" -> {
-                                                    var millisSelectedTime = selectedTime.time
-                                                    var millisCurrentTime = currentTimetime.time
-                                                    //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
-                                                    var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
-                                                    if (diffMillis > 300){
-                                                        var position = singleton.position
-                                                        var arrayResumen = singleton.resumen
-                                                        var serviceResumen = ServiceResumen()
-                                                        serviceResumen.category = singleton.categoria
-                                                        serviceResumen.date = singleton.fecha
-                                                        serviceResumen.address = singleton.direccion
-                                                        serviceResumen.id_direccion = singleton.idDir
-                                                        serviceResumen.dimension = singleton.dimension
-                                                        serviceResumen.id_dimension = singleton.idDimension
-                                                        serviceResumen.totalCost = totalCost.toString()
-                                                        serviceResumen.urgente = singleton.urgente
-                                                        serviceResumen.comentario = "ok"
-                                                        serviceResumen.pisos = 0.toString()
-                                                        serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
-                                                        serviceResumen.tipo_cobro = "pisos"
-                                                        serviceResumen.hora = singleton.hora
-                                                        var espacios_aux = Espacios()
-                                                        serviceResumen.espacios.add(espacios_aux)
-                                                        arrayResumen.add(serviceResumen)
+                                                    DialogDosOpciones(this@AddService2, "9", object : DialogDosOpciones.RespuestaListener{
+                                                        override fun onCancelar() {}
+                                                        override fun onAceptar() {
+                                                            var millisSelectedTime = selectedTime.time
+                                                            var millisCurrentTime = currentTimetime.time
+                                                            //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
+                                                            var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
+                                                            if (diffMillis > 300){
+                                                                var position = singleton.position
+                                                                var arrayResumen = singleton.resumen
+                                                                var serviceResumen = ServiceResumen()
+                                                                serviceResumen.category = singleton.categoria
+                                                                serviceResumen.date = singleton.fecha
+                                                                serviceResumen.address = singleton.direccion
+                                                                serviceResumen.id_direccion = singleton.idDir
+                                                                serviceResumen.dimension = singleton.dimension
+                                                                serviceResumen.id_dimension = singleton.idDimension
+                                                                serviceResumen.totalCost = totalCost.toString()
+                                                                serviceResumen.urgente = singleton.urgente
+                                                                serviceResumen.comentario = "ok"
+                                                                serviceResumen.pisos = 0.toString()
+                                                                serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                                                serviceResumen.tipo_cobro = "pisos"
+                                                                serviceResumen.hora = singleton.hora
+                                                                var espacios_aux = Espacios()
+                                                                serviceResumen.espacios.add(espacios_aux)
+                                                                arrayResumen.add(serviceResumen)
 
-                                                        singleton.position = position + 1
-                                                        //Ir a SolicitudServicio3
-                                                        val intent = Intent(this, SolicitudServicio3 :: class.java)
-                                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                                        startActivity(intent)
-                                                        finish()
-                                                    } else {
-                                                        DialogDosOpciones(this@AddService2, "6", object : DialogDosOpciones.RespuestaListener{
-                                                            override fun onCancelar() {}
-                                                            override fun onAceptar() {}
-                                                            override fun onSalir() {}
-                                                        }).show()
-                                                    }
+                                                                singleton.position = position + 1
+                                                                //Ir a SolicitudServicio3
+                                                                val intent = Intent(applicationContext, SolicitudServicio3 :: class.java)
+                                                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                                                startActivity(intent)
+                                                                finish()
+                                                            } else {
+                                                                DialogDosOpciones(this@AddService2, "6", object : DialogDosOpciones.RespuestaListener{
+                                                                    override fun onCancelar() {}
+                                                                    override fun onAceptar() {}
+                                                                    override fun onSalir() {}
+                                                                }).show()
+                                                            }
+                                                        }
+                                                        override fun onSalir() {}
+                                                    }).show()
                                                 }
                                             }
                                         }
                                     }
                                 } else {
-                                    var position = singleton.position
-                                    var arrayResumen = singleton.resumen
-                                    var serviceResumen = ServiceResumen()
-                                    serviceResumen.category = singleton.categoria
-                                    serviceResumen.date = singleton.fecha
-                                    serviceResumen.address = singleton.direccion
-                                    serviceResumen.id_direccion = singleton.idDir
-                                    serviceResumen.dimension = singleton.dimension
-                                    serviceResumen.id_dimension = singleton.idDimension
-                                    serviceResumen.totalCost = totalCost.toString()
-                                    serviceResumen.urgente = singleton.urgente
-                                    serviceResumen.comentario = "ok"
-                                    serviceResumen.pisos = 0.toString()
-                                    serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
-                                    serviceResumen.tipo_cobro = "pisos"
-                                    serviceResumen.hora = singleton.hora
-                                    var espacios_aux = Espacios()
-                                    serviceResumen.espacios.add(espacios_aux)
-                                    arrayResumen.add(serviceResumen)
+                                    DialogDosOpciones(this@AddService2, "9", object : DialogDosOpciones.RespuestaListener{
+                                        override fun onCancelar() {}
+                                        override fun onAceptar() {
+                                            var position = singleton.position
+                                            var arrayResumen = singleton.resumen
+                                            var serviceResumen = ServiceResumen()
+                                            serviceResumen.category = singleton.categoria
+                                            serviceResumen.date = singleton.fecha
+                                            serviceResumen.address = singleton.direccion
+                                            serviceResumen.id_direccion = singleton.idDir
+                                            serviceResumen.dimension = singleton.dimension
+                                            serviceResumen.id_dimension = singleton.idDimension
+                                            serviceResumen.totalCost = totalCost.toString()
+                                            serviceResumen.urgente = singleton.urgente
+                                            serviceResumen.comentario = "ok"
+                                            serviceResumen.pisos = 0.toString()
+                                            serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                            serviceResumen.tipo_cobro = "pisos"
+                                            serviceResumen.hora = singleton.hora
+                                            var espacios_aux = Espacios()
+                                            serviceResumen.espacios.add(espacios_aux)
+                                            arrayResumen.add(serviceResumen)
 
-                                    singleton.position = position + 1
-                                    //Ir a SolicitudServicio3
-                                    val intent = Intent(this, SolicitudServicio3 :: class.java)
-                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                    startActivity(intent)
-                                    finish()
+                                            singleton.position = position + 1
+                                            //Ir a SolicitudServicio3
+                                            val intent = Intent(applicationContext, SolicitudServicio3 :: class.java)
+                                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                            startActivity(intent)
+                                            finish()
+                                        }
+                                        override fun onSalir() {}
+                                    }).show()
                                 }
                             }
                         } else {

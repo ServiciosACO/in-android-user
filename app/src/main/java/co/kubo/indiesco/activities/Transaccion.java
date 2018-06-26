@@ -14,16 +14,20 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
+import co.kubo.indiesco.modelo.ServiceResumen;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import co.kubo.indiesco.utils.Singleton;
 import co.kubo.indiesco.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,6 +45,8 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
     private String id_solicitud, urlPago, type;
     private boolean cancelarTransaccion, bandVolver = false;
     private DialogProgress dialogProgress;
+    private Singleton singleton = Singleton.getInstance();
+    private ArrayList<ServiceResumen> resumen = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +132,9 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
     private void irHome(){
         Intent intentHome = new Intent(Transaccion.this, Home.class);
         intentHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        resumen = singleton.getResumen();
+        resumen.removeAll(resumen);
+        singleton.setResumen(resumen);
         startActivity(intentHome);
         finish();
     }
@@ -150,6 +159,13 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                     cancelarTransaccion = false;
                     if (bandVolver){
                         irHome();
+                    }
+                    bandVolver = true;
+                }
+                if (url.contains("DECLINED")) {
+                    cancelarTransaccion = true;
+                    if (bandVolver){
+                        cancelTransaction();
                     }
                     bandVolver = true;
                 }

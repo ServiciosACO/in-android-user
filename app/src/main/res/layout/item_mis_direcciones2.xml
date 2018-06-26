@@ -37,20 +37,22 @@
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Regular
                     android:id="@+id/tvComplemento"
+                    android:layout_gravity="center"
                     android:text="Piso 2"
                     android:layout_marginBottom="5sp"
                     style="@style/texto_13_naranja"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
                 <RadioButton
                     android:id="@+id/radioButton"
-                    android:enabled="false"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/select_property"
                     android:button="@color/transparente"
                     android:checked="false"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp" />
+                    android:clickable="false" />
             </LinearLayout>
             <co.kubo.indiesco.utils.Regular
                 android:id="@+id/tvCiudad"

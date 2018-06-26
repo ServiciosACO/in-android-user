@@ -9,6 +9,7 @@ import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
+import co.kubo.indiesco.restAPI.ConstantesRestApi
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral
 import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2
@@ -109,8 +110,9 @@ class Excedentes3 : AppCompatActivity(), View.OnClickListener {
                 if(response!!.isSuccessful){
                     when (response.body()!!.code){
                         "100" -> {
+                            var urlBase = ConstantesRestApi.URL_BASE
                             var id_solicitud = response.body()!!.data!!.id_recargo
-                            var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud/recargo"
+                            var urlTransaccion = "$urlBase/servicios/resumen_pedido/$id_user/$id_solicitud/recargo"
                             var goPago = Intent(applicationContext, Transaccion :: class.java)
                             goPago.putExtra("type", "recargo")
                             goPago.putExtra("url", urlTransaccion)

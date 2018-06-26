@@ -12,9 +12,11 @@ import co.kubo.indiesco.adaptadores.AdapterResumen
 import co.kubo.indiesco.adaptadores.AdapterResumenServicio
 import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
+import co.kubo.indiesco.restAPI.ConstantesRestApi
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseCodigoDescuento
 import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio
+import co.kubo.indiesco.utils.Constantes
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
@@ -123,8 +125,9 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                 if (response!!.isSuccessful){
                     when(response.body()!!.code){
                         "100" -> {
+                            var urlBase = ConstantesRestApi.URL_BASE
                             var id_solicitud = response.body()!!.data.idSolicitud
-                            var urlTransaccion = "http://indiescoapi.inkubo.co/servicios/resumen_pedido/$id_user/$id_solicitud/servicio"
+                            var urlTransaccion = "$urlBase/servicios/resumen_pedido/$id_user/$id_solicitud/servicio"
                             var goPago = Intent(applicationContext, Transaccion :: class.java)
                             goPago.putExtra("type", "servicio")
                             goPago.putExtra("url", urlTransaccion)

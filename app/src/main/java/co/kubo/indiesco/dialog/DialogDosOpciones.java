@@ -104,6 +104,10 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
                 imgBorrar.setImageResource(R.drawable.delete_popup);
                 tvMensaje.setText("¿Esta seguro de eliminar este servicio de la lista?");
                 break;
+            case "9":
+                imgBorrar.setImageResource(R.drawable.delete_calendar);
+                tvMensaje.setText("Recuerda que al realizar la reserva se te realizará una visita horas antes de prestar el servicio.");
+                break;
             default:break;
         }//switch
 
