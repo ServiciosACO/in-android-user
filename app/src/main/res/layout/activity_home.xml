@@ -217,7 +217,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20sp"
-                            android:src="@drawable/main_calendar" />
+                            android:src="@drawable/main_excedentes" />
                         <co.kubo.indiesco.utils.Medium
                             style="@style/texto_15_gris"
                             android:layout_width="match_parent"
