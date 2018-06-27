@@ -13,6 +13,8 @@ import co.kubo.indiesco.R
 import co.kubo.indiesco.utils.Singleton
 import android.widget.NumberPicker
 import android.annotation.SuppressLint
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by estacion on 28/05/18.
@@ -81,6 +83,10 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         timePicker = v.findViewById(R.id.timePicker)
         toggleButton = v.findViewById(R.id.toggleButton)
         toggleButton.setOnClickListener(this)
+
+        val df = SimpleDateFormat("yyyy-MM-dd")
+        val currentDate = df.format(Calendar.getInstance().time)
+        toggleButton.isEnabled = currentDate == singleton.fecha
 
         setTimePickerInterval(timePicker)
         timePicker.currentHour = 5
