@@ -43,12 +43,9 @@ class NotificationService : FirebaseMessagingService() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
 
-        //val packageName = packageName
-        //val sound = Uri.parse("android.resource://$packageName/R.raw.elbosque")
-
-        val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_launcher)
+        val largeIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
         val notificationBuilder = NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(largeIcon)
                 .setAutoCancel(true)
                 .setContentTitle(this.getString(R.string.app_name))

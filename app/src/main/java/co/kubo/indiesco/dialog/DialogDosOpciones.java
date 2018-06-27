@@ -108,6 +108,10 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
                 imgBorrar.setImageResource(R.drawable.delete_calendar);
                 tvMensaje.setText("Recuerda que al realizar la reserva se te realizará una visita horas antes de prestar el servicio.");
                 break;
+            case "10": //Borrar direccion
+                imgBorrar.setImageResource(R.drawable.img_deleteaddress);
+                tvMensaje.setText("¿Deseas activar la geolocalización?");
+                break;
             default:break;
         }//switch
 

@@ -10,8 +10,10 @@ import android.location.LocationManager
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityCompat.checkSelfPermission
+import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -21,8 +23,10 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.Toast
+import co.kubo.indiesco.Manifest
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterAutocomplete
+import co.kubo.indiesco.dialog.DialogDosOpciones
 import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.modelo.direccionesGoogleVO
@@ -182,25 +186,25 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(valorDireccion: CharSequence?, start: Int, before: Int, count: Int) {
-                var valorCambio = 0
-                if (before > count){
-                    valorCambio = before - count
-                } else if (before < count){
-                    valorCambio = count - before
-                } else {
-                    valorCambio = 0
-                }
-                if (valorCambio < 2){
-                    if (valorDireccion.toString().trim().length >= 2){
-                        if (utils.checkInternetConnection(this@NuevaDireccion, true)){
-                            if (cargarDireccion) {
-                                cargarDireccion = false
-                                //googleMap!!.uiSettings.isScrollGesturesEnabled = false
-                                direccionPalabra(latitudDireccion.toString(),longitudDireccion.toString(),
+                if (mLocationPermissionsGranted) {
+                    var valorCambio = 0
+                    if (before > count) {
+                        valorCambio = before - count
+                    } else if (before < count) {
+                        valorCambio = count - before
+                    } else {
+                        valorCambio = 0
+                    }
+                    if (valorCambio < 2) {
+                        if (valorDireccion.toString().trim().length >= 2) {
+                            if (utils.checkInternetConnection(this@NuevaDireccion, true)) {
+                                direccionPalabra(latitudDireccion.toString(), longitudDireccion.toString(),
                                         valorDireccion.toString(), resources.getString(R.string.key_google_maps))
                             }
                         }
                     }
+                } else {
+                    validarPermisos(android.Manifest.permission.ACCESS_FINE_LOCATION, encontrarUbicacion)
                 }
             }
         })
@@ -340,6 +344,11 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
             }
             zoomActual = it.zoom
         }
+
+        if (checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            validarPermisos(android.Manifest.permission.ACCESS_FINE_LOCATION, encontrarUbicacion)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -361,11 +370,13 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         bandPonerDir = true
         latitudDireccion = 0.0
         longitudDireccion = 0.0
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             validarPermisos(android.Manifest.permission.ACCESS_FINE_LOCATION, encontrarUbicacion)
         } else {
             //trackerLocation = LocationServiceDireccion(this)
-        }
+        }*/
+        validarPermisos(android.Manifest.permission.ACCESS_FINE_LOCATION, encontrarUbicacion)
         getDeviceLocation()
     }
 
@@ -395,7 +406,6 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
 
                             } catch (e: Exception) {
                                 Log.e(TAG, "Exception onComplete: found location!")
-                                onResume()
                             }
                         } else {
                             Log.e(TAG, "Exception getDeviceLocation")
@@ -408,6 +418,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
             } catch (e: SecurityException) {
                 Log.e(TAG, "getDeviceLocation: SecurityException: " + e.message)
             }
+        } else {
+            checkLocation()
+            //validarPermisos(android.Manifest.permission.ACCESS_FINE_LOCATION, encontrarUbicacion)
         }
     }
 
@@ -420,23 +433,23 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         try {
             network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
         } catch (ignored: Exception) { }
-        /*if (!gps_enabled && !network_enabled) {
-            DosOpcionesDialog(getActivity(), "x", object : DosOpcionesDialog.RespuestaListener() {
-                fun onOpcionNo() {
+        if (!gps_enabled && !network_enabled) {
+            DialogDosOpciones(this, "10", object : DialogDosOpciones.RespuestaListener{
+                override fun onCancelar() {
                     band = false
                 }
-                fun onOpcionSi() {
+                override fun onAceptar() {
                     gps_enabled = true
                     network_enabled = true
                     val myIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                     startActivity(myIntent)
                     //getDeviceLocation();
                 }
-                fun onSalir() {
+                override fun onSalir() {
                     band = false
                 }
             }).show()
-        }//if*/
+        }//if
     }
 
     private fun moveCamera(latLng: LatLng, zoom: Float) {
@@ -458,7 +471,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     // </editor-fold>
 
     // <editor-fold desc="Location Permissions">
-    fun validarPermisos(perm: String,requestCode: Int) {
+    fun validarPermisos(perm: String, requestCode: Int) {
         if (checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (!ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
@@ -486,8 +499,6 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
 
     // <editor-fold desc="Endpoints google Apis">
     private fun obtenerDireccion(lat: String, log: String, band: Boolean) {
-        dialogProgress = DialogProgress(this)
-        dialogProgress.show()
         bandPonerDir = true
         val latlon = "$lat,$log"
         val restApiAdapter = RestApiAdapter()
@@ -495,15 +506,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         val ubicacion : Call<JsonElement> = endpoints.obtenerDireccion(resources.getString(R.string.key_google_maps), latlon, "true")
         ubicacion.enqueue(object : Callback<JsonElement>{
             override fun onFailure(call: Call<JsonElement>?, t: Throwable?) {
-                if (dialogProgress.isShowing) {
-                    dialogProgress.dismiss()
-                }
                 valorDireccion("", band)
             }
             override fun onResponse(call: Call<JsonElement>?, response: Response<JsonElement>?) {
-                if (dialogProgress.isShowing) {
-                    dialogProgress.dismiss()
-                }
                 try {
                     if (response?.body() != null) {
                         var catObj = JSONObject(response.body().toString())
@@ -523,23 +528,15 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     }
 
     private fun ubicacionDireccion(placeId: String, key: String, band: Boolean){
-        dialogProgress = DialogProgress(this)
-        dialogProgress.show()
         bandPonerDir = false
         val restApiAdapter = RestApiAdapter()
         val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
         val ubicacion : Call<JsonElement> = endpoints.ubicacionDireccion(placeId, "true", key)
         ubicacion.enqueue(object : Callback<JsonElement>{
             override fun onFailure(call: Call<JsonElement>?, t: Throwable?) {
-                if (dialogProgress.isShowing) {
-                    dialogProgress.dismiss()
-                }
                 Toast.makeText(applicationContext, "Ha ocurrido un error en la ubicación", Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<JsonElement>?, response: Response<JsonElement>?) {
-                if (dialogProgress.isShowing) {
-                    dialogProgress.dismiss()
-                }
                 try {
                     var catObj = JSONObject(response!!.body().toString())
                     var resultado = catObj.getJSONObject("result")
