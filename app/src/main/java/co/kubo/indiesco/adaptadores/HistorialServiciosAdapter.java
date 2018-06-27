@@ -40,10 +40,12 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
     private ArrayList<Historial> historials;
     Activity activity;
     Utils utils = new Utils();
+    DialogDetalleHistorial dialog;
 
     public HistorialServiciosAdapter(ArrayList<Historial> historials, Activity activity) {
         this.historials = historials;
         this.activity = activity;
+        dialog = new DialogDetalleHistorial(activity);
     }
 
     @Override
@@ -80,14 +82,17 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
         holder.llHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getIdSolicitudItem(), hist.getDireccion(),
-                        hist.getCiudad(), hist.getDimension(), hist.getIdTipoInmueble(), hist.getFechaServicio(), hist.getHora(),
-                        hist.getValor(), hist.getCalificado(), hist.getCalificacion(),
-                        new DialogDetalleHistorial.RespuestaListener() {
-                    @Override
-                    public void onSalir() {
-                    }
-                }).show();
+                if(!dialog.isShowing()) {
+                    dialog = new DialogDetalleHistorial(activity, hist.getLatitud(), hist.getLongitud(), hist.getIdSolicitudItem(), hist.getDireccion(),
+                            hist.getCiudad(), hist.getDimension(), hist.getIdTipoInmueble(), hist.getFechaServicio(), hist.getHora(),
+                            hist.getValor(), hist.getCalificado(), hist.getCalificacion(),
+                            new DialogDetalleHistorial.RespuestaListener() {
+                                @Override
+                                public void onSalir() {
+                                }
+                            });
+                    dialog.show();
+                }
             }
         });
 

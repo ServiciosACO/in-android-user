@@ -76,6 +76,10 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         this.respuestaListener = respuestaListener;
     }
 
+    public DialogDetalleHistorial(@NonNull Context context) {
+        super(context);
+    }
+
     public interface RespuestaListener {
         void onSalir();
     }
