@@ -33,7 +33,7 @@ class NumeroPisosFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
-                if(count > 0){
+                if(text!!.isNotEmpty()){
                     nMetros = editQtyMetros.text.toString()
                     singleton.setnMetros(nMetros)
                     iNpisos.checkNPisos(true)

@@ -78,8 +78,10 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
         inmuebles = singleton.data
         llm = LinearLayoutManager(activity)
         rvDimensiones!!.layoutManager = llm
-        adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
-        rvDimensiones!!.adapter = adapter
+        if (inmuebles[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!!.size != 0){
+            adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
+            rvDimensiones!!.adapter = adapter
+        }
         Log.e("fragment", "onCreateView")
 
         return v
@@ -103,8 +105,10 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
 
             llm = LinearLayoutManager(activity)
             rvDimensiones!!.layoutManager = llm
-            adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
-            rvDimensiones!!.adapter = adapter
+            if (inmuebles[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!!.size != 0){
+                adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
+                rvDimensiones!!.adapter = adapter
+            }
         } else {
             Log.e("fragment", "No visible")
         }

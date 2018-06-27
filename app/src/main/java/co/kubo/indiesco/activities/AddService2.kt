@@ -54,7 +54,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
         }
-        calculateTotal()
+        //calculateTotal()
     }
 
     override fun viviendaCheck() {
@@ -78,32 +78,35 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
     fun calculateTotal(){
         var data = singleton.data
         var total = 0.0
-        var precio = data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].precio
-        var qty = singleton.getnMetros().toInt()
-        total = qty * precio!!.toDouble()
-        when(singleton.getnPisos()){
-            "1" -> {
-                total *= 1.1
-            }
-            "2" -> {
-                total *= 1.13
-            }
-            "3" -> {
-                total *= 1.16
-            }
-        }
-        when(singleton.urgente){
-            "si" -> {
-                total += (total * 0.5)
-                singleton.flagUrgente = true
-            }
-            "no" -> {
-                if (singleton.flagUrgente){
-                    singleton.flagUrgente = false
+        if (data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!!.size != 0) {
+            var precio = data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].precio
+            var qty = singleton.getnMetros().toInt()
+            total = qty * precio!!.toDouble()
+            when (singleton.getnPisos()) {
+                "1" -> {
+                    total *= 1.1
+                }
+                "2" -> {
+                    total *= 1.13
+                }
+                "3" -> {
+                    total *= 1.16
                 }
             }
+            when (singleton.urgente) {
+                "si" -> {
+                    total += (total * 0.5)
+                    singleton.flagUrgente = true
+                }
+                "no" -> {
+                    if (singleton.flagUrgente) {
+                        singleton.flagUrgente = false
+                    }
+                }
+            }
+        } else {
+            Toast.makeText(this, "No hay datos en las dimensiones", Toast.LENGTH_SHORT).show()
         }
-
         tvValor.text = "Total: ${df.format(total)}"
         totalCost = total
     }
