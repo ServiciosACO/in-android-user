@@ -65,6 +65,7 @@
                         android:layout_marginTop="15sp"
                         android:timePickerMode="spinner" />
                     <LinearLayout
+                        android:id="@+id/llUrgentService"
                         android:orientation="horizontal"
                         android:layout_marginBottom="29dp"
                         android:layout_width="match_parent"

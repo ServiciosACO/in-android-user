@@ -8,8 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.google.android.gms.vision.text.Line;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -27,6 +26,12 @@ public class HistorialServicios extends AppCompatActivity implements OnClickList
     public static final String TAG = "HistorialServicios";
     @BindView(R.id.imgBotonVolver)
     ImageView imgBotonVolver;
+    @BindView(R.id.imgNoInternet)
+    ImageView imgNoInternet;
+    @BindView(R.id.tvTitle)
+    TextView tvTitle;
+    @BindView(R.id.tvSubTitle)
+    TextView tvSubTitle;
     @BindView(R.id.rvHistorial)
     RecyclerView rvHistorial;
     @BindView(R.id.llSinServicio)
@@ -78,8 +83,22 @@ public class HistorialServicios extends AppCompatActivity implements OnClickList
     }
 
     @Override
-    public void pintarSinInfo() {
-        llSinServicio.setVisibility(View.VISIBLE);
-        rvHistorial.setVisibility(View.GONE);
+    public void pintarSinInfo(int i) {
+        switch (i){
+            case 1:
+                llSinServicio.setVisibility(View.VISIBLE);
+                rvHistorial.setVisibility(View.GONE);
+                imgNoInternet.setImageDrawable(getResources().getDrawable(R.drawable.img_missingcontent));
+                tvSubTitle.setText("¡Oops!");
+                tvSubTitle.setText("Parece que no hay nada aquí, por favor regresa más tarde");
+            break;
+            case 2:
+                llSinServicio.setVisibility(View.VISIBLE);
+                rvHistorial.setVisibility(View.GONE);
+                imgNoInternet.setImageDrawable(getResources().getDrawable(R.drawable.img_nointernet));
+                tvSubTitle.setText("¡Vaya!");
+                tvSubTitle.setText("Parece que perdiste tu conexión a internet. Inténtalo de nuevo");
+            break;
+        }
     }
 }

@@ -44,12 +44,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/imgNoInternet"
                 android:src="@drawable/img_missingcontent"
                 android:layout_gravity="center"
                 android:layout_marginTop="5sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvTitle"
                 style="@style/texto_22_morado"
                 android:text="¡Oops!"
                 android:gravity="center"
@@ -57,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvSubTitle"
                 android:text="Parece que no hay nada aquí, por favor regresa más tarde"
                 style="@style/texto_15_gris"
                 android:gravity="center"

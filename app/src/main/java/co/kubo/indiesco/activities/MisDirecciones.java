@@ -72,6 +72,7 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
             case R.id.fabAgregar:
                 if (flag){
                     Intent in = new Intent(MisDirecciones.this, NuevaDireccion.class);
+                    in.putExtra("activity", 1);
                     startActivity(in);
                 } else {
                     Toast.makeText(this, "Has llegado al máximo de direcciones que puedes agregar", Toast.LENGTH_LONG).show();

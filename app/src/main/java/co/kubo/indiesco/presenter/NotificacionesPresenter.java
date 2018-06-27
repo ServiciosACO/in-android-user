@@ -119,6 +119,7 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
                     dialogProgress.dismiss();
                 }
                 Log.e(TAG, "obtener notificaciones onFailure");
+                iNotificacionesView.pintarSinInfo();
             }
         });
     }

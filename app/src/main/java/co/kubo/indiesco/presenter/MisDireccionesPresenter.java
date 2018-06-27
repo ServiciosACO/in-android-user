@@ -84,6 +84,7 @@ public class MisDireccionesPresenter implements IMisDireccionesPresenter {
                     dialogProgress.dismiss();
                 }
                 Log.e(TAG, "obtener direcciones onFailure");
+                iMisDireccionesView.noAddresses();
             }
         });
     }

@@ -61,8 +61,8 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
     }
 
     fun obtenerDirecciones() {
-        dialogProgress = DialogProgress(activity)
-        dialogProgress!!.show()
+        /*dialogProgress = DialogProgress(activity)
+        dialogProgress!!.show()*/
         val authToken = SharedPreferenceManager.getAuthToken(context)
         val restApiAdapter = RestApiAdapter()
         val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
@@ -71,9 +71,9 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
         val responseDireccionCall = endpoints.listarDireccion(authToken, usuario.id_user)
         responseDireccionCall.enqueue(object : Callback<ResponseDireccion> {
             override fun onResponse(call: Call<ResponseDireccion>, response: Response<ResponseDireccion>) {
-                if (dialogProgress!!.isShowing) {
+                /*if (dialogProgress!!.isShowing) {
                     dialogProgress!!.dismiss()
-                }
+                }*/
                 val code = response.body()!!.code
                 when (code) {
                     "100" -> {
@@ -93,9 +93,9 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onFailure(call: Call<ResponseDireccion>, t: Throwable) {
-                if (dialogProgress!!.isShowing) {
+                /*if (dialogProgress!!.isShowing) {
                     dialogProgress!!.dismiss()
-                }
+                }*/
                 Log.e(TAG, "obtener direcciones onFailure")
             }
         })
@@ -103,6 +103,12 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
 
     private fun hideKeyboard() {
         activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideKeyboard()
+        obtenerDirecciones()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

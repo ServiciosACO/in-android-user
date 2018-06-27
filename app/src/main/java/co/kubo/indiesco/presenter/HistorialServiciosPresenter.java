@@ -3,11 +3,9 @@ package co.kubo.indiesco.presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import co.kubo.indiesco.activities.OlvidoContrasena;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.IHistorialServiciosPresenter;
 import co.kubo.indiesco.interfaces.IHistorialServiciosView;
@@ -66,11 +64,11 @@ public class HistorialServiciosPresenter implements IHistorialServiciosPresenter
                         if (hist.size() != 0){
                             mostrarHistorial();
                         }else{
-                            iHistorialServiciosView.pintarSinInfo();
+                            iHistorialServiciosView.pintarSinInfo(1);
                         }
                         break;
                     case "102":
-                        iHistorialServiciosView.pintarSinInfo();
+                        iHistorialServiciosView.pintarSinInfo(1);
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":
@@ -84,6 +82,7 @@ public class HistorialServiciosPresenter implements IHistorialServiciosPresenter
                     dialogProgress.dismiss();
                 }
                 Log.e(TAG, "obtener historial onFailure");
+                iHistorialServiciosView.pintarSinInfo(2);
             }
         });
     }//obtenerHistorial

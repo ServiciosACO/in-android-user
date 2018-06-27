@@ -76,7 +76,6 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
-                        android:hint="Contraseña actual"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpassOld"
@@ -97,7 +96,6 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
-                        android:hint="Nueva contraseña"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpass1"
@@ -117,7 +115,6 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
-                        android:hint="Repita nueva contraseña"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpass2"

@@ -6,13 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TimePicker
-import android.widget.ToggleButton
 import co.kubo.indiesco.R
 import co.kubo.indiesco.utils.Singleton
-import android.widget.NumberPicker
 import android.annotation.SuppressLint
+import android.widget.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +22,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     lateinit var imgTime : ImageView
     lateinit var timePicker : TimePicker
     lateinit var toggleButton : ToggleButton
+    lateinit var llUrgentService : LinearLayout
     var AM_PM = "AM"
     val TIME_PICKER_INTERVAL = 30
     lateinit var iTime : ITime
@@ -83,10 +81,15 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         timePicker = v.findViewById(R.id.timePicker)
         toggleButton = v.findViewById(R.id.toggleButton)
         toggleButton.setOnClickListener(this)
+        llUrgentService = v.findViewById(R.id.llUrgentService)
 
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
-        toggleButton.isEnabled = currentDate == singleton.fecha
+        if(currentDate == singleton.fecha){
+            llUrgentService.visibility = View.INVISIBLE
+        } else {
+            llUrgentService.visibility = View.VISIBLE
+        }
 
         setTimePickerInterval(timePicker)
         timePicker.currentHour = 5
