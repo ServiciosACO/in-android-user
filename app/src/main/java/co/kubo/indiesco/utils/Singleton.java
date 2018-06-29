@@ -37,6 +37,16 @@ public class Singleton {
     private Double priceFloorTwo;
     private Double priceFloorThree;
 
+    private Boolean validateCoupon = false;
+
+    public Boolean getValidateCoupon() {
+        return validateCoupon;
+    }
+
+    public void setValidateCoupon(Boolean validateCoupon) {
+        this.validateCoupon = validateCoupon;
+    }
+
     public Double getPriceFloorOne() {
         return priceFloorOne;
     }

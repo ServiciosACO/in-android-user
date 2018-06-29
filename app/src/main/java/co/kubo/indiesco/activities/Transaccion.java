@@ -56,6 +56,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
         imgBotonVolver.setOnClickListener(this);
         webViewTransaccion.getSettings().setJavaScriptEnabled(true);
 
+        singleton.setValidateCoupon(false);
         Bundle param = getIntent().getExtras();
         urlPago = param.getString("url");
         id_solicitud = param.getString("id_sol");

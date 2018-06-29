@@ -10,6 +10,7 @@ import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterResumen
 import co.kubo.indiesco.adaptadores.AdapterResumenServicio
+import co.kubo.indiesco.adaptadores.IChangeLayout
 import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.ConstantesRestApi
@@ -31,7 +32,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.text.DecimalFormat
 
-class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
+class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLayout {
 
     val df = DecimalFormat("$###,###")
     lateinit var dialogProgress : DialogProgress
@@ -57,8 +58,12 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tvValidateCoupon -> {
                 if (validation()){
-                    var code = editCode.text.toString()
-                    validateCoupon(code)
+                    if (singleton.validateCoupon){
+                        Toast.makeText(applicationContext, "Ya fue usado un cupón", Toast.LENGTH_LONG).show()
+                    } else {
+                        var code = editCode.text.toString()
+                        validateCoupon(code)
+                    }
                 }
             }
             R.id.tvPayment -> {
@@ -192,6 +197,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
                                     total -= (total * code_percent)
                                 }
                             }
+                            singleton.validateCoupon = true
                         }
                         "101" -> {
                             editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
@@ -233,6 +239,12 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
         tvPayment.setOnClickListener(this)
     }
 
+    override fun changeForNoService() {
+        llServices.visibility = View.GONE
+        llNoServices.visibility = View.VISIBLE
+        singleton.validateCoupon = false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_solicitud_servicio3)
@@ -261,7 +273,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener {
             // in the Recycler-View and that doesn’t change it’s height or the width.
             llm = LinearLayoutManager(this)
             rvResumen.layoutManager = llm
-            adapter = AdapterResumen(resumen, this)
+            adapter = AdapterResumen(resumen, this, this)
             rvResumen.adapter = adapter
             for (item in resumen.indices){
                 var unitPrice = resumen[item].totalCost.toDouble()

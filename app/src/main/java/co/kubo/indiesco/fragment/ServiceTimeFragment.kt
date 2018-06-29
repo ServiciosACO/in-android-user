@@ -86,9 +86,9 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
         if(currentDate == singleton.fecha){
-            llUrgentService.visibility = View.INVISIBLE
-        } else {
             llUrgentService.visibility = View.VISIBLE
+        } else {
+            llUrgentService.visibility = View.GONE
         }
 
         setTimePickerInterval(timePicker)

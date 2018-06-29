@@ -22,7 +22,8 @@ import java.text.DecimalFormat
 /**
  * Created by estacion on 8/06/18.
  */
-class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val activity: Activity)
+class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val activity: Activity,
+                     private val iChangeLayout: IChangeLayout)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_HEADER = 0
@@ -90,6 +91,9 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
                         notifyDataSetChanged()
                         var pos = singleton.position
                         singleton.position = pos - 1
+                        if (mList.size == 0){
+                            iChangeLayout.changeForNoService()
+                        }
                     }
                     override fun onSalir() {
                     }
@@ -130,6 +134,7 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
         // Add your UI Components here
         val tvAddService = itemView!!.findViewById<TextView>(R.id.tvAddService)!!
     }
-
-
 }
+ interface IChangeLayout{
+     fun changeForNoService()
+ }

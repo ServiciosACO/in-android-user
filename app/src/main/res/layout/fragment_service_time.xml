@@ -44,11 +44,20 @@
                     <co.kubo.indiesco.utils.Bold
                         style="@style/texto_18_blue"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginStart="13dp"
                         android:text="Hora del servicio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
+                    <co.kubo.indiesco.utils.Regular
+                        android:id="@+id/tvInfo2"
+                        style="@style/texto_13_gris"
+                        android:text=" Recuerda que los servicios debes solicitarlos con mínimo 5 horas de anticipación. "
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="9dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
                     <ImageView
                         android:id="@+id/imgTime"
                         android:layout_gravity="center"
