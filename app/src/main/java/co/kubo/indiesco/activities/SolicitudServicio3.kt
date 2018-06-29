@@ -9,15 +9,14 @@ import android.view.WindowManager
 import android.widget.Toast
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterResumen
-import co.kubo.indiesco.adaptadores.AdapterResumenServicio
 import co.kubo.indiesco.adaptadores.IChangeLayout
 import co.kubo.indiesco.dialog.DialogProgress
+import co.kubo.indiesco.modelo.ServiceResumen
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.restAPI.ConstantesRestApi
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseCodigoDescuento
 import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio
-import co.kubo.indiesco.utils.Constantes
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
@@ -239,10 +238,19 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
         tvPayment.setOnClickListener(this)
     }
 
-    override fun changeForNoService() {
-        llServices.visibility = View.GONE
-        llNoServices.visibility = View.VISIBLE
-        singleton.validateCoupon = false
+    override fun changeForNoService(flag: Boolean, mList: ArrayList<ServiceResumen>) {
+        if (flag){
+            llServices.visibility = View.GONE
+            llNoServices.visibility = View.VISIBLE
+            singleton.validateCoupon = false
+        } else {
+            total = 0.0
+            for (item in mList.indices){
+                var unitPrice = mList[item].totalCost.toDouble()
+                total += unitPrice
+            }
+            tvValor.text = "Total: ${df.format(total)}"
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

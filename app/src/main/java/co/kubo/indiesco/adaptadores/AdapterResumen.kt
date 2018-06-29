@@ -2,7 +2,6 @@ package co.kubo.indiesco.adaptadores
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,6 @@ import co.kubo.indiesco.R
 import co.kubo.indiesco.activities.FechaServicio
 import co.kubo.indiesco.dialog.DialogDosOpciones
 import co.kubo.indiesco.utils.Singleton
-import kotlinx.android.synthetic.main.item_resumen.view.*
 import java.text.DecimalFormat
 
 
@@ -92,7 +90,9 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
                         var pos = singleton.position
                         singleton.position = pos - 1
                         if (mList.size == 0){
-                            iChangeLayout.changeForNoService()
+                            iChangeLayout.changeForNoService(true, mList)
+                        } else {
+                            iChangeLayout.changeForNoService(false, mList)
                         }
                     }
                     override fun onSalir() {
@@ -136,5 +136,5 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
     }
 }
  interface IChangeLayout{
-     fun changeForNoService()
+     fun changeForNoService(b: Boolean, mList: ArrayList<ServiceResumen>)
  }
