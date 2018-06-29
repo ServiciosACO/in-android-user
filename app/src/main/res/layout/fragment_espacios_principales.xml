@@ -29,6 +29,8 @@
         app:shadowMargin="5dp"
         app:shadowRadius="14dp">
         <LinearLayout
+            android:id="@+id/llSpaces"
+            android:visibility="visible"
             android:elevation="4sp"
             android:layout_gravity="center"
             android:orientation="vertical"
@@ -57,4 +59,41 @@
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
     </com.loopeer.shadow.ShadowView>
+
+    <LinearLayout
+        android:id="@+id/llNoSpaces"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imgNoInternet"
+            android:src="@drawable/img_missingcontent"
+            android:layout_gravity="center"
+            android:layout_marginTop="5sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Bold
+            android:id="@+id/tvTitle"
+            style="@style/texto_22_morado"
+            android:text="¡Oops!"
+            android:gravity="center"
+            android:layout_marginTop="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <co.kubo.indiesco.utils.Regular
+            android:id="@+id/tvSubTitle"
+            android:text="Para la dimensión que seleccionaste no hay disponible ningún espacio. Por favor selecciona otra dimensión."
+            style="@style/texto_15_gris"
+            android:gravity="center"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginBottom="18sp"
+            android:layout_marginTop="7sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 </LinearLayout>

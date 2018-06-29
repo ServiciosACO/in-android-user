@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import co.kubo.indiesco.R
@@ -34,6 +35,8 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
 
     private var rvDimensiones : RecyclerView ?= null
     private var tvQtyFloor : TextView ?= null
+    private var llNoSpaces : LinearLayout ?= null
+    private var llDimens : LinearLayout ?= null
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -71,6 +74,8 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
         var imgPlus  = v.findViewById<ImageView>(R.id.imgPlus)
         tvQtyFloor = v.findViewById(R.id.tvQtyFloor)
         rvDimensiones = v.findViewById(R.id.rvDimensiones)
+        llDimens = v.findViewById(R.id.llDimens)
+        llNoSpaces = v.findViewById(R.id.llNoSpaces)
 
         imgMinus.setOnClickListener(this)
         imgPlus.setOnClickListener(this)
@@ -79,8 +84,13 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
         llm = LinearLayoutManager(activity)
         rvDimensiones!!.layoutManager = llm
         if (inmuebles[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!!.size != 0){
+            llDimens!!.visibility = View.VISIBLE
+            llNoSpaces!!.visibility = View.GONE
             adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
             rvDimensiones!!.adapter = adapter
+        } else {
+            llDimens!!.visibility = View.GONE
+            llNoSpaces!!.visibility = View.VISIBLE
         }
         Log.e("fragment", "onCreateView")
 
@@ -106,8 +116,13 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
             llm = LinearLayoutManager(activity)
             rvDimensiones!!.layoutManager = llm
             if (inmuebles[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!!.size != 0){
+                llDimens!!.visibility = View.VISIBLE
+                llNoSpaces!!.visibility = View.GONE
                 adapter = AdapterDimensiones(inmuebles, activity!!, posInmueble, iDimension!!)
                 rvDimensiones!!.adapter = adapter
+            } else {
+                llDimens!!.visibility = View.GONE
+                llNoSpaces!!.visibility = View.VISIBLE
             }
         } else {
             Log.e("fragment", "No visible")

@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterEspacios
 import co.kubo.indiesco.adaptadores.IEspacios
@@ -23,6 +24,9 @@ class EspaciosPrincipalesFragment : Fragment() {
     var inmuebles = ArrayList<InmuebleVO>()
     lateinit var llm : LinearLayoutManager
     lateinit var adapter : AdapterEspacios
+
+    private var llNoSpaces : LinearLayout?= null
+    private var llSpaces : LinearLayout?= null
 
     lateinit var iEspacios: IEspacios
 
@@ -45,6 +49,8 @@ class EspaciosPrincipalesFragment : Fragment() {
             posInmueble = 0
         }
 
+        llSpaces = v.findViewById(R.id.llSpaces)
+        llNoSpaces = v.findViewById(R.id.llNoSpaces)
         rvEspaciosPpal = v.findViewById(R.id.rvEspaciosPpal)
         inmuebles = singleton.data
         llm = LinearLayoutManager(activity)
@@ -74,9 +80,15 @@ class EspaciosPrincipalesFragment : Fragment() {
             }
         }
 
-
-        adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
-        rvEspaciosPpal!!.adapter = adapter
+        if (inmuebles[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.size != 0){
+            llSpaces!!.visibility = View.VISIBLE
+            llNoSpaces!!.visibility = View.GONE
+            adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
+            rvEspaciosPpal!!.adapter = adapter
+        } else {
+            llSpaces!!.visibility = View.GONE
+            llNoSpaces!!.visibility = View.VISIBLE
+        }
 
         return v
     }
@@ -119,8 +131,15 @@ class EspaciosPrincipalesFragment : Fragment() {
                 }
             }
 
-            adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
-            rvEspaciosPpal!!.adapter = adapter
+            if (inmuebles[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.size != 0){
+                llSpaces!!.visibility = View.VISIBLE
+                llNoSpaces!!.visibility = View.GONE
+                adapter = AdapterEspacios(inmuebles, activity!!, posInmueble, posDim, iEspacios)
+                rvEspaciosPpal!!.adapter = adapter
+            } else {
+                llSpaces!!.visibility = View.GONE
+                llNoSpaces!!.visibility = View.VISIBLE
+            }
         } else {
             Log.e("fragment", "No visible")
         }
