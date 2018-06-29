@@ -249,7 +249,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
 
     fun guardarCoordenadas(lat: String, log: String, bandDir: Boolean) {
         latitudDireccion = lat.toDouble()
+        latitudStr = latitudDireccion.toString()
         longitudDireccion = log.toDouble()
+        longitudStr = longitudDireccion.toString()
         if (googleMap != null) {
             googleMap!!.clear()
             googleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitudDireccion!!, longitudDireccion!!), 16f))
@@ -334,7 +336,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                         locationFinal.longitude = centerFromPoint.longitude
                     }
                     latitudDireccion = locationFinal.latitude
+                    latitudStr = latitudDireccion.toString()
                     longitudDireccion = locationFinal.longitude
+                    longitudStr = longitudDireccion.toString()
                     editDireccion.setAdapter(null)
                     if (bandPonerDir) {
                         obtenerDireccion(latitudDireccion.toString(), longitudDireccion.toString(), true)
@@ -546,7 +550,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                     var lat = catLot.getString("lat")
                     if (lon != "" && lat != "") {
                         latitudDireccion = lat.toDouble()
+                        latitudStr = latitudDireccion.toString()
                         longitudDireccion = lon.toDouble()
+                        longitudStr = longitudDireccion.toString()
                         valorDireccion(resultado.getString("name"), true)
                         moveCamera(LatLng(latitudDireccion!!,longitudDireccion!!), DEFAULT_ZOOM)
                         //guardarCoordenadas(lat, lon, band)

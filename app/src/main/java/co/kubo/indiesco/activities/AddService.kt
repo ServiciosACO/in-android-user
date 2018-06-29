@@ -95,20 +95,19 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
             }
         }
 
-        when(singleton.getnPisos()){
-            "1" -> {
-                percentAux += singleton.priceFloorOne
-                //total *= 1.1
+        try {
+            when (singleton.getnPisos()) {
+                "1" -> {
+                    percentAux += singleton.priceFloorOne
+                }
+                "2" -> {
+                    percentAux += singleton.priceFloorTwo
+                }
+                "3" -> {
+                    percentAux += singleton.priceFloorThree
+                }
             }
-            "2" -> {
-                percentAux += singleton.priceFloorTwo
-                //total *= 1.13
-            }
-            "3" -> {
-                percentAux += singleton.priceFloorThree
-                //total *= 1.16
-            }
-        }
+        }catch (e: Exception){}
         total += (total * percentAux)
         when(singleton.urgente){
             "si" -> {

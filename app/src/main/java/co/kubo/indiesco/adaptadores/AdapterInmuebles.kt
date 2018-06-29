@@ -48,6 +48,8 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
             temp.check = true
             singleton.categoria = inmuebleArray[position].categoria
             singleton.posCat = position.toString()
+            singleton.posTipoInmueble = "0"
+            singleton.posDimension = "0"
             if (temp.categoria == "Vivienda"){
                 iShowOption.option(0, position)
             } else {
