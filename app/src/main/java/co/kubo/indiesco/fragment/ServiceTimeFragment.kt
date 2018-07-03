@@ -23,6 +23,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     lateinit var timePicker : TimePicker
     lateinit var toggleButton : ToggleButton
     lateinit var llUrgentService : LinearLayout
+    lateinit var tvInfo : TextView
     var AM_PM = "AM"
     val TIME_PICKER_INTERVAL = 30
     lateinit var iTime : ITime
@@ -82,13 +83,16 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         toggleButton = v.findViewById(R.id.toggleButton)
         toggleButton.setOnClickListener(this)
         llUrgentService = v.findViewById(R.id.llUrgentService)
+        tvInfo = v.findViewById(R.id.tvInfo)
 
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
         if(currentDate == singleton.fecha){
             llUrgentService.visibility = View.VISIBLE
+            tvInfo.visibility = View.VISIBLE
         } else {
             llUrgentService.visibility = View.GONE
+            tvInfo.visibility = View.GONE
         }
 
         setTimePickerInterval(timePicker)
