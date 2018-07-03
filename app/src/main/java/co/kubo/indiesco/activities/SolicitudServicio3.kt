@@ -187,15 +187,18 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                                 "1" -> { //valor
                                     tvDiscount.visibility = View.VISIBLE
                                     tvDiscount.text = (response.body()!!.data!!.valor!!.toDouble() * -1).toString()
+                                    singleton.discountValue = (response.body()!!.data!!.valor!!.toDouble() * -1)
                                     total -= response.body()!!.data!!.valor!!.toDouble()
                                 }
                                 "2" -> { //porcentaje
                                     tvDiscount.visibility = View.VISIBLE
                                     tvDiscount.text = (((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1).toString()
+                                    singleton.discountValue = ((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1
                                     var code_percent = (response.body()!!.data!!.valor!!.toDouble()/100)
                                     total -= (total * code_percent)
                                 }
                             }
+                            singleton.discountCode = response.body()!!.data!!.tipoCodigo
                             singleton.validateCoupon = true
                         }
                         "101" -> {
@@ -288,6 +291,22 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                 total += unitPrice
             }
             tvValor.text = "Total: ${df.format(total)}"
+            if (singleton.validateCoupon){
+                when (singleton.discountCode){
+                    "1" -> { //valor
+                        tvDiscount.visibility = View.VISIBLE
+                        tvDiscount.text = singleton.discountValue.toString()
+                        total += singleton.discountValue
+                    }
+                    "2" -> { //porcentaje
+                        tvDiscount.visibility = View.VISIBLE
+                        tvDiscount.text = singleton.discountValue.toString()
+                        total += (total * singleton.discountValue)
+                    }
+                }
+            } else {
+                tvDiscount.visibility = View.INVISIBLE
+            }
         } else {
             llServices.visibility = View.GONE
             llNoServices.visibility = View.VISIBLE

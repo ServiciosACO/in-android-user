@@ -36,6 +36,24 @@ public class Singleton {
     private Double priceFloorOne;
     private Double priceFloorTwo;
     private Double priceFloorThree;
+    private Double DiscountValue = 0.0;
+    private String discountCode = "0";
+
+    public String getDiscountCode() {
+        return discountCode;
+    }
+
+    public void setDiscountCode(String discountCode) {
+        this.discountCode = discountCode;
+    }
+
+    public Double getDiscountValue() {
+        return DiscountValue;
+    }
+
+    public void setDiscountValue(Double discountValue) {
+        DiscountValue = discountValue;
+    }
 
     private Boolean validateCoupon = false;
 
