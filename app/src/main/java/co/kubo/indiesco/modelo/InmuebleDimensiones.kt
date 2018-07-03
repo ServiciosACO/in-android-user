@@ -21,6 +21,9 @@ class InmuebleDimensiones {
     @SerializedName("precio")
     @Expose
     val precio: String? = null
+    @SerializedName("rangos")
+    @Expose
+    val rangos : String? = null
     @SerializedName("espacios")
     @Expose
     val espacios: ArrayList<InmuebleEspacios>? = null
