@@ -33,7 +33,7 @@ import java.text.DecimalFormat
 
 class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLayout {
 
-    val df = DecimalFormat("$###,###")
+    val df = DecimalFormat("$###,###.##")
     lateinit var dialogProgress : DialogProgress
     val singleton = Singleton.getInstance()
     val sharedPreferenceManager = SharedPreferenceManager()
@@ -185,21 +185,25 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                             editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_check,0)
                             when (response.body()!!.data!!.tipoCodigo){
                                 "1" -> { //valor
-                                    tvDiscount.visibility = View.VISIBLE
-                                    tvDiscount.text = (response.body()!!.data!!.valor!!.toDouble() * -1).toString()
+                                    //tvDiscount.visibility = View.VISIBLE
+                                    //tvDiscount.text = (response.body()!!.data!!.valor!!.toDouble() * -1).toString()
                                     singleton.discountValue = (response.body()!!.data!!.valor!!.toDouble() * -1)
                                     total -= response.body()!!.data!!.valor!!.toDouble()
+                                    tvDiscount.text = "${df.format(response.body()!!.data!!.valor!!.toDouble())}"
                                 }
                                 "2" -> { //porcentaje
-                                    tvDiscount.visibility = View.VISIBLE
-                                    tvDiscount.text = (((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1).toString()
+                                    //tvDiscount.visibility = View.VISIBLE
+                                    //tvDiscount.text = (((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1).toString()
                                     singleton.discountValue = ((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1
                                     var code_percent = (response.body()!!.data!!.valor!!.toDouble()/100)
                                     total -= (total * code_percent)
+                                    tvDiscount.text = "${df.format(total * (response.body()!!.data!!.valor!!.toDouble()/100))}"
                                 }
                             }
                             singleton.discountCode = response.body()!!.data!!.tipoCodigo
                             singleton.validateCoupon = true
+                            tvValor.text = "Total: ${df.format(total)}"
+                            tvTotal.text = "${df.format(total)}"
                         }
                         "101" -> {
                             editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
@@ -262,20 +266,6 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
         setContentView(R.layout.activity_solicitud_servicio3)
         setListeners()
 
-        var usuario = Usuario()
-        usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
-        tvNombrePerfil.text = usuario.name
-        tvTelf.text = usuario.celular
-        Picasso
-                .with(applicationContext)
-                .load(usuario.foto)
-                .placeholder(resources.getDrawable(R.drawable.registro_foto))
-                .error(resources.getDrawable(R.drawable.registro_foto))
-                .transform(CircleTransform())
-                .memoryPolicy(MemoryPolicy.NO_CACHE)
-                .networkPolicy(NetworkPolicy.NO_CACHE)
-                .into(imgFotoPerfil)
-
         var resumen = singleton.resumen
         if (resumen.isNotEmpty() || resumen.size != 0){
             llServices.visibility = View.VISIBLE
@@ -292,22 +282,9 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                 total += unitPrice
             }
             tvValor.text = "Total: ${df.format(total)}"
-            if (singleton.validateCoupon){
-                when (singleton.discountCode){
-                    "1" -> { //valor
-                        tvDiscount.visibility = View.VISIBLE
-                        tvDiscount.text = singleton.discountValue.toString()
-                        total += singleton.discountValue
-                    }
-                    "2" -> { //porcentaje
-                        tvDiscount.visibility = View.VISIBLE
-                        tvDiscount.text = singleton.discountValue.toString()
-                        total += (total * singleton.discountValue)
-                    }
-                }
-            } else {
-                tvDiscount.visibility = View.INVISIBLE
-            }
+            tvSubTotal.text = "${df.format(total)}"
+            tvDiscount.text = "${df.format(0)}"
+            tvTotal.text = "${df.format(total)}"
         } else {
             llServices.visibility = View.GONE
             llNoServices.visibility = View.VISIBLE

@@ -20,8 +20,8 @@ import java.text.DecimalFormat
 /**
  * Created by estacion on 8/06/18.
  */
-class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val activity: Activity,
-                     private val iChangeLayout: IChangeLayout)
+class AdapterResumen(private val mList : ArrayList<ServiceResumen>,
+                     private val activity: Activity, private val iChangeLayout: IChangeLayout)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_HEADER = 0
@@ -32,60 +32,60 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
     val singleton = Singleton.getInstance()
 
     override fun getItemViewType(position: Int): Int {
-        /*if (isPositionHeader(position)) {
+        if (isPositionHeader(position)) {
             return TYPE_HEADER
-        } else*/ if (isPositionFooter(position)) {
+        } /*else if (isPositionFooter(position)) {
             return TYPE_FOOTER
-        }
+        }*/
         return TYPE_ITEM
     }
 
-    /*private fun isPositionHeader(position: Int) : Boolean {
+    private fun isPositionHeader(position: Int) : Boolean {
         return position == 0
-    }*/
-
-    private fun isPositionFooter(position: Int) : Boolean {
-        return position >= mList.size
-        //return position > mList.size //if it have header the operator is >
     }
 
+    /*private fun isPositionFooter(position: Int) : Boolean {
+        return position >= mList.size
+        //return position > mList.size //if it have header the operator is >
+    }*/
+
     override fun onCreateViewHolder(viewGroup: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == TYPE_ITEM) {
+        if (viewType == TYPE_HEADER) { //changing UI from footer to header
+            var view = LayoutInflater.from(viewGroup!!.context).inflate(R.layout.item_button_footer, viewGroup, false)
+            return HeaderViewHolder(view)
+
+        } else if (viewType == TYPE_ITEM) {
             var view = LayoutInflater.from(viewGroup!!.context).inflate(R.layout.item_resumen, viewGroup, false)
             return ItemViewHolder(view)
 
-        } /*else if (viewType == TYPE_HEADER) {
-            var view = LayoutInflater.from(viewGroup!!.context).inflate(R.layout.header_layout, viewGroup, false)
-            return HeaderViewHolder(view)
-
-        } */else if (viewType == TYPE_FOOTER) {
+        } /*else if (viewType == TYPE_FOOTER) {
             var view = LayoutInflater.from(viewGroup!!.context).inflate(R.layout.item_button_footer, viewGroup, false)
             return FooterViewHolder(view)
-        }
+        }*/
         throw RuntimeException("there is no type that matches the type $viewType + make sure your using types correctly")
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        /*if (holder as HeaderViewHolder) {
-            //set the Value from List to corresponding UI component as shown below.
-            ((HeaderViewHolder) holder).txtName.setText(mList.get(position))
-            //similarly bind other UI components or perform operations
-
-        }else*/ if (holder is ItemViewHolder) {
+        if (holder is HeaderViewHolder) {
+            holder.tvAddService.setOnClickListener {
+                val intent = Intent(activity, FechaServicio::class.java)
+                activity.startActivity(intent)
+            }
+        }else if (holder is ItemViewHolder) {
             // Your code here
-            var temp = mList[position]
+            var temp = mList[position-1]
             holder.tvTipoVivienda.text   = temp.category
             holder.tvFecha.text          = temp.date
             holder.tvDir.text            = temp.address
             holder.tvDimension.text      = temp.dimension
-            holder.tvCost.text           = "Subtotal: ${df.format(temp.totalCost.toDouble())}"
+            holder.tvCost.text           = "Valor servicio: ${df.format(temp.totalCost.toDouble())}"
 
             holder.imgRemove.setOnClickListener{
                 DialogDosOpciones(activity,"8", object : DialogDosOpciones.RespuestaListener{
                     override fun onCancelar() {
                     }
                     override fun onAceptar() {
-                        mList.removeAt(position)
+                        mList.removeAt(position-1)
                         notifyDataSetChanged()
                         var pos = singleton.position
                         singleton.position = pos - 1
@@ -100,13 +100,13 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
                 }).show()
             }
 
-        }else if (holder is FooterViewHolder) {
+        }/*else if (holder is FooterViewHolder) {
             //your code here
             holder.tvAddService.setOnClickListener{
                 val intent = Intent (activity, FechaServicio :: class.java)
                 activity.startActivity(intent)
             }
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {
@@ -116,7 +116,7 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
 
     // The ViewHolders for Header, Item and Footer
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // add your ui components here like this below
+        val tvAddService = itemView!!.findViewById<TextView>(R.id.tvAddService)!!
     }
 
     class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
@@ -130,10 +130,10 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>, private val 
         val imgRemove       = itemView!!.findViewById<ImageView>(R.id.imgRemove)
     }
 
-    class FooterViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
+    /*class FooterViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
         // Add your UI Components here
         val tvAddService = itemView!!.findViewById<TextView>(R.id.tvAddService)!!
-    }
+    }*/
 }
  interface IChangeLayout{
      fun changeForNoService(b: Boolean, mList: ArrayList<ServiceResumen>)
