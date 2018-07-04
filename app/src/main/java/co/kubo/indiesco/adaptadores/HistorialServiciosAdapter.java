@@ -77,6 +77,11 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
             holder.tvCalificar.setText("Cancelado");
             holder.tvCalificar.setTextColor(activity.getResources().getColor(R.color.colorRojo));
             holder.ratingBarHist.setVisibility(View.GONE);
+            holder.llCalificar.setClickable(false);
+            holder.llCalificar.setEnabled(false);
+        } else {
+            holder.llCalificar.setClickable(true);
+            holder.llCalificar.setEnabled(true);
         }
 
         holder.llHistorial.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +101,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
             }
         });
 
-        holder.tvCalificar.setOnClickListener(new View.OnClickListener() {
+        holder.llCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent inCal = new Intent(activity, Calificar.class);
@@ -115,7 +120,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
     public class HistorialServiciosViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvNoServicioHist, tvDirServicioHist, tvPrecioServicio, tvFechaServicioHist, tvCalificar;
-        LinearLayout llHistorial;
+        LinearLayout llHistorial, llCalificar;
         RatingBar ratingBarHist;
 
         public HistorialServiciosViewHolder(View itemView) {
@@ -127,6 +132,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
             tvCalificar = (TextView) itemView.findViewById(R.id.tvCalificar);
             ratingBarHist = (RatingBar) itemView.findViewById(R.id.ratingBarHist);
             llHistorial = (LinearLayout) itemView.findViewById(R.id.llHistorial);
+            llCalificar = (LinearLayout) itemView.findViewById(R.id.llCalificar);
         }
     }
 }

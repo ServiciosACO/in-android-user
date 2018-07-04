@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
     Utils utils = new Utils();
     float serviceCalification = 0;
     private DialogProgress dialogProgress;
+    String comment = "";
 
     public CalificarAdapter(ArrayList<PendienteCalificar> calificars, Activity activity) {
         this.calificars = calificars;
@@ -69,10 +71,15 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
                 if (rating != 0){
                     serviceCalification = rating;
                     holder.tvEnviarCalificacion.setTextColor(activity.getResources().getColor(R.color.colorVerde));
+                    if (holder.editComments.getText().toString().isEmpty()){
+                        comment = " ";
+                    } else {
+                        comment = holder.editComments.getText().toString();
+                    }
                     holder.tvEnviarCalificacion.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            enviarCalificacion(cal.getIdSolicitud(), String.valueOf(serviceCalification), "Sin comentarios", position);
+                            enviarCalificacion(cal.getIdSolicitud(), String.valueOf(serviceCalification), comment, position);
                         }
                     });
                 }else{
@@ -90,6 +97,7 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
     public class CalificarViewHolder extends RecyclerView.ViewHolder{
         TextView tvNoServicioCalificar, tvFechaServicioCalificar, tvDirServicioCalificar, tvPrecioServicio, tvEnviarCalificacion;
         RatingBar ratingBar;
+        EditText editComments;
         public CalificarViewHolder(View itemView) {
             super(itemView);
             tvNoServicioCalificar = (TextView) itemView.findViewById(R.id.tvNoServicioCalificar);
@@ -97,6 +105,7 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
             tvDirServicioCalificar = (TextView) itemView.findViewById(R.id.tvDirServicioCalificar);
             tvPrecioServicio = (TextView) itemView.findViewById(R.id.tvPrecioServicio);
             tvEnviarCalificacion = (TextView) itemView.findViewById(R.id.tvEnviarCalificacion);
+            editComments = (EditText) itemView.findViewById(R.id.editComments);
             ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
         }
     }

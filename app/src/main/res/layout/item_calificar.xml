@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginBottom="24sp"
+            android:layout_marginBottom="15sp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -70,7 +70,7 @@
         </LinearLayout>
         <LinearLayout
             android:gravity="center"
-            android:layout_marginBottom="36sp"
+            android:layout_marginBottom="10sp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -86,6 +86,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <EditText
+            android:id="@+id/editComments"
+            android:hint="Comentarios"
+            style="@style/texto_15_negro"
+            android:gravity="start"
+            android:padding="5dp"
+            android:background="@drawable/xml_edit_text_background2"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="70dp" />
         <LinearLayout
             android:layout_marginBottom="27sp"
             android:orientation="horizontal"
