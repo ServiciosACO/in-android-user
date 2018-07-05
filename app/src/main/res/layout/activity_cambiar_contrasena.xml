@@ -19,8 +19,8 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/llHeader"
-                android:layout_marginTop="30sp"
-                android:layout_marginLeft="19sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="19dp"
                 android:orientation="horizontal"
                 android:gravity="left"
                 android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 <co.kubo.indiesco.utils.Medium
                     android:id="@+id/tvTituloHeader"
                     style="@style/texto_20_morado"
-                    android:layout_marginLeft="35sp"
+                    android:layout_marginLeft="35dp"
                     android:text="Mi perfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -43,29 +43,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:orientation="vertical">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_22_morado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="86sp"
+                    android:layout_marginTop="86dp"
                     android:text="Cambia tu contraseña" />
                 <co.kubo.indiesco.utils.Regular
                     style="@style/texto_15_gris"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48sp"
-                    android:paddingLeft="20sp"
-                    android:paddingRight="20sp"
+                    android:layout_marginTop="48dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
                     android:gravity="center"
                     android:text="Ingresa tu nueva contraseña, ésta debe tener 8 caracteres como mínimo" />
                 <LinearLayout
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="38sp"
+                    android:layout_marginTop="38dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -131,7 +131,7 @@
                         android:visibility="gone"
                         android:id="@+id/tvNotificacionPass"
                         style="@style/texto_15_verde"
-                        android:layout_marginTop="15sp"
+                        android:layout_marginTop="15dp"
                         android:gravity="center"
                         android:text="@string/olvido_contraseña3_respuesta_edit"
                         android:layout_width="match_parent"
@@ -144,7 +144,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSiguiente"
         android:src="@drawable/btn_done"
-        android:elevation="4sp"
+        android:elevation="4dp"
         app:backgroundTint="@color/color_hint"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"

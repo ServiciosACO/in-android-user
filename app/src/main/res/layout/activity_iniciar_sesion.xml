@@ -8,8 +8,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:id="@+id/llHeader"
-        android:layout_marginTop="30sp"
-        android:layout_marginLeft="19sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="19dp"
         android:orientation="horizontal"
         android:layout_gravity="left"
         android:gravity="center"
@@ -24,7 +24,7 @@
         <co.kubo.indiesco.utils.Medium
             android:id="@+id/tvTituloHeader"
             style="@style/texto_20_morado"
-            android:layout_marginLeft="35sp"
+            android:layout_marginLeft="35dp"
             android:text="Iniciar sesión"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -36,20 +36,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="40sp"
-            android:layout_marginRight="40sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:orientation="vertical">
             <co.kubo.indiesco.utils.Bold
                 style="@style/texto_36_morado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="75sp"
+                android:layout_marginTop="75dp"
                 android:text="Bienvenido" />
             <co.kubo.indiesco.utils.Regular
                 style="@style/texto_16_morado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
+                android:layout_marginTop="5dp"
                 android:text="Ingresa tus datos para iniciar sesión" />
             <EditText
                 android:visibility="visible"
@@ -59,13 +59,13 @@
                 android:imeOptions="actionGo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80sp"
+                android:layout_marginTop="80dp"
                 android:textCursorDrawable="@color/colorVerdeCursor" />
 
             <android.support.design.widget.TextInputLayout
                 android:visibility="gone"
                 android:id="@+id/inputPassword"
-                android:layout_marginTop="67sp"
+                android:layout_marginTop="67dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/colorBlanco"
@@ -87,9 +87,9 @@
                 android:id="@+id/btnContinuar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:layout_marginTop="26sp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="26dp"
                 android:background="@color/colorNaranja"
                 android:text="Continuar"
                 android:textAllCaps="false"
@@ -98,10 +98,10 @@
                 android:id="@+id/tvOlvidoContraseña"
                 style="@style/texto_13_verde"
                 android:gravity="center"
-                android:paddingBottom="10sp"
-                android:paddingTop="10sp"
-                android:layout_marginBottom="30sp"
-                android:layout_marginTop="100sp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="100dp"
                 android:text="¿Olvidaste tu contraseña?"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

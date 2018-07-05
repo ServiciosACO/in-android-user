@@ -4,8 +4,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="24sp"
-    android:paddingLeft="24sp"
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -19,8 +19,8 @@
         <co.kubo.indiesco.utils.Bold
             style="@style/texto_22_morado"
             android:text="¡Hola!"
-            android:layout_marginTop="30sp"
-            android:layout_marginBottom="33sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="33dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -28,24 +28,24 @@
         <ImageView
             android:id="@+id/imgCalificar"
             android:src="@drawable/img_rate"
-            android:layout_marginBottom="31sp"
+            android:layout_marginBottom="31dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.Regular
             android:id="@+id/tvMensaje"
-            android:paddingRight="32sp"
-            android:paddingLeft="32sp"
+            android:paddingRight="32dp"
+            android:paddingLeft="32dp"
             android:gravity="center"
-            android:layout_marginBottom="24sp"
+            android:layout_marginBottom="24dp"
             android:text="Recuerda que tienes servicios pendientes por calificación"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.Medium
             android:id="@+id/tvCalificar"
             android:gravity="center"
-            android:padding="5sp"
-            android:layout_marginTop="36sp"
-            android:layout_marginBottom="22sp"
+            android:padding="5dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="22dp"
             style="@style/texto_14_verde"
             android:text="Calificar mis servicios"
             android:layout_width="match_parent"

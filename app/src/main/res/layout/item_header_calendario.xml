@@ -9,8 +9,8 @@
         android:id="@+id/llCalendario"
         android:orientation="vertical"
         android:gravity="left"
-        android:paddingTop="24sp"
-        android:paddingBottom="24sp"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <co.kubo.indiesco.utils.Regular

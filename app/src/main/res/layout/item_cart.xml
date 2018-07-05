@@ -19,7 +19,7 @@
         <ImageView
             android:layout_gravity="center"
             android:src="@drawable/btn_delete"
-            android:layout_margin="35sp"
+            android:layout_margin="35dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.Medium
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingEnd="16dp"
-        android:paddingStart="16sp"
+        android:paddingStart="16dp"
         android:paddingTop="14dp"
         android:background="@color/colorBlanco"
         android:orientation="vertical">

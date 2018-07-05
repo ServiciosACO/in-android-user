@@ -8,9 +8,9 @@
     android:fitsSystemWindows="true">
     <LinearLayout
         android:id="@+id/llHeader"
-        android:layout_marginTop="30sp"
-        android:layout_marginLeft="19sp"
-        android:layout_marginBottom="15sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:layout_gravity="left"
         android:gravity="center"
@@ -25,7 +25,7 @@
         <co.kubo.indiesco.utils.Medium
             android:id="@+id/tvTituloHeader"
             style="@style/texto_20_morado"
-            android:layout_marginLeft="35sp"
+            android:layout_marginLeft="35dp"
             android:text="Resumen del servicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

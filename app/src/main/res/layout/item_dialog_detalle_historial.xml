@@ -4,8 +4,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="24sp"
-    android:paddingLeft="24sp"
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="155sp">
+            android:layout_height="155dp">
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
                 android:apiKey="@string/key_google_maps"
@@ -32,16 +32,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:layout_marginTop="17sp"
-                android:layout_marginBottom="14sp"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_22_naranja"
                     android:text="Servicio No. "
-                    android:layout_marginLeft="24sp"
-                    android:layout_marginRight="24sp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Bold
@@ -53,14 +53,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginBottom="14sp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Dirección: "
-                    android:layout_marginLeft="24sp"
+                    android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -71,14 +71,14 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:layout_marginBottom="14sp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Ciudad: "
-                    android:layout_marginLeft="24sp"
+                    android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -89,14 +89,14 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:layout_marginBottom="14sp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Tipo: "
-                    android:layout_marginLeft="24sp"
+                    android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -107,14 +107,14 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:layout_marginBottom="14sp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Fecha: "
-                    android:layout_marginLeft="24sp"
+                    android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -125,14 +125,14 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:layout_marginBottom="22sp"
+                android:layout_marginBottom="22dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Hora: "
-                    android:layout_marginLeft="24sp"
+                    android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
@@ -144,11 +144,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginBottom="22sp"
+                android:layout_marginBottom="22dp"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginLeft="24sp"
-                android:layout_marginRight="24sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
@@ -173,7 +173,7 @@
                 android:numStars="5"
                 android:isIndicator="true"
                 android:layout_gravity="center"
-                android:layout_marginBottom="25sp"
+                android:layout_marginBottom="25dp"
                 style="@style/RatingBar"
                 android:progressTint="#F9BB28"
                 android:progressBackgroundTint="@color/color_hint"

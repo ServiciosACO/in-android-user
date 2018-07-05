@@ -23,8 +23,8 @@
                 android:layout_height="match_parent">
                 <LinearLayout
                     android:id="@+id/llHeader"
-                    android:layout_marginTop="30sp"
-                    android:layout_marginLeft="19sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="19dp"
                     android:orientation="horizontal"
                     android:layout_gravity="left"
                     android:gravity="left"
@@ -39,7 +39,7 @@
                     <co.kubo.indiesco.utils.Medium
                         android:id="@+id/tvTituloHeader"
                         style="@style/texto_20_morado"
-                        android:layout_marginLeft="35sp"
+                        android:layout_marginLeft="35dp"
                         android:text="Mi perfil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -58,21 +58,21 @@
                         android:layout_height="wrap_content">
                         <ImageView
                             android:id="@+id/imgCambiarFoto"
-                            android:layout_marginRight="18sp"
+                            android:layout_marginRight="18dp"
                             android:src="@drawable/btn_foto_inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <ImageView
                             android:id="@+id/imgFoto"
                             android:src="@drawable/registro_foto"
-                            android:layout_marginBottom="20sp"
-                            android:layout_marginTop="20sp"
-                            android:layout_width="96sp"
-                            android:layout_height="96sp" />
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp" />
                         <ImageView
                             android:visibility="invisible"
                             android:id="@+id/imgConfig"
-                            android:layout_marginLeft="18sp"
+                            android:layout_marginLeft="18dp"
                             android:src="@drawable/btn_config_inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -86,15 +86,15 @@
                         <co.kubo.indiesco.utils.Bold
                             android:id="@+id/tvNombrePerfil"
                             android:gravity="center"
-                            android:layout_marginTop="22sp"
+                            android:layout_marginTop="22dp"
                             android:text="Tony Barajas"
                             style="@style/texto_22_naranja"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                         <co.kubo.indiesco.utils.Regular
                             android:id="@+id/tvTelefonoPerfil"
-                            android:layout_marginBottom="24sp"
-                            android:layout_marginTop="6sp"
+                            android:layout_marginBottom="24dp"
+                            android:layout_marginTop="6dp"
                             android:gravity="center"
                             android:text="123456780"
                             style="@style/texto_15_gris"
@@ -117,10 +117,10 @@
                             android:maxLines="1"
                             android:inputType="textCapSentences"
                             android:textColorHint="@color/color_hint"
-                            android:layout_marginRight="40sp"
-                            android:layout_marginLeft="40sp"
-                            android:layout_marginBottom="27sp"
-                            android:layout_marginTop="15sp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="27dp"
+                            android:layout_marginTop="15dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -133,9 +133,9 @@
                             android:inputType="textEmailAddress"
                             android:gravity="center"
                             android:textColorHint="@color/color_hint"
-                            android:layout_marginRight="40sp"
-                            android:layout_marginLeft="40sp"
-                            android:layout_marginBottom="27sp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="27dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -148,9 +148,9 @@
                             style="@style/texto_15_gris"
                             android:gravity="center"
                             android:textColorHint="@color/color_hint"
-                            android:layout_marginRight="40sp"
-                            android:layout_marginLeft="40sp"
-                            android:layout_marginBottom="27sp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="27dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -163,9 +163,9 @@
                             style="@style/texto_15_gris"
                             android:gravity="center"
                             android:textColorHint="@color/color_hint"
-                            android:layout_marginRight="40sp"
-                            android:layout_marginLeft="40sp"
-                            android:layout_marginBottom="27sp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="27dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -178,17 +178,17 @@
                             style="@style/texto_15_gris"
                             android:gravity="center"
                             android:textColorHint="@color/color_hint"
-                            android:layout_marginRight="40sp"
-                            android:layout_marginLeft="40sp"
-                            android:layout_marginBottom="27sp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="27dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textCursorDrawable="@color/colorVerdeCursor" />
                         <RelativeLayout
                             android:id="@+id/fondoMapaDir"
-                            android:layout_marginRight="40sp"
-                            android:layout_marginLeft="40sp"
-                            android:layout_marginBottom="27sp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="27dp"
                             android:layout_width="match_parent"
                             android:layout_height="160dp"
                             android:background="@color/colorBlanco">
@@ -207,9 +207,9 @@
                             style="@style/texto_15_gris"
                             android:gravity="center"
                             android:textColorHint="@color/color_hint"
-                            android:layout_marginRight="40sp"
-                            android:layout_marginLeft="40sp"
-                            android:layout_marginBottom="100sp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginBottom="100dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -226,89 +226,89 @@
                 android:layout_height="match_parent">
                 <co.kubo.indiesco.utils.Medium
                     android:gravity="center"
-                    android:layout_marginTop="30sp"
-                    android:layout_marginBottom="24sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="24dp"
                     android:text="Cambiar contraseña"
                     android:id="@+id/tvCambiarPass"
                     style="@style/texto_15_verde"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <View
-                    android:layout_marginLeft="65sp"
-                    android:layout_marginRight="65sp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="65dp"
                     android:background="@color/colorGris"
                     android:layout_width="match_parent"
-                    android:layout_height="0.1sp"/>
+                    android:layout_height="0.1dp"/>
                 <co.kubo.indiesco.utils.Medium
                     android:gravity="center"
-                    android:layout_marginTop="22sp"
-                    android:layout_marginBottom="24sp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="24dp"
                     android:text="Mis direcciones"
                     android:id="@+id/tvDir"
                     style="@style/texto_15_verde"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <View
-                    android:layout_marginLeft="65sp"
-                    android:layout_marginRight="65sp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="65dp"
                     android:background="@color/colorGris"
                     android:layout_width="match_parent"
-                    android:layout_height="0.1sp"/>
+                    android:layout_height="0.1dp"/>
                 <co.kubo.indiesco.utils.Medium
                     android:gravity="center"
-                    android:layout_marginTop="22sp"
-                    android:layout_marginBottom="24sp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="24dp"
                     android:text="Historial de servicios"
                     android:id="@+id/tvHistorial"
                     style="@style/texto_15_verde"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <View
-                    android:layout_marginLeft="65sp"
-                    android:layout_marginRight="65sp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="65dp"
                     android:background="@color/colorGris"
                     android:layout_width="match_parent"
-                    android:layout_height="0.1sp"/>
+                    android:layout_height="0.1dp"/>
                 <co.kubo.indiesco.utils.Medium
                     android:gravity="center"
-                    android:layout_marginTop="22sp"
-                    android:layout_marginBottom="24sp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="24dp"
                     android:text="Términos y condiciones de uso"
                     android:id="@+id/tvTerminos"
                     style="@style/texto_15_verde"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <View
-                    android:layout_marginLeft="65sp"
-                    android:layout_marginRight="65sp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="65dp"
                     android:background="@color/colorGris"
                     android:layout_width="match_parent"
-                    android:layout_height="0.1sp"/>
+                    android:layout_height="0.1dp"/>
                 <co.kubo.indiesco.utils.Medium
                     android:gravity="center"
-                    android:layout_marginTop="22sp"
-                    android:layout_marginBottom="24sp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="24dp"
                     android:text="Llámanos"
                     android:id="@+id/tvLlamanos"
                     style="@style/texto_15_verde"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <View
-                    android:layout_marginLeft="65sp"
-                    android:layout_marginRight="65sp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="65dp"
                     android:background="@color/colorGris"
                     android:layout_width="match_parent"
-                    android:layout_height="0.1sp"/>
+                    android:layout_height="0.1dp"/>
 
                 <Button
                     android:id="@+id/btnCerrarSesion"
                     android:background="@color/colorRojo"
-                    android:layout_marginRight="40sp"
+                    android:layout_marginRight="40dp"
                     android:textAllCaps="false"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginTop="32sp"
-                    android:layout_marginBottom="24sp"
-                    android:textSize="15sp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="24dp"
+                    android:textSize="15dp"
                     android:textColor="@color/colorBlanco"
                     android:text="Cerrar sesión"
                     android:layout_width="match_parent"
@@ -321,7 +321,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSiguiente"
         android:visibility="gone"
-        android:elevation="4sp"
+        android:elevation="4dp"
         app:fabSize="auto"
         android:fitsSystemWindows="true"
         android:fadeScrollbars="true"

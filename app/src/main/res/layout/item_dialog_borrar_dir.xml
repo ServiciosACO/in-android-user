@@ -4,8 +4,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="24sp"
-    android:paddingLeft="24sp"
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
@@ -18,8 +18,8 @@
         <co.kubo.indiesco.utils.Bold
             style="@style/texto_22_morado"
             android:text="¡Espera!"
-            android:layout_marginTop="30sp"
-            android:layout_marginBottom="33sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="33dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -27,23 +27,23 @@
         <ImageView
             android:id="@+id/imgBorrar"
             android:src="@drawable/img_deleteaddress"
-            android:layout_marginBottom="31sp"
+            android:layout_marginBottom="31dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.Regular
             android:id="@+id/tvMensaje"
-            android:paddingRight="32sp"
-            android:paddingLeft="32sp"
+            android:paddingRight="32dp"
+            android:paddingLeft="32dp"
             android:gravity="center"
-            android:layout_marginBottom="24sp"
+            android:layout_marginBottom="24dp"
             android:text="¿Estás seguro de que deseas eliminar esta dirección?"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <LinearLayout
             android:gravity="center"
-            android:paddingLeft="23sp"
-            android:paddingRight="23sp"
-            android:layout_marginBottom="35sp"
+            android:paddingLeft="23dp"
+            android:paddingRight="23dp"
+            android:layout_marginBottom="35dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -53,7 +53,7 @@
                 android:background="@color/colorBlanco"
                 style="@style/texto_14_rojo"
                 android:textAllCaps="false"
-                android:layout_marginRight="8sp"
+                android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -63,7 +63,7 @@
                 android:background="@color/colorBlanco"
                 style="@style/texto_14_verde"
                 android:textAllCaps="false"
-                android:layout_marginLeft="7sp"
+                android:layout_marginLeft="7dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

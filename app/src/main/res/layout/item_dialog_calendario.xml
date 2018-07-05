@@ -4,8 +4,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="24sp"
-    android:paddingLeft="24sp"
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="155sp">
+            android:layout_height="155dp">
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
                 android:apiKey="@string/key_google_maps"
@@ -28,14 +28,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="24sp"
-            android:layout_marginRight="24sp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14sp"
-                android:layout_marginTop="23sp"
+                android:layout_marginBottom="14dp"
+                android:layout_marginTop="23dp"
                 android:orientation="horizontal">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
@@ -52,7 +52,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14sp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
@@ -69,7 +69,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14sp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
@@ -86,7 +86,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14sp"
+                android:layout_marginBottom="14dp"
                 android:orientation="horizontal">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
@@ -103,7 +103,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="22sp"
+                android:layout_marginBottom="22dp"
                 android:orientation="horizontal">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
@@ -120,7 +120,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="33sp"
+                android:layout_marginBottom="33dp"
                 android:gravity="center"
                 android:orientation="horizontal">
                 <co.kubo.indiesco.utils.Bold
@@ -141,7 +141,7 @@
                 style="@style/texto_15_naranja"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24sp"
+                android:layout_marginBottom="24dp"
                 android:background="@drawable/boton_borde_naranja"
                 android:text="Cancelar servicio"
                 android:textAllCaps="false" />

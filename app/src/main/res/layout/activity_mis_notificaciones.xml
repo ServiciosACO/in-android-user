@@ -13,9 +13,9 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:layout_marginTop="30sp"
-            android:layout_marginLeft="19sp"
-            android:layout_marginBottom="33sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginBottom="33dp"
             android:orientation="horizontal"
             android:gravity="left"
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             <co.kubo.indiesco.utils.Medium
                 android:id="@+id/tvTituloHeader"
                 style="@style/texto_20_morado"
-                android:layout_marginLeft="35sp"
+                android:layout_marginLeft="35dp"
                 android:text="Mis Notificaciones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -46,31 +46,31 @@
             <ImageView
                 android:src="@drawable/img_missingcontent"
                 android:layout_gravity="center"
-                android:layout_marginTop="5sp"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Bold
                 style="@style/texto_22_morado"
                 android:text="¡Oops!"
                 android:gravity="center"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Regular
                 android:text="Parece que no hay nada aquí, por favor regresa más tarde"
                 style="@style/texto_15_gris"
                 android:gravity="center"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:layout_marginBottom="18sp"
-                android:layout_marginTop="7sp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvNotificacion"
-            android:layout_marginBottom="30sp"
+            android:layout_marginBottom="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

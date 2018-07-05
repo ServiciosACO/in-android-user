@@ -19,8 +19,8 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/llHeader"
-                android:layout_marginTop="30sp"
-                android:layout_marginLeft="19sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="19dp"
                 android:orientation="horizontal"
                 android:layout_gravity="left"
                 android:gravity="left"
@@ -35,7 +35,7 @@
                 <co.kubo.indiesco.utils.Medium
                     android:id="@+id/tvTituloHeader"
                     style="@style/texto_20_morado"
-                    android:layout_marginLeft="35sp"
+                    android:layout_marginLeft="35dp"
                     android:text="Registro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     android:gravity="center"
-                    android:layout_marginTop="47sp"
+                    android:layout_marginTop="47dp"
                     style="@style/texto_22_morado"
                     android:text="Vamos a crear una cuenta"
                     android:layout_width="match_parent"
@@ -56,10 +56,10 @@
                 <ImageView
                     android:id="@+id/imgFoto"
                     android:src="@drawable/registro_foto"
-                    android:layout_marginBottom="20sp"
-                    android:layout_marginTop="20sp"
-                    android:layout_width="96sp"
-                    android:layout_height="96sp" />
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp" />
                 <EditText
                     android:id="@+id/editNombre"
                     android:hint="Nombre"
@@ -69,9 +69,9 @@
                     android:maxLines="1"
                     android:inputType="textCapSentences"
                     android:textColorHint="@color/color_hint"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -85,9 +85,9 @@
                     android:inputType="textEmailAddress"
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -100,9 +100,9 @@
                     style="@style/texto_15_gris"
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -117,9 +117,9 @@
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
                     android:textCursorDrawable="@color/colorVerdeCursor"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -132,9 +132,9 @@
                     style="@style/texto_15_gris"
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />-->
@@ -142,9 +142,9 @@
                     android:id="@+id/listaDirecciones"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="27dp"
                     android:background="@color/colorBlanco"
                     android:divider="@android:color/transparent"
                     android:dividerHeight="0dp"
@@ -159,17 +159,17 @@
                     style="@style/texto_15_gris"
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
                 <RelativeLayout
                     android:id="@+id/fondoMapaDir"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
-                    android:layout_marginBottom="27sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     android:background="@color/colorBlanco">
@@ -198,8 +198,8 @@
                     style="@style/texto_15_gris"
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
-                    android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
@@ -215,8 +215,8 @@
                     app:passwordToggleTint="@color/colorGris">
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/editpass1"
-                        android:layout_marginRight="40sp"
-                        android:layout_marginLeft="40sp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
                         android:inputType="textPassword"
                         android:gravity="center"
                         android:imeOptions="actionNext"
@@ -237,9 +237,9 @@
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/editpass2"
                         android:inputType="textPassword"
-                        android:layout_marginRight="40sp"
-                        android:layout_marginLeft="40sp"
-                        android:layout_marginBottom="65sp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginBottom="65dp"
                         android:hint="Repita contraseña"
                         android:gravity="center"
                         android:imeOptions="actionGo"
@@ -255,7 +255,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSiguiente"
         android:visibility="visible"
-        android:elevation="4sp"
+        android:elevation="4dp"
         android:src="@drawable/btn_done"
         app:backgroundTint="@color/color_hint"
         android:layout_gravity="right|bottom"
@@ -280,7 +280,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Regular
-                android:layout_marginTop="32sp"
+                android:layout_marginTop="32dp"
                 android:gravity="center"
                 android:text="@string/registro_splash_final"
                 style="@style/texto_15_gris"

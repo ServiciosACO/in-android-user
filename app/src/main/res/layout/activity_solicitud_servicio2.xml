@@ -25,15 +25,15 @@
         android:id="@+id/llValor"
         android:orientation="horizontal"
         android:background="@color/colorRojo"
-        android:layout_marginLeft="8sp"
-        android:layout_marginRight="8sp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
-            android:paddingLeft="16sp"
-            android:paddingTop="12sp"
-            android:paddingBottom="10sp"
+            android:paddingLeft="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="10dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

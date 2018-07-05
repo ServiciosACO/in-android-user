@@ -4,8 +4,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="24sp"
-    android:paddingLeft="24sp"
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="160sp">
+                android:layout_height="160dp">
                 <fragment
                     android:id="@+id/mapaDireccion"
                     class ="com.google.android.gms.maps.MapFragment"
@@ -31,8 +31,8 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_marginLeft="24sp"
-                android:layout_marginRight="24sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <AutoCompleteTextView
@@ -45,7 +45,7 @@
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
                     android:textCursorDrawable="@color/colorVerdeCursor"
-                    android:layout_marginTop="32sp"
+                    android:layout_marginTop="32dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <!--<EditText
@@ -53,25 +53,25 @@
                     android:hint="Dirección"
                     android:gravity="center"
                     android:textColorHint="@color/color_hint"
-                    android:textSize="15sp"
-                    android:layout_marginTop="32sp"
+                    android:textSize="15dp"
+                    android:layout_marginTop="32dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />-->
                 <EditText
                     android:id="@+id/editDirComplemento"
                     android:textColorHint="@color/color_hint"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:gravity="center"
                     android:maxLines="1"
                     android:imeOptions="actionDone"
                     android:hint="Complemento de la dirección"
-                    android:layout_marginTop="26sp"
+                    android:layout_marginTop="26dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <Button
                     android:id="@+id/btnAgregarDir"
-                    android:layout_marginTop="35sp"
-                    android:layout_marginBottom="24sp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="24dp"
                     android:background="@drawable/boton_borde_naranja"
                     style="@style/texto_15_naranja"
                     android:textAllCaps="false"

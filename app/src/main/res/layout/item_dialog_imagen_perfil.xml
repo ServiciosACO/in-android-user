@@ -6,8 +6,8 @@
 
     <LinearLayout
         android:id="@+id/llOpImagen"
-        android:paddingLeft="8sp"
-        android:paddingRight="8sp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -25,19 +25,19 @@
                 <co.kubo.indiesco.utils.Medium
                     android:id="@+id/tvCamara"
                     style="@style/texto_15_gris"
-                    android:paddingTop="16sp"
-                    android:paddingBottom="14sp"
-                    android:layout_marginLeft="16sp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="14dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cámara" />
             </LinearLayout>
 
             <View
-                android:layout_margin="10sp"
+                android:layout_margin="10dp"
                 android:background="@color/colorGris"
                 android:layout_width="wrap_content"
-                android:layout_height="0.1sp"/>
+                android:layout_height="0.1dp"/>
 
             <LinearLayout
                 android:id="@+id/llGaleria"
@@ -46,9 +46,9 @@
                 <co.kubo.indiesco.utils.Medium
                     android:id="@+id/tvGaleria"
                     style="@style/texto_15_gris"
-                    android:layout_marginTop="16sp"
-                    android:layout_marginLeft="16sp"
-                    android:layout_marginBottom="16sp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/tvCamara"

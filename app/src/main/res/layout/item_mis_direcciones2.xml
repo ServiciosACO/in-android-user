@@ -5,7 +5,7 @@
     android:background="#ffffff"
     android:paddingLeft="16dp"
     android:paddingEnd="16dp"
-    android:paddingTop="18sp"
+    android:paddingTop="18dp"
     android:paddingBottom="18dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content">
             <co.kubo.indiesco.utils.Bold
                 android:id="@+id/tvDir"
-                android:layout_marginBottom="5sp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/texto_15_morado"
@@ -39,7 +39,7 @@
                     android:id="@+id/tvComplemento"
                     android:layout_gravity="center"
                     android:text="Piso 2"
-                    android:layout_marginBottom="5sp"
+                    android:layout_marginBottom="5dp"
                     style="@style/texto_13_naranja"
                     android:layout_weight="1"
                     android:layout_width="match_parent"

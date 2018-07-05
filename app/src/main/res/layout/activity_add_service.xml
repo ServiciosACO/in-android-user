@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:paddingTop="20sp"
+            android:paddingTop="20dp"
             android:background="@color/header"
             android:orientation="horizontal"
             android:layout_gravity="left"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imgBotonVolver"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -29,7 +29,7 @@
                 android:id="@+id/tvTituloHeader"
                 android:layout_gravity="center"
                 style="@style/texto_20_morado"
-                android:layout_marginLeft="35sp"
+                android:layout_marginLeft="35dp"
                 android:text="Agregar servicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -115,7 +115,7 @@
                 <LinearLayout
                     android:id="@+id/llLinear"
                     android:orientation="horizontal"
-                    android:paddingLeft="16sp"
+                    android:paddingLeft="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_width="match_parent"
@@ -147,7 +147,7 @@
                 <LinearLayout
                     android:id="@+id/llFooter"
                     android:orientation="horizontal"
-                    android:paddingLeft="16sp"
+                    android:paddingLeft="16dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_width="match_parent"

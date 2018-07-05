@@ -19,7 +19,7 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:paddingTop="20sp"
+            android:paddingTop="20dp"
             android:orientation="horizontal"
             android:layout_gravity="left"
             android:gravity="left"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imgBotonVolver"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -36,7 +36,7 @@
                 android:id="@+id/tvTituloHeader"
                 android:layout_gravity="center"
                 style="@style/texto_20_morado"
-                android:layout_marginLeft="35sp"
+                android:layout_marginLeft="35dp"
                 android:text="Agregar recargo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -63,14 +63,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="16sp"
+                            android:layout_marginLeft="16dp"
                             android:id="@+id/imgFotoPerfil"
                             android:src="@drawable/registro_foto"
-                            android:layout_width="72sp"
-                            android:layout_height="72sp" />
+                            android:layout_width="72dp"
+                            android:layout_height="72dp" />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_marginLeft="16sp"
+                        android:layout_marginLeft="16dp"
                         android:layout_gravity="center"
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                         <co.kubo.indiesco.utils.Regular
                             android:id="@+id/tvTelf"
                             android:text="Teléfono: 123 456 7890"
-                            android:padding="5sp"
+                            android:padding="5dp"
                             style="@style/texto_15_morado"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -135,24 +135,24 @@
                     <ImageView
                         android:src="@drawable/img_missingcontent"
                         android:layout_gravity="center"
-                        android:layout_marginTop="5sp"
+                        android:layout_marginTop="5dp"
                         android:layout_width="80dp"
                         android:layout_height="80dp" />
                     <co.kubo.indiesco.utils.Bold
                         style="@style/texto_22_morado"
                         android:text="¡Oops!"
                         android:gravity="center"
-                        android:layout_marginTop="5sp"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <co.kubo.indiesco.utils.Regular
                         android:text="Parece que no hay nada aquí, por favor regresa más tarde"
                         style="@style/texto_15_gris"
                         android:gravity="center"
-                        android:layout_marginLeft="40sp"
-                        android:layout_marginRight="40sp"
-                        android:layout_marginBottom="15sp"
-                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content">
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:paddingLeft="16sp"
+                        android:paddingLeft="16dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:layout_width="match_parent"

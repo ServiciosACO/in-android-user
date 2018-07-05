@@ -9,9 +9,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:id="@+id/llHeader"
-        android:layout_marginTop="30sp"
-        android:layout_marginLeft="19sp"
-        android:layout_marginBottom="15sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:layout_gravity="left"
         android:gravity="center"
@@ -26,7 +26,7 @@
         <co.kubo.indiesco.utils.Medium
             android:id="@+id/tvTituloHeader"
             style="@style/texto_20_morado"
-            android:layout_marginLeft="35sp"
+            android:layout_marginLeft="35dp"
             android:text="Servicios sin calificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_marginBottom="32sp"
+            android:layout_marginBottom="32dp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -50,15 +50,15 @@
         </LinearLayout>
         <co.kubo.indiesco.utils.Bold
             android:gravity="center"
-            android:layout_marginBottom="7sp"
+            android:layout_marginBottom="7dp"
             android:text="¡Bien hecho!"
             style="@style/texto_22_morado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.Regular
             android:gravity="center"
-            android:paddingLeft="40sp"
-            android:paddingRight="40sp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             android:text="Has calificado todos tus servicios, regresa cuando tengas más por calificar"
             style="@style/texto_15_gris"
             android:layout_width="match_parent"

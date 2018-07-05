@@ -41,24 +41,24 @@
             <ImageView
                 android:src="@drawable/img_missingcontent"
                 android:layout_gravity="center"
-                android:layout_marginTop="5sp"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Bold
                 style="@style/texto_22_morado"
                 android:text="¡Oops!"
                 android:gravity="center"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Regular
                 android:text="Parece que no hay nada aquí, por favor regresa más tarde"
                 style="@style/texto_15_gris"
                 android:gravity="center"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:layout_marginBottom="18sp"
-                android:layout_marginTop="7sp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -116,7 +116,7 @@
         app:shadowMargin="5dp"
         app:shadowRadius="14dp">
         <LinearLayout
-            android:elevation="4sp"
+            android:elevation="4dp"
             android:layout_gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"

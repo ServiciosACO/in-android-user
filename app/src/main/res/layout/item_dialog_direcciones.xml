@@ -4,8 +4,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="24sp"
-    android:paddingLeft="24sp"
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
     android:id="@+id/llSalir"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -18,24 +18,24 @@
         android:layout_height="wrap_content">
         <co.kubo.indiesco.utils.Bold
             android:gravity="center"
-            android:layout_marginTop="32sp"
+            android:layout_marginTop="32dp"
             style="@style/texto_20_morado"
             android:text="Escoge tu dirección"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvDirDialog"
-            android:layout_marginTop="40sp"
-            android:paddingLeft="23sp"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="23dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>
         <co.kubo.indiesco.utils.Medium
             android:id="@+id/tvIrMisDirecciones"
             android:gravity="center"
-            android:padding="5sp"
-            android:layout_marginTop="40sp"
-            android:layout_marginBottom="22sp"
+            android:padding="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="22dp"
             style="@style/texto_14_verde"
             android:text="Ir a mis direcciones"
             android:layout_width="match_parent"

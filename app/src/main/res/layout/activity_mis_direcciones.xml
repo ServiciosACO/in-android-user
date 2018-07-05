@@ -13,8 +13,8 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:layout_marginTop="30sp"
-            android:layout_marginLeft="19sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="19dp"
             android:orientation="horizontal"
             android:gravity="left"
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             <co.kubo.indiesco.utils.Medium
                 android:id="@+id/tvTituloHeader"
                 style="@style/texto_20_morado"
-                android:layout_marginLeft="35sp"
+                android:layout_marginLeft="35dp"
                 android:text="Mis direcciones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -37,10 +37,10 @@
             style="@style/texto_15_gris"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="47sp"
-            android:layout_marginBottom="26sp"
-            android:paddingLeft="20sp"
-            android:paddingRight="20sp"
+            android:layout_marginTop="47dp"
+            android:layout_marginBottom="26dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:gravity="center"
             android:text="Recuerda que puedes agregar un máximo de 5 direcciones diferentes" />
 
@@ -55,33 +55,33 @@
             <ImageView
                 android:src="@drawable/img_missingcontent"
                 android:layout_gravity="center"
-                android:layout_marginTop="5sp"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Bold
                 style="@style/texto_22_morado"
                 android:text="¡Oops!"
                 android:gravity="center"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.Regular
                 android:text="Parece que no hay nada aquí, por favor regresa más tarde"
                 style="@style/texto_15_gris"
                 android:gravity="center"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:layout_marginBottom="18sp"
-                android:layout_marginTop="7sp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvDir"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp"
-            android:layout_marginBottom="32sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="32dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

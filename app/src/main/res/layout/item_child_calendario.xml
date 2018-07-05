@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/fondo_registro"
-    android:paddingBottom="16sp"
+    android:paddingBottom="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,8 +14,8 @@
         <co.kubo.indiesco.utils.Regular
             android:id="@+id/tvFecha"
             android:text="08/11"
-            android:paddingRight="16sp"
-            android:paddingTop="10sp"
+            android:paddingRight="16dp"
+            android:paddingTop="10dp"
             android:gravity="right"
             android:layout_weight="3.5"
             android:layout_width="match_parent"
@@ -26,9 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edge"
-            android:paddingLeft="16sp"
-            android:paddingTop="28sp"
-            android:paddingBottom="28sp"
+            android:paddingLeft="16dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="28dp"
             android:orientation="vertical">
             <!--What you want to show in SurfaceView-->
             <co.kubo.indiesco.utils.Bold
@@ -40,7 +40,7 @@
             <co.kubo.indiesco.utils.Regular
                 android:id="@+id/tvHora"
                 style="@style/texto_13_gris"
-                android:layout_marginTop="6sp"
+                android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10:15 am" />

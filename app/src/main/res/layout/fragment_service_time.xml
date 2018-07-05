@@ -36,7 +36,7 @@
                 app:shadowMargin="5dp"
                 app:shadowRadius="14dp">
                 <LinearLayout
-                    android:elevation="4sp"
+                    android:elevation="4dp"
                     android:layout_gravity="center"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -69,9 +69,9 @@
                         android:id="@+id/timePicker"
                         style="@style/TimePickerTheme"
                         android:layout_width="match_parent"
-                        android:layout_height="130sp"
-                        android:layout_marginBottom="12sp"
-                        android:layout_marginTop="15sp"
+                        android:layout_height="130dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="15dp"
                         android:timePickerMode="spinner" />
                     <LinearLayout
                         android:id="@+id/llUrgentService"

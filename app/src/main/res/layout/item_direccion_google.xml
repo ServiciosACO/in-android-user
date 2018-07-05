@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/colorBlanco"
     android:orientation="vertical"
-    android:padding="10sp"
+    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <co.kubo.indiesco.utils.Regular
         android:id="@+id/txtItemDireccionGoogle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textColor="@color/colorGris"/>
 </LinearLayout>

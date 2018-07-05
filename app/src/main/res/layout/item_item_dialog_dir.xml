@@ -9,9 +9,9 @@
         android:id="@+id/llItemDir"
         android:orientation="vertical"
         android:background="@color/colorBlanco"
-        android:paddingTop="20sp"
-        android:paddingLeft="16sp"
-        android:paddingRight="16sp"
+        android:paddingTop="20dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <co.kubo.indiesco.utils.Bold
@@ -25,12 +25,12 @@
             android:text="La Guajira, Riohacha"
             style="@style/texto_13_gris"
             android:layout_weight="1"
-            android:paddingBottom="20sp"
+            android:paddingBottom="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <View
             android:background="@color/colorGris"
             android:layout_width="wrap_content"
-            android:layout_height="0.5sp"/>
+            android:layout_height="0.5dp"/>
     </LinearLayout>
 </LinearLayout>
