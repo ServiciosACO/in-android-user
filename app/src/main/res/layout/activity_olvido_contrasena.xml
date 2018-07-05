@@ -20,15 +20,15 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/llHeader"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="19dp"
+                android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 android:layout_gravity="left"
-                android:gravity="center"
-                android:layout_width="wrap_content"
+                android:gravity="center|start"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/imgBotonVolver"
+                    android:padding="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -66,16 +66,19 @@
                     android:layout_marginTop="48dp"
                     android:text="@string/olvido_contraseña_subtitulo" />
             </LinearLayout>
-            <EditText
+            <co.kubo.indiesco.utils.EditTextRegular
                 android:id="@+id/editEmail"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="40dp"
+                style="@style/texto_15_gris"
+                android:backgroundTint="@color/colorVerdeCursor"
+                backgroundTint="@color/colorVerdeCursor"
                 android:imeOptions="actionGo"
-                android:inputType="textCapSentences"
-                android:textCursorDrawable="@color/colorVerdeCursor" />
+                android:inputType="textCapSentences" />
         </LinearLayout>
     </ScrollView>
 

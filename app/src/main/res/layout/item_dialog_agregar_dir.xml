@@ -35,7 +35,7 @@
                 android:layout_marginRight="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <AutoCompleteTextView
+                <co.kubo.indiesco.utils.AutoCompleteTextViewRegular
                     android:id="@+id/editDireccion"
                     android:hint="Dirección"
                     android:imeOptions="actionNext"
@@ -43,6 +43,7 @@
                     android:inputType="textCapSentences"
                     style="@style/texto_15_gris"
                     android:gravity="center"
+                    android:backgroundTint="@color/colorVerdeCursor"
                     android:textColorHint="@color/color_hint"
                     android:textCursorDrawable="@color/colorVerdeCursor"
                     android:layout_marginTop="32dp"
@@ -57,18 +58,20 @@
                     android:layout_marginTop="32dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />-->
-                <EditText
+                <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/editDirComplemento"
                     android:textColorHint="@color/color_hint"
                     android:textSize="15dp"
                     android:gravity="center"
                     android:maxLines="1"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    backgroundTint="@color/colorVerdeCursor"
                     android:imeOptions="actionDone"
                     android:hint="Complemento de la dirección"
                     android:layout_marginTop="26dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-                <Button
+                <co.kubo.indiesco.utils.ButtonMedium
                     android:id="@+id/btnAgregarDir"
                     android:layout_marginTop="35dp"
                     android:layout_marginBottom="24dp"

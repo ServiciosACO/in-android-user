@@ -2,82 +2,88 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:swipe="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mSwipe"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     swipe:leftEdgeSwipeOffset="0dp"
     swipe:rightEdgeSwipeOffset="0dp">
     <!-- Bottom View Start-->
     <LinearLayout
+        android:background="@color/transparente"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorRojo"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="10">
-        <!--What you want to show-->
+        android:layout_height="match_parent">
         <LinearLayout
-            android:id="@+id/llBorrarDir"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorRojo"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_button_red_3dp_one_side"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
-                android:id="@+id/imgBorrarDir"
+            <!--What you want to show-->
+            <LinearLayout
+                android:id="@+id/llBorrarDir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="9dp"
-                android:layout_marginLeft="43dp"
-                android:layout_marginRight="43dp"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/btn_delete" />
-
-            <co.kubo.indiesco.utils.Medium
-                style="@style/texto_12_blanco"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
+                android:background="@color/colorRojo"
                 android:gravity="center"
-                android:text="Eliminar" />
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/imgBorrarDir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginLeft="43dp"
+                    android:layout_marginRight="43dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/btn_delete" />
+                <co.kubo.indiesco.utils.Medium
+                    style="@style/texto_12_blanco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="Eliminar" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <!-- Bottom View End-->
 
     <!-- Surface View Start -->
     <LinearLayout
-        android:visibility="visible"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_weight="0.5"
-            android:gravity="center|left"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0.5"
             android:background="#ffffff"
-            android:paddingLeft="16dp"
-            android:paddingTop="28dp"
+            android:gravity="center|left"
+            android:orientation="vertical"
             android:paddingBottom="28dp"
-            android:orientation="vertical">
+            android:paddingLeft="16dp"
+            android:paddingTop="28dp">
             <!--What you want to show in SurfaceView-->
             <co.kubo.indiesco.utils.Bold
                 android:id="@+id/tvDir"
-                android:layout_marginBottom="5dp"
+                style="@style/texto_15_morado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/texto_15_morado"
+                android:layout_marginBottom="5dp"
                 android:text="Calle 11 # 11-11" />
             <co.kubo.indiesco.utils.Regular
                 android:id="@+id/tvComplemento"
-                android:text="Piso 2"
-                android:layout_marginBottom="5dp"
                 style="@style/texto_13_naranja"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Piso 2" />
             <co.kubo.indiesco.utils.Regular
                 android:id="@+id/tvCiudad"
                 style="@style/texto_13_gris"

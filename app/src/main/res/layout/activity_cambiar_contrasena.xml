@@ -19,14 +19,14 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/llHeader"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="19dp"
+                android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 android:gravity="left"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/imgBotonVolver"
+                    android:padding="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -34,9 +34,10 @@
                 <co.kubo.indiesco.utils.Medium
                     android:id="@+id/tvTituloHeader"
                     style="@style/texto_20_morado"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="35dp"
                     android:text="Mi perfil"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
@@ -76,6 +77,8 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
+                        android:theme="@style/TextLabel"
+                        app:hintEnabled="false"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpassOld"
@@ -84,7 +87,7 @@
                             android:imeOptions="actionNext"
                             android:hint="Contraseña actual"
                             style="@style/texto_15_gris"
-                            android:textColorHint="@color/colorVerde"
+                            android:textColorHint="@color/color_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </android.support.design.widget.TextInputLayout>
@@ -96,6 +99,8 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
+                        android:theme="@style/TextLabel"
+                        app:hintEnabled="false"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpass1"
@@ -104,7 +109,7 @@
                             android:imeOptions="actionNext"
                             android:hint="Nueva contraseña"
                             style="@style/texto_15_gris"
-                            android:textColorHint="@color/colorVerde"
+                            android:textColorHint="@color/color_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </android.support.design.widget.TextInputLayout>
@@ -115,6 +120,8 @@
                         android:textColorHint="@color/colorGris"
                         app:passwordToggleDrawable="@drawable/icon_selector"
                         app:passwordToggleEnabled="true"
+                        android:theme="@style/TextLabel"
+                        app:hintEnabled="false"
                         app:passwordToggleTint="@color/colorGris">
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/editpass2"
@@ -123,7 +130,7 @@
                             android:imeOptions="actionDone"
                             android:hint="Repita nueva contraseña"
                             style="@style/texto_15_gris"
-                            android:textColorHint="@color/colorVerde"
+                            android:textColorHint="@color/color_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </android.support.design.widget.TextInputLayout>

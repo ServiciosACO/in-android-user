@@ -8,16 +8,15 @@
     android:fitsSystemWindows="true">
     <LinearLayout
         android:id="@+id/llHeader"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal"
         android:layout_gravity="left"
-        android:gravity="center"
-        android:layout_width="wrap_content"
+        android:gravity="center|start"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/imgBotonVolver"
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

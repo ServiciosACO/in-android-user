@@ -19,8 +19,8 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:paddingTop="20dp"
-            android:background="@color/header"
+            android:layout_marginTop="25dp"
+            android:background="@color/fondo_registro"
             android:orientation="horizontal"
             android:layout_gravity="left"
             android:gravity="left"

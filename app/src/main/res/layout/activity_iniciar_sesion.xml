@@ -8,15 +8,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:id="@+id/llHeader"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="19dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal"
         android:layout_gravity="left"
-        android:gravity="center"
-        android:layout_width="wrap_content"
+        android:gravity="center|start"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/imgBotonVolver"
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Ingresa tus datos para iniciar sesión" />
-            <EditText
+            <co.kubo.indiesco.utils.EditTextRegular
                 android:visibility="visible"
                 android:id="@+id/editEmail"
                 android:lines="1"
@@ -60,8 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:textCursorDrawable="@color/colorVerdeCursor" />
-
+                android:backgroundTint="@color/colorVerdeCursor"
+                app:backgroundTint="@color/colorVerdeCursor" />
             <android.support.design.widget.TextInputLayout
                 android:visibility="gone"
                 android:id="@+id/inputPassword"
@@ -72,6 +72,8 @@
                 app:passwordToggleDrawable="@drawable/icon_selector"
                 app:passwordToggleEnabled="true"
                 android:hint="Contraseña"
+                app:hintEnabled="false"
+                android:theme="@style/TextLabel"
                 app:passwordToggleTint="@color/colorGris">
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/editContraseña"
@@ -79,18 +81,21 @@
                     android:gravity="center"
                     android:imeOptions="actionDone"
                     style="@style/texto_15_gris"
-                    android:textColorHint="@color/colorVerde"
+                    android:shadowColor="@color/colorVerdeCursor"
+                    android:textColorHint="@color/colorVerdeCursor"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    app:backgroundTint="@color/colorVerdeCursor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </android.support.design.widget.TextInputLayout>
-            <Button
+            <co.kubo.indiesco.utils.ButtonMedium
                 android:id="@+id/btnContinuar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="26dp"
-                android:background="@color/colorNaranja"
+                android:background="@drawable/rounded_button_orange_3dp"
                 android:text="Continuar"
                 android:textAllCaps="false"
                 android:textColor="@color/colorBlanco" />

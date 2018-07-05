@@ -19,7 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/main_logo" />
-            <Button
+            <co.kubo.indiesco.utils.ButtonMedium
                 android:id="@+id/btnIniciarSesion"
                 android:text="Iniciar Sesión"
                 android:textColor="@color/colorBlanco"
@@ -27,10 +27,10 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="130dp"
-                android:background="@color/colorNaranja"
+                android:background="@drawable/rounded_button_orange_3dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-            <Button
+            <co.kubo.indiesco.utils.ButtonMedium
                 android:id="@+id/btnCrearCuenta"
                 android:text="Crear una cuenta"
                 android:textColor="@color/colorBlanco"
@@ -38,7 +38,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorNaranja"
+                android:background="@drawable/rounded_button_orange_3dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <LinearLayout

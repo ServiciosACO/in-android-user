@@ -102,7 +102,7 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
                 break;
             case "8":
                 imgBorrar.setImageResource(R.drawable.delete_popup);
-                tvMensaje.setText("¿Esta seguro de eliminar este servicio de la lista?");
+                tvMensaje.setText("¿Está seguro de eliminar este servicio de la lista?");
                 break;
             case "9":
                 imgBorrar.setImageResource(R.drawable.delete_calendar);
@@ -111,6 +111,10 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
             case "10": //Borrar direccion
                 imgBorrar.setImageResource(R.drawable.img_deleteaddress);
                 tvMensaje.setText("¿Deseas activar la geolocalización?");
+                break;
+            case "11": //Logout
+                imgBorrar.setImageResource(R.drawable.delete_popup);
+                tvMensaje.setText("¿Estás seguro de cerrar sesión?");
                 break;
             default:break;
         }//switch

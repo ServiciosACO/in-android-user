@@ -13,8 +13,7 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="33dp"
             android:orientation="horizontal"
             android:gravity="left"
@@ -22,6 +21,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imgBotonVolver"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -29,6 +29,7 @@
             <co.kubo.indiesco.utils.Medium
                 android:id="@+id/tvTituloHeader"
                 style="@style/texto_20_morado"
+                android:layout_gravity="center"
                 android:layout_marginLeft="35dp"
                 android:text="Historial de servicios"
                 android:layout_width="wrap_content"

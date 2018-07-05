@@ -144,6 +144,7 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
     @Override
     public void noAddresses(){
         llNoAddress.setVisibility(View.VISIBLE);
+        rvDir.setVisibility(View.GONE);
     }
 
     @Override

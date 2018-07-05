@@ -79,16 +79,15 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvDir"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginBottom="32dp"
+            android:background="@color/fondo_registro"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabAgregar"
-        android:src="@drawable/btn_add"
+        android:background="@drawable/btn_"
         app:backgroundTint="@color/colorNaranja"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"

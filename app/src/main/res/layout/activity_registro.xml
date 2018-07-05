@@ -19,8 +19,7 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/llHeader"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="19dp"
+                android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 android:layout_gravity="left"
                 android:gravity="left"
@@ -28,12 +27,14 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/imgBotonVolver"
+                    android:padding="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/btn_atras" />
                 <co.kubo.indiesco.utils.Medium
                     android:id="@+id/tvTituloHeader"
+                    android:layout_gravity="center"
                     style="@style/texto_20_morado"
                     android:layout_marginLeft="35dp"
                     android:text="Registro"
@@ -60,7 +61,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_width="96dp"
                     android:layout_height="96dp" />
-                <EditText
+                <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/editNombre"
                     android:hint="Nombre"
                     android:gravity="center"
@@ -74,8 +75,10 @@
                     android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    app:backgroundTint="@color/colorVerdeCursor"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
-                <EditText
+                <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/editEmail"
                     android:hint="Correo electrónico"
                     style="@style/texto_15_gris"
@@ -90,8 +93,10 @@
                     android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    app:backgroundTint="@color/colorVerdeCursor"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
-                <EditText
+                <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/editCelular"
                     android:hint="Teléfono celular"
                     android:imeOptions="actionNext"
@@ -105,9 +110,11 @@
                     android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    app:backgroundTint="@color/colorVerdeCursor"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
 
-                <AutoCompleteTextView
+                <co.kubo.indiesco.utils.AutoCompleteTextViewRegular
                     android:id="@+id/editDireccion"
                     android:hint="Dirección"
                     android:imeOptions="actionNext"
@@ -121,36 +128,10 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    app:backgroundTint="@color/colorVerdeCursor"
                     android:layout_height="wrap_content" />
-
-                <!--<EditText
-                    android:id="@+id/editDireccion"
-                    android:hint="Dirección"
-                    android:imeOptions="actionNext"
-                    android:maxLines="1"
-                    android:inputType="textCapSentences"
-                    style="@style/texto_15_gris"
-                    android:gravity="center"
-                    android:textColorHint="@color/color_hint"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginBottom="27dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textCursorDrawable="@color/colorVerdeCursor" />-->
-                <!--<ListView
-                    android:id="@+id/listaDirecciones"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginBottom="27dp"
-                    android:background="@color/colorBlanco"
-                    android:divider="@android:color/transparent"
-                    android:dividerHeight="0dp"
-                    android:listSelector="@android:color/transparent"
-                    android:scrollbars="none" />-->
-                <EditText
+                <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/editComplemento"
                     android:hint="Complemento de la dirección"
                     android:imeOptions="actionNext"
@@ -164,6 +145,8 @@
                     android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    app:backgroundTint="@color/colorVerdeCursor"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
                 <RelativeLayout
                     android:id="@+id/fondoMapaDir"
@@ -189,7 +172,7 @@
                         android:layout_alignLeft="@+id/mapaDireccion"
                         android:layout_alignStart="@+id/mapaDireccion"/>
                 </RelativeLayout>
-                <EditText
+                <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/editCiudad"
                     android:hint="Ciudad"
                     android:imeOptions="actionNext"
@@ -202,6 +185,8 @@
                     android:layout_marginLeft="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorVerdeCursor"
+                    app:backgroundTint="@color/colorVerdeCursor"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/inputPass1"
@@ -209,9 +194,10 @@
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/color_hint"
                     android:hint="Contraseña"
-                    app:hintEnabled="true"
+                    app:hintEnabled="false"
                     app:passwordToggleDrawable="@drawable/icon_selector"
                     app:passwordToggleEnabled="true"
+                    android:theme="@style/TextLabel"
                     app:passwordToggleTint="@color/colorGris">
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/editpass1"
@@ -221,6 +207,8 @@
                         android:gravity="center"
                         android:imeOptions="actionNext"
                         style="@style/texto_15_gris"
+                        android:hint="Contraseña"
+                        android:textColorHint="@color/color_hint"
                         android:textCursorDrawable="@color/colorVerde"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -233,6 +221,8 @@
                     android:textColorHint="@color/color_hint"
                     app:passwordToggleDrawable="@drawable/icon_selector"
                     app:passwordToggleEnabled="true"
+                    app:hintEnabled="false"
+                    android:theme="@style/TextLabel"
                     app:passwordToggleTint="@color/colorGris">
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/editpass2"
@@ -241,6 +231,7 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginBottom="65dp"
                         android:hint="Repita contraseña"
+                        android:textColorHint="@color/color_hint"
                         android:gravity="center"
                         android:imeOptions="actionGo"
                         style="@style/texto_15_gris"

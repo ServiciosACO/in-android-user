@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:layout_marginLeft="19dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:gravity="left"
             android:layout_width="match_parent"
@@ -31,12 +31,14 @@
                 android:layout_marginLeft="35dp"
                 android:text="Mi calendario"
                 android:gravity="center|left"
+                android:layout_gravity="center"
                 android:layout_weight="2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
             <ImageView
                 android:id="@+id/imgCal"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/btn_calendar_inactive" />

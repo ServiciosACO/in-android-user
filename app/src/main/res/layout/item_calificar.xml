@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-        <EditText
+        <co.kubo.indiesco.utils.EditTextRegular
             android:id="@+id/editComments"
             android:hint="Comentarios"
             style="@style/texto_15_negro"

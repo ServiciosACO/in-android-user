@@ -13,15 +13,14 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginBottom="33dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:gravity="left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imgBotonVolver"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -29,6 +28,7 @@
             <co.kubo.indiesco.utils.Medium
                 android:id="@+id/tvTituloHeader"
                 style="@style/texto_20_morado"
+                android:layout_gravity="center"
                 android:layout_marginLeft="35dp"
                 android:text="Mis Notificaciones"
                 android:layout_width="wrap_content"
@@ -60,6 +60,7 @@
                 android:text="Parece que no hay nada aquí, por favor regresa más tarde"
                 style="@style/texto_15_gris"
                 android:gravity="center"
+                android:background="@color/fondo_registro"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="18dp"

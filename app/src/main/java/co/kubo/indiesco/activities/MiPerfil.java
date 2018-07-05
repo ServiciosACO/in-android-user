@@ -48,6 +48,7 @@ import java.io.InputStream;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogImagenPerfil;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Historial;
@@ -190,13 +191,22 @@ public class MiPerfil extends AppCompatActivity implements View.OnClickListener 
                 startActivity(intent);
                 break;
             case R.id.btnCerrarSesion:
-                SharedPreferenceManager.setLoged(MiPerfil.this, false);
-                Usuario usuario = new Usuario();
-                SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
-                finish();
-                Intent in = new Intent(MiPerfil.this, Login.class);
-                in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(in);
+                new DialogDosOpciones(this, "11", new DialogDosOpciones.RespuestaListener() {
+                    @Override
+                    public void onCancelar() {}
+                    @Override
+                    public void onAceptar() {
+                        SharedPreferenceManager.setLoged(MiPerfil.this, false);
+                        Usuario usuario = new Usuario();
+                        SharedPreferenceManager.setInfoUsuario(getApplicationContext(), usuario);
+                        finish();
+                        Intent in = new Intent(MiPerfil.this, Login.class);
+                        in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(in);
+                    }
+                    @Override
+                    public void onSalir() {}
+                }).show();
                 break;
         }//switch
     }
