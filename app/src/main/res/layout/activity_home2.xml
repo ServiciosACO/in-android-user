@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/fondo_registro"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/llHeader"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/logo_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="16dp"
+                    android:id="@+id/imgFotoPerfil"
+                    android:src="@drawable/registro_foto"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="16dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <co.kubo.indiesco.utils.Bold
+                    android:id="@+id/tvNombrePerfil"
+                    android:text="Tony Barajas"
+                    style="@style/texto_22_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvMiPerfil"
+                    android:text="@string/home_ver_perfil"
+                    android:padding="5dp"
+                    style="@style/texto_15_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <com.loopeer.shadow.ShadowView
+                    android:id="@+id/shadow_view"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    app:shadowColor="@color/shadow"
+                    app:shadowAlpha="70"
+                    app:shadowDx="0"
+                    app:shadowDy="4"
+                    app:shadowMargin="5dp"
+                    app:shadowRadius="14dp">
+                    <LinearLayout
+                        android:id="@+id/llSolicitarServ"
+                        android:gravity="center"
+                        android:elevation="4dp"
+                        android:paddingBottom="15dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="30dp"
+                            android:src="@drawable/main_service" />
+                        <co.kubo.indiesco.utils.Medium
+                            android:gravity="left"
+                            android:layout_gravity="center"
+                            style="@style/texto_15_gris"
+                            android:layout_marginStart="15dp"
+                            android:text="Solicitar servicio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <co.kubo.indiesco.utils.Regular
+                            style="@style/texto_12_gris_hint"
+                            android:layout_marginStart="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Selecciona un servicio" />
+                    </LinearLayout>
+                </com.loopeer.shadow.ShadowView>
+
+                <com.loopeer.shadow.ShadowView
+                    android:id="@+id/shadow_view2"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="10dp"
+                    app:shadowColor="@color/shadow"
+                    app:shadowAlpha="70"
+                    app:shadowDx="0"
+                    app:shadowDy="4"
+                    app:shadowMargin="5dp"
+                    app:shadowRadius="14dp">
+                    <LinearLayout
+                        android:id="@+id/llCalendario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="30dp"
+                            android:src="@drawable/main_calendar" />
+                        <co.kubo.indiesco.utils.Medium
+                            style="@style/texto_15_gris"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:text="Mi calendario" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="14dp"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <co.kubo.indiesco.utils.Regular
+                                android:layout_marginLeft="16dp"
+                                android:id="@+id/tvNserviciosProgramados"
+                                style="@style/texto_12_gris_hint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="0" />
+                            <co.kubo.indiesco.utils.Regular
+                                style="@style/texto_12_gris_hint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" programados" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.loopeer.shadow.ShadowView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <com.loopeer.shadow.ShadowView
+                    android:id="@+id/shadow_view3"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    app:shadowColor="@color/shadow"
+                    app:shadowAlpha="70"
+                    app:shadowDx="0"
+                    app:shadowDy="4"
+                    app:shadowMargin="5dp"
+                    app:shadowRadius="14dp">
+                    <LinearLayout
+                        android:id="@+id/llExcedente"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/main_excedentes" />
+                        <co.kubo.indiesco.utils.Medium
+                            style="@style/texto_15_gris"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Excedentes" />
+                        <co.kubo.indiesco.utils.Regular
+                            style="@style/texto_12_gris_hint"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginBottom="14dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Añade un recargo" />
+                    </LinearLayout>
+                </com.loopeer.shadow.ShadowView>
+                <com.loopeer.shadow.ShadowView
+                    android:id="@+id/shadow_view4"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    app:shadowColor="@color/shadow"
+                    app:shadowAlpha="70"
+                    app:shadowDx="0"
+                    app:shadowDy="4"
+                    app:shadowMargin="5dp"
+                    app:shadowRadius="14dp">
+                    <LinearLayout
+                        android:id="@+id/llNotificaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/main_notif" />
+                        <co.kubo.indiesco.utils.Medium
+                            style="@style/texto_15_gris"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="12dp"
+                            android:text="Mis notificaciones" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="14dp"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <co.kubo.indiesco.utils.Regular
+                                android:layout_marginLeft="17dp"
+                                android:id="@+id/tvNnotificaciones"
+                                style="@style/texto_12_gris_hint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="0" />
+                            <co.kubo.indiesco.utils.Regular
+                                style="@style/texto_12_gris_hint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" sin leer" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.loopeer.shadow.ShadowView>
+            </LinearLayout>
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvVersion"
+                android:text="V1.0"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                style="@style/texto_12_gris_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

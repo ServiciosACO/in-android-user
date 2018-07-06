@@ -36,7 +36,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/llSinServicio"
             android:orientation="vertical"
             android:layout_gravity="center"
@@ -60,7 +60,6 @@
                 android:text="Parece que no hay nada aquí, por favor regresa más tarde"
                 style="@style/texto_15_gris"
                 android:gravity="center"
-                android:background="@color/fondo_registro"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="18dp"

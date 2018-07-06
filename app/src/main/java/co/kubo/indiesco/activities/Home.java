@@ -204,7 +204,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     case "100":
                         calendario = response.body().getData();
                         int nMiCalendar = calendario.size();
-                        tvNserviciosProgramados.setText(String.valueOf(nMiCalendar));
+                        tvNserviciosProgramados.setText(String.valueOf(nMiCalendar)+ " programados");
                         break;
                     case "102":
                         Log.e(TAG, "Cod: 102 No hay datos");

@@ -2,7 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorBlanco"
+    android:background="@color/fondo_registro"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
@@ -13,20 +13,21 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/llHeader"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:gravity="left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imgBotonVolver"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/btn_atras" />
             <co.kubo.indiesco.utils.Medium
                 android:id="@+id/tvTituloHeader"
+                android:layout_gravity="center"
                 style="@style/texto_20_morado"
                 android:layout_marginLeft="35dp"
                 android:text="Mis direcciones"

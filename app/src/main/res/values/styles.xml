@@ -78,163 +78,163 @@
     </style>
 
     <style name="texto_18_blanco">
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
     <style name="texto_18_red">
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorRojo</item>
     </style>
 
     <style name="texto_18_blue">
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/azul</item>
     </style>
 
     <style name="texto_15_blanco">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
     <style name="texto_14_verde">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorVerde</item>
     </style>
 
     <style name="texto_14_rojo">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorRojo</item>
     </style>
 
     <style name="texto_15_verde">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorVerde</item>
     </style>
 
     <style name="texto_15_naranja">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorNaranja</item>
     </style>
 
     <style name="texto_13_negro">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/colorNegro</item>
     </style>
 
     <style name="texto_15_negro">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorNegro</item>
     </style>
 
     <style name="texto_15_red">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorRojo</item>
     </style>
 
     <style name="texto_13_rojo">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/colorRojo</item>
     </style>
 
     <style name="texto_13_verde">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/colorVerde</item>
     </style>
 
     <style name="texto_13_naranja">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/colorNaranja</item>
     </style>
 
 
     <style name="texto_13_gris">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/colorGris</item>
     </style>
 
     <style name="texto_13_gris_hint">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/colorGris</item>
     </style>
 
     <style name="texto_14_gris_hint">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorGris</item>
     </style>
 
     <style name="texto_20_morado">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorMorado</item>
     </style>
 
     <style name="texto_22_morado">
-        <item name="android:textSize">22dp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorMorado</item>
     </style>
 
     <style name="texto_22_blanco">
-        <item name="android:textSize">22dp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
     <style name="texto_20_blanco">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
     <style name="texto_22_naranja">
-        <item name="android:textSize">22dp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorNaranja</item>
     </style>
 
     <style name="texto_22_verde">
-        <item name="android:textSize">22dp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorVerde</item>
     </style>
 
     <style name="texto_15_gris">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorGris</item>
     </style>
 
     <style name="texto_12_blanco">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
     <style name="texto_12_gris_hint">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/color_hint</item>
     </style>
 
     <style name="texto_12_gris">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorGris</item>
     </style>
 
     <style name="texto_15_morado">
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorMorado</item>
     </style>
 
     <style name="texto_16_morado">
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorMorado</item>
     </style>
 
     <style name="texto_16_rojo">
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorRojo</item>
     </style>
 
     <style name="texto_36_morado">
-        <item name="android:textSize">36dp</item>
+        <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/colorMorado</item>
     </style>
 
     <style name="texto_36_blanco">
-        <item name="android:textSize">36dp</item>
+        <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/colorBlanco</item>
     </style>
 
