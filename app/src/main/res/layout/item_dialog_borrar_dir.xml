@@ -47,20 +47,20 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <co.kubo.indiesco.utils.ButtonMedium
                 android:id="@+id/btnCancelar"
                 android:text="Cancelar"
-                android:background="@color/colorBlanco"
+                android:background="?attr/selectableItemBackground"
                 style="@style/texto_14_rojo"
                 android:textAllCaps="false"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <Button
+            <co.kubo.indiesco.utils.ButtonMedium
                 android:id="@+id/btnAceptar"
                 android:text="Aceptar"
-                android:background="@color/colorBlanco"
+                android:background="?attr/selectableItemBackground"
                 style="@style/texto_14_verde"
                 android:textAllCaps="false"
                 android:layout_marginLeft="7dp"

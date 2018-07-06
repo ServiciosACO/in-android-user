@@ -26,6 +26,12 @@ import java.util.*
 import org.joda.time.DateTime
 import org.joda.time.Hours
 import org.joda.time.Minutes
+import android.R.attr.y
+import android.R.attr.x
+import android.graphics.Point
+import android.view.Display
+
+
 
 
 class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
@@ -456,6 +462,12 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
         setUpViewPager(flag)
         setListeners()
 
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        val width = (size.x)/5
+        val height = size.y
+
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
@@ -463,7 +475,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     0 -> { //Tipo vivienda
                         radiogroup.check(R.id.radioButton)
                         tvValor.visibility = View.INVISIBLE
-                        llProgress.layoutParams.width = 106
+                        llProgress.layoutParams.width = width
                         llProgress.requestLayout()
                         if (flagVivienda){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
@@ -476,7 +488,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     1 -> { //Dimensiones
                         radiogroup.check(R.id.radioButton2)
                         tvValor.visibility = View.VISIBLE
-                        llProgress.layoutParams.width = 213
+                        llProgress.layoutParams.width = width * 2
                         llProgress.requestLayout()
                         if (flagDimensiones){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
@@ -489,7 +501,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     2 -> { //Espacios
                         radiogroup.check(R.id.radioButton3)
                         tvValor.visibility = View.VISIBLE
-                        llProgress.layoutParams.width = 257
+                        llProgress.layoutParams.width = width * 3
                         llProgress.requestLayout()
                         if (flagEspacios){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
@@ -502,7 +514,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     3 -> { //Direccion
                         radiogroup.check(R.id.radioButton4)
                         tvValor.visibility = View.VISIBLE
-                        llProgress.layoutParams.width = 300
+                        llProgress.layoutParams.width = width * 4
                         llProgress.requestLayout()
                         if (flagAddress){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))

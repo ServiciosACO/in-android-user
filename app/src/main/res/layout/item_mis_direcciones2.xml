@@ -47,8 +47,8 @@
 
                 <RadioButton
                     android:id="@+id/radioButton"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:background="@drawable/select_property"
                     android:button="@color/transparente"
                     android:checked="false"

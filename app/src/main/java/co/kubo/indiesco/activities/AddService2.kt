@@ -1,6 +1,7 @@
 package co.kubo.indiesco.activities
 
 import android.content.Intent
+import android.graphics.Point
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -395,6 +396,11 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
         setUpViewPager(flag)
         setListeners()
 
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        val width = (size.x)/5
+        val height = size.y
         viewPager2.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
@@ -402,7 +408,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                     0 -> { //Tipo vivienda
                         radiogroup.check(R.id.radioButton)
                         tvValor.visibility = View.INVISIBLE
-                        llProgress.layoutParams.width = 106
+                        llProgress.layoutParams.width = width
                         llProgress.requestLayout()
                         if (flagVivienda){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
@@ -415,7 +421,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                     1 -> { //Dimensiones
                         radiogroup.check(R.id.radioButton2)
                         tvValor.visibility = View.INVISIBLE
-                        llProgress.layoutParams.width = 213
+                        llProgress.layoutParams.width = width * 2
                         llProgress.requestLayout()
                         if (flagDimensiones){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
@@ -428,7 +434,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                     2 -> { //Numero de pisos
                         radiogroup.check(R.id.radioButton3)
                         tvValor.visibility = View.VISIBLE
-                        llProgress.layoutParams.width = 257
+                        llProgress.layoutParams.width = width * 3
                         llProgress.requestLayout()
                         if (flagNpisos){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
@@ -441,7 +447,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                     3 -> { //Direccion
                         radiogroup.check(R.id.radioButton4)
                         tvValor.visibility = View.VISIBLE
-                        llProgress.layoutParams.width = 300
+                        llProgress.layoutParams.width = width * 4
                         llProgress.requestLayout()
                         if (flagAddress){
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))

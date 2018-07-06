@@ -15,10 +15,10 @@
         android:id="@+id/llItemInmueble"
         android:background="@color/colorBlanco"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
+        android:paddingLeft="20dp"
         android:paddingRight="24dp"
-        android:paddingTop="35dp"
-        android:paddingBottom="35dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -43,7 +43,7 @@
             android:background="@drawable/select_property"
             android:button="@color/transparente"
             android:checked="false"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="16dp"
+            android:layout_height="16dp" />
     </LinearLayout>
 </com.loopeer.shadow.ShadowView>
