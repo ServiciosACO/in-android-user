@@ -87,7 +87,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabAgregar"
-        android:background="@drawable/btn_"
+        android:src="@drawable/btn_add"
         app:backgroundTint="@color/colorNaranja"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
