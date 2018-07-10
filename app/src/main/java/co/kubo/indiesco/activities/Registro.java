@@ -487,20 +487,24 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             editpass2.setError("La contraseña es requerida");
             return false;
         }
+        if (editpass1.getText().toString().trim().length() < 8) {
+            Toast.makeText(this, "La contraseña debe tener mínimo 8 dígitos", Toast.LENGTH_SHORT).show();
+            //editpass1.setError("La contraseña debe tener mínimo 8 dígitos");
+            return false;
+        }
+        if (editpass2.getText().toString().trim().length() < 8) {
+            Toast.makeText(this, "La contraseña debe tener mínimo 8 dígitos", Toast.LENGTH_SHORT).show();
+            //editpass2.setError("La contraseña debe tener mínimo 8 dígitos");
+            return false;
+        }
         if (!editpass1.getText().toString().equals(editpass2.getText().toString())) {
-            editpass1.setError("Las contraseñas no coinciden");
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            //inputPass1.setError("Las contraseñas no coinciden");
             inputPass1.startAnimation(animShake);
             inputPass2.startAnimation(animShake);
             return false;
         }
-        if (editpass1.getText().toString().trim().length() < 8) {
-            editpass1.setError("La contraseña debe tener mínimo 8 dígitos");
-            return false;
-        }
-        if (editpass2.getText().toString().trim().length() < 8) {
-            editpass2.setError("La contraseña debe tener mínimo 8 dígitos");
-            return false;
-        }
+
         return true;
     }//validacion
 

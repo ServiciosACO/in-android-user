@@ -150,29 +150,35 @@ public class CambiarContrasena extends AppCompatActivity implements View.OnClick
 
     private boolean validaion(){
         if (editpassOld.getText().toString().trim().equalsIgnoreCase("")) {
-            editpassOld.setError("La contraseña anterior es requerida");
+            Toast.makeText(this, "La contraseña anterior es requerida", Toast.LENGTH_SHORT).show();
+            //editpassOld.setError("La contraseña anterior es requerida");
             return false;
         }
         if (editpass1.getText().toString().trim().equalsIgnoreCase("")) {
-            editpass1.setError("La contraseña es requerida");
+            Toast.makeText(this, "La contraseña es requerida", Toast.LENGTH_SHORT).show();
+            //editpass1.setError("La contraseña es requerida");
             return false;
         }
         if (editpass2.getText().toString().trim().equalsIgnoreCase("")) {
-            editpass2.setError("La contraseña es requerida");
+            Toast.makeText(this, "La contraseña es requerida", Toast.LENGTH_SHORT).show();
+            //editpass2.setError("La contraseña es requerida");
             return false;
         }
         if (!editpass1.getText().toString().equals(editpass2.getText().toString())) {
-            editpass1.setError("Las contraseñas no coinciden");
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            //editpass1.setError("Las contraseñas no coinciden");
             inputPass1.startAnimation(animShake);
             inputPass2.startAnimation(animShake);
             return false;
         }
         if (editpass1.getText().toString().trim().length() < 8) {
-            editpass1.setError("La contraseña debe tener mínimo 8 dígitos");
+            Toast.makeText(this, "La contraseña debe tener mínimo 8 dígitos", Toast.LENGTH_SHORT).show();
+            //editpass1.setError("La contraseña debe tener mínimo 8 dígitos");
             return false;
         }
         if (editpass2.getText().toString().trim().length() < 8) {
-            editpass2.setError("La contraseña debe tener mínimo 8 dígitos");
+            Toast.makeText(this, "La contraseña debe tener mínimo 8 dígitos", Toast.LENGTH_SHORT).show();
+            //editpass2.setError("La contraseña debe tener mínimo 8 dígitos");
             return false;
         }
         if (!utils.checkInternetConnection(this, true)){
