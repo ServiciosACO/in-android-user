@@ -116,6 +116,10 @@ public class DialogDosOpciones extends Dialog implements View.OnClickListener {
                 imgBorrar.setImageResource(R.drawable.delete_popup);
                 tvMensaje.setText("¿Estás seguro de cerrar sesión?");
                 break;
+            case "12":
+                imgBorrar.setImageResource(R.drawable.img_timerror);
+                tvMensaje.setText("Para la hora seleccionada no es posible colocar un servicio urgente");
+                break;
             default:break;
         }//switch
 

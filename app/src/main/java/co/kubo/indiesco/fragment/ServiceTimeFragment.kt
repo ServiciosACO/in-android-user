@@ -27,6 +27,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     var AM_PM = "AM"
     val TIME_PICKER_INTERVAL = 30
     lateinit var iTime : ITime
+    var time = ""
 
     override fun onClick(v: View?) {
         when (v!!.id){
@@ -34,9 +35,18 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                 if (toggleButton.isChecked){
                     toggleButton.isChecked = true
                     singleton.urgente = "si"
+
+                    val format = SimpleDateFormat("HH:mm") //this is format in military time
+                    val currentTime = format.format(Calendar.getInstance().time) //get current time
+                    var currentTimetime = format.parse(currentTime) as Date //convert string time in Date time
+                    singleton.hora = format.format(currentTimetime)
+
+                    timePicker.isEnabled = false
+
                 }  else {
                     toggleButton.isChecked = false
                     singleton.urgente = "no"
+                    timePicker.isEnabled = true
                 }
                 iTime.checkTime()
             }
@@ -88,8 +98,17 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
         if(currentDate == singleton.fecha){
-            llUrgentService.visibility = View.VISIBLE
-            tvInfo.visibility = View.VISIBLE
+            val format = SimpleDateFormat("HH:mm") //this is format in military time
+            val currentTime = format.format(Calendar.getInstance().time) //get current time
+            var currentTimetime = format.parse(currentTime) as Date //convert string time in Date time
+            var currentTimeStr = format.format(currentTimetime).split(":")
+            if (currentTimeStr[0].toInt() >= 16){
+                llUrgentService.visibility = View.GONE
+                tvInfo.visibility = View.GONE
+            } else {
+                llUrgentService.visibility = View.VISIBLE
+                tvInfo.visibility = View.VISIBLE
+            }
         } else {
             llUrgentService.visibility = View.GONE
             tvInfo.visibility = View.GONE
@@ -99,7 +118,6 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         timePicker.currentHour = 5
         timePicker.currentMinute = 0
         var minute = timePicker.currentMinute.toString().length
-        var time = ""
         when(minute){
             1 -> {
                 time = "${timePicker.currentHour}:0${timePicker.currentMinute}"
