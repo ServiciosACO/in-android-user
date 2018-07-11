@@ -24,18 +24,14 @@
     <list default="true" id="2df7823c-c4f5-4d20-aedb-887cde12f39b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -128,120 +124,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="activity_registro.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="272" column="43" lean-forward="false" selection-start-line="272" selection-start-column="43" selection-end-line="272" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Registro.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="500" column="22" lean-forward="false" selection-start-line="500" selection-start-column="22" selection-end-line="500" selection-end-column="22" />
-              <folding>
-                <element signature="method#setlistenerEditText#0;class#Registro#0" expanded="false" />
-                <element signature="class#9336:9923" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#9336:9923" expanded="false" />
-                <element signature="method#onTextChanged#0;class#9336:9923" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#9336:9923" expanded="false" />
-                <element signature="class#9971:10565" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#9971:10565" expanded="false" />
-                <element signature="method#onTextChanged#0;class#9971:10565" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#9971:10565" expanded="false" />
-                <element signature="class#10615:11196" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#10615:11196" expanded="false" />
-                <element signature="method#onTextChanged#0;class#10615:11196" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#10615:11196" expanded="false" />
-                <element signature="class#11248:11829" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#11248:11829" expanded="false" />
-                <element signature="method#onTextChanged#0;class#11248:11829" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#11248:11829" expanded="false" />
-                <element signature="class#11878:12465" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#11878:12465" expanded="false" />
-                <element signature="method#onTextChanged#0;class#11878:12465" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#11878:12465" expanded="false" />
-                <element signature="class#12513:13098" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#12513:13098" expanded="false" />
-                <element signature="method#onTextChanged#0;class#12513:13098" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#12513:13098" expanded="false" />
-                <element signature="class#13146:13731" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#13146:13731" expanded="false" />
-                <element signature="method#onTextChanged#0;class#13146:13731" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#13146:13731" expanded="false" />
-                <element signature="class#14912:16104" expanded="false" />
-                <element signature="method#onTextChanged#0;class#14912:16104" expanded="false" />
-                <element signature="method#validarFABVerde#0;class#Registro#0" expanded="false" />
-                <element signature="class#21066:21599" expanded="false" />
-                <element signature="method#onCamara#0;class#21066:21599" expanded="false" />
-                <element signature="method#onGaleria#0;class#21066:21599" expanded="false" />
-                <element signature="method#onBackPressed#0;class#Registro#0" expanded="false" />
-                <element signature="method#splashRegistro#0;class#Registro#0" expanded="false" />
-                <element signature="method#opcionFoto#0;class#Registro#0" expanded="false" />
-                <element signature="method#validarEmail#0;class#Registro#0" expanded="false" />
-                <element signature="class#25499:27139" expanded="false" />
-                <element signature="method#onResponse#0;class#25499:27139" expanded="false" />
-                <element signature="method#onFailure#0;class#25499:27139" expanded="false" />
-                <element signature="method#crearCuenta#0;class#Registro#0" expanded="false" />
-                <element signature="class#27833:29059" expanded="false" />
-                <element signature="method#onResponse#0;class#27833:29059" expanded="false" />
-                <element signature="method#onFailure#0;class#27833:29059" expanded="false" />
-                <element signature="method#crearDireccion#0;class#Registro#0" expanded="false" />
-                <element signature="class#29683:32119" expanded="false" />
-                <element signature="method#onResponse#0;class#29683:32119" expanded="false" />
-                <element signature="method#onFailure#0;class#29683:32119" expanded="false" />
-                <element signature="method#crearFoto#0;class#Registro#0" expanded="false" />
-                <element signature="class#32932:34490" expanded="false" />
-                <element signature="method#onResponse#0;class#32932:34490" expanded="false" />
-                <element signature="method#onFailure#0;class#32932:34490" expanded="false" />
-                <element signature="method#onRequestPermissionsResult#0;class#Registro#0" expanded="false" />
-                <element signature="method#onActivityResult#0;class#Registro#0" expanded="false" />
-                <element signature="method#guardarFoto#0;class#Registro#0" expanded="false" />
-                <element signature="method#hideSoftKeyboard#0;class#Registro#0" expanded="false" />
-                <element signature="docComment;method#onMapReady#0;class#Registro#0" expanded="false" />
-                <element signature="method#onMapReady#0;class#Registro#0" expanded="false" />
-                <element signature="method#getDeviceLocation#0;class#Registro#0" expanded="false" />
-                <element signature="method#getLocationPermission#0;class#Registro#0" expanded="false" />
-                <element signature="method#checkLocation#0;class#Registro#0" expanded="false" />
-                <element signature="method#moveCamera#0;class#Registro#0" expanded="false" />
-                <element signature="docComment;method#llenarAutocomplete#0;class#Registro#0" expanded="false" />
-                <element signature="method#llenarAutocomplete#0;class#Registro#0" expanded="false" />
-                <element signature="method#setLatitudYLongitud#0;class#Registro#0" expanded="false" />
-                <element signature="method#setDireccion#0;class#Registro#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -2146,8 +2029,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_tour.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/spinner_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/EditTextRegular.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/ButtonMedium.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_button_orange_3dp.xml" />
@@ -2197,6 +2078,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_nueva_direccion.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/CambiarContrasena.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java" />
       </list>
     </option>
   </component>
@@ -2223,49 +2106,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="indiesco_android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="indiesco_android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="indiesco_android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="indiesco_android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="indiesco_android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="indiesco_android" />
@@ -2327,6 +2170,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco_android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco_android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco_android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indiesco_android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2471,7 +2344,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1531252390734" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1531330614186" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2519,7 +2392,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1531252390734" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1531330614187" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2705,7 +2578,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1531252390737" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1531330614189" />
       </method>
     </configuration>
     <list size="2">
@@ -2748,7 +2621,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="990" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2762,12 +2634,12 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4532374" sideWeight="0.49786553" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38009593" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38009593" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35491607" sideWeight="0.5032017" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26634383" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20704375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2883,7 +2755,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java</url>
-          <line>239</line>
+          <line>253</line>
           <properties />
           <option name="timeStamp" value="280" />
         </line-breakpoint>
@@ -2949,13 +2821,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java</url>
-          <line>676</line>
+          <line>677</line>
           <properties />
           <option name="timeStamp" value="320" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java</url>
-          <line>665</line>
+          <line>666</line>
           <properties />
           <option name="timeStamp" value="321" />
         </line-breakpoint>
@@ -2970,12 +2842,6 @@
           <line>71</line>
           <properties />
           <option name="timeStamp" value="346" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java</url>
-          <line>158</line>
-          <properties />
-          <option name="timeStamp" value="357" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java</url>
@@ -3008,7 +2874,7 @@
           <option name="timeStamp" value="378" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="379" />
+      <option name="time" value="385" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -3024,75 +2890,64 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-mdpi/btn_add2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/btn_add.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-ldpi/btn_add.png" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dialog_imagen_perfil.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_progress.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_dialog_calificar.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_button_footer.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_calendario_detalle_fecha.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dialog_borrar_dir.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dialog_borrar_dir.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
           <caret line="62" column="67" lean-forward="false" selection-start-line="62" selection-start-column="67" selection-end-line="62" selection-end-column="67" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDosOpciones.java">
@@ -3103,173 +2958,173 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inmueble.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
           <caret line="46" column="39" lean-forward="false" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_item_dialog_dir.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_item_dialog_dir.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_mis_direcciones.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_mis_direcciones.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_mis_direcciones2.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_mis_direcciones2.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
           <caret line="50" column="47" lean-forward="false" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_palabra.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_palabra.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recharge.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recharge.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_resumen.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_tipo_vivienda.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_tour.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/spinner_item.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_historial.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dimensiones.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dialog_pendiente_calificar.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_direccion_google.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_header_calendario.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_header_calendario.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_espacios.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_espacios.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_header_notificaciones.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_header_notificaciones.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
@@ -3394,63 +3249,63 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tipo_inmueble.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_address.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_address.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" column="48" lean-forward="false" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dimensiones.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dimensiones.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
           <caret line="152" column="20" lean-forward="false" selection-start-line="152" selection-start-column="20" selection-end-line="152" selection-end-column="20" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home2.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home2.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mis_notificaciones.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mis_notificaciones.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="61" column="40" lean-forward="false" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_solicitud_servicio3.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_solicitud_servicio3.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
           <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt">
@@ -3462,13 +3317,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_nueva_direccion.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
           <caret line="23" column="26" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
@@ -3479,13 +3334,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="55" column="16" lean-forward="false" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java">
@@ -3496,18 +3351,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mis_direcciones.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="45" lean-forward="false" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="480">
           <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
           <folding />
         </state>
@@ -3525,36 +3380,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/icon_selector.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="38" lean-forward="true" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml">
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="272" column="43" lean-forward="false" selection-start-line="272" selection-start-column="43" selection-end-line="272" selection-end-column="43" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="500" column="22" lean-forward="false" selection-start-line="500" selection-start-column="22" selection-end-line="500" selection-end-column="22" />
+        <state relative-caret-position="3780">
+          <caret line="500" column="62" lean-forward="false" selection-start-line="500" selection-start-column="62" selection-end-line="500" selection-end-column="62" />
           <folding>
             <element signature="method#setlistenerEditText#0;class#Registro#0" expanded="false" />
             <element signature="class#9336:9923" expanded="false" />
@@ -3588,28 +3430,28 @@
             <element signature="class#14912:16104" expanded="false" />
             <element signature="method#onTextChanged#0;class#14912:16104" expanded="false" />
             <element signature="method#validarFABVerde#0;class#Registro#0" expanded="false" />
-            <element signature="class#21066:21599" expanded="false" />
-            <element signature="method#onCamara#0;class#21066:21599" expanded="false" />
-            <element signature="method#onGaleria#0;class#21066:21599" expanded="false" />
+            <element signature="class#21161:21694" expanded="false" />
+            <element signature="method#onCamara#0;class#21161:21694" expanded="false" />
+            <element signature="method#onGaleria#0;class#21161:21694" expanded="false" />
             <element signature="method#onBackPressed#0;class#Registro#0" expanded="false" />
             <element signature="method#splashRegistro#0;class#Registro#0" expanded="false" />
             <element signature="method#opcionFoto#0;class#Registro#0" expanded="false" />
             <element signature="method#validarEmail#0;class#Registro#0" expanded="false" />
-            <element signature="class#25499:27139" expanded="false" />
-            <element signature="method#onResponse#0;class#25499:27139" expanded="false" />
-            <element signature="method#onFailure#0;class#25499:27139" expanded="false" />
+            <element signature="class#25594:27234" expanded="false" />
+            <element signature="method#onResponse#0;class#25594:27234" expanded="false" />
+            <element signature="method#onFailure#0;class#25594:27234" expanded="false" />
             <element signature="method#crearCuenta#0;class#Registro#0" expanded="false" />
-            <element signature="class#27833:29059" expanded="false" />
-            <element signature="method#onResponse#0;class#27833:29059" expanded="false" />
-            <element signature="method#onFailure#0;class#27833:29059" expanded="false" />
+            <element signature="class#27928:29154" expanded="false" />
+            <element signature="method#onResponse#0;class#27928:29154" expanded="false" />
+            <element signature="method#onFailure#0;class#27928:29154" expanded="false" />
             <element signature="method#crearDireccion#0;class#Registro#0" expanded="false" />
-            <element signature="class#29683:32119" expanded="false" />
-            <element signature="method#onResponse#0;class#29683:32119" expanded="false" />
-            <element signature="method#onFailure#0;class#29683:32119" expanded="false" />
+            <element signature="class#29778:32214" expanded="false" />
+            <element signature="method#onResponse#0;class#29778:32214" expanded="false" />
+            <element signature="method#onFailure#0;class#29778:32214" expanded="false" />
             <element signature="method#crearFoto#0;class#Registro#0" expanded="false" />
-            <element signature="class#32932:34490" expanded="false" />
-            <element signature="method#onResponse#0;class#32932:34490" expanded="false" />
-            <element signature="method#onFailure#0;class#32932:34490" expanded="false" />
+            <element signature="class#33027:34585" expanded="false" />
+            <element signature="method#onResponse#0;class#33027:34585" expanded="false" />
+            <element signature="method#onFailure#0;class#33027:34585" expanded="false" />
             <element signature="method#onRequestPermissionsResult#0;class#Registro#0" expanded="false" />
             <element signature="method#onActivityResult#0;class#Registro#0" expanded="false" />
             <element signature="method#guardarFoto#0;class#Registro#0" expanded="false" />
@@ -3624,6 +3466,80 @@
             <element signature="method#llenarAutocomplete#0;class#Registro#0" expanded="false" />
             <element signature="method#setLatitudYLongitud#0;class#Registro#0" expanded="false" />
             <element signature="method#setDireccion#0;class#Registro#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/CambiarContrasena.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="163" column="14" lean-forward="false" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
+          <folding>
+            <element signature="method#onCreate#0;class#CambiarContrasena#0" expanded="false" />
+            <element signature="method#onClick#0;class#CambiarContrasena#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#CambiarContrasena#0" expanded="false" />
+            <element signature="method#cambiarPassword#0;class#CambiarContrasena#0" expanded="false" />
+            <element signature="class#4281:6018" expanded="false" />
+            <element signature="method#onResponse#0;class#4281:6018" expanded="false" />
+            <element signature="method#onFailure#0;class#4281:6018" expanded="false" />
+            <element signature="method#hideSoftKeyboard#0;class#CambiarContrasena#0" expanded="false" />
+            <element signature="method#listenerEditContraseña#0;class#CambiarContrasena#0" expanded="false" />
+            <element signature="class#8236:8798" expanded="false" />
+            <element signature="method#onTextChanged#0;class#8236:8798" expanded="false" />
+            <element signature="class#8846:10395" expanded="false" />
+            <element signature="method#onTextChanged#0;class#8846:10395" expanded="false" />
+            <element signature="method#afterTextChanged#0;class#8846:10395" expanded="false" />
+            <element signature="method#validarFAByMensajePag3#0;class#CambiarContrasena#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="190" column="62" lean-forward="false" selection-start-line="190" selection-start-column="62" selection-end-line="190" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Transaccion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1038">
+          <caret line="142" column="31" lean-forward="false" selection-start-line="142" selection-start-column="31" selection-end-line="142" selection-end-column="31" />
+          <folding>
+            <element signature="method#onCreate#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#onClick#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#onKeyDown#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#opcionVolver#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#3094:3533" expanded="false" />
+            <element signature="method#onCancelar#0;class#3094:3533" expanded="false" />
+            <element signature="method#onSalir#0;class#3094:3533" expanded="false" />
+            <element signature="method#irHome#0;class#Transaccion#0" expanded="false" />
+            <element signature="method#initWebView#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#4830:6488" expanded="false" />
+            <element signature="method#onPageStarted#0;class#4830:6488" expanded="false" />
+            <element signature="method#onPageFinished#0;class#4830:6488" expanded="false" />
+            <element signature="method#cancelTransaction#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#7332:8294" expanded="false" />
+            <element signature="method#onResponse#0;class#7332:8294" expanded="false" />
+            <element signature="method#onFailure#0;class#7332:8294" expanded="false" />
+            <element signature="method#cancelarServicio#0;class#Transaccion#0" expanded="false" />
+            <element signature="class#8883:9845" expanded="false" />
+            <element signature="method#onResponse#0;class#8883:9845" expanded="false" />
+            <element signature="method#onFailure#0;class#8883:9845" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fcm/NotificationService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+          <folding>
+            <element signature="e#1892#1925#1" expanded="true" />
           </folding>
         </state>
       </provider>

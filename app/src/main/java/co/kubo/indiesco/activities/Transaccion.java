@@ -149,6 +149,20 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                     dialogProgress = new DialogProgress(Transaccion.this);
                     dialogProgress.show();
                 }
+                if (url.contains("APPROVED")) {
+                    cancelarTransaccion = false;
+                    if (bandVolver){
+                        irHome();
+                    }
+                    bandVolver = true;
+                }
+                if (url.contains("DECLINED")) {
+                    cancelarTransaccion = true;
+                    if (bandVolver){
+                        cancelTransaction();
+                    }
+                    bandVolver = true;
+                }
                 super.onPageStarted(view, url, favicon);
             }
             @Override
@@ -156,7 +170,7 @@ public class Transaccion extends AppCompatActivity implements View.OnClickListen
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }
-                if (url.contains("response")) {
+                if (url.contains("APPROVED")) {
                     cancelarTransaccion = false;
                     if (bandVolver){
                         irHome();
