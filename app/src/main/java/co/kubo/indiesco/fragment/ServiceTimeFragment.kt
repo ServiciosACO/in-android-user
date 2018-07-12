@@ -168,8 +168,6 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         return v
     }
 
-
-
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         if (isVisibleToUser){
