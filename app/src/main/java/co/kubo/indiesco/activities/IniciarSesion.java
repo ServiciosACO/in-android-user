@@ -161,7 +161,7 @@ public class IniciarSesion extends AppCompatActivity implements View.OnClickList
             return true;
         }else{
             if (editContraseña.getText().toString().trim().equalsIgnoreCase("")) {
-                editContraseña.setError("La contraseña es requerido");
+                Toast.makeText(this, "La contraseña es requerida", Toast.LENGTH_SHORT).show();
                 return false;
             }
             //return (!Utils.checkInternetConnection(this, true));
