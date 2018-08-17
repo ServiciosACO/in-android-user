@@ -43,7 +43,7 @@ public class Terminos extends AppCompatActivity implements View.OnClickListener 
         /**Para mostrar solo pagina web embebido*/
         webViewTerminos.getSettings().setJavaScriptEnabled(true);
         //Para mostrar la pagina web embebida en la app
-        webViewTerminos.loadUrl(url);
+        webViewTerminos.loadUrl(getResources().getString(R.string.terms));
         webViewTerminos.setWebViewClient(new MyWebViewClient());
         webViewTerminos.requestFocus();
 

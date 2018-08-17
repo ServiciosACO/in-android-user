@@ -4,6 +4,7 @@
     <string name="KEY_TOKEN_API">1e+ertsa97-hsvr2</string>
     <string name="SECRET_API">5f573su1i+=1jt3d</string>
     <string name="key_google_maps">AIzaSyDIjos2N4wYVzGDqJZt8IcIZGWMcQBv4Sw</string>
+    <string name="terms">http://serviciosaco.com/terminos-condiciones</string>
 
     <!--Solicitud de servicio-->
     <string name="dimension_1">50m\u00B2 - 60m\u00B2</string>
