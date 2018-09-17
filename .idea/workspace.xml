@@ -13,16 +13,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,7 +42,60 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DialogDosOpciones.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDosOpciones.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-671">
+              <caret line="34" column="11" lean-forward="false" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddService2.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="197" column="59" lean-forward="false" selection-start-line="193" selection-start-column="56" selection-end-line="197" selection-end-column="59" />
+              <folding>
+                <element signature="e#37#994#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddService.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="772" column="38" lean-forward="false" selection-start-line="772" selection-start-column="38" selection-end-line="772" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>format</find>
+      <find>Dialog</find>
+      <find>DialogDosOpciones</find>
+    </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities</dir>
+    </dirStrings>
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../../keyStore/Indiesco(kubo2018)" />
@@ -2036,11 +2087,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="451" />
     <option name="y" value="23" />
     <option name="width" value="1469" />
@@ -2062,7 +2115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2072,31 +2124,16 @@
             </path>
             <path>
               <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
-            </path>
-            <path>
-              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2276,24 +2313,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="451" y="23" width="1469" height="977" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="977" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868758" sideWeight="0.5024527" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.4975473" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947442" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18956336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868758" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2313,10 +2351,154 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt</url>
+          <line>223</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="8" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#4001:4503" expanded="false" />
+            <element signature="method#onItemSelected#0;class#4001:4503" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#4001:4503" expanded="false" />
+            <element signature="class#4695:6710" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#4695:6710" expanded="false" />
+            <element signature="e#4932#4978#0" expanded="false" />
+            <element signature="e#5126#5172#0" expanded="false" />
+            <element signature="e#5598#5644#0" expanded="false" />
+            <element signature="e#6070#6116#0" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onClick#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#7744:8620" expanded="false" />
+            <element signature="method#onSelectDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onIrMisDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onSalir#0;class#7744:8620" expanded="false" />
+            <element signature="e#8700#8720#0" expanded="false" />
+            <element signature="method#validacion#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#9163#9199#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#11867:12163" expanded="false" />
+            <element signature="method#onCancelar#0;class#11867:12163" expanded="false" />
+            <element signature="method#onSalir#0;class#11867:12163" expanded="false" />
+            <element signature="method#tasarServicio#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#12783:13983" expanded="false" />
+            <element signature="method#onResponse#0;class#12783:13983" expanded="false" />
+            <element signature="method#onFailure#0;class#12783:13983" expanded="false" />
+            <element signature="method#listarTiposInmuebles#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#14680:15697" expanded="false" />
+            <element signature="method#onResponse#0;class#14680:15697" expanded="false" />
+            <element signature="method#onFailure#0;class#14680:15697" expanded="false" />
+            <element signature="method#onMapReady#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#16061#16507#0" expanded="false" />
+            <element signature="e#16506#16507#0" expanded="false" />
+            <element signature="method#setLatitudYLongitud#0;class#SolicitudServicio#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#4001:4503" expanded="false" />
+            <element signature="method#onItemSelected#0;class#4001:4503" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#4001:4503" expanded="false" />
+            <element signature="class#4695:6710" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#4695:6710" expanded="false" />
+            <element signature="e#4932#4978#0" expanded="false" />
+            <element signature="e#5126#5172#0" expanded="false" />
+            <element signature="e#5598#5644#0" expanded="false" />
+            <element signature="e#6070#6116#0" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onClick#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#7744:8620" expanded="false" />
+            <element signature="method#onSelectDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onIrMisDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onSalir#0;class#7744:8620" expanded="false" />
+            <element signature="e#8700#8720#0" expanded="false" />
+            <element signature="method#validacion#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#9163#9199#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#11867:12163" expanded="false" />
+            <element signature="method#onCancelar#0;class#11867:12163" expanded="false" />
+            <element signature="method#onSalir#0;class#11867:12163" expanded="false" />
+            <element signature="method#tasarServicio#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#12783:13983" expanded="false" />
+            <element signature="method#onResponse#0;class#12783:13983" expanded="false" />
+            <element signature="method#onFailure#0;class#12783:13983" expanded="false" />
+            <element signature="method#listarTiposInmuebles#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#14680:15697" expanded="false" />
+            <element signature="method#onResponse#0;class#14680:15697" expanded="false" />
+            <element signature="method#onFailure#0;class#14680:15697" expanded="false" />
+            <element signature="method#onMapReady#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#16061#16507#0" expanded="false" />
+            <element signature="e#16506#16507#0" expanded="false" />
+            <element signature="method#setLatitudYLongitud#0;class#SolicitudServicio#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#4001:4503" expanded="false" />
+            <element signature="method#onItemSelected#0;class#4001:4503" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#4001:4503" expanded="false" />
+            <element signature="class#4695:6710" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#4695:6710" expanded="false" />
+            <element signature="e#4932#4978#0" expanded="false" />
+            <element signature="e#5126#5172#0" expanded="false" />
+            <element signature="e#5598#5644#0" expanded="false" />
+            <element signature="e#6070#6116#0" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onClick#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#7744:8620" expanded="false" />
+            <element signature="method#onSelectDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onIrMisDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onSalir#0;class#7744:8620" expanded="false" />
+            <element signature="e#8700#8720#0" expanded="false" />
+            <element signature="method#validacion#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#9163#9199#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#11867:12163" expanded="false" />
+            <element signature="method#onCancelar#0;class#11867:12163" expanded="false" />
+            <element signature="method#onSalir#0;class#11867:12163" expanded="false" />
+            <element signature="method#tasarServicio#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#12783:13983" expanded="false" />
+            <element signature="method#onResponse#0;class#12783:13983" expanded="false" />
+            <element signature="method#onFailure#0;class#12783:13983" expanded="false" />
+            <element signature="method#listarTiposInmuebles#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#14680:15697" expanded="false" />
+            <element signature="method#onResponse#0;class#14680:15697" expanded="false" />
+            <element signature="method#onFailure#0;class#14680:15697" expanded="false" />
+            <element signature="method#onMapReady#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#16061#16507#0" expanded="false" />
+            <element signature="e#16506#16507#0" expanded="false" />
+            <element signature="method#setLatitudYLongitud#0;class#SolicitudServicio#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -2351,10 +2533,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/SolicitudServicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="75" column="25" lean-forward="true" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+          <folding>
+            <element signature="method#onCreate#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#4001:4503" expanded="false" />
+            <element signature="method#onItemSelected#0;class#4001:4503" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#4001:4503" expanded="false" />
+            <element signature="class#4695:6710" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#4695:6710" expanded="false" />
+            <element signature="e#4932#4978#0" expanded="false" />
+            <element signature="e#5126#5172#0" expanded="false" />
+            <element signature="e#5598#5644#0" expanded="false" />
+            <element signature="e#6070#6116#0" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#4695:6710" expanded="false" />
+            <element signature="method#onClick#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#7744:8620" expanded="false" />
+            <element signature="method#onSelectDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onIrMisDir#0;class#7744:8620" expanded="false" />
+            <element signature="method#onSalir#0;class#7744:8620" expanded="false" />
+            <element signature="e#8700#8720#0" expanded="false" />
+            <element signature="method#validacion#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#9163#9199#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#11867:12163" expanded="false" />
+            <element signature="method#onCancelar#0;class#11867:12163" expanded="false" />
+            <element signature="method#onSalir#0;class#11867:12163" expanded="false" />
+            <element signature="method#tasarServicio#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#12783:13983" expanded="false" />
+            <element signature="method#onResponse#0;class#12783:13983" expanded="false" />
+            <element signature="method#onFailure#0;class#12783:13983" expanded="false" />
+            <element signature="method#listarTiposInmuebles#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="class#14680:15697" expanded="false" />
+            <element signature="method#onResponse#0;class#14680:15697" expanded="false" />
+            <element signature="method#onFailure#0;class#14680:15697" expanded="false" />
+            <element signature="method#onMapReady#0;class#SolicitudServicio#0" expanded="false" />
+            <element signature="e#16061#16507#0" expanded="false" />
+            <element signature="e#16506#16507#0" expanded="false" />
+            <element signature="method#setLatitudYLongitud#0;class#SolicitudServicio#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/TipoInmueble.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-692">
+          <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/FechaServicio.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterInmuebles.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-56">
+          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDosOpciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-671">
+          <caret line="34" column="11" lean-forward="false" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService2.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="197" column="59" lean-forward="false" selection-start-line="193" selection-start-column="56" selection-end-line="197" selection-end-column="59" />
+          <folding>
+            <element signature="e#37#994#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/AddService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="772" column="38" lean-forward="false" selection-start-line="772" selection-start-column="38" selection-end-line="772" selection-end-column="38" />
           <folding />
         </state>
       </provider>

@@ -216,7 +216,12 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                             1 -> {
                                                 when (singleton.urgente) {
                                                     "si" -> {
-                                                        DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
+                                                        /**
+                                                         * @author tony barajas
+                                                         * Cambio propuesto el 17/9/18 eliminar el dialog para
+                                                         * indicar que se realizara una visita antes
+                                                         */
+                                                        /*DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
                                                             override fun onCancelar() {}
                                                             override fun onAceptar() {
                                                                 var millisSelectedTime = selectedTime.time
@@ -267,12 +272,64 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                                     }).show()
                                                                 }
                                                             }
-
                                                             override fun onSalir() {}
-                                                        }).show()
+                                                        }).show()*/
+
+                                                        var millisSelectedTime = selectedTime.time
+                                                        var millisCurrentTime = currentTimetime.time
+                                                        //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
+                                                        var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
+                                                        if (diffMillis > 120) {
+                                                            var position = singleton.position
+                                                            var arrayResumen = singleton.resumen
+                                                            var serviceResumen = ServiceResumen()
+                                                            serviceResumen.category = singleton.categoria
+                                                            serviceResumen.date = singleton.fecha
+                                                            serviceResumen.address = singleton.direccion
+                                                            serviceResumen.id_direccion = singleton.idDir
+                                                            serviceResumen.dimension = singleton.dimension
+                                                            serviceResumen.id_dimension = singleton.idDimension
+                                                            serviceResumen.totalCost = totalCost.toString()
+                                                            serviceResumen.urgente = singleton.urgente
+                                                            serviceResumen.comentario = "ok"
+                                                            serviceResumen.pisos = singleton.getnPisos()
+                                                            serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                                            serviceResumen.tipo_cobro = "espacios"
+                                                            serviceResumen.hora = singleton.hora
+
+                                                            var data = singleton.data
+                                                            var posInm = singleton.posTipoInmueble
+                                                            var posDim = singleton.posDimension
+                                                            var arrayEspacios = ArrayList<Espacios>()
+                                                            for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                                                if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                                                    var espacios_aux = Espacios()
+                                                                    espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                                    serviceResumen.espacios.add(espacios_aux)
+                                                                }
+                                                            }
+                                                            arrayResumen.add(serviceResumen)
+                                                            singleton.position = position + 1
+                                                            //Ir a SolicitudServicio3
+                                                            val intent = Intent(applicationContext, SolicitudServicio3::class.java)
+                                                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                                            startActivity(intent)
+                                                            finish()
+                                                        } else {
+                                                            DialogDosOpciones(this@AddService, "5", object : DialogDosOpciones.RespuestaListener {
+                                                                override fun onCancelar() {}
+                                                                override fun onAceptar() {}
+                                                                override fun onSalir() {}
+                                                            }).show()
+                                                        }
                                                     }
                                                     "no" -> {
-                                                        DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
+                                                        /**
+                                                         * @author tony barajas
+                                                         * Cambio propuesto el 17/9/18 eliminar el dialog para
+                                                         * indicar que se realizara una visita antes
+                                                         */
+                                                        /*DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
                                                             override fun onCancelar() {}
                                                             override fun onAceptar() {
                                                                 var millisSelectedTime = selectedTime.time
@@ -323,15 +380,67 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                                     }).show()
                                                                 }
                                                             }
-
                                                             override fun onSalir() {}
-                                                        }).show()
+                                                        }).show()*/
+
+                                                        var millisSelectedTime = selectedTime.time
+                                                        var millisCurrentTime = currentTimetime.time
+                                                        //this is for obtain diff in millis and divide between 60.000 to obtain diff in minutes
+                                                        var diffMillis = (millisSelectedTime - millisCurrentTime) / 60000
+                                                        if (diffMillis > 300) {
+                                                            var position = singleton.position
+                                                            var arrayResumen = singleton.resumen
+                                                            var serviceResumen = ServiceResumen()
+                                                            serviceResumen.category = singleton.categoria
+                                                            serviceResumen.date = singleton.fecha
+                                                            serviceResumen.address = singleton.direccion
+                                                            serviceResumen.id_direccion = singleton.idDir
+                                                            serviceResumen.dimension = singleton.dimension
+                                                            serviceResumen.id_dimension = singleton.idDimension
+                                                            serviceResumen.totalCost = totalCost.toString()
+                                                            serviceResumen.urgente = singleton.urgente
+                                                            serviceResumen.comentario = "ok"
+                                                            serviceResumen.pisos = singleton.getnPisos()
+                                                            serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                                            serviceResumen.tipo_cobro = "espacios"
+                                                            serviceResumen.hora = singleton.hora
+
+                                                            var data = singleton.data
+                                                            var posInm = singleton.posTipoInmueble
+                                                            var posDim = singleton.posDimension
+                                                            var arrayEspacios = ArrayList<Espacios>()
+                                                            for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                                                if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                                                    var espacios_aux = Espacios()
+                                                                    espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                                    serviceResumen.espacios.add(espacios_aux)
+                                                                }
+                                                            }
+                                                            arrayResumen.add(serviceResumen)
+                                                            singleton.position = position + 1
+                                                            //Ir a SolicitudServicio3
+                                                            val intent = Intent(applicationContext, SolicitudServicio3::class.java)
+                                                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                                            startActivity(intent)
+                                                            finish()
+                                                        } else {
+                                                            DialogDosOpciones(this@AddService, "6", object : DialogDosOpciones.RespuestaListener {
+                                                                override fun onCancelar() {}
+                                                                override fun onAceptar() {}
+                                                                override fun onSalir() {}
+                                                            }).show()
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
                                     } else {
-                                        DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
+                                        /**
+                                         * @author tony barajas
+                                         * Cambio propuesto el 17/9/18 eliminar el dialog para
+                                         * indicar que se realizara una visita antes
+                                         */
+                                        /*DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
                                             override fun onCancelar() {}
                                             override fun onAceptar() {
                                                 var position = singleton.position
@@ -370,14 +479,55 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                 startActivity(intent)
                                                 finish()
                                             }
-
                                             override fun onSalir() {}
-                                        }).show()
+                                        }).show()*/
+
+                                        var position = singleton.position
+                                        var arrayResumen = singleton.resumen
+                                        var serviceResumen = ServiceResumen()
+                                        serviceResumen.category = singleton.categoria
+                                        serviceResumen.date = singleton.fecha
+                                        serviceResumen.address = singleton.direccion
+                                        serviceResumen.id_direccion = singleton.idDir
+                                        serviceResumen.dimension = singleton.dimension
+                                        serviceResumen.id_dimension = singleton.idDimension
+                                        serviceResumen.totalCost = totalCost.toString()
+                                        serviceResumen.urgente = singleton.urgente
+                                        serviceResumen.comentario = "ok"
+                                        serviceResumen.pisos = singleton.getnPisos()
+                                        serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                        serviceResumen.tipo_cobro = "espacios"
+                                        serviceResumen.hora = singleton.hora
+
+                                        var data = singleton.data
+                                        var posInm = singleton.posTipoInmueble
+                                        var posDim = singleton.posDimension
+                                        var arrayEspacios = ArrayList<Espacios>()
+                                        for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                            if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                                var espacios_aux = Espacios()
+                                                espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                serviceResumen.espacios.add(espacios_aux)
+                                            }
+                                        }
+                                        arrayResumen.add(serviceResumen)
+                                        singleton.position = position + 1
+                                        //Ir a SolicitudServicio3
+                                        val intent = Intent(applicationContext, SolicitudServicio3::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                        startActivity(intent)
+                                        finish()
                                     }
                                 }
                             } else { //Si el servicio es urgente // validar si esta dentro de 6am a 4pm
                                 if (splitTime[0].toInt() >= 6 || splitTime[0].toInt() < 16) {
-                                    DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
+
+                                    /**
+                                     * @author tony barajas
+                                     * Cambio propuesto el 17/9/18 eliminar el dialog para
+                                     * indicar que se realizara una visita antes
+                                     */
+                                    /*DialogDosOpciones(this@AddService, "9", object : DialogDosOpciones.RespuestaListener {
                                         override fun onCancelar() {}
                                         override fun onAceptar() {
                                             var position = singleton.position
@@ -416,9 +566,44 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                             startActivity(intent)
                                             finish()
                                         }
-
                                         override fun onSalir() {}
-                                    }).show()
+                                    }).show()*/
+
+                                    var position = singleton.position
+                                    var arrayResumen = singleton.resumen
+                                    var serviceResumen = ServiceResumen()
+                                    serviceResumen.category = singleton.categoria
+                                    serviceResumen.date = singleton.fecha
+                                    serviceResumen.address = singleton.direccion
+                                    serviceResumen.id_direccion = singleton.idDir
+                                    serviceResumen.dimension = singleton.dimension
+                                    serviceResumen.id_dimension = singleton.idDimension
+                                    serviceResumen.totalCost = totalCost.toString()
+                                    serviceResumen.urgente = singleton.urgente
+                                    serviceResumen.comentario = "ok"
+                                    serviceResumen.pisos = singleton.getnPisos()
+                                    serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
+                                    serviceResumen.tipo_cobro = "espacios"
+                                    serviceResumen.hora = singleton.hora
+
+                                    var data = singleton.data
+                                    var posInm = singleton.posTipoInmueble
+                                    var posDim = singleton.posDimension
+                                    var arrayEspacios = ArrayList<Espacios>()
+                                    for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
+                                        if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
+                                            var espacios_aux = Espacios()
+                                            espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                            serviceResumen.espacios.add(espacios_aux)
+                                        }
+                                    }
+                                    arrayResumen.add(serviceResumen)
+                                    singleton.position = position + 1
+                                    //Ir a SolicitudServicio3
+                                    val intent = Intent(applicationContext, SolicitudServicio3::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    finish()
                                 } else {
                                     DialogDosOpciones(this@AddService, "4", object : DialogDosOpciones.RespuestaListener {
                                         override fun onCancelar() {}
