@@ -81,7 +81,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                     jsonObject.put("hora", resumen[item].hora)
                     jsonObject.put("comentario", resumen[item].comentario)
                     jsonObject.put("tipo_cobro", resumen[item].tipo_cobro)
-                    if (resumen[item].category == "Vivienda"){
+                    if (resumen[item].tipo_cobro.equals("espacios")){
                         var jsonArrayEspacios = JSONArray()
                         for (i in resumen[item].espacios.indices){
                             var jsonObjectEspacios = JSONObject()
