@@ -65,7 +65,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
     }
 
     override fun checkNPisos(b: Boolean) {
-        flagNpisos = b
+        flagNpisos = true // esto cambio
         if (b){
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
@@ -80,9 +80,15 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
         var data = singleton.data
         var total = 0.0
         if (data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!!.size != 0) {
-            var precio = data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].precio
-            var qty = singleton.getnMetros().toInt()
-            total = qty * precio!!.toDouble()
+
+            if (singleton.getnMetros().toInt()==0){
+                total = singleton.precioFijo.toDouble()
+            }else{
+                var precio = data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].precio
+                var qty = singleton.getnMetros().toInt() //
+                total = qty * precio!!.toDouble()
+            }
+
             when (singleton.getnPisos()) {
                 "1" -> {
                     total *= 1
@@ -113,7 +119,8 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
     }
 
     override fun checkTime() {
-        if (flagNpisos && flagAddress){
+       // if (flagNpisos && flagAddress){
+        if (flagAddress){
             flagTime = true
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
@@ -153,6 +160,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                     }
                     4 -> {
                         if (flagVivienda && flagDimensiones && flagNpisos && flagAddress && flagTime){
+                      //  if (flagVivienda && flagDimensiones && flagAddress && flagTime){
                             val df = SimpleDateFormat("yyyy-MM-dd")
                             val currentDate = df.format(Calendar.getInstance().time)
                             var splitTime = singleton.hora.split(":")
@@ -525,8 +533,6 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                 Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
                             } else if (!flagDimensiones){
                                 Toast.makeText(applicationContext, "Elije las dimensiones", Toast.LENGTH_LONG).show()
-                            } else if(!flagNpisos){
-                                Toast.makeText(applicationContext, "Elije el número de pisos", Toast.LENGTH_LONG).show()
                             } else if (!flagAddress){
                                 Toast.makeText(applicationContext, "Elije la dirección", Toast.LENGTH_LONG).show()
                             }

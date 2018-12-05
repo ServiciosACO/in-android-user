@@ -36,6 +36,16 @@ public class Singleton {
     private Double priceFloorOne;
     private Double priceFloorTwo;
     private Double priceFloorThree;
+
+    public String getPrecioFijo() {
+        return precioFijo;
+    }
+
+    public void setPrecioFijo(String precioFijo) {
+        this.precioFijo = precioFijo;
+    }
+
+    private String precioFijo;
     private Double DiscountValue = 0.0;
     private String discountCode = "0";
 

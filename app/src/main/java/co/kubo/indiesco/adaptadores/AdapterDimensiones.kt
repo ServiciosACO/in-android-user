@@ -49,6 +49,7 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
             singleton.idDimension = temp.idDimension
             singleton.dimension = temp.dimension
             singleton.posDimension = position.toString()
+            singleton.precioFijo = temp.precio_fijo
             notifyDataSetChanged()
             iDimension.dimensionCheck(2)
         }
