@@ -95,7 +95,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
                                 @Override
                                 public void onSalir() {
                                 }
-                            });
+                            },hist.getData());
                     dialog.show();
                 }
             }

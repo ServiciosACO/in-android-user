@@ -3,6 +3,8 @@ package co.kubo.indiesco.modelo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 /**
  * Created by Diego on 8/02/2018.
  */
@@ -59,6 +61,20 @@ public class Historial {
     @SerializedName("estado")
     @Expose
     private String estado;
+
+
+    @SerializedName("personal")
+    @Expose
+    private ArrayList<Personal> data = new ArrayList<>();
+
+
+    public ArrayList<Personal> getData() {
+        return data;
+    }
+
+    public void setData(ArrayList<Personal> data) {
+        this.data = data;
+    }
 
     public String getCalificado() {
         return calificado;

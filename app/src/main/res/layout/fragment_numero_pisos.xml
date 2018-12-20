@@ -37,10 +37,19 @@
             <co.kubo.indiesco.utils.Bold
                 style="@style/texto_18_blue"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginStart="13dp"
                 android:gravity="center"
                 android:text="Ingrese la cantidad de metros cuadrados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_18_blue"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="13dp"
+                android:gravity="center"
+                android:text="(Opcional)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <co.kubo.indiesco.utils.EditTextRegular
@@ -62,6 +71,18 @@
                 android:background="@color/color_hint"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
+            <co.kubo.indiesco.utils.Medium
+                style="@style/texto_18_blue"
+                android:textSize="15dp"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="13dp"
+                android:gravity="center"
+                android:text="@string/en_caso_de_no_escribir_los_metros_cuadrados_exactos_se_cobrar_la_tarifa_fija_del_rango_de_dimensiones_seleccionado_anteriormente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </com.loopeer.shadow.ShadowView>
 </LinearLayout>

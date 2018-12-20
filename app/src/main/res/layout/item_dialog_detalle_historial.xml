@@ -59,6 +59,48 @@
                 android:layout_height="wrap_content">
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
+                    android:text="Encargado: "
+                    android:layout_marginLeft="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvEncargado"
+                    style="@style/texto_15_gris"
+                    android:text="-"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/imgFotoEncargado"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="14dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_15_morado"
+                    android:text="Calificación encargado: "
+                    android:layout_marginLeft="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvCalificacion"
+                    style="@style/texto_15_gris"
+                    android:text="-"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="14dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <co.kubo.indiesco.utils.Bold
+                    style="@style/texto_15_morado"
                     android:text="Dirección: "
                     android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"

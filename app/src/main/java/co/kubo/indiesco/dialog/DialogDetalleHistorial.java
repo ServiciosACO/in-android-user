@@ -19,6 +19,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -35,12 +36,18 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.vision.barcode.Barcode;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.CircleTransform;
+import co.kubo.indiesco.modelo.Personal;
 import co.kubo.indiesco.utils.Utils;
 
 /**
@@ -53,12 +60,13 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
     GoogleMap map;
     private Activity activity;
     private String lat, lng, nServicio, dir, ciudad, tipoTipo, fecha, hora, valor, dimension, calificado, calificacion;
+    ArrayList<Personal> personalList;
     private RespuestaListener respuestaListener;
     Utils utils = new Utils();
 
     public DialogDetalleHistorial(Activity activity, String lat, String lng, String nServicio, String dir,
                                   String ciudad, String dimension, String tipoTipo, String fecha, String hora, String valor,
-                                  String calificado, String calificacion, RespuestaListener respuestaListener) {
+                                  String calificado, String calificacion, RespuestaListener respuestaListener, ArrayList<Personal> personalList) {
         super(activity, R.style.ThemeTransparent);
         this.activity = activity;
         this.lat = lat;
@@ -74,6 +82,7 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         this.calificado = calificado;
         this.calificacion = calificacion;
         this.respuestaListener = respuestaListener;
+        this.personalList = personalList;
     }
 
     public DialogDetalleHistorial(@NonNull Context context) {
@@ -120,7 +129,24 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         TextView tvFechaDetalle = (TextView) findViewById(R.id.tvFechaDetalle);
         TextView tvHoraDetalle = (TextView) findViewById(R.id.tvHoraDetalle);
         TextView tvPrecioServicioDet = (TextView) findViewById(R.id.tvPrecioServicioDet);
+        TextView tvEncargado = (TextView) findViewById(R.id.tvEncargado);
+        TextView tvCalificacion = (TextView) findViewById(R.id.tvCalificacion);
+        ImageView imgFotoEncargado = (ImageView) findViewById(R.id.imgFotoEncargado);
         RatingBar ratingBarDet = (RatingBar) findViewById(R.id.ratingBarDet);
+
+        if (personalList.size()>0){
+            tvEncargado.setText(personalList.get(0).getNombre());
+            tvCalificacion.setText(personalList.get(0).getCalificacion());
+            Picasso
+                    .with(activity)
+                    .load(personalList.get(0).getFoto())
+                    .placeholder(activity.getResources().getDrawable(R.drawable.registro_foto))
+                    .error(activity.getResources().getDrawable(R.drawable.registro_foto))
+                    .transform(new CircleTransform())
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .into(imgFotoEncargado);
+        }
 
         tvNoServicioDetHist.setText(nServicio);
         tvDirDetalleHist.setText(dir);

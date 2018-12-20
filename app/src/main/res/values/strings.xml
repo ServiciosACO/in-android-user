@@ -79,5 +79,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_excedentes3">Excedentes3</string>
+    <string name="en_caso_de_no_escribir_los_metros_cuadrados_exactos_se_cobrar_la_tarifa_fija_del_rango_de_dimensiones_seleccionado_anteriormente">Nota: En caso de no escribir los metros cuadrados exactos, se cobrará la tarifa fija del rango de dimensiones seleccionado anteriormente.</string>
 
 </resources>

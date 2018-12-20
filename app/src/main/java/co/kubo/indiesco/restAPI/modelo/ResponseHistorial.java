@@ -18,7 +18,7 @@ public class ResponseHistorial {
     private String code;
     @SerializedName("data")
     @Expose
-    private ArrayList<Historial> data;
+    private ArrayList<Historial> data = new ArrayList<>();
 
     public String getCode() {
         return code;
