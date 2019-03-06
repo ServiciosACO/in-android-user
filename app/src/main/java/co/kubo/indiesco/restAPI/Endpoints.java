@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 
 import co.kubo.indiesco.modelo.Foto;
 import co.kubo.indiesco.modelo.Historial;
+import co.kubo.indiesco.modelo.ValidacionDirecciones;
 import co.kubo.indiesco.restAPI.modelo.ResponseAuthToken;
 import co.kubo.indiesco.restAPI.modelo.ResponseCodigoDescuento;
 import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio;
@@ -20,6 +21,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseRecargo;
 import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
+import co.kubo.indiesco.restAPI.modelo.ResponseValidacion;
 import co.kubo.indiesco.utils.Constantes;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -229,6 +231,10 @@ public interface Endpoints {
                                           @Field("uid") String uid,
                                           @Field("mts") int mts,
                                           @Field("valor") int valor);
+
+    @GET(ConstantesRestApi.URL_VALIDACION_DIREC)
+    Call<ResponseValidacion> validarDirec(@Header("X-AC-Auth-Token") String authToken);
+
 
 
 

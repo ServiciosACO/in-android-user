@@ -5,10 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RadioButton
-import android.widget.TextView
+import android.widget.*
 import co.kubo.indiesco.R
 import co.kubo.indiesco.activities.CircleTransform
 import co.kubo.indiesco.modelo.InmuebleVO
@@ -35,9 +32,13 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
     override fun onBindViewHolder(holder: InmuebleViewHolder?, position: Int) {
         var temp = inmuebleArray[position]
         holder!!.tvInmueble.text = temp.categoria
+        holder!!.tvDescription1.text = temp.description
         Picasso.with(activity)
                 .load(temp.imagen)
                 .into(holder.imgProperty)
+
+
+
 
         holder.radioButton.isChecked = temp.check
         holder.llItemInmueble.setOnClickListener{
@@ -66,7 +67,9 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
         var tvInmueble = itemView!!.findViewById<TextView>(R.id.tvInmueble)
         var radioButton = itemView!!.findViewById<RadioButton>(R.id.radioButton)
         var imgProperty = itemView!!.findViewById<ImageView>(R.id.imgProperty)
-        var llItemInmueble = itemView!!.findViewById<LinearLayout>(R.id.llItemInmueble)
+        var llItemInmueble = itemView!!.findViewById<RelativeLayout>(R.id.llItemInmueble)
+        var tvDescription1 = itemView!!.findViewById<TextView>(R.id.tvDescription1)
+
     }
 }
 

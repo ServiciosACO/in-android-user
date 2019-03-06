@@ -29,9 +29,13 @@ import co.kubo.indiesco.adaptadores.AdapterAutocomplete
 import co.kubo.indiesco.dialog.DialogDosOpciones
 import co.kubo.indiesco.dialog.DialogProgress
 import co.kubo.indiesco.modelo.Usuario
+/*import co.kubo.indiesco.modelo.ResponseValidacion */
 import co.kubo.indiesco.modelo.direccionesGoogleVO
+import co.kubo.indiesco.restAPI.ConstantesRestApi
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral
+import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2
+import co.kubo.indiesco.restAPI.modelo.ResponseValidacion
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Utils
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -84,6 +88,8 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     var network_enabled = false
     var band2 = true
     val DEFAULT_ZOOM = 16F
+    var ciudadStr =""
+    var ciudadExis = false
 
     var page = 0
 
@@ -99,22 +105,29 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                     }else{
                         complemento = editDirComplemento.text.toString()
                     }
-                    agregarDireccion()
+
+                    validacionDirec()
+
                 }
             }
         }
     }
 
-    fun validation() : Boolean{
-        if (!utils.checkInternetConnection(this@NuevaDireccion, true)){
+    fun validation() : Boolean {
+        if (!utils.checkInternetConnection(this@NuevaDireccion, true)) {
             return false
         }
-        if (editDireccion.text.trim().toString() == ""){
+        googleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitudDireccion!!, longitudDireccion!!), 16f))
+        if (editDireccion.text.trim().toString() == "") {
+
             editDireccion.error = "Debe ingresar una dirección válida"
             return false
         }
         return true
+
     }
+
+
 
     fun agregarDireccion() {
         dialogProgress = DialogProgress(this@NuevaDireccion)
@@ -171,6 +184,49 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         })
     }
 
+    private fun validacionDirec (){
+
+
+
+        val authToken = SharedPreferenceManager.getAuthToken(applicationContext)
+        val restApiAdapter = RestApiAdapter()
+        val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
+        var responseRecargo2Call : Call<ResponseValidacion> = endpoints.validarDirec(authToken)
+        responseRecargo2Call.enqueue(object : Callback<ResponseValidacion>{
+            override fun onFailure(call: Call<ResponseValidacion>?, t: Throwable?) {
+                if (dialogProgress.isShowing)
+                    dialogProgress.dismiss()
+            }
+
+            override fun onResponse(call: Call<ResponseValidacion>?, response: Response<ResponseValidacion>?) {
+                if (dialogProgress.isShowing)
+                    dialogProgress.dismiss()
+                if(response!!.isSuccessful){
+                    when (response.body()!!.code){
+                        "100" -> {
+                         var ciudadesList = response.body()!!.data
+
+
+                            for (i in ciudadesList.indices) {
+
+                                if(ciudadesList[i].city.contains(ciudadStr.trim())){
+                                    ciudadExis = true
+                                }
+                            }
+
+                            if (ciudadExis) {
+                                agregarDireccion()
+                            }else{
+                                Toast.makeText(applicationContext, "Lo sentimos aún no tenemos cobertura en este lugar", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+
+            }
+        })
+    }
+
     override fun onBackPressed() {
         finish()
         super.onBackPressed()
@@ -200,6 +256,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                             if (utils.checkInternetConnection(this@NuevaDireccion, true)) {
                                 direccionPalabra(latitudDireccion.toString(), longitudDireccion.toString(),
                                         valorDireccion.toString(), resources.getString(R.string.key_google_maps))
+
                             }
                         }
                     }
@@ -264,6 +321,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         bandDirCorrecto = true
         try {
             var data = direccion.split(",")
+
             if (data != null) {
                 if (data.isNotEmpty() && bandPonerDir) {
                     if (data[0].contains(" a ")) {
@@ -272,7 +330,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                         valorDireccion = direc[0]
                     } else {
                         editDireccion.setText(data[0], false)
-                        valorDireccion = data[0]
+                         valorDireccion = data[0]
                     }
                 }
             }
@@ -282,17 +340,24 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         try {
             var addresses = geocoder.getFromLocation(latitudDireccion!!, longitudDireccion!!, 1)
             if (addresses.isNotEmpty()) {
-                ciudadDireccion = addresses[0].locality
-                if (ciudadDireccion == null) {
+
+                if (addresses[0].locality == null) {
                     //ciudadDireccion = "Bogotá"
                     ciudadDireccion = ""
+                    ciudadStr = ciudadDireccion
+                    googleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitudDireccion!!, longitudDireccion!!), 16f))
+                }else{
+                    ciudadDireccion = addresses[0].locality
+                    ciudadStr = ciudadDireccion
                 }
             } else {
                 ciudadDireccion = ""
+                googleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitudDireccion!!, longitudDireccion!!), 16f))
             }
         } catch (e: IOException) {
             e.printStackTrace()
             ciudadDireccion = ""
+            googleMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitudDireccion!!, longitudDireccion!!), 16f))
         }
     }
 
@@ -303,10 +368,10 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
     }
 
     override fun onMapReady(map: GoogleMap?) {
-        googleMap = map
+         googleMap = map
         if (googleMap != null) {
             googleMap!!.mapType = GoogleMap.MAP_TYPE_NORMAL
-            //googleMap!!.uiSettings.isScrollGesturesEnabled = true
+            googleMap!!.uiSettings.isScrollGesturesEnabled = true
         }
         googleMap!!.setOnMapLoadedCallback {
             cargoMap = true
@@ -324,7 +389,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         googleMap!!.setOnCameraChangeListener {
             if (cargoMap && cargarDireccion) {
                 if (zoomActual == it.zoom) {
-                    //cargarDireccion = false
+                    cargarDireccion = false
                     var locationFinal = Location("punto final")
                     var visibleRegion = googleMap!!.projection.visibleRegion
                     var x = googleMap!!.projection.toScreenLocation(visibleRegion.farRight)
@@ -384,6 +449,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         getDeviceLocation()
     }
 
+
     private fun hideKeyboard() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
@@ -423,7 +489,21 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                 Log.e(TAG, "getDeviceLocation: SecurityException: " + e.message)
             }
         } else {
-            checkLocation()
+            DialogDosOpciones(this, "10", object : DialogDosOpciones.RespuestaListener{
+                override fun onCancelar() {
+                    band = false
+                }
+                override fun onAceptar() {
+                    gps_enabled = true
+                    network_enabled = true
+                    val myIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    startActivity(myIntent)
+                    //getDeviceLocation();
+                }
+                override fun onSalir() {
+                    band = false
+                }
+            }).show()
             //validarPermisos(android.Manifest.permission.ACCESS_FINE_LOCATION, encontrarUbicacion)
         }
     }
@@ -503,6 +583,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
 
     // <editor-fold desc="Endpoints google Apis">
     private fun obtenerDireccion(lat: String, log: String, band: Boolean) {
+        Log.e(TAG, "obtenerDireccion" + lat+ ", lng: " + log)
         bandPonerDir = true
         val latlon = "$lat,$log"
         val restApiAdapter = RestApiAdapter()
@@ -510,7 +591,9 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         val ubicacion : Call<JsonElement> = endpoints.obtenerDireccion(resources.getString(R.string.key_google_maps), latlon, "true")
         ubicacion.enqueue(object : Callback<JsonElement>{
             override fun onFailure(call: Call<JsonElement>?, t: Throwable?) {
-                valorDireccion("", band)
+
+              //  valorDireccion("", band)
+                Log.e(TAG, "obtenerDireccion onFailure")
             }
             override fun onResponse(call: Call<JsonElement>?, response: Response<JsonElement>?) {
                 try {
@@ -519,17 +602,30 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
                         var resultado = catObj.getJSONArray("results")
                         var catObj1 = resultado.getJSONObject(0)
                         var direccion = catObj1.getString("formatted_address")
+
+                        ciudadStr =     direccion.split(",")[1]
+
+
                         valorDireccion(direccion, band)
                     } else {
+                        Log.e(TAG, "obtenerDireccion response?.body() != null")
                         valorDireccion("", band)
                     }
                 }catch (e: Exception){
                     e.printStackTrace()
-                    valorDireccion("", band)
+                   // valorDireccion("", band)
+                    Log.e(TAG, "obtenerDireccion Exception")
                 }
             }
+
+
         })
     }
+
+
+
+
+
 
     private fun ubicacionDireccion(placeId: String, key: String, band: Boolean){
         bandPonerDir = false

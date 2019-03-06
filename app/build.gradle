@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "co.kubo.indiesco"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 5
-        versionName "1.5"
+        versionCode 6
+        versionName "1.6"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "Servicios ACO - $versionName")
@@ -30,19 +30,19 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
     //compile 'com.daimajia.swipelayout:library:1.2.0@aar'
-    compile 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b' //for swipe
-    compile 'com.google.android.gms:play-services:11.8.0'
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+' //for show progress dialog with gif
-    compile 'com.prolificinteractive:material-calendarview:1.4.3' //for calendar
-    compile 'com.loopeer.lib:shadow:0.0.4-beta2' //To adding shadow to layout
+    implementation 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b' //for swipe
+    implementation 'com.google.android.gms:play-services:11.8.0'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+' //for show progress dialog with gif
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3' //for calendar
+    implementation 'com.loopeer.lib:shadow:0.0.4-beta2' //To adding shadow to layout
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'net.danlew:android.joda:2.9.9.4'
 

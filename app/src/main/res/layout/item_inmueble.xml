@@ -11,39 +11,74 @@
     app:shadowRadius="14dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
+
+    <RelativeLayout
         android:id="@+id/llItemInmueble"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorBlanco"
-        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="24dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:paddingTop="20dp">
+
         <ImageView
             android:id="@+id/imgProperty"
             android:layout_width="48dp"
-            android:layout_height="48dp" />
-        <co.kubo.indiesco.utils.Bold
-            android:id="@+id/tvInmueble"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
+
+        <LinearLayout
             android:gravity="center"
-            style="@style/texto_15_negro"
-            android:text="Casa"
-            android:lines="1"
-            android:maxLines="1"
-            android:textStyle="bold"
-            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_toEndOf="@+id/imgProperty"
+            android:layout_toStartOf="@+id/radioButton"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvInmueble"
+                style="@style/texto_15_gris"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="Casa"
+                android:textStyle="bold" />
+
+            <co.kubo.indiesco.utils.Regular
+                style="@style/texto_15_gris"
+                android:id="@+id/tvDescription1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="Description"/>
+
+        </LinearLayout>
+
         <RadioButton
             android:id="@+id/radioButton"
-            android:clickable="false"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/select_property"
             android:button="@color/transparente"
             android:checked="false"
-            android:layout_width="16dp"
-            android:layout_height="16dp" />
-    </LinearLayout>
+            android:clickable="false" />
+
+
+    </RelativeLayout>
+
 </com.loopeer.shadow.ShadowView>

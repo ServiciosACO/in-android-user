@@ -45,7 +45,7 @@ public class Singleton {
         this.precioFijo = precioFijo;
     }
 
-    private String precioFijo;
+    private String precioFijo = "0";
     private Double DiscountValue = 0.0;
     private String discountCode = "0";
 

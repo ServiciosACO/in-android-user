@@ -29,6 +29,10 @@ public class InmuebleVO {
     @Expose
     private ArrayList<InmuebleTipos> tiposInmuebles = null;
 
+    @SerializedName("description")
+    @Expose
+    private  String description;
+
     Boolean check = false;
 
     int nPisos = 0;
@@ -89,11 +93,20 @@ public class InmuebleVO {
         this.tipoCobro = tipoCobro;
     }
 
+
     public ArrayList<InmuebleTipos> getTiposInmuebles() {
         return tiposInmuebles;
     }
 
     public void setTiposInmuebles(ArrayList<InmuebleTipos> tiposInmuebles) {
         this.tiposInmuebles = tiposInmuebles;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

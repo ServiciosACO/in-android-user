@@ -2,6 +2,7 @@ package co.kubo.indiesco.adaptadores;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,13 +78,24 @@ public class AdapterAutocomplete extends ArrayAdapter<String[]> {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            ArrayList<String[]> filterList = (ArrayList<String[]>) results.values;
+           /* ArrayList<String[]> filterList = (ArrayList<String[]>) results.values;
             if (results.count > 0) {
                 clear();
                 for (String[] item : filterList) {
                     add(item);
                     notifyDataSetChanged();
                 }
+            }*/
+
+            ArrayList<String[]> filterList = (ArrayList<String[]>) results.values;
+            if (results.count > 0) {
+                Log.println(Log.INFO, "Results", "FOUND");
+                filterList.clear();
+                filterList.addAll((ArrayList<String[]>) results.values);
+                notifyDataSetChanged();
+            } else {
+                Log.println(Log.INFO, "Results", "-");
+                notifyDataSetInvalidated();
             }
         }
     };
