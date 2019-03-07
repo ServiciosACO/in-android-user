@@ -6,45 +6,13 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="FIREBASE_TOKEN" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aadf64f2-6f83-47b6-94e1-fac79763fc0d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/ValidacionDirecciones.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponseValidacion.java" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/built.bin" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties.lock" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/release/output.json" afterPath="$PROJECT_DIR$/app/release/output.json" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterAutocomplete.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterAutocomplete.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterInmuebles.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterInmuebles.kt" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleTipos.kt" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleTipos.kt" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleVO.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleVO.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tipo_inmueble.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tipo_inmueble.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_numero_pisos.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_numero_pisos.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_inmueble.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_inmueble.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+      <change beforePath="$PROJECT_DIR$/indiesco_android" afterPath="$PROJECT_DIR$/indiesco_android" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -123,8 +91,8 @@
       <file leaf-file-name="NotificacionIDTokenService.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fcm/NotificacionIDTokenService.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="37" />
+            <state relative-caret-position="345">
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -133,7 +101,7 @@
       <file leaf-file-name="Home.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="1680">
               <caret line="150" column="99" lean-forward="false" selection-start-line="150" selection-start-column="99" selection-end-line="150" selection-end-column="99" />
               <folding />
             </state>
@@ -143,7 +111,7 @@
       <file leaf-file-name="Endpoints.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
+            <state relative-caret-position="2325">
               <caret line="192" column="40" lean-forward="false" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
               <folding />
             </state>
@@ -153,7 +121,7 @@
       <file leaf-file-name="ConstantesRestApi.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="465">
               <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="89" />
               <folding />
             </state>
@@ -2369,33 +2337,12 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
-            <path>
-              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="indiesco" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="indiesco" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-            </path>
             <path>
               <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -2404,7 +2351,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2603,7 +2549,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="977" extended-state="0" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.49803922" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32945284" sideWeight="0.49803922" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.49579832" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2612,8 +2558,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5042017" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.49803922" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.49803922" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.49803922" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30616996" sideWeight="0.49803922" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32945284" sideWeight="0.49803922" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30616996" sideWeight="0.49803922" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2621,9 +2567,9 @@
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41327125" sideWeight="0.49803922" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41327125" sideWeight="0.49803922" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24985994" sideWeight="0.50775194" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2714,7 +2660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2625">
           <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="5" selection-end-line="232" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2754,7 +2699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2625">
           <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="5" selection-end-line="232" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2770,7 +2714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2625">
           <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="5" selection-end-line="232" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2786,7 +2729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3480">
           <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="5" selection-end-line="232" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2802,7 +2744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2055">
           <caret line="194" column="55" lean-forward="true" selection-start-line="194" selection-start-column="55" selection-end-line="194" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2810,18 +2751,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="125" column="24" lean-forward="false" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tipo_inmueble.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
@@ -2832,13 +2772,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inmueble.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/InmuebleVO.java">
@@ -2852,7 +2792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1116">
           <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2874,7 +2813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="56" column="17" lean-forward="false" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2907,13 +2845,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tipo_inmueble.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
@@ -2931,13 +2869,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inmueble.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-27/android.jar!/android/widget/EditText.class">
@@ -2969,13 +2907,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_direccion_google.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-27/android.jar!/java/util/Locale.class">
@@ -2997,19 +2935,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2625">
           <caret line="232" column="5" lean-forward="false" selection-start-line="232" selection-start-column="5" selection-end-line="232" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_nueva_direccion.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="92" column="67" lean-forward="false" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="67" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterAutocomplete.java">
@@ -3062,7 +2998,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="1680">
           <caret line="150" column="99" lean-forward="false" selection-start-line="150" selection-start-column="99" selection-end-line="150" selection-end-column="99" />
           <folding />
         </state>
@@ -3070,7 +3006,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="2325">
           <caret line="192" column="40" lean-forward="false" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
           <folding />
         </state>
@@ -3078,7 +3014,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="465">
           <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="89" />
           <folding />
         </state>
@@ -3086,8 +3022,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fcm/NotificacionIDTokenService.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="37" />
+        <state relative-caret-position="345">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
           <folding />
         </state>
       </provider>
