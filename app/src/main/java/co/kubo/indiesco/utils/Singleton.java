@@ -1,8 +1,10 @@
 package co.kubo.indiesco.utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import co.kubo.indiesco.modelo.InmuebleVO;
+import co.kubo.indiesco.modelo.Personal;
 import co.kubo.indiesco.modelo.ServiceResumen;
 
 /**
@@ -48,6 +50,25 @@ public class Singleton {
     private String precioFijo = "0";
     private Double DiscountValue = 0.0;
     private String discountCode = "0";
+    ArrayList<Personal> arrayListPersonal = new ArrayList<>();
+    ArrayList<Personal> arrayListPersonalHistorial = new ArrayList<>();
+
+
+    public ArrayList<Personal> getArrayListPersonalHistorial() {
+        return arrayListPersonalHistorial;
+    }
+
+    public void setArrayListPersonalHistorial(ArrayList<Personal> arrayListPersonalHistorial) {
+        this.arrayListPersonalHistorial = arrayListPersonalHistorial;
+    }
+
+    public ArrayList<Personal> getArrayListPersonal() {
+        return arrayListPersonal;
+    }
+
+    public void setArrayListPersonal(ArrayList<Personal> arrayListPersonal) {
+        this.arrayListPersonal = arrayListPersonal;
+    }
 
     public String getDiscountCode() {
         return discountCode;
@@ -268,4 +289,6 @@ public class Singleton {
     public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
+
+
 }

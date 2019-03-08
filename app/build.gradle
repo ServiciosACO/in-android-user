@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.loopeer.lib:shadow:0.0.4-beta2' //To adding shadow to layout
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'net.danlew:android.joda:2.9.9.4'
+    implementation 'jp.wasabeef:picasso-transformations:2.1.2'
 
 }
 

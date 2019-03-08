@@ -8,23 +8,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.ActivityCalificarPersonal;
 import co.kubo.indiesco.activities.Calificar2;
 import co.kubo.indiesco.activities.OlvidoContrasena;
+import co.kubo.indiesco.activities.Splash;
+import co.kubo.indiesco.activities.Tour;
+import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.PendienteCalificar;
+import co.kubo.indiesco.modelo.Personal;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import co.kubo.indiesco.utils.Singleton;
 import co.kubo.indiesco.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +58,7 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
     float serviceCalification = 0;
     private DialogProgress dialogProgress;
     String comment = "";
+    private Singleton general = Singleton.getInstance();
 
     public CalificarAdapter(ArrayList<PendienteCalificar> calificars, Activity activity) {
         this.calificars = calificars;
@@ -65,7 +81,33 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
         DecimalFormat formateador = new DecimalFormat("###,###");
         holder.tvPrecioServicio.setText(formateador.format(Double.parseDouble(String.valueOf(cal.getValor()))) + " COP");
 
-        holder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        holder.lnListEncargados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                general.setArrayListPersonal(cal.getPersonal());
+                Intent   in = new Intent(activity, ActivityCalificarPersonal.class);
+                in.putExtra("servicio", holder.tvNoServicioCalificar.getText());
+                in.putExtra("fecha", holder.tvFechaServicioCalificar.getText());
+                in.putExtra("direccion",  holder.tvDirServicioCalificar.getText());
+                in.putExtra("valor", holder.tvPrecioServicio.getText());
+                activity.startActivity(in);
+            }
+        });
+
+        holder.tvEnviarCalificacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                enviarCalificacion(cal.getIdSolicitud(), general.getArrayListPersonal(), comment, position);
+            }
+        });
+
+       /* if (validarCalificados(cal.getPersonal())){
+            holder.imgStar.setVisibility(View.VISIBLE);
+        }else{
+            holder.imgStar.setVisibility(View.GONE);
+        }*/
+
+      /*  holder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean b) {
                 if (rating != 0){
@@ -86,7 +128,7 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
                     holder.tvEnviarCalificacion.setTextColor(activity.getResources().getColor(R.color.colorGris));
                 }
             }
-        });
+        });*/
     }
 
     @Override
@@ -94,10 +136,26 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
         return calificars.size();
     }
 
+    public Boolean validarCalificados( ArrayList<Personal> arrayListPersonal){
+
+        boolean calificado = true;
+
+        for(int i=0; i<arrayListPersonal.size(); i++){
+            if (!arrayListPersonal.get(i).getCalificado()){
+                calificado = false;
+                break;
+            }
+        }
+
+        return calificado;
+    }
+
     public class CalificarViewHolder extends RecyclerView.ViewHolder{
         TextView tvNoServicioCalificar, tvFechaServicioCalificar, tvDirServicioCalificar, tvPrecioServicio, tvEnviarCalificacion;
         RatingBar ratingBar;
         EditText editComments;
+        RelativeLayout lnListEncargados;
+        ImageView imgStar;
         public CalificarViewHolder(View itemView) {
             super(itemView);
             tvNoServicioCalificar = (TextView) itemView.findViewById(R.id.tvNoServicioCalificar);
@@ -107,10 +165,12 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
             tvEnviarCalificacion = (TextView) itemView.findViewById(R.id.tvEnviarCalificacion);
             editComments = (EditText) itemView.findViewById(R.id.editComments);
             ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
+            lnListEncargados = (RelativeLayout) itemView.findViewById(R.id.lnListEncargados);
+            imgStar = (ImageView) itemView.findViewById(R.id.imgStar);
         }
     }
 
-    private void enviarCalificacion(String id_solicitud, String serviceCalification, String comentarios, final int adapter_position){
+    private void enviarCalificacion(String id_solicitud, ArrayList<Personal> arrayListPersonal, String comentarios, final int adapter_position){
         if (dialogProgress == null) {
             dialogProgress = new DialogProgress(activity);
             dialogProgress.show();
@@ -120,7 +180,22 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(activity);
-        Call<ResponseGeneral> responseGeneralCall = endpoints.calificarServicio(authToken, id_solicitud, serviceCalification, comentarios);
+
+
+        JSONArray ja = new JSONArray();
+        try {
+        for(int i=0; i<arrayListPersonal.size(); i++){
+            JSONObject jo = new JSONObject();
+            jo.put("id_personal", arrayListPersonal.get(i).getId_personal());
+            jo.put("calificacion", arrayListPersonal.get(i).getCalificacion());
+            ja.put(jo);
+        }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Call<ResponseGeneral> responseGeneralCall = endpoints.calificarServicio(authToken, id_solicitud, ja.toString(), comentarios);
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {

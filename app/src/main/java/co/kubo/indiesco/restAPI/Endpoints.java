@@ -194,11 +194,17 @@ public interface Endpoints {
     Call<ResponsePendienteCalificar> pendienteCalificar(@Header("X-AC-Auth-Token") String authToken,
                                                         @Path("uid") String uid);
 
-    @FormUrlEncoded
+   /* @FormUrlEncoded
     @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO)
     Call<ResponseGeneral> calificarServicio(@Header("X-AC-Auth-Token") String authToken,
                                             @Field("id_solicitud_item") String id_solicitud_item,
                                             @Field("calificacion") String calificacion,
+                                            @Field("comentario") String comentario);*/
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO1)
+    Call<ResponseGeneral> calificarServicio(@Header("X-AC-Auth-Token") String authToken,
+                                            @Field("id_solicitud_item") String id_solicitud_item,
+                                            @Field("personal") String calificacion,
                                             @Field("comentario") String comentario);
 
     @FormUrlEncoded

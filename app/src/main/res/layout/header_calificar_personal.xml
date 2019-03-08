@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/colorBlanco"
+        android:paddingTop="14dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Bold
+                style="@style/texto_15_naranja"
+                android:text="Servicio No. "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvNoServicioCalificarEm"
+                style="@style/texto_15_naranja"
+                android:text="000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvFechaServicioCalificarEM"
+                android:text="11/02/2018"
+                android:gravity="right"
+                style="@style/texto_13_gris"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/tvDirServicioCalificarEm"
+                android:text="Calle 24 #12-05"
+                style="@style/texto_13_gris"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvTipoMoneda"
+                android:text="$"
+                style="@style/texto_22_verde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Bold
+                android:id="@+id/tvPrecioServicioEm"
+                android:text="385.500"
+                style="@style/texto_22_verde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

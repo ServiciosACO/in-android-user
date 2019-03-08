@@ -3,7 +3,7 @@ package co.kubo.indiesco.modelo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Personal {
+public class Personal implements Cloneable {
     public String getId_personal() {
         return id_personal;
     }
@@ -55,8 +55,18 @@ public class Personal {
     private String telefono = "";
     @SerializedName("calificacion")
     @Expose
-    private String calificacion = "";
+    private String calificacion = "0";
     @SerializedName("foto")
     @Expose
     private String foto = "";
+
+    private Boolean calificado = false;
+
+    public Boolean getCalificado() {
+        return calificado;
+    }
+
+    public void setCalificado(Boolean calificado) {
+        this.calificado = calificado;
+    }
 }

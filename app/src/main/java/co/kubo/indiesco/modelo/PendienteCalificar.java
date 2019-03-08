@@ -3,6 +3,9 @@ package co.kubo.indiesco.modelo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Diego on 24/02/2018.
  */
@@ -53,6 +56,18 @@ public class PendienteCalificar {
     @SerializedName("inmueble")
     @Expose
     private String inmueble;
+
+    @SerializedName("personal")
+    @Expose
+    private ArrayList<Personal> personal = new ArrayList<>();
+
+    public ArrayList<Personal> getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(ArrayList<Personal> personal) {
+        this.personal = personal;
+    }
 
     public String getIdSolicitud() {
         return idSolicitud;

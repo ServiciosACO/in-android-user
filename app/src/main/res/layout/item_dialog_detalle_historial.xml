@@ -60,17 +60,32 @@
                 <co.kubo.indiesco.utils.Bold
                     style="@style/texto_15_morado"
                     android:text="Encargado: "
+                    android:visibility="gone"
                     android:layout_marginLeft="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.Regular
                     android:id="@+id/tvEncargado"
                     style="@style/texto_15_gris"
+
                     android:text="-"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.Regular
+                    android:id="@+id/tvVerEncargado"
+                    style="@style/texto_15_gris"
+                    android:background="@drawable/border_rounded_line"
+                    android:text="VER ENCARGADOS"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/colorVerde"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <ImageView
                     android:id="@+id/imgFotoEncargado"
+                    android:visibility="gone"
                     android:layout_width="30dp"
                     android:layout_height="30dp" />
             </LinearLayout>

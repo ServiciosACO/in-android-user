@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@color/colorBlanco"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/imgEmpleado"
+            android:orientation="vertical">
+            <co.kubo.indiesco.utils.Medium
+                style="@style/texto_20_morado"
+                android:text="Encargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <co.kubo.indiesco.utils.Regular
+                android:id="@+id/txtNombreEmpladoCalificar"
+                style="@style/texto_15_gris"
+                android:text="Pepito perez"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        
+        <ImageView
+            android:id="@+id/imgEmpleado"
+            android:layout_alignParentRight="true"
+            android:layout_width="45dp"
+            android:layout_height="45dp" />
+    </RelativeLayout>
+
+    <co.kubo.indiesco.utils.Medium
+        style="@style/texto_20_morado"
+        android:text="Calificación:"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RatingBar
+        android:id="@+id/ratingBarCalPer"
+        android:stepSize="1.0"
+        android:rating="0.0"
+        android:numStars="5"
+        style="@style/RatingBar"
+        android:progressTint="#F9BB28"
+        android:progressBackgroundTint="@color/color_hint"
+        android:secondaryProgressTint="@color/color_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/borde_gris"></View>
+
+</LinearLayout>

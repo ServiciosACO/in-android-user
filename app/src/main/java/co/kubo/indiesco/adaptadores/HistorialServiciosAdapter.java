@@ -57,6 +57,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
     @Override
     public void onBindViewHolder(final HistorialServiciosViewHolder holder, int position) {
         final Historial hist = historials.get(position);
+
         holder.tvNoServicioHist.setText(String.valueOf(hist.getIdSolicitudItem()));
         holder.tvFechaServicioHist.setText(String.valueOf(utils.StringToDate2(hist.getFechaServicio())).replace(" ", "/"));
         holder.tvDirServicioHist.setText(String.valueOf(hist.getDireccion()));

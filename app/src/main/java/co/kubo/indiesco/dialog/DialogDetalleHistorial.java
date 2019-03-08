@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -24,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdate;
@@ -46,8 +48,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.ActivityCalificarPersonal;
+import co.kubo.indiesco.activities.ActivityHistorialEmpleado;
 import co.kubo.indiesco.activities.CircleTransform;
 import co.kubo.indiesco.modelo.Personal;
+import co.kubo.indiesco.utils.Singleton;
 import co.kubo.indiesco.utils.Utils;
 
 /**
@@ -63,6 +68,8 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
     ArrayList<Personal> personalList;
     private RespuestaListener respuestaListener;
     Utils utils = new Utils();
+
+    private Singleton general = Singleton.getInstance();
 
     public DialogDetalleHistorial(Activity activity, String lat, String lng, String nServicio, String dir,
                                   String ciudad, String dimension, String tipoTipo, String fecha, String hora, String valor,
@@ -131,6 +138,7 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         TextView tvPrecioServicioDet = (TextView) findViewById(R.id.tvPrecioServicioDet);
         TextView tvEncargado = (TextView) findViewById(R.id.tvEncargado);
         TextView tvCalificacion = (TextView) findViewById(R.id.tvCalificacion);
+        TextView tvVerEncargado = (TextView) findViewById(R.id.tvVerEncargado);
         ImageView imgFotoEncargado = (ImageView) findViewById(R.id.imgFotoEncargado);
         RatingBar ratingBarDet = (RatingBar) findViewById(R.id.ratingBarDet);
 
@@ -173,6 +181,21 @@ public class DialogDetalleHistorial extends Dialog implements View.OnClickListen
         }else{
             ratingBarDet.setVisibility(View.GONE);
         }
+
+        tvVerEncargado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (personalList.size()>0){
+                    general.setArrayListPersonalHistorial(personalList);
+                    Intent in = new Intent(activity, ActivityHistorialEmpleado.class);
+                    activity.startActivity(in);
+                }else{
+                    Toast.makeText(getContext(), "Este servicio no tiene encargados asignados.", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
 
         Display display = activity.getWindowManager().getDefaultDisplay();
         Point size = new Point();
