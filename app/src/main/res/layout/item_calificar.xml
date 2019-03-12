@@ -79,7 +79,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:orientation="horizontal"
-                android:background="@drawable/xml_edit_text_background2"
+                android:background="@drawable/bg_shadow"
                 android:layout_width="match_parent"
                 android:padding="10dp"
                 android:layout_height="wrap_content">
@@ -115,10 +115,10 @@
                     android:id="@+id/imgStar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/encargados_cal"/>
+                    android:background="@drawable/ic_star"/>
             </RelativeLayout>
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -133,9 +133,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <co.kubo.indiesco.utils.Bold
+            android:text="Comentarios"
+            style="@style/texto_18_blue"
+            android:textSize="14dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content" />
         <co.kubo.indiesco.utils.EditTextRegular
             android:id="@+id/editComments"
-            android:hint="Comentarios"
+            android:hint="Ingresa tus comentarios"
             style="@style/texto_15_negro"
             android:gravity="start"
             android:padding="5dp"
@@ -155,6 +163,7 @@
                 android:gravity="center"
                 android:text="Enviar calificación"
                 style="@style/texto_14_gris_hint"
+                android:textColor="@color/colorVerde"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

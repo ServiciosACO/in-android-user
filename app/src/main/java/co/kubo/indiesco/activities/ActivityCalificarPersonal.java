@@ -47,6 +47,8 @@ public class ActivityCalificarPersonal extends AppCompatActivity {
         listEmpleadosCalificar = (ListView) findViewById(R.id.listEmpleadosCalificar);
         imgBotonVolverCalificar = (ImageView) findViewById(R.id.imgBotonVolverCalificar);
 
+        general.setArrayListPersonal(general.getVoPendiente().getPersonal());
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -128,6 +130,7 @@ public class ActivityCalificarPersonal extends AppCompatActivity {
         if (calificado){
             lnCalificar.setBackground(getResources().getDrawable(R.drawable.rounded_button_green));
             txtEnviarCalEmpleados.setTextColor(getResources().getColor(R.color.colorBlanco));
+            general.getVoPendiente().setCalificadoPendiente(true);
         }else{
             lnCalificar.setBackground(getResources().getDrawable(R.drawable.border_rounded_line));
             txtEnviarCalEmpleados.setTextColor(getResources().getColor(R.color.colorVerde));

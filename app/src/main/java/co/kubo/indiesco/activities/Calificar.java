@@ -50,9 +50,9 @@ public class Calificar extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onBackPressed() {
-        Intent goHome = new Intent(Calificar.this, Home.class);
-        goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(goHome);
+     //   Intent goHome = new Intent(Calificar.this, Home.class);
+     //   goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    //    startActivity(goHome);
         finish();
     }
 

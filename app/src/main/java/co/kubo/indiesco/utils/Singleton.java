@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.kubo.indiesco.modelo.InmuebleVO;
+import co.kubo.indiesco.modelo.PendienteCalificar;
 import co.kubo.indiesco.modelo.Personal;
 import co.kubo.indiesco.modelo.ServiceResumen;
 
@@ -52,7 +53,15 @@ public class Singleton {
     private String discountCode = "0";
     ArrayList<Personal> arrayListPersonal = new ArrayList<>();
     ArrayList<Personal> arrayListPersonalHistorial = new ArrayList<>();
+   PendienteCalificar voPendiente = new PendienteCalificar();
 
+    public PendienteCalificar getVoPendiente() {
+        return voPendiente;
+    }
+
+    public void setVoPendiente(PendienteCalificar voPendiente) {
+        this.voPendiente = voPendiente;
+    }
 
     public ArrayList<Personal> getArrayListPersonalHistorial() {
         return arrayListPersonalHistorial;

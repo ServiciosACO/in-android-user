@@ -84,7 +84,8 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
         holder.lnListEncargados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                general.setArrayListPersonal(cal.getPersonal());
+
+                general.setVoPendiente(cal);
                 Intent   in = new Intent(activity, ActivityCalificarPersonal.class);
                 in.putExtra("servicio", holder.tvNoServicioCalificar.getText());
                 in.putExtra("fecha", holder.tvFechaServicioCalificar.getText());
@@ -100,6 +101,12 @@ public class CalificarAdapter extends RecyclerView.Adapter<CalificarAdapter.Cali
                 enviarCalificacion(cal.getIdSolicitud(), general.getArrayListPersonal(), comment, position);
             }
         });
+
+        if (cal.getIdSolicitud().equals(general.getVoPendiente().getIdSolicitud())){
+            if (general.getVoPendiente().getCalificadoPendiente()){
+               holder.imgStar.setBackground(activity.getResources().getDrawable(R.drawable.ic_star2));
+            }
+        }
 
        /* if (validarCalificados(cal.getPersonal())){
             holder.imgStar.setVisibility(View.VISIBLE);

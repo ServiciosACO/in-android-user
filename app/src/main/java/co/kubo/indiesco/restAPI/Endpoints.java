@@ -213,12 +213,13 @@ public interface Endpoints {
                                                @Field("uid") String uid,
                                                @Field("codigo_descuento") String codigo_descuento);
 
-    @FormUrlEncoded
-    @POST(ConstantesRestApi.URL_ACTUALIZAR_TOKEN_FIREBASE)
+    //@FormUrlEncoded
+    //@POST(ConstantesRestApi.URL_ACTUALIZAR_TOKEN_FIREBASE)
+    @GET(ConstantesRestApi.URL_ACTUALIZAR_TOKEN_FIREBASE+ "{uid}/{token}/{plataforma}")
     Call<ResponseGeneral> actualizarTokenFirebase(@Header("X-AC-Auth-Token") String authToken,
-                                                  @Field("uid") String uid,
-                                                  @Field("token") String token,
-                                                  @Field("plataforma") String plataforma);
+                                                  @Path("uid") String uid,
+                                                  @Path("token") String token,
+                                                  @Path("plataforma") String plataforma);
 
     @GET(ConstantesRestApi.URL_HISTORIAL_RECARGO)
     Call<ResponseRecargo> getRecargos(@Header("X-AC-Auth-Token") String authToken,

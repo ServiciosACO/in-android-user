@@ -103,7 +103,6 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:elevation="4dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -127,7 +126,6 @@
                             style="@style/texto_12_gris_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="15dp"
                             android:layout_marginStart="12dp"
                             android:text="Selecciona un servicio" />
                     </LinearLayout>
@@ -152,7 +150,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:elevation="4dp"
+
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -176,7 +174,6 @@
                             style="@style/texto_12_gris_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="15dp"
                             android:layout_marginLeft="12dp"
                             android:text="0 programados" />
 
@@ -234,7 +231,6 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:elevation="4dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -256,7 +252,7 @@
                             style="@style/texto_12_gris_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="15dp"
+
                             android:layout_marginStart="12dp"
                             android:text="Añade un recargo" />
                     </LinearLayout>
@@ -281,7 +277,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:elevation="4dp"
+
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -304,7 +300,6 @@
                             style="@style/texto_12_gris_hint"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="15dp"
                             android:layout_marginLeft="12dp"
                             android:text="0 sin leer" />
 

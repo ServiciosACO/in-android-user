@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,23 +68,30 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
         if (hist.getCalificado().equals("no")){
             holder.tvCalificar.setVisibility(View.VISIBLE);
             holder.ratingBarHist.setVisibility(View.GONE);
+            Log.v("hist",hist.getEstado());
+            if (hist.getEstado().equals("cancelado_usuario")){
+
+                holder.tvCalificar.setVisibility(View.VISIBLE);
+                holder.tvCalificar.setText("Cancelado");
+                holder.tvCalificar.setTextColor(activity.getResources().getColor(R.color.colorRojo));
+                holder.ratingBarHist.setVisibility(View.GONE);
+                holder.llCalificar.setClickable(false);
+                holder.llCalificar.setEnabled(false);
+            } else {
+                holder.tvCalificar.setVisibility(View.VISIBLE);
+                holder.tvCalificar.setText("Calificar");
+                holder.tvCalificar.setTextColor(activity.getResources().getColor(R.color.colorVerde));
+                holder.ratingBarHist.setVisibility(View.GONE);
+                holder.llCalificar.setClickable(true);
+                holder.llCalificar.setEnabled(true);
+            }
         }else{
             holder.tvCalificar.setVisibility(View.GONE);
             holder.ratingBarHist.setVisibility(View.VISIBLE);
             holder.ratingBarHist.setRating(Float.valueOf(hist.getCalificacion()));
         }
 
-        if (hist.getEstado().equals("cancelado_usuario")){
-            holder.tvCalificar.setVisibility(View.VISIBLE);
-            holder.tvCalificar.setText("Cancelado");
-            holder.tvCalificar.setTextColor(activity.getResources().getColor(R.color.colorRojo));
-            holder.ratingBarHist.setVisibility(View.GONE);
-            holder.llCalificar.setClickable(false);
-            holder.llCalificar.setEnabled(false);
-        } else {
-            holder.llCalificar.setClickable(true);
-            holder.llCalificar.setEnabled(true);
-        }
+
 
         holder.llHistorial.setOnClickListener(new View.OnClickListener() {
             @Override

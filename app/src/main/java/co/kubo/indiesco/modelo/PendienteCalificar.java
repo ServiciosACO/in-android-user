@@ -61,6 +61,16 @@ public class PendienteCalificar {
     @Expose
     private ArrayList<Personal> personal = new ArrayList<>();
 
+    private Boolean calificadoPendiente = false;
+
+    public Boolean getCalificadoPendiente() {
+        return calificadoPendiente;
+    }
+
+    public void setCalificadoPendiente(Boolean calificadoPendiente) {
+        this.calificadoPendiente = calificadoPendiente;
+    }
+
     public ArrayList<Personal> getPersonal() {
         return personal;
     }

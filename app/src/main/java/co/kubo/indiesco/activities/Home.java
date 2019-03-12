@@ -162,9 +162,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                             @Override
                             public void onIrCalificar() {
                                 Intent goCal = new Intent(Home.this, Calificar.class);
-                                goCal.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                //goCal.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(goCal);
-                                finish();
+                                //finish();
                             }
                             @Override
                             public void onSalir() {
@@ -227,7 +227,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
         Usuario usuario = new Usuario();
         SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager();
-        usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
+        usuario = sharedPreferenceManager.getInfoUsuario(getApplicationContext());
         Call<ResponseGeneral> responseGeneralCall = endpoints.actualizarTokenFirebase(authToken,
                 usuario.getId_user(), sharedPreferenceManager.getFirebaseToken(this), "a");
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
