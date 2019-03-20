@@ -107,7 +107,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                         }
                         @Override
                         public void onSalir() {}
-                    }).show();
+                    },calendar.get(position).getData()).show();
                 }
             });
 

@@ -6,33 +6,25 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="hist" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7621b47d-d974-4afa-9998-83cea3c868bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_push.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_push.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bg_shadow.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_push.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_push.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_push.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/ActivityCalificarPersonal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/ActivityCalificarPersonal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calificar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calificar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MisDirecciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MisDirecciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioDetalleFechaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioDetalleFechaAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/PendienteCalificar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/PendienteCalificar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleCalendario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleCalendario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalificarPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalificarPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/utils/Singleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_historial_empleado.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_historial_empleado.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_calificar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_calificar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_dialog_detalle_historial.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_dialog_detalle_historial.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_dialog_calendario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_dialog_calendario.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,45 +48,47 @@
     <session id="2104844441">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.2" value="2" />
-          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.3" value="4" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="2" />
-          <entry key="java" value="69" />
-          <entry key="kt" value="6" />
-          <entry key="xml" value="42" />
+          <entry key="java" value="102" />
+          <entry key="kt" value="7" />
+          <entry key="xml" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="2" />
-          <entry key="JAVA" value="69" />
-          <entry key="Kotlin" value="6" />
-          <entry key="XML" value="42" />
+          <entry key="JAVA" value="102" />
+          <entry key="Kotlin" value="7" />
+          <entry key="XML" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="10" />
           <entry key="gradle" value="3" />
-          <entry key="java" value="1365" />
-          <entry key="xml" value="852" />
+          <entry key="java" value="1965" />
+          <entry key="kt" value="11" />
+          <entry key="xml" value="863" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="3" />
-          <entry key="JAVA" value="1365" />
+          <entry key="JAVA" value="1965" />
+          <entry key="Kotlin" value="11" />
           <entry key="PLAIN_TEXT" value="10" />
-          <entry key="XML" value="852" />
+          <entry key="XML" value="863" />
         </counts>
       </usages-collector>
     </session>
@@ -102,19 +96,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleCalendario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="136">
+              <caret line="40" column="36" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="338">
+              <caret line="73" column="63" lean-forward="true" selection-start-line="73" selection-start-column="63" selection-end-line="73" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioDetalleFechaAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="76" column="58" selection-start-line="76" selection-start-column="58" selection-end-line="76" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -122,36 +134,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3128">
-              <caret line="221" column="55" selection-start-line="221" selection-start-column="55" selection-end-line="221" selection-end-column="55" />
+            <state relative-caret-position="162">
+              <caret line="205" column="53" lean-forward="true" selection-start-line="205" selection-start-column="53" selection-end-line="205" selection-end-column="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5066">
-              <caret line="298" column="50" selection-start-line="298" selection-start-column="50" selection-end-line="298" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fcm/NotificacionIDTokenService.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fcm/NotificationService.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            <state relative-caret-position="38">
+              <caret line="123" column="77" selection-start-line="123" selection-start-column="77" selection-end-line="123" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -159,27 +152,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="106" column="100" selection-start-line="106" selection-start-column="100" selection-end-line="106" selection-end-column="100" />
+            <state relative-caret-position="122">
+              <caret line="204" selection-start-line="204" selection-end-line="204" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/ActivityCalificarPersonal.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/HistorialServiciosPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1836">
-              <caret line="132" column="64" selection-start-line="132" selection-start-column="64" selection-end-line="132" selection-end-column="64" />
+            <state relative-caret-position="182">
+              <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_calificar.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponseHistorial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1938">
-              <caret line="114" column="44" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="44" />
+            <state relative-caret-position="374">
+              <caret line="34" column="39" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/Historial.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-554">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="e#1973#1974#0" expanded="true" />
+                <element signature="e#2008#2009#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,7 +203,32 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>imgStar</find>
+      <find>getAvailableCities</find>
+      <find>URL_VALIDACION_DIREC</find>
+      <find>ciudad</find>
+      <find>direccion</find>
+      <find>listCiudadesDisponibles</find>
+      <find>ciudadAvaible</find>
+      <find>crearCuenta</find>
+      <find>validarEmail</find>
+      <find>agregarDireccion</find>
+      <find>google_api_key</find>
+      <find>pendienteCalificar</find>
+      <find>endpoints.pendienteCalificar</find>
+      <find>CalificarPresenter</find>
+      <find>validarDirec</find>
+      <find>setDireccion</find>
+      <find>AsincronaGetDireccionPorCoordenadas</find>
+      <find>goo</find>
+      <find>google</find>
+      <find>DialogDetalleHistorial</find>
+      <find>tvVerEncargado</find>
+      <find>DialogDetalleCalendario</find>
+      <find>listarHistorial</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco</dir>
+    </dirStrings>
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../../Android Keys/indiesco/Indiesco(kubo2018)" />
@@ -2340,8 +2370,6 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/border_gris.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleHistorial.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calificar.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bg_shadow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_dialog_detalle_historial.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_historial_empleado.xml" />
@@ -2351,9 +2379,22 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/ActivityCalificarPersonal.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MisDirecciones.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calificar.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalificarPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt" />
+        <option value="$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_dialog_calendario.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleCalendario.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioDetalleFechaAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java" />
       </list>
     </option>
   </component>
@@ -2367,9 +2408,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2379,12 +2419,49 @@
             </path>
             <path>
               <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="indiesco" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="indiesco" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="dialog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="indiesco" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="restAPI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="indiesco_android" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2397,12 +2474,13 @@
     <property name="ExportApk.SignV2" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="ZY223BT34N" />
+    <property name="device.picker.selection" value="FAAZFG019218" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
-    <property name="sync.plugin.last.upgrade.timestamp" value="1552398267257" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="sync.plugin.last.upgrade.timestamp" value="1553120615627" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -2501,6 +2579,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1919" height="964" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.19872136" />
@@ -2510,15 +2589,19 @@
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Flutter Performance" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.32912844" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.32912844" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.32912844" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32912844" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32912844" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" visible="true" weight="0.25344038" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.25344038" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" />
+      <window_info anchor="right" id="Flutter Inspector" />
+      <window_info anchor="right" id="Flutter Outline" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -2565,13 +2648,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalificarPresenter.java</url>
-          <line>63</line>
+          <line>65</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java</url>
-          <line>230</line>
+          <line>231</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
@@ -2583,39 +2666,129 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java</url>
-          <line>228</line>
+          <line>229</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java</url>
-          <line>229</line>
+          <line>230</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java</url>
-          <line>236</line>
+          <line>237</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java</url>
-          <line>235</line>
+          <line>236</line>
           <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java</url>
-          <line>248</line>
+          <line>249</line>
           <properties />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java</url>
-          <line>238</line>
+          <line>239</line>
           <properties />
           <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java</url>
+          <line>1179</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java</url>
+          <line>1170</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java</url>
+          <line>1166</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java</url>
+          <line>97</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java</url>
+          <line>99</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleCalendario.java</url>
+          <line>143</line>
+          <properties />
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleCalendario.java</url>
+          <line>148</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java</url>
+          <line>98</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioDetalleFechaAdapter.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java</url>
+          <line>71</line>
+          <properties />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java</url>
+          <line>106</line>
+          <properties />
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fcm/NotificacionIDTokenService.kt</url>
@@ -2641,123 +2814,21 @@
         <watch expression="usuario.getId_user()" />
         <watch expression="getItem(position).getCalificacion()" />
         <watch expression="general.getArrayListPersonal()" />
+        <watch expression="calendar.get(position).getData()" />
+        <watch expression="calendar" />
+        <watch expression="response.body().getData()" />
+        <watch expression="ja.toString()" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/recyclerview-v7/27.0.2/76f4751bc97ce7fa2362dc5a38b39089066a2c99/recyclerview-v7-27.0.2-sources.jar!/android/support/v7/widget/RecyclerView.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponsePendienteCalificar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_service.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="34" column="23" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="34" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/AdapterRecargos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-751">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CustomPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-381">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/MisDireccionesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="77" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Splash.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_calificar2.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calificar2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/footer_calificar_personal.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="234" column="21" selection-start-line="234" selection-start-column="21" selection-end-line="234" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_calificar_personal.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="62" column="51" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/interfaces/IHistorialServiciosView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/HistorialServiciosPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="91" column="42" lean-forward="true" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/Historial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_calificar_personal.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="62" selection-end-column="15" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarEmpleadoAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2767,20 +2838,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_calificar_personal.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="50" column="15" lean-forward="true" selection-end-line="50" selection-end-column="15" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="156" column="108" selection-start-line="156" selection-start-column="108" selection-end-line="156" selection-end-column="108" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/border_rounded_line.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -2804,55 +2875,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_historial_empleado.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/HistorialServicios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="74" column="67" selection-start-line="74" selection-start-column="67" selection-end-line="74" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dialog_detalle_historial.xml">
       <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="95" column="40" selection-start-line="95" selection-start-column="40" selection-end-line="95" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calificar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalificarPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleHistorial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="107" column="54" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/ActivityHistorialEmpleado.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2875,12 +2903,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_historial_empleado.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/Personal.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2910,34 +2938,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="221" column="55" selection-start-line="221" selection-start-column="55" selection-end-line="221" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5066">
           <caret line="298" column="50" selection-start-line="298" selection-start-column="50" selection-end-line="298" selection-end-column="50" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/fcm/NotificacionIDTokenService.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -2953,13 +2960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="106" column="100" selection-start-line="106" selection-start-column="100" selection-end-line="106" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/ActivityCalificarPersonal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
@@ -2968,17 +2968,226 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_calificar.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1938">
           <caret line="114" column="44" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="44" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="102">
+          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/ValidacionDirecciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponseValidacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/MisDirecciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="105" column="64" selection-start-line="105" selection-start-column="64" selection-end-line="105" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Home.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="165" column="67" selection-start-line="165" selection-start-column="67" selection-end-line="165" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalificarPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="64" column="150" selection-start-line="64" selection-start-column="150" selection-end-line="64" selection-end-column="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/HistorialServicios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="74" column="57" selection-start-line="74" selection-start-column="57" selection-end-line="74" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calificar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/NuevaDireccion.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3400">
+          <caret line="257" column="112" selection-start-line="257" selection-start-column="67" selection-end-line="257" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="89" selection-start-line="22" selection-start-column="89" selection-end-line="22" selection-end-column="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Registro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18054">
+          <caret line="1166" selection-start-line="1166" selection-end-line="1166" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/asincronasMapa/AsincronaGetDireccionPorCoordenadas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/ConstantesRestApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calendario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="88" column="59" selection-start-line="88" selection-start-column="59" selection-end-line="88" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dialog_calendario.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="34" column="57" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dialog_detalle_historial.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="75" column="51" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleHistorial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/activities/Calendario2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="57" column="24" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/dialog/DialogDetalleCalendario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioDetalleFechaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="76" column="58" selection-start-line="76" selection-start-column="58" selection-end-line="76" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/HistorialServiciosPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/modelo/ResponseHistorial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="34" column="39" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/modelo/Historial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-554">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="e#1973#1974#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalendarioAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/presenter/CalendarioPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="123" column="77" selection-start-line="123" selection-start-column="77" selection-end-line="123" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/restAPI/Endpoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="205" column="53" lean-forward="true" selection-start-line="205" selection-start-column="53" selection-end-line="205" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/CalificarAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kubo/indiesco/adaptadores/HistorialServiciosAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="73" column="63" lean-forward="true" selection-start-line="73" selection-start-column="63" selection-end-line="73" selection-end-column="63" />
         </state>
       </provider>
     </entry>

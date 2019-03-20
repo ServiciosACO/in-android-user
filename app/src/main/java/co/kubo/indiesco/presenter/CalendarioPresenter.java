@@ -101,6 +101,7 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                                         not.setLongitud(calendario.get(i).getLongitud());
                                         not.setUrgente(calendario.get(i).getUrgente());
                                         not.setIdDireccion(calendario.get(i).getIdDireccion());
+                                        not.setData(calendario.get(i).getData());
                                         not.setIsHeader("si");
                                         band = false;
                                         holder_calendar.add(not);
@@ -120,6 +121,7 @@ public class CalendarioPresenter implements ICalendarioPresenter{
                                     not.setUrgente(calendario.get(i).getUrgente());
                                     not.setIdDireccion(calendario.get(i).getIdDireccion());
                                     not.setEstado(calendario.get(i).getEstado());
+                                    not.setData(calendario.get(i).getData());
                                     not.setIsHeader("no");
                                     band = false;
                                     holder_calendar.add(not);

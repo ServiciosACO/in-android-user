@@ -84,6 +84,7 @@ import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionesGoogle;
 import co.kubo.indiesco.dialog.DialogImagenPerfil;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Usuario;
+import co.kubo.indiesco.modelo.ValidacionDirecciones;
 import co.kubo.indiesco.modelo.direccionesGoogleVO;
 import co.kubo.indiesco.restAPI.ConstantesRestApi;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -91,6 +92,7 @@ import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseFoto;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
+import co.kubo.indiesco.restAPI.modelo.ResponseValidacion;
 import co.kubo.indiesco.utils.Constantes;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Singleton;
@@ -180,6 +182,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "", foto = "http:\\/\\/indiescoapi.inkubo.co\\/imgs_usuarios\\/-";
     private String direccion = "",complemento = "-", ciudad = "";
 
+
+    private List<ValidacionDirecciones> listCiudadesDisponibles = new ArrayList<>();
+    private String idCiudad = "";
+    boolean ciudadAvaible = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -227,6 +234,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         }//else
 
         setlistenerEditText();
+
+        ciudadesDispo();
 
     }//onCreate
 
@@ -521,7 +530,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                     direccion = editDireccion.getText().toString();
                     complemento = editComplemento.getText().toString();
                     ciudad = editCiudad.getText().toString();
-                    validarEmail();
+                    if (ciudadAvaible){
+                        validarEmail();
+                    }else{
+                        Toast.makeText(Registro.this, "Esta ciudad no tiene disponibilidad", Toast.LENGTH_LONG).show();
+                    }
+
                 }//if
                 break;
             case R.id.imgFoto:
@@ -705,7 +719,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, uid, direccion, String.valueOf(lati), String.valueOf(longi), complemento, ciudad);
+        Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, uid, direccion, String.valueOf(lati), String.valueOf(longi), complemento, ciudad, idCiudad);
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
@@ -1155,7 +1169,69 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             editCiudad.setText(ciudad);
             this.ciudad = ciudad;
             this.direccion = direccion;
+            verificarDireccion(ciudad);
+        }else{
+            Toast.makeText(Registro.this, "No se pudo obtener su ubicacion, es necesario para poder crear cuenta", Toast.LENGTH_LONG).show();
         }
     }
+
+    public void verificarDireccion(String ciudad){
+
+        for(int i=0; i<listCiudadesDisponibles.size(); i++){
+           if (listCiudadesDisponibles.get(i).getCity().equals(ciudad)){
+                    idCiudad = listCiudadesDisponibles.get(i).getCityId();
+                    ciudadAvaible = true;
+                    break;
+           }
+        }
+
+    }
+
+
+    ///// direcciones disponibles
+
+    private void ciudadesDispo() {
+        //if (dialogProgress == null) {
+        dialogProgress = new DialogProgress(Registro.this);
+        dialogProgress.show();
+        //}
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        final String passSha1 = Utils.sha1Encrypt(password);
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Call<ResponseValidacion> responseRegistroCall = endpoints.validarDirec(authToken);
+        responseRegistroCall.enqueue(new Callback<ResponseValidacion>() {
+            @Override
+            public void onResponse(Call<ResponseValidacion> call, Response<ResponseValidacion> response) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
+                String code = response.body().getCode();
+                switch (code) {
+                    case "100": //OK
+                        //Servicio para crear direccion
+                        listCiudadesDisponibles.addAll(response.body().getData());
+                        break;
+                    case "102": //Fallo
+                        Toast.makeText(Registro.this, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show();
+                        break;
+                    case "120": //auth_token no valido
+                        break;
+                    default:
+                        break;
+                }//switch
+            }
+
+            @Override
+            public void onFailure(Call<ResponseValidacion> call, Throwable t) {
+                if (dialogProgress.isShowing()) {
+                    dialogProgress.dismiss();
+                }
+                Log.e(TAG, "onFailure registro");
+            }
+        });
+    }
+
+
 
 }

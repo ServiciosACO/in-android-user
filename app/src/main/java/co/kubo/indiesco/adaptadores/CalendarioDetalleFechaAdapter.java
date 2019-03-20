@@ -74,7 +74,7 @@ public class CalendarioDetalleFechaAdapter extends RecyclerView.Adapter<Calendar
                             }
                             @Override
                             public void onSalir() {}
-                        }).show();
+                        },calendar.get(position).getData()).show();
             }
         });
     }

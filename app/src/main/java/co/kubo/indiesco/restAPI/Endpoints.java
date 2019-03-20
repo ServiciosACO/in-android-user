@@ -89,7 +89,8 @@ public interface Endpoints {
                                            @Field("latitud") String latitud,
                                            @Field("longitud") String longitud,
                                            @Field("complemento") String complemento,
-                                           @Field("ciudad") String ciudad);
+                                           @Field("ciudad") String ciudad,
+                                           @Field("cityId") String cityId);
 
     @GET(ConstantesRestApi.URL_ELIMINAR_DIRECCION + "{uid}/{id_direccion}")
     Call<ResponseGeneral> eliminarDireccion(@Header("X-AC-Auth-Token") String authToken,
@@ -190,9 +191,9 @@ public interface Endpoints {
                                               @Path("dimension") String dimension,
                                               @Path("urgente") String urgente);
 
-    @GET(ConstantesRestApi.URL_PENDIENTE_CALIFICAR + "{uid}")
+    @GET(ConstantesRestApi.URL_PENDIENTE_CALIFICAR + "{uid}/{idservicio}")
     Call<ResponsePendienteCalificar> pendienteCalificar(@Header("X-AC-Auth-Token") String authToken,
-                                                        @Path("uid") String uid);
+                                                        @Path("uid") String uid,@Path("idservicio") String idservicio);
 
    /* @FormUrlEncoded
     @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO)

@@ -2,6 +2,7 @@ package co.kubo.indiesco.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,8 +26,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.ActivityHistorialEmpleado;
+import co.kubo.indiesco.modelo.Personal;
+import co.kubo.indiesco.utils.Singleton;
 import co.kubo.indiesco.utils.Utils;
 
 /**
@@ -41,11 +47,14 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
     private RespuestaListener respuestaListener;
     Utils utils = new Utils();
     private boolean band;
+    ArrayList<Personal> personalList;
+
+    private Singleton general = Singleton.getInstance();
 
     public DialogDetalleCalendario(Activity activity, String lat, String lng, String nServicio, String dir,
                                    String ciudad, String dimension,  String tipoTipo, String fecha, String hora,
                                    String valor, String estado,
-                                   RespuestaListener respuestaListener) {
+                                   RespuestaListener respuestaListener, ArrayList<Personal> personalList) {
         super(activity, R.style.ThemeTransparent);
         this.activity = activity;
         this.lat = lat;
@@ -60,6 +69,7 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
         this.valor = valor;
         this.estado = estado;
         this.respuestaListener = respuestaListener;
+        this.personalList = personalList;
     }
 
     public interface RespuestaListener {
@@ -100,6 +110,8 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
         TextView tvFechaDetalle = (TextView) findViewById(R.id.tvFechaDetalle);
         TextView tvHoraDetalle = (TextView) findViewById(R.id.tvHoraDetalle);
         TextView tvPrecioServicioDet = (TextView) findViewById(R.id.tvPrecioServicioDet);
+        TextView tvVerEncargadoCalendario = (TextView) findViewById(R.id.tvVerEncargadoCalendario);
+
         LinearLayout llSalir = (LinearLayout) findViewById(R.id.llSalir);
         llSalir.setOnClickListener(this);
         Button btnCancelarServicio = (Button) findViewById(R.id.btnCancelarServicio);
@@ -125,6 +137,21 @@ public class DialogDetalleCalendario extends Dialog implements View.OnClickListe
                 tvTipoTipo.setText("Finca - " + dimension + activity.getResources().getString(R.string.cuadrado));
                 break;
         }//switch
+
+        tvVerEncargadoCalendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (personalList.size()>0){
+                    general.setArrayListPersonalHistorial(personalList);
+                    Intent in = new Intent(activity, ActivityHistorialEmpleado.class);
+                    activity.startActivity(in);
+                }else{
+                    Toast.makeText(getContext(), "Este servicio no tiene encargados asignados.", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
 
         Display display = activity.getWindowManager().getDefaultDisplay();
         Point size = new Point();

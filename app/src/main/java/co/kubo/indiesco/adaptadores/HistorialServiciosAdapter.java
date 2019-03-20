@@ -114,6 +114,7 @@ public class HistorialServiciosAdapter extends RecyclerView.Adapter<HistorialSer
             @Override
             public void onClick(View view) {
                 Intent inCal = new Intent(activity, Calificar.class);
+                inCal.putExtra("id_servicio", hist.getIdSolicitudItem());
                 inCal.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 activity.startActivity(inCal);
                 activity.finish();

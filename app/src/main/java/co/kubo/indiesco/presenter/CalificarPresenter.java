@@ -39,11 +39,13 @@ public class CalificarPresenter implements ICalificarPresenter {
     private Activity activity;
     private ArrayList<PendienteCalificar> calificar = new ArrayList<>();
     private DialogProgress dialogProgress;
+    private String idService ;
 
-    public CalificarPresenter(ICalificarView iCalificarView, Context context, Activity activity) {
+    public CalificarPresenter(ICalificarView iCalificarView, Context context, Activity activity, String idService) {
         this.iCalificarView = iCalificarView;
         this.context = context;
         this.activity = activity;
+        this.idService = idService;
 
         obtenerCalificar();
     }
@@ -60,7 +62,7 @@ public class CalificarPresenter implements ICalificarPresenter {
         usuario = SharedPreferenceManager.getInfoUsuario(context);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        final Call<ResponsePendienteCalificar> responsePendienteCalificarCall = endpoints.pendienteCalificar(authToken, usuario.getId_user());
+        final Call<ResponsePendienteCalificar> responsePendienteCalificarCall = endpoints.pendienteCalificar(authToken, usuario.getId_user(),idService);
         responsePendienteCalificarCall.enqueue(new Callback<ResponsePendienteCalificar>() {
             @Override
             public void onResponse(Call<ResponsePendienteCalificar> call, Response<ResponsePendienteCalificar> response) {

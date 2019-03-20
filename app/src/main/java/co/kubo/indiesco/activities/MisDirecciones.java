@@ -96,7 +96,7 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
                 Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
                 Usuario usuario = new Usuario();
                 usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
-                Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, usuario.getId_user(), dir, lat, lng, complemento, ciudad);
+                Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, usuario.getId_user(), dir, lat, lng, complemento, ciudad,"");
                 responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
                     @Override
                     public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {

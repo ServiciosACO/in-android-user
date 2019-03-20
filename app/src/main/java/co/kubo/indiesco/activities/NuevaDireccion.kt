@@ -23,7 +23,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.Toast
-import co.kubo.indiesco.Manifest
+
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterAutocomplete
 import co.kubo.indiesco.dialog.DialogDosOpciones
@@ -138,7 +138,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
         var usuario = Usuario()
         usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
         val responseGeneralCall = endpoints.agregarDireccion(authToken, usuario.id_user, valorDireccion,
-                latitudStr, longitudStr, complemento, ciudadDireccion)
+                latitudStr, longitudStr, complemento, ciudadDireccion,"")
         responseGeneralCall.enqueue(object : Callback<ResponseGeneral> {
             override fun onResponse(call: Call<ResponseGeneral>, response: Response<ResponseGeneral>) {
                 if (dialogProgress.isShowing) {
@@ -274,7 +274,7 @@ class NuevaDireccion : AppCompatActivity(), View.OnClickListener, OnMapReadyCall
             } catch (e: Exception) { }
             val placeId = p0.getItemAtPosition(p2) as Array<String>
             if (utils.checkInternetConnection(this@NuevaDireccion, true)) {
-                ubicacionDireccion(placeId[1], resources.getString(R.string.google_api_key), true)
+                ubicacionDireccion(placeId[1], resources.getString(R.string.key_google_maps), true)
             }
             //googleMap!!.uiSettings.isScrollGesturesEnabled = true
         }

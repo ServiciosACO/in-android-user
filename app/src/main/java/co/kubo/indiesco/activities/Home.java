@@ -148,7 +148,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        final Call<ResponsePendienteCalificar> responsePendienteCalificarCall = endpoints.pendienteCalificar(authToken, uid);
+        final Call<ResponsePendienteCalificar> responsePendienteCalificarCall = endpoints.pendienteCalificar(authToken, uid,"0");
         responsePendienteCalificarCall.enqueue(new Callback<ResponsePendienteCalificar>() {
             @Override
             public void onResponse(Call<ResponsePendienteCalificar> call, Response<ResponsePendienteCalificar> response) {
@@ -163,6 +163,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                             public void onIrCalificar() {
                                 Intent goCal = new Intent(Home.this, Calificar.class);
                                 //goCal.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                goCal.putExtra("id_servicio", "0");
                                 startActivity(goCal);
                                 //finish();
                             }

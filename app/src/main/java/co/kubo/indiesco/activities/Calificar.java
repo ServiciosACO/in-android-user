@@ -27,6 +27,7 @@ public class Calificar extends AppCompatActivity implements View.OnClickListener
     @BindView(R.id.rvCalificar)
     RecyclerView rvCalificar;
     ICalificarPresenter presenter;
+    String sessionId = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,9 @@ public class Calificar extends AppCompatActivity implements View.OnClickListener
         ButterKnife.bind(this);
         imgBotonVolver.setOnClickListener(this);
 
-        presenter = new CalificarPresenter(this, getApplicationContext(), Calificar.this);
+        sessionId  = getIntent().getStringExtra("id_servicio");
+
+        presenter = new CalificarPresenter(this, getApplicationContext(), Calificar.this,sessionId);
     }
 
     @Override

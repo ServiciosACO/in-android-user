@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.EditarPerfil;
 import co.kubo.indiesco.activities.Registro;
 import co.kubo.indiesco.utils.Servicios;
@@ -43,7 +44,7 @@ public class AsincronaGetDireccionPorCoordenadas extends AsyncTask<Void, Void, S
     @Override
     protected String doInBackground(Void... params) {
         try {
-            String request = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&sensor=true";
+            String request = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&sensor=true&key="+activity.getResources().getString(R.string.key_google_maps);
 
             return Servicios.getMethod(request, null);
         } catch (Exception e) {
