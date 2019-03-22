@@ -147,16 +147,35 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                 var pos = viewPager2.currentItem
                 when (pos) {
                     0 -> {
-                        viewPager2.currentItem = 1
+                        if (flagVivienda){
+                            viewPager2.currentItem = 1
+                        }else{
+                            Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
+                        }
+
                     }
                     1 -> {
-                        viewPager2.currentItem = 2
+                        if (flagDimensiones){
+                            viewPager2.currentItem = 2
+                        }else{
+                            Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
+                        }
                     }
                     2 -> {
-                        viewPager2.currentItem = 3
+                        if (flagNpisos){
+                            viewPager2.currentItem = 3
+                        }else{
+                            Toast.makeText(applicationContext, "Elije numero de pisos", Toast.LENGTH_LONG).show()
+                        }
+
                     }
                     3 -> {
-                        viewPager2.currentItem = 4
+                        if (flagAddress){
+                            viewPager2.currentItem = 4
+                        }else{
+                            Toast.makeText(applicationContext, "Elije dirección", Toast.LENGTH_LONG).show()
+                        }
+
                     }
                     4 -> {
                         if (flagVivienda && flagDimensiones && flagNpisos && flagAddress && flagTime){
@@ -532,7 +551,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                             if (!flagVivienda){
                                 Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
                             } else if (!flagDimensiones){
-                                Toast.makeText(applicationContext, "Elije las dimensiones", Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
                             } else if (!flagAddress){
                                 Toast.makeText(applicationContext, "Elije la dirección", Toast.LENGTH_LONG).show()
                             }
@@ -608,6 +627,9 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
         display.getSize(size)
         val width = (size.x)/5
         val height = size.y
+
+        viewPager2.setPagingEnabled(false)
+
         viewPager2.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {

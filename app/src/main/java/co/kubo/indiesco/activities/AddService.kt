@@ -165,16 +165,35 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                 var pos = viewPager.currentItem
                 when (pos){
                     0 -> {
-                        viewPager.currentItem = 1
+                        if (flagVivienda){
+                            viewPager.currentItem = 1
+                        }else{
+                            Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
+                        }
+
                     }
                     1 -> {
-                        viewPager.currentItem = 2
+                        if (flagDimensiones){
+                            viewPager.currentItem = 2
+                        }else{
+                            Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
+                        }
+
                     }
                     2 -> {
-                        viewPager.currentItem = 3
+                        if (flagEspacios){
+                            viewPager.currentItem = 3
+                        }else{
+                            Toast.makeText(applicationContext, "Elije los espacios", Toast.LENGTH_LONG).show()
+                        }
+
                     }
                     3 -> {
-                        viewPager.currentItem = 4
+                        if (flagAddress){
+                            viewPager.currentItem = 4
+                        }else{
+                            Toast.makeText(applicationContext, "Elije la dirección", Toast.LENGTH_LONG).show()
+                        }
                     }
                     4 -> {
                         if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios && flagTime){
@@ -616,7 +635,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                             if (!flagVivienda){
                                 Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
                             } else if (!flagDimensiones){
-                                Toast.makeText(applicationContext, "Elije las dimensiones", Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
                             } else if(!flagEspacios){
                                 Toast.makeText(applicationContext, "Elije los espacios", Toast.LENGTH_LONG).show()
                             } else if (!flagAddress){
@@ -708,6 +727,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
         display.getSize(size)
         val width = (size.x)/5
         val height = size.y
+        viewPager.setPagingEnabled(false)
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
