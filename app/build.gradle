@@ -7,8 +7,8 @@ android {
         applicationId "co.kubo.indiesco"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 9
-        versionName "1.9"
+        versionCode 20
+        versionName "2.1"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "Servicios ACO - $versionName")
@@ -40,7 +40,8 @@ dependencies {
     //compile 'com.daimajia.swipelayout:library:1.2.0@aar'
     implementation 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b' //for swipe
     implementation 'com.google.android.gms:play-services:11.8.0'
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+' //for show progress dialog with gif
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+    //for show progress dialog with gif
     implementation 'com.prolificinteractive:material-calendarview:1.4.3' //for calendar
     implementation 'com.loopeer.lib:shadow:0.0.4-beta2' //To adding shadow to layout
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"

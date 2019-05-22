@@ -14,6 +14,7 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
 import co.kubo.indiesco.R
+import co.kubo.indiesco.activities.ActivityNuevaDireccionSinGps
 import co.kubo.indiesco.activities.NuevaDireccion
 import co.kubo.indiesco.adaptadores.IAddress
 import co.kubo.indiesco.adaptadores.MisDireccionesAdapter
@@ -50,8 +51,8 @@ class ChooseAddressFragment : Fragment(), View.OnClickListener {
         when (v!!.id){
             R.id.fabAgregar -> {
                 if (flag){
-                    val intent = Intent(activity, NuevaDireccion::class.java)
-                    intent.putExtra("activity",2)
+                    val intent = Intent(activity, ActivityNuevaDireccionSinGps::class.java)
+                    intent.putExtra("estado","")
                     startActivity(intent)
                 } else {
                     Toast.makeText(activity, "Has llegado al máximo de direcciones que puedes agregar", Toast.LENGTH_LONG).show()

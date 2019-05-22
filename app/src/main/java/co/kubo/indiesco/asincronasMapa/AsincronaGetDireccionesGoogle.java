@@ -89,7 +89,7 @@ public class AsincronaGetDireccionesGoogle extends AsyncTask<Void, Void, String>
             }
         }
         if (tipo == 1){
-            ((Registro) activity).llenarAutocomplete(direcciones);
+         //   ((Registro) activity).llenarAutocomplete(direcciones);
         }else{
             ((EditarPerfil) activity).llenarAutocomplete(direcciones);
         }

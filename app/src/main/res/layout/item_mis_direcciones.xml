@@ -22,7 +22,32 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_button_red_3dp_one_side"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/llEditarDir"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginLeft="43dp"
+                    android:layout_marginRight="43dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_edit" />
+                <co.kubo.indiesco.utils.Medium
+                    style="@style/texto_12_blanco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="Editar" />
+            </LinearLayout>
             <!--What you want to show-->
             <LinearLayout
                 android:id="@+id/llBorrarDir"

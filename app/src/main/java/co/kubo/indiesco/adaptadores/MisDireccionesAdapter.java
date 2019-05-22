@@ -1,6 +1,7 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import com.daimajia.swipe.SwipeLayout;
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
+import co.kubo.indiesco.activities.ActivityNuevaDireccionSinGps;
+import co.kubo.indiesco.activities.Calificar;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.IMisDireccionesView;
@@ -26,6 +29,7 @@ import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
+import co.kubo.indiesco.utils.Singleton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,6 +45,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     Activity activity;
     private DialogProgress dialogProgress;
     IMisDireccionesView iMisDireccionesView;
+    private Singleton general = Singleton.getInstance();
 
     public MisDireccionesAdapter(ArrayList<Direccion> direccion, Activity activity, IMisDireccionesView iMisDireccionesView) {
         this.direccion = direccion;
@@ -57,7 +62,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
         final Direccion dir = direccion.get(position);
         holder.tvDir.setText(dir.getDireccion());
         holder.tvComplemento.setText(dir.getComplemento());
-        holder.tvCiudad.setText(dir.getCiudad());
+        holder.tvCiudad.setText(dir.getCity());
 
         holder.llBorrarDir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +81,16 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                 }).show();
             }
         });
+
+        holder.llEditarDir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                general.setVoDireccion(dir);
+                Intent inCal = new Intent(activity, ActivityNuevaDireccionSinGps.class);
+                inCal.putExtra("estado", "Editar");
+                activity.startActivity(inCal);
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -85,6 +100,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
     public class MisDireccionesViewHolder extends RecyclerView.ViewHolder{
         TextView tvDir, tvCiudad, tvComplemento;
         LinearLayout llBorrarDir;
+        LinearLayout llEditarDir;
         SwipeLayout mSwipe;
         ImageView imgBorrarDir;
         public MisDireccionesViewHolder(View itemView) {
@@ -93,6 +109,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
             tvComplemento = (TextView) itemView.findViewById(R.id.tvComplemento);
             tvCiudad = (TextView) itemView.findViewById(R.id.tvCiudad);
             llBorrarDir = (LinearLayout) itemView.findViewById(R.id.llBorrarDir);
+            llEditarDir = (LinearLayout) itemView.findViewById(R.id.llEditarDir);
             mSwipe = (SwipeLayout) itemView.findViewById(R.id.mSwipe);
             imgBorrarDir = (ImageView) itemView.findViewById(R.id.imgBorrarDir);
         }

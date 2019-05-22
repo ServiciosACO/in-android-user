@@ -36,7 +36,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/llSinServicio"
             android:orientation="vertical"
             android:layout_gravity="center"

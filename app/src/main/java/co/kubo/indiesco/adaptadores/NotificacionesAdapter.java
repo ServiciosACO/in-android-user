@@ -113,11 +113,12 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Date currentTime = Calendar.getInstance().getTime();
             String today =  utils.DateToString(currentTime);
             String nueva_fecha = utils.StringToDate(notificaciones.get(position).getFecha());
-            if (today.equals(nueva_fecha)){
+           /* if (today.equals(nueva_fecha)){
                 ((ViewHolderHeader) holder).setTvHeader("Hoy");
             }else{
                 ((ViewHolderHeader) holder).setTvHeader(nueva_fecha.replace(" ", " de "));
-            }
+            }*/
+            ((ViewHolderHeader) holder).setTvHeader(nueva_fecha.replace(" ", " de "));
         }
     }
 

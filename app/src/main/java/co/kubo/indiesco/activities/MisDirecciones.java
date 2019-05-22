@@ -64,6 +64,13 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.obtenerDirecciones();
+
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.imgBotonVolver:
@@ -71,8 +78,8 @@ public class MisDirecciones extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.fabAgregar:
                 if (flag){
-                    Intent in = new Intent(MisDirecciones.this, NuevaDireccion.class);
-                    in.putExtra("activity", 1);
+                    Intent in = new Intent(MisDirecciones.this, ActivityNuevaDireccionSinGps.class);
+                    in.putExtra("estado", "");
                     startActivity(in);
                 } else {
                     Toast.makeText(this, "Has llegado al máximo de direcciones que puedes agregar", Toast.LENGTH_LONG).show();

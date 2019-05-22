@@ -60,7 +60,7 @@ public class AsincronaGetDetalleDireccionGoogle extends AsyncTask<Void, Void, St
             }
         }
         if (tipo == 1){
-            ((Registro) activity).setLatitudYLongitud(latlng);
+         //   ((Registro) activity).setLatitudYLongitud(latlng);
         }else{
             ((EditarPerfil) activity).setLatitudYLongitud(latlng);
         }

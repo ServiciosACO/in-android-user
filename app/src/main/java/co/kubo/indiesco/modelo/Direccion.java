@@ -26,6 +26,17 @@ public class Direccion {
     @SerializedName("ciudad")
     @Expose
     private String ciudad;
+    @SerializedName("city")
+    @Expose
+    private String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     boolean check = false;
 

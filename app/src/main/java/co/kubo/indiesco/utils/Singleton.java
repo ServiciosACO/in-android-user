@@ -3,6 +3,7 @@ package co.kubo.indiesco.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.kubo.indiesco.modelo.Direccion;
 import co.kubo.indiesco.modelo.InmuebleVO;
 import co.kubo.indiesco.modelo.PendienteCalificar;
 import co.kubo.indiesco.modelo.Personal;
@@ -54,6 +55,15 @@ public class Singleton {
     ArrayList<Personal> arrayListPersonal = new ArrayList<>();
     ArrayList<Personal> arrayListPersonalHistorial = new ArrayList<>();
    PendienteCalificar voPendiente = new PendienteCalificar();
+    Direccion voDireccion = new Direccion();
+
+    public Direccion getVoDireccion() {
+        return voDireccion;
+    }
+
+    public void setVoDireccion(Direccion voDireccion) {
+        this.voDireccion = voDireccion;
+    }
 
     public PendienteCalificar getVoPendiente() {
         return voPendiente;

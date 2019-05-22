@@ -95,7 +95,7 @@ public class AsincronaGetDireccionPorCoordenadas extends AsyncTask<Void, Void, S
             }
         }
         if (opcion == 1){
-            ((Registro) activity).setDireccion(direccionCorta, ciudad);
+          //  ((Registro) activity).setDireccion(direccionCorta, ciudad);
         }else{
             ((EditarPerfil) activity).setDireccion(direccionCorta, ciudad);
         }

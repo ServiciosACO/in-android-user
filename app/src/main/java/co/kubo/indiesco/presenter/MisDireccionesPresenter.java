@@ -38,7 +38,7 @@ public class MisDireccionesPresenter implements IMisDireccionesPresenter {
         this.iMisDireccionesView = iMisDireccionesView;
         this.context = context;
         this.activity = activity;
-        obtenerDirecciones();
+
     }
 
     @Override

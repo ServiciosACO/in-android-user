@@ -38,12 +38,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -104,7 +106,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Registro extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
+public class Registro extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "Registro";
     @BindView(R.id.imgBotonVolver)
@@ -117,12 +119,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     EditText editEmail;
     @BindView(R.id.editCelular)
     EditText editCelular;
-    @BindView(R.id.editDireccion)
-    AutoCompleteTextView editDireccion;
-    @BindView(R.id.editComplemento)
-    EditText editComplemento;
-    @BindView(R.id.editCiudad)
-    EditText editCiudad;
     @BindView(R.id.editpass1)
     TextInputEditText editpass1;
     @BindView(R.id.editpass2)
@@ -137,8 +133,18 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     TextInputLayout inputPass2;
     @BindView(R.id.llSplashRegistro)
     LinearLayout llSplashRegistro;
-    @BindView(R.id.imagetrans)
-    ImageView imagetrans;
+    @BindView(R.id.spTypesCA)
+    Spinner spTypesCA;
+    @BindView(R.id.spnCiudadesCA)
+    Spinner spnCiudadesCA;
+    @BindView(R.id.etFirstPartCA)
+    EditText etFirstPartCA;
+    @BindView(R.id.etSecondPartCA)
+    EditText etSecondPartCA;
+    @BindView(R.id.etThirdPartCA)
+    EditText etThirdPartCA;
+    @BindView(R.id.etComplementCA)
+    EditText etComplementCA;
 
     private DialogProgress dialogProgress;
     private MapFragment mapaDireccion;
@@ -187,19 +193,23 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
     private String idCiudad = "";
     boolean ciudadAvaible = false;
 
+
+
+
+    private List<String> arrayCities = new ArrayList<>();
+    final String[] str={"Autopista", "Avenida", "Bulevar", "Calle", "Carrera", "Carretera", "Circular", "Circunvalar", "Diagonal", "Pasaje", "Paseo", "Peatonal", "Transversal", "Troncal", "Variante", "Via"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         ButterKnife.bind(this);
-        getLocationPermission();
         animShake = AnimationUtils.loadAnimation(Registro.this, R.anim.shake);
         fabSiguiente.setOnClickListener(this);
         imgFoto.setOnClickListener(this);
         imgBotonVolver.setOnClickListener(this);
-        mapaDireccion = (MapFragment) getFragmentManager().findFragmentById(R.id.mapaDireccion);
 
-        hideSoftKeyboard();
+
         /**Para desaparecer el FAB cuando hago scroll*/
         scrollViewRegistro.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
@@ -218,9 +228,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             }
         });
 
-        if (mapaDireccion != null) {
-            mapaDireccion.getMapAsync(this);
-        }
 
         Bundle parametros = getIntent().getExtras();
         if (parametros == null) {
@@ -233,9 +240,19 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             val = "1";
         }//else
 
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, str);
+        spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+
+// Spinner spinYear = (Spinner)findViewById(R.id.spin);
+        spTypesCA.setAdapter(spinnerArrayAdapter);
+
         setlistenerEditText();
 
         ciudadesDispo();
+
+
 
     }//onCreate
 
@@ -297,44 +314,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             public void afterTextChanged(Editable s) {
             }
         });
-        editDireccion.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().length() != 0) {
-                    bandDir = true;
-                } else {
-                    bandDir = false;
-                }
-                validarFABVerde();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-        editCiudad.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().length() != 0) {
-                    bandCiudad = true;
-                } else {
-                    bandCiudad = false;
-                }
-                validarFABVerde();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
         editpass1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -374,78 +353,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
             }
         });
 
-        /**Para hacer scroll en el mapa verticalmente*/
-        imagetrans.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                int action = event.getAction();
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        // Disallow ScrollView to intercept touch events.
-                        scrollViewRegistro.requestDisallowInterceptTouchEvent(true);
-                        // Disable touch on transparent view
-                        return false;
-                    case MotionEvent.ACTION_UP:
-                        // Allow ScrollView to intercept touch events.
-                        scrollViewRegistro.requestDisallowInterceptTouchEvent(false);
-                        return true;
-                    case MotionEvent.ACTION_MOVE:
-                        scrollViewRegistro.requestDisallowInterceptTouchEvent(true);
-                        return false;
-                    default:
-                        return true;
-                }
-            }
-        });
 
-        editDireccion.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkLocation();
-                if (!bandPermiso && gps_enabled){
-                    getDeviceLocation();
-                    bandPermiso = true;
-                }
-                if (!isMapa) {
-                    bandDireccionValida = false;
-                    if (s.toString().length() >= 2) {
-                        if (utils.checkInternetConnection(Registro.this, true)) {
-                            new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim(), 1).execute();
-                            /*if (cargarDireccionesGoogle) {
-                                cargarDireccionesGoogle = false;
-                                new AsincronaGetDireccionesGoogle(Registro.this, s.toString().trim()).execute();
-                            }*/
-                        }
-                    }
-                }
-            }
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-        editDireccion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                selDireccion = true;
-                //editDireccion.setBackgroundResource(R.drawable.xml_edit_text_direccion);
-                bandDireccionValida = true;
-                try {
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(editDireccion.getWindowToken(), 0);
-                } catch (Exception e) {
-
-                }
-                String placeId = ((String[]) arg0.getItemAtPosition(arg2))[1];
-                direccion ="";
-                if (utils.checkInternetConnection(Registro.this, true)) {
-                    new AsincronaGetDetalleDireccionGoogle(Registro.this, placeId, 1).execute();
-                }
-            }
-        });
     }
 
     private void validarFABVerde() {
-        if (bandNombre && (bandX || bandEmail) && bandCel && bandDir && bandCiudad && bandPass1 && bandPass2) {
+        if (bandNombre && (bandX || bandEmail) && bandCel && bandPass1 && bandPass2) {
             fabSiguiente.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorVerde)));
             bandOK = true;
         } else {
@@ -478,14 +390,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         }
         if (editCelular.getText().toString().trim().length() != 10) {
             editCelular.setError("Ingrese un numero de celular de 10 digitos valido");
-            return false;
-        }
-        if (editDireccion.getText().toString().trim().equalsIgnoreCase("")) {
-            editDireccion.setError("La dirección es requerida");
-            return false;
-        }
-        if (editCiudad.getText().toString().trim().equalsIgnoreCase("")) {
-            editCiudad.setError("La ciudad es requerida");
             return false;
         }
         if (editpass1.getText().toString().trim().equalsIgnoreCase("")) {
@@ -522,19 +426,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         switch (v.getId()) {
             case R.id.fabSiguiente:
                 if (validacion() && bandOK) {
-                    fabSiguiente.setEnabled(false);
+                   // fabSiguiente.setEnabled(false);
                     nombre = editNombre.getText().toString();
                     email = editEmail.getText().toString();
                     password = editpass1.getText().toString();
                     telefono = editCelular.getText().toString();
-                    direccion = editDireccion.getText().toString();
-                    complemento = editComplemento.getText().toString();
-                    ciudad = editCiudad.getText().toString();
-                    if (ciudadAvaible){
-                        validarEmail();
-                    }else{
-                        Toast.makeText(Registro.this, "Esta ciudad no tiene disponibilidad", Toast.LENGTH_LONG).show();
-                    }
+                    validarEmail();
 
                 }//if
                 break;
@@ -648,7 +545,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         finish();
                         break;
                     case "101": //Email no existe va a crear cuenta
-                        hideSoftKeyboard();
                         crearCuenta();
                         break;
                     case "103": // Cuenta inactiva
@@ -689,7 +585,13 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 switch (code) {
                     case "100": //OK
                         //Servicio para crear direccion
-                        crearDireccion(passSha1, response.body().getData().getUid());
+
+                        for (ValidacionDirecciones validaciones : listCiudadesDisponibles) {
+                            if (validaciones.getCity().equals(spnCiudadesCA.getSelectedItem().toString())){
+                                crearDireccion(validaciones.getCityId(), response.body().getData().getUid());
+                            }
+                        }
+
                         break;
                     case "102": //Fallo
                         Toast.makeText(Registro.this, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show();
@@ -719,10 +621,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        Call<ResponseGeneral> responseGeneralCall = endpoints.agregarDireccion(authToken, uid, direccion, String.valueOf(lati), String.valueOf(longi), complemento, ciudad, idCiudad);
-        responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
+        Call<ResponseValidacion> responseGeneralCall = endpoints.createAddress(authToken, uid, spTypesCA.getSelectedItem().toString()+" "+etFirstPartCA.getText().toString()+ " "+etSecondPartCA.getText().toString()+ " "+etThirdPartCA.getText().toString()+ " ",etComplementCA.getText().toString(), passSHA1);
+        responseGeneralCall.enqueue(new Callback<ResponseValidacion>() {
             @Override
-            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+            public void onResponse(Call<ResponseValidacion> call, Response<ResponseValidacion> response) {
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }
@@ -735,11 +637,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                         usuario.setEmail(email);
                         usuario.setContraseña(passSHA1);
                         usuario.setCelular(telefono);
-                        usuario.setDireccion(direccion);
-                        usuario.setLatitud(String.valueOf(lati));
-                        usuario.setLongitud(String.valueOf(longi));
-                        usuario.setComplemento(complemento);
-                        usuario.setCiudad(ciudad);
+                        usuario.setDireccion(spTypesCA.getSelectedItem().toString()+" "+etFirstPartCA.getText().toString()+ " "+etSecondPartCA.getText().toString()+ " "+etThirdPartCA.getText().toString()+ " ");
+                        usuario.setLatitud("0.0");
+                        usuario.setLongitud("0.0");
+                        usuario.setComplemento(etComplementCA.getText().toString());
+                        usuario.setCiudad(spnCiudadesCA.getSelectedItem().toString());
 
                         if (bandFoto) { //Si cargo foto se va al servicio cargar foto
                             crearFoto(usuario, uid, file);
@@ -763,7 +665,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                 }//switch
             }
             @Override
-            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+            public void onFailure(Call<ResponseValidacion> call, Throwable t) {
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }
@@ -987,207 +889,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
         }
     }
 
-    private void hideSoftKeyboard() {
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-    }
-
-    /**Configurar direccion en el mapa*/
-    @Override
-    public void onMapReady(GoogleMap map) {
-        googleMap = map;
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        googleMap.setMyLocationEnabled(true);
-        if (googleMap != null) {
-            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            googleMap.getUiSettings().setScrollGesturesEnabled(true);
-        }
-
-        googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
-            @Override
-            public void onCameraIdle() {
-                latitudDireccion = googleMap.getCameraPosition().target.latitude;
-                longitudDireccion = googleMap.getCameraPosition().target.longitude;
-                isMapa = false;
-                editDireccion.setAdapter(null);
-                if (utils.checkInternetConnection(Registro.this, true)) {
-                    AsincronaGetDireccionPorCoordenadas asyncDir = new AsincronaGetDireccionPorCoordenadas(String.valueOf(latitudDireccion), String.valueOf(longitudDireccion), Registro.this, 1);
-                    asyncDir.execute();
-                }
-            }
-        });
-        /*
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            mLocationPermissionsGranted = true;
-            buildGoogleApiClient();
-            map.setMyLocationEnabled(true);
-            setDatos();
-        } else {
-            isMapa = false;
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    MY_LOCATION_REQUEST_CODE);
-        }
-        map.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
-            @Override
-            public boolean onMyLocationButtonClick() {
-                checkLocation();
-                return false;
-            }
-        });
-        */
-    }
-
-    private void getDeviceLocation(){
-        checkLocation();
-        if (gps_enabled){
-            mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(Registro.this);
-            try{
-                if(mLocationPermissionsGranted){
-                    final Task location = mFusedLocationProviderClient.getLastLocation();
-                    location.addOnCompleteListener(new OnCompleteListener() {
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if(task.isSuccessful()){
-                                try{
-                                    Log.e(TAG, "onComplete: found location!");
-                                    Location currentLocation = (Location) task.getResult();
-                                    moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM);
-                                    Log.e(TAG, currentLocation.getLatitude()+","+currentLocation.getLongitude());
-                                    lati = currentLocation.getLatitude();
-                                    longi = currentLocation.getLongitude();
-                                }catch (Exception e){
-                                    Log.e(TAG, "onComplete: found location!");
-                                }
-                            }else{
-                                Log.e(TAG, "Exception getDeviceLocation");
-                            }
-                        }
-                    });
-                }else {
-                    getLocationPermission();
-                }
-            }catch (SecurityException e){
-                Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
-            }
-        }
-    }//private void getDeviceLocation
-
-    private void getLocationPermission(){
-        Log.e(TAG, "getLocationPermission: getting location permissions");
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
-        if(ContextCompat.checkSelfPermission(Registro.this, FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            mLocationPermissionsGranted = true;
-            //initMap();
-        }else{
-            ActivityCompat.requestPermissions(Registro.this, permissions, LOCATION_PERMISSION_REQUEST_CODE);
-        }
-    }//private void getLocationPermission
-
-    private void checkLocation() {
-        LocationManager lm = (LocationManager) Registro.this.getSystemService(Context.LOCATION_SERVICE);
-        try {
-            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        } catch (Exception ignored) {}
-        try {
-            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        } catch (Exception ignored) {}
-        if (!gps_enabled && !network_enabled) {
-            /*
-            new DosOpcionesDialog(Registro.this, "x", new DosOpcionesDialog.RespuestaListener() {
-                @Override
-                public void onOpcionNo() {
-                }
-                @Override
-                public void onOpcionSi() {
-                    gps_enabled = true;
-                    network_enabled = true;
-                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivity(myIntent);
-                }
-            }).show();
-            */
-        }//if
-    }//private void checkLocation
-
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Log.e(TAG, "onRequestPermissionsResult: called.");
-        mLocationPermissionsGranted = false;
-        switch(requestCode){
-            case LOCATION_PERMISSION_REQUEST_CODE:{
-                if(grantResults.length > 0){
-                    for(int i = 0; i < grantResults.length; i++){
-                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
-                            mLocationPermissionsGranted = false;
-                            Log.e(TAG, "onRequestPermissionsResult: permission failed");
-                            return;
-                        }
-                    }
-                    Log.e(TAG, "onRequestPermissionsResult: permission granted");
-                    mLocationPermissionsGranted = true;
-                    //initMap();
-                }
-            }
-        }
-    }//public void onRequestPermissionsResult*/
-
-    private void moveCamera(LatLng latLng, float zoom){
-        googleMap.clear();
-        Log.e(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
-        googleMap.animateCamera(update);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-        MarkerOptions options = new MarkerOptions()
-                .position(latLng)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.location_pin));
-        googleMap.addMarker(options);
-        hideSoftKeyboard();
-    }//private void moveCamera
-
-    /**Para colocar autocomplete para el mapa*/
-    public void llenarAutocomplete(ArrayList<String[]> lista) {
-        cargarDireccionesGoogle = true;
-        AdapterAutocomplete adapter = new AdapterAutocomplete(this, R.layout.item_direccion_google, R.id.txtItemDireccionGoogle, lista);
-        editDireccion.setAdapter(adapter);
-    }
-    public void setLatitudYLongitud(String[] latitudYLongitud) {
-        googleMap.clear();
-        this.lati  = Double.parseDouble(latitudYLongitud[0]);
-        this.longi = Double.parseDouble(latitudYLongitud[1]);
-        LatLng latLng = new LatLng(lati, longi);
-        MarkerOptions mp = new MarkerOptions()
-                .position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.location_pin));
-        googleMap.addMarker(mp);
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
-    }
-
-    public void setDireccion(String direccion, String ciudad) {
-        if(direccion.length() != 0){
-            editDireccion.setText(direccion);
-            editCiudad.setText(ciudad);
-            this.ciudad = ciudad;
-            this.direccion = direccion;
-            verificarDireccion(ciudad);
-        }else{
-            Toast.makeText(Registro.this, "No se pudo obtener su ubicacion, es necesario para poder crear cuenta", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void verificarDireccion(String ciudad){
-
-        for(int i=0; i<listCiudadesDisponibles.size(); i++){
-           if (listCiudadesDisponibles.get(i).getCity().equals(ciudad)){
-                    idCiudad = listCiudadesDisponibles.get(i).getCityId();
-                    ciudadAvaible = true;
-                    break;
-           }
-        }
-
-    }
-
-
     ///// direcciones disponibles
 
     private void ciudadesDispo() {
@@ -1211,6 +912,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener,
                     case "100": //OK
                         //Servicio para crear direccion
                         listCiudadesDisponibles.addAll(response.body().getData());
+                        for (ValidacionDirecciones validaciones : listCiudadesDisponibles) {
+                            arrayCities.add(validaciones.getCity());
+                        }
+
+                        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                                Registro.this, android.R.layout.simple_spinner_item, arrayCities);
+                        spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+                        spnCiudadesCA.setAdapter(spinnerArrayAdapter);
                         break;
                     case "102": //Fallo
                         Toast.makeText(Registro.this, "Algo fallo intente de nuevo", Toast.LENGTH_LONG).show();

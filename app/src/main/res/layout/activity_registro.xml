@@ -114,80 +114,91 @@
                     app:backgroundTint="@color/colorVerdeCursor"
                     android:textCursorDrawable="@color/colorVerdeCursor" />
 
-                <co.kubo.indiesco.utils.AutoCompleteTextViewRegular
-                    android:id="@+id/editDireccion"
-                    android:hint="Dirección"
-                    android:imeOptions="actionNext"
-                    android:maxLines="1"
-                    android:inputType="textCapSentences"
-                    style="@style/texto_15_gris"
-                    android:gravity="center"
-                    android:textColorHint="@color/color_hint"
-                    android:textCursorDrawable="@color/colorVerdeCursor"
+                <Spinner
+                    android:id="@+id/spnCiudadesCA"
                     android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginBottom="27dp"
                     android:layout_width="match_parent"
-                    android:backgroundTint="@color/colorVerdeCursor"
-                    app:backgroundTint="@color/colorVerdeCursor"
-                    android:layout_height="wrap_content" />
-                <co.kubo.indiesco.utils.EditTextRegular
-                    android:id="@+id/editComplemento"
-                    android:hint="Complemento de la dirección"
-                    android:imeOptions="actionNext"
-                    android:maxLines="1"
-                    android:inputType="textCapSentences"
-                    style="@style/texto_15_gris"
-                    android:gravity="center"
-                    android:textColorHint="@color/color_hint"
+                    android:layout_height="50dp"></Spinner>
+
+                <LinearLayout
+                    android:id="@+id/lnCrearDireccion"
+                    android:layout_width="match_parent"
                     android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginBottom="27dp"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorVerdeCursor"
-                    app:backgroundTint="@color/colorVerdeCursor"
-                    android:textCursorDrawable="@color/colorVerdeCursor" />
-                <RelativeLayout
-                    android:id="@+id/fondoMapaDir"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginBottom="27dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="160dp"
-                    android:background="@color/colorBlanco">
-                    <fragment
-                        android:id="@+id/mapaDireccion"
-                        class ="com.google.android.gms.maps.MapFragment"
+                    android:orientation="vertical">
+                    <LinearLayout
+
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imagetrans"
-                        android:layout_alignTop="@+id/mapaDireccion"
-                        android:layout_alignBottom="@+id/mapaDireccion"
-                        android:layout_alignEnd="@+id/mapaDireccion"
-                        android:layout_alignRight="@+id/mapaDireccion"
-                        android:layout_alignLeft="@+id/mapaDireccion"
-                        android:layout_alignStart="@+id/mapaDireccion"/>
-                </RelativeLayout>
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spTypesCA"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="50dp"></Spinner>
+                        <co.kubo.indiesco.utils.EditTextRegular
+                            android:id="@+id/etFirstPartCA"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="2"
+                            android:maxLines="1"
+                            android:maxLength="4"
+                            android:backgroundTint="@color/colorVerdeCursor"
+                            android:layout_height="wrap_content"
+                            />
+                        <co.kubo.indiesco.utils.Medium
+                            android:layout_gravity="center"
+                            style="@style/texto_20_morado"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:text="#"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <co.kubo.indiesco.utils.EditTextRegular
+                            android:id="@+id/etSecondPartCA"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="2"
+                            android:maxLines="1"
+                            android:maxLength="4"
+                            android:backgroundTint="@color/colorVerdeCursor"
+                            android:layout_height="wrap_content"
+                            />
+                        <co.kubo.indiesco.utils.Medium
+                            android:layout_gravity="center"
+                            style="@style/texto_20_morado"
+                            android:text="-"
+                            android:gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <co.kubo.indiesco.utils.EditTextRegular
+                            android:id="@+id/etThirdPartCA"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="2"
+                            android:maxLines="1"
+                            android:maxLength="4"
+                            android:backgroundTint="@color/colorVerdeCursor"
+                            android:layout_height="wrap_content"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
                 <co.kubo.indiesco.utils.EditTextRegular
-                    android:id="@+id/editCiudad"
-                    android:hint="Ciudad"
-                    android:imeOptions="actionNext"
-                    android:maxLines="1"
-                    android:inputType="textCapSentences"
-                    style="@style/texto_15_gris"
-                    android:gravity="center"
-                    android:textColorHint="@color/color_hint"
+                    android:id="@+id/etComplementCA"
                     android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorVerdeCursor"
-                    app:backgroundTint="@color/colorVerdeCursor"
-                    android:textCursorDrawable="@color/colorVerdeCursor" />
+                    android:layout_height="wrap_content"
+                    android:hint="Complemento"
+                    />
+
+
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/inputPass1"
                     android:layout_width="match_parent"

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/llHeader"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgBotonVolverND"
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/btn_atras" />
+        <co.kubo.indiesco.utils.Medium
+            android:id="@+id/tvTituloHeaderND"
+            android:layout_gravity="center"
+            style="@style/texto_20_morado"
+            android:layout_marginLeft="35dp"
+            android:text="Nueva dirección"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:orientation="vertical">
+        <co.kubo.indiesco.utils.Medium
+            style="@style/texto_20_morado"
+            android:text="Selecciona una ciudad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/spnCiudades"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"></Spinner>
+
+        <LinearLayout
+            android:id="@+id/lnCrearDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <co.kubo.indiesco.utils.Medium
+                android:layout_marginTop="30dp"
+                style="@style/texto_20_morado"
+                android:text="Ingresa una dirección"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/spTypes"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_height="50dp"></Spinner>
+                <co.kubo.indiesco.utils.EditTextRegular
+                    android:id="@+id/etFirstPart"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:maxLength="4"
+                    android:layout_height="wrap_content"
+                    />
+                <co.kubo.indiesco.utils.Medium
+                    android:layout_gravity="center"
+                    style="@style/texto_20_morado"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="#"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.EditTextRegular
+                    android:id="@+id/etSecondPart"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:maxLength="4"
+                    android:layout_height="wrap_content"
+                    />
+                <co.kubo.indiesco.utils.Medium
+                    android:layout_gravity="center"
+                    style="@style/texto_20_morado"
+                    android:text="-"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <co.kubo.indiesco.utils.EditTextRegular
+                    android:id="@+id/etThirdPart"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:maxLength="4"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <co.kubo.indiesco.utils.EditTextRegular
+            android:id="@+id/etEditAdrress"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+        <co.kubo.indiesco.utils.EditTextRegular
+            android:id="@+id/etComplement"
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Complemento"
+            />
+
+        <co.kubo.indiesco.utils.ButtonMedium
+            android:id="@+id/btnAgregarDirND"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/boton_borde_naranja"
+            style="@style/texto_15_naranja"
+            android:textAllCaps="false"
+            android:text="Agregar dirección"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <co.kubo.indiesco.utils.ButtonMedium
+            android:id="@+id/btnCancelarDirND"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/boton_borde_naranja"
+            style="@style/texto_15_naranja"
+            android:textAllCaps="false"
+            android:text="Cancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

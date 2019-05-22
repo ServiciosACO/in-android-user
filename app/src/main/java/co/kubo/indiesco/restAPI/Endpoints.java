@@ -244,6 +244,23 @@ public interface Endpoints {
     Call<ResponseValidacion> validarDirec(@Header("X-AC-Auth-Token") String authToken);
 
 
+    @FormUrlEncoded
+    @POST("cuenta/createAddress")
+    Call<ResponseValidacion> createAddress(@Header("X-AC-Auth-Token") String authToken,
+                                           @Field("uid") String uid,
+                                           @Field("address") String address,
+                                           @Field("complement") String complement,
+                                           @Field("cityId") String cityId);
+
+    @FormUrlEncoded
+    @POST("cuenta/updateAddress")
+    Call<ResponseValidacion> updateAddress(@Header("X-AC-Auth-Token") String authToken,
+                                           @Field("addressId") String uid,
+                                           @Field("address") String address,
+                                           @Field("complement") String complement,
+                                           @Field("cityId") String cityId);
+
+
 
 
 }//Endpoints
