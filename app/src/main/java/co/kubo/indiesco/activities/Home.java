@@ -32,6 +32,7 @@ import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponseCantidadNotificacionesNuevas;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.restAPI.modelo.ResponseHistorial;
 import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
@@ -111,11 +112,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         //TODO: obtenerCalendario();
+        asignarCantidadNotificacionesNuevas();
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tvMiPerfil:
                 Intent in = new Intent(Home.this, MiPerfil.class);
                 startActivity(in);
@@ -136,11 +138,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 Intent inExc = new Intent(this, Excedentes.class);
                 startActivity(inExc);
                 break;
-            default:break;
+            default:
+                break;
         }//switch
     }//onClick
 
-    private void pendienteCalificar(String uid){
+    private void pendienteCalificar(String uid) {
         if (dialogProgress == null) {
             dialogProgress = new DialogProgress(Home.this);
             dialogProgress.show();
@@ -148,7 +151,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        final Call<ResponsePendienteCalificar> responsePendienteCalificarCall = endpoints.pendienteCalificar(authToken, uid,"0");
+        final Call<ResponsePendienteCalificar> responsePendienteCalificarCall = endpoints.pendienteCalificar(authToken, uid, "0");
         responsePendienteCalificarCall.enqueue(new Callback<ResponsePendienteCalificar>() {
             @Override
             public void onResponse(Call<ResponsePendienteCalificar> call, Response<ResponsePendienteCalificar> response) {
@@ -156,7 +159,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     dialogProgress.dismiss();
                 }
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100": //Servicios pendientes por calificar
                         new DialogPendienteCalificar(Home.this, new DialogPendienteCalificar.RespuestaListener() {
                             @Override
@@ -167,6 +170,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                                 startActivity(goCal);
                                 //finish();
                             }
+
                             @Override
                             public void onSalir() {
                                 //Toast.makeText(Home.this, "Para solicitar un nuevo servicio debe calificar primero", Toast.LENGTH_SHORT).show();
@@ -177,9 +181,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                         break;
                     case "120": //auth_token no valido
                         break;
-                    default: break;
+                    default:
+                        break;
                 }
             }
+
             @Override
             public void onFailure(Call<ResponsePendienteCalificar> call, Throwable t) {
                 if (dialogProgress.isShowing()) {
@@ -201,11 +207,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onResponse(Call<ResponseHistorial> call, Response<ResponseHistorial> response) {
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100":
                         calendario = response.body().getData();
                         int nMiCalendar = calendario.size();
-                        tvNserviciosProgramados.setText(String.valueOf(nMiCalendar)+ " programados");
+                        tvNserviciosProgramados.setText(String.valueOf(nMiCalendar) + " programados");
                         break;
                     case "102":
                         Log.e(TAG, "Cod: 102 No hay datos");
@@ -215,6 +221,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                         break;
                 }//switch
             }
+
             @Override
             public void onFailure(Call<ResponseHistorial> call, Throwable t) {
                 Log.e(TAG, "obtener historial onFailure");
@@ -222,7 +229,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
-    private void setTokenFirebase(){
+    private void setTokenFirebase() {
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
@@ -234,8 +241,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         responseGeneralCall.enqueue(new Callback<ResponseGeneral>() {
             @Override
             public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
-                if (response.isSuccessful()){
-                    switch (response.body().getCode()){
+                if (response.isSuccessful()) {
+                    switch (response.body().getCode()) {
                         case "100":
                             Log.e(TAG, "setTokenFirebase onResponse OK");
                             break;
@@ -245,9 +252,36 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
                 Log.e(TAG, "setTokenFirebase onFailure");
+            }
+        });
+    }
+
+    public void asignarCantidadNotificacionesNuevas() {
+        String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager();
+        Usuario usuario = sharedPreferenceManager.getInfoUsuario(getApplicationContext());
+        Call<ResponseCantidadNotificacionesNuevas> peticion = endpoints
+                .obtenerCantidadNotificacionesNuevas(authToken, usuario.getId_user());
+        peticion.enqueue(new Callback<ResponseCantidadNotificacionesNuevas>() {
+            @Override
+            public void onResponse(Call<ResponseCantidadNotificacionesNuevas> call, Response<ResponseCantidadNotificacionesNuevas> response) {
+                ResponseCantidadNotificacionesNuevas responseBody = response.body();
+                if (responseBody.getCode().equals("100")) {
+                    tvNnotificaciones.setText(responseBody.getData() + " " + getString(R.string.notifaciones_sin_leer));
+                } else {
+                    tvNnotificaciones.setText("0 " + getString(R.string.notifaciones_sin_leer));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCantidadNotificacionesNuevas> call, Throwable t) {
+                tvNnotificaciones.setText("0 " + getString(R.string.notifaciones_sin_leer));
             }
         });
     }

@@ -83,4 +83,7 @@
     <string name="descrpcion_serv">En el listado de tipos de inmueble se debe crear un label que mueste una descripción del tipo de servicio que se presta para ese inmueble, ejemplo: Barrido, trapeado, plancahdo, etc.. </string>
     <string name="calificar_encargados">Calificar encargados</string>
 
+    <!--Home-->
+    <string name="notifaciones_sin_leer">notificación(es ) sin leer</string>
+
 </resources>

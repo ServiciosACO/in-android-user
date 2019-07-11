@@ -6,6 +6,7 @@ import co.kubo.indiesco.modelo.Foto;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.ValidacionDirecciones;
 import co.kubo.indiesco.restAPI.modelo.ResponseAuthToken;
+import co.kubo.indiesco.restAPI.modelo.ResponseCantidadNotificacionesNuevas;
 import co.kubo.indiesco.restAPI.modelo.ResponseCodigoDescuento;
 import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseDireccion;
@@ -81,6 +82,7 @@ public interface Endpoints {
                                               @Field("latitud") String latitud,
                                               @Field("longitud") String longitud,
                                               @Field("complemento") String complemento);
+
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_AGREGAR_DIRECCION)
     Call<ResponseGeneral> agregarDireccion(@Header("X-AC-Auth-Token") String authToken,
@@ -193,14 +195,14 @@ public interface Endpoints {
 
     @GET(ConstantesRestApi.URL_PENDIENTE_CALIFICAR + "{uid}/{idservicio}")
     Call<ResponsePendienteCalificar> pendienteCalificar(@Header("X-AC-Auth-Token") String authToken,
-                                                        @Path("uid") String uid,@Path("idservicio") String idservicio);
+                                                        @Path("uid") String uid, @Path("idservicio") String idservicio);
 
-   /* @FormUrlEncoded
-    @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO)
-    Call<ResponseGeneral> calificarServicio(@Header("X-AC-Auth-Token") String authToken,
-                                            @Field("id_solicitud_item") String id_solicitud_item,
-                                            @Field("calificacion") String calificacion,
-                                            @Field("comentario") String comentario);*/
+    /* @FormUrlEncoded
+     @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO)
+     Call<ResponseGeneral> calificarServicio(@Header("X-AC-Auth-Token") String authToken,
+                                             @Field("id_solicitud_item") String id_solicitud_item,
+                                             @Field("calificacion") String calificacion,
+                                             @Field("comentario") String comentario);*/
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_CALIFICAR_SERVICIO1)
     Call<ResponseGeneral> calificarServicio(@Header("X-AC-Auth-Token") String authToken,
@@ -216,7 +218,7 @@ public interface Endpoints {
 
     //@FormUrlEncoded
     //@POST(ConstantesRestApi.URL_ACTUALIZAR_TOKEN_FIREBASE)
-    @GET(ConstantesRestApi.URL_ACTUALIZAR_TOKEN_FIREBASE+ "{uid}/{token}/{plataforma}")
+    @GET(ConstantesRestApi.URL_ACTUALIZAR_TOKEN_FIREBASE + "{uid}/{token}/{plataforma}")
     Call<ResponseGeneral> actualizarTokenFirebase(@Header("X-AC-Auth-Token") String authToken,
                                                   @Path("uid") String uid,
                                                   @Path("token") String token,
@@ -229,8 +231,8 @@ public interface Endpoints {
 
     @GET(ConstantesRestApi.URL_CANCEL_TRANSACTION)
     Call<ResponseGeneral> cancelTransaction(@Header("X-AC-Auth-Token") String authToken,
-                                      @Path("id_solicitud") int id_solicitud,
-                                      @Path("tipo") String tipo);
+                                            @Path("id_solicitud") int id_solicitud,
+                                            @Path("tipo") String tipo);
 
 
     @FormUrlEncoded
@@ -260,7 +262,12 @@ public interface Endpoints {
                                            @Field("complement") String complement,
                                            @Field("cityId") String cityId);
 
+    @GET(ConstantesRestApi.URL_CAMBIAR_ESTADO_NOTIFICACIONES)
+    Call<ResponseGeneral> cambiarEstadoNotificaciones(@Header("X-AC-Auth-Token") String authToken,
+                                                      @Path("uid") String uid);
 
-
+    @GET(ConstantesRestApi.URL_OBTENER_CANTIDAD_NUEVAS_NOTIFICACIONES)
+    Call<ResponseCantidadNotificacionesNuevas> obtenerCantidadNotificacionesNuevas(@Header("X-AC-Auth-Token") String authToken,
+                                                                                   @Path("uid") String uid);
 
 }//Endpoints

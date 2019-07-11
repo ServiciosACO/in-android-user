@@ -32,8 +32,6 @@ import android.graphics.Point
 import android.view.Display
 
 
-
-
 class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
         IDimension, IAddress, IEspacios, ITime {
 
@@ -52,7 +50,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
     var utils = Utils()
 
     override fun checkTime() {
-        if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios){
+        if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios) {
             flagTime = true
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
@@ -65,7 +63,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
     }
 
     override fun espaciosCheck(flag: Boolean, posInm: Int, posDim: Int) {
-        if (flag){
+        if (flag) {
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
         } else {
@@ -76,21 +74,21 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
         calculateTotal()
     }
 
-    fun calculateTotal(){
+    fun calculateTotal() {
         var data = singleton.data
         var total = 0.0
-        for (item in data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.indices){
+        for (item in data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.indices) {
             if (data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty != 0
-                    && data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].tipo == "valor"){
+                    && data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].tipo == "valor") {
                 var cost = data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty *
                         data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].valor!!.toDouble()
                 total += cost
             }
         }
         var percentAux = 0.0
-        for (item in data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.indices){
+        for (item in data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!!.indices) {
             if (data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty != 0
-                    && data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].tipo == "porcentaje"){
+                    && data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].tipo == "porcentaje") {
                 var percent = data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].qty *
                         data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios!![item].valor!!.toDouble()
                 percentAux += percent
@@ -113,15 +111,16 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     percentAux += singleton.priceFloorThree
                 }
             }
-        }catch (e: Exception){}
+        } catch (e: Exception) {
+        }
         total += (total * percentAux)
-        when(singleton.urgente){
+        when (singleton.urgente) {
             "si" -> {
                 total += (total * 0.5)
                 singleton.flagUrgente = true
             }
             "no" -> {
-                if (singleton.flagUrgente){
+                if (singleton.flagUrgente) {
                     singleton.flagUrgente = false
                 }
             }
@@ -138,11 +137,11 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
     }
 
     override fun dimensionCheck(num: Int) {
-        when(num){
+        when (num) {
             2 -> flag1 = true
             3 -> flag2 = true
         }
-        if (flag1 && flag2){
+        if (flag1 && flag2) {
             flagDimensiones = true
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
@@ -157,46 +156,46 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
     }
 
     override fun onClick(v: View?) {
-        when (v!!.id){
+        when (v!!.id) {
             R.id.imgBotonVolver -> {
                 onBackPressed()
             }
             R.id.tvNext -> {
                 var pos = viewPager.currentItem
-                when (pos){
+                when (pos) {
                     0 -> {
-                        if (flagVivienda){
+                        if (flagVivienda) {
                             viewPager.currentItem = 1
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
                         }
 
                     }
                     1 -> {
-                        if (flagDimensiones){
+                        if (flagDimensiones) {
                             viewPager.currentItem = 2
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
                         }
 
                     }
                     2 -> {
-                        if (flagEspacios){
+                        if (flagEspacios) {
                             viewPager.currentItem = 3
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije los espacios", Toast.LENGTH_LONG).show()
                         }
 
                     }
                     3 -> {
-                        if (flagAddress){
+                        if (flagAddress) {
                             viewPager.currentItem = 4
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije la dirección", Toast.LENGTH_LONG).show()
                         }
                     }
                     4 -> {
-                        if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios && flagTime){
+                        if (flagVivienda && flagDimensiones && flagEspacios && flagAddress && flagEspacios && flagTime) {
                             val df = SimpleDateFormat("yyyy-MM-dd")
                             val currentDate = df.format(Calendar.getInstance().time)
                             var splitTime = singleton.hora.split(":")
@@ -632,13 +631,13 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                 }
                             }
                         } else {
-                            if (!flagVivienda){
+                            if (!flagVivienda) {
                                 Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
-                            } else if (!flagDimensiones){
+                            } else if (!flagDimensiones) {
                                 Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
-                            } else if(!flagEspacios){
+                            } else if (!flagEspacios) {
                                 Toast.makeText(applicationContext, "Elije los espacios", Toast.LENGTH_LONG).show()
-                            } else if (!flagAddress){
+                            } else if (!flagAddress) {
                                 Toast.makeText(applicationContext, "Elije la dirección", Toast.LENGTH_LONG).show()
                             }
                         }
@@ -650,16 +649,17 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
 
     override fun onBackPressed() {
         var pos = viewPager.currentItem
-        when (pos){
+        when (pos) {
             0 -> {
-                if (validation()){
-                    val intent = Intent (this, TipoInmueble :: class.java)
+                if (validation()) {
+                    val intent = Intent(this, TipoInmueble::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                     finish()
                 }
             }
             1 -> {
+                singleton.posDimension = "0"
                 viewPager.currentItem = 0
             }
             2 -> {
@@ -675,7 +675,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
     }
 
     private fun validation(): Boolean {
-        if (!utils.checkInternetConnection(this@AddService, true)){
+        if (!utils.checkInternetConnection(this@AddService, true)) {
             return false
         }
         return true
@@ -688,8 +688,8 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
 
     private fun agregarFragments(flag: Int): ArrayList<Fragment> {
         val fragments = ArrayList<Fragment>()
-        when (flag){
-            0 ->{
+        when (flag) {
+            0 -> {
                 fragments.add(TipoViviendaFragment())
                 fragments.add(DimensionesFragment())
                 //fragments.add(RoomsFragment())
@@ -725,7 +725,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
-        val width = (size.x)/5
+        val width = (size.x) / 5
         val height = size.y
         viewPager.setPagingEnabled(false)
 
@@ -738,7 +738,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                         tvValor.visibility = View.INVISIBLE
                         llProgress.layoutParams.width = width
                         llProgress.requestLayout()
-                        if (flagVivienda){
+                        if (flagVivienda) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -751,7 +751,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = width * 2
                         llProgress.requestLayout()
-                        if (flagDimensiones){
+                        if (flagDimensiones) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -764,7 +764,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = width * 3
                         llProgress.requestLayout()
-                        if (flagEspacios){
+                        if (flagEspacios) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -777,7 +777,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = width * 4
                         llProgress.requestLayout()
-                        if (flagAddress){
+                        if (flagAddress) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -790,7 +790,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
                         llProgress.requestLayout()
-                        if (flagTime){
+                        if (flagTime) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -802,10 +802,10 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                     }
                 }//switch
             }//public void onPageSelected
+
             override fun onPageScrollStateChanged(state: Int) {}
         })
     }
-
 
 
 }

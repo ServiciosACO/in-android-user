@@ -37,5 +37,7 @@ public class ConstantesRestApi {
     public static final String URL_HISTORIAL_RECARGO = "recargos/historial_recargos/{uid}/{offset}";
     public static final String URL_CANCEL_TRANSACTION = "servicios/cancelar_transaccion/{id_solicitud}/{tipo}";
     public static final String URL_VALIDACION_DIREC = "servicios/getAvailableCities/";
+    public static final String URL_CAMBIAR_ESTADO_NOTIFICACIONES = "cuenta/changeStatusNotifications/{uid}/";
+    public static final String URL_OBTENER_CANTIDAD_NUEVAS_NOTIFICACIONES = "cuenta/getCountNotificationsUnseen/{uid}/";
 
 }

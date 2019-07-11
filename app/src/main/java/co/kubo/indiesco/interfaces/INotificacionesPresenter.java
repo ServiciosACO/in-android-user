@@ -6,5 +6,8 @@ package co.kubo.indiesco.interfaces;
 
 public interface INotificacionesPresenter {
     public void obtenerNotificaciones();
+
     public void mostrarNotificaciones();
+
+    void cambiarEstadoNotificaciones();
 }

@@ -15,6 +15,7 @@ import co.kubo.indiesco.modelo.Notificaciones;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
+import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.restAPI.modelo.ResponseNotificacion;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 import retrofit2.Call;
@@ -41,6 +42,7 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
         this.context = context;
         this.activity = activity;
         obtenerNotificaciones();
+        cambiarEstadoNotificaciones();
     }
 
     @Override
@@ -54,7 +56,7 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(context);
-        Call<ResponseNotificacion> responseNotificacionCall= endpoints.listarNotificaciones(authToken, usuario.getId_user(), "0");
+        Call<ResponseNotificacion> responseNotificacionCall = endpoints.listarNotificaciones(authToken, usuario.getId_user(), "0");
         responseNotificacionCall.enqueue(new Callback<ResponseNotificacion>() {
             @Override
             public void onResponse(Call<ResponseNotificacion> call, Response<ResponseNotificacion> response) {
@@ -62,24 +64,24 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
                     dialogProgress.dismiss();
                 }
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100":
                         notificaciones = response.body().getData();
-                        if (notificaciones.size() != 0){
+                        if (notificaciones.size() != 0) {
                             fecha.add(notificaciones.get(0).getFecha());
                             String date = notificaciones.get(0).getFecha();
                             int x = 0;
-                            for (int i = 0; i < notificaciones.size(); i++){
-                                if (!date.equals(notificaciones.get(i).getFecha())){
+                            for (int i = 0; i < notificaciones.size(); i++) {
+                                if (!date.equals(notificaciones.get(i).getFecha())) {
                                     fecha.add(notificaciones.get(i).getFecha());
                                 }//if
                             }//for
                             boolean band = true;
-                            for (int y = 0; y < fecha.size(); y++){
+                            for (int y = 0; y < fecha.size(); y++) {
                                 band = true;
-                                for (int i = 0; i < notificaciones.size(); i++){
-                                    if (notificaciones.get(i).getFecha().equals(fecha.get(y))){
-                                        if (band){
+                                for (int i = 0; i < notificaciones.size(); i++) {
+                                    if (notificaciones.get(i).getFecha().equals(fecha.get(y))) {
+                                        if (band) {
                                             Notificaciones not = new Notificaciones();
                                             not.setFecha(notificaciones.get(i).getFecha());
                                             not.setId_notificacion(notificaciones.get(i).getId_notificacion());
@@ -98,7 +100,7 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
                                     }
                                 }//for2
                             }//for
-                        }else{
+                        } else {
                             iNotificacionesView.pintarSinInfo();
                         }
 
@@ -113,6 +115,7 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseNotificacion> call, Throwable t) {
                 if (dialogProgress.isShowing()) {
@@ -128,5 +131,27 @@ public class NotificacionesPresenter implements INotificacionesPresenter {
     public void mostrarNotificaciones() {
         iNotificacionesView.inicializarAdaptadorRvNotificaciones(iNotificacionesView.crearAdaptadorNotificaciones(holder_notif));
         iNotificacionesView.generarLinearLayoutVertical();
+    }
+
+    @Override
+    public void cambiarEstadoNotificaciones() {
+        String authToken = SharedPreferenceManager.getAuthToken(context);
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
+        Usuario usuario = SharedPreferenceManager.getInfoUsuario(context);
+        Call<ResponseGeneral> cambiarEstadoNotificaciones = endpoints.cambiarEstadoNotificaciones(authToken, usuario.getId_user());
+        cambiarEstadoNotificaciones.enqueue(new Callback<ResponseGeneral>() {
+            @Override
+            public void onResponse(Call<ResponseGeneral> call, Response<ResponseGeneral> response) {
+                if (response.body().getCode().equals("100")) {
+                    String codigo = response.body().getCode();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGeneral> call, Throwable t) {
+
+            }
+        });
     }
 }

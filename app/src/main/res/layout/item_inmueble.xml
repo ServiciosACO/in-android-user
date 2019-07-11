@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.loopeer.shadow.ShadowView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.loopeer.shadow.ShadowView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:elevation="10dp"
-    app:shadowColor="@color/shadow"
     app:shadowAlpha="70"
+    app:shadowColor="@color/shadow"
     app:shadowDx="0"
     app:shadowDy="4"
     app:shadowMargin="5dp"
-    app:shadowRadius="14dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    app:shadowRadius="14dp">
 
     <RelativeLayout
         android:id="@+id/llItemInmueble"
@@ -18,28 +17,28 @@
         android:layout_height="wrap_content"
         android:background="@color/colorBlanco"
         android:gravity="center"
-        android:paddingBottom="20dp"
         android:paddingLeft="20dp"
+        android:paddingTop="20dp"
         android:paddingRight="24dp"
-        android:paddingTop="20dp">
+        android:paddingBottom="20dp">
 
         <ImageView
             android:id="@+id/imgProperty"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true" />
 
         <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_toEndOf="@+id/imgProperty"
-            android:layout_toStartOf="@+id/radioButton"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_centerVertical="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/radioButton"
+            android:layout_toEndOf="@+id/imgProperty"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <co.kubo.indiesco.utils.Bold
                 android:id="@+id/tvInmueble"
@@ -54,16 +53,16 @@
                 android:textStyle="bold" />
 
             <co.kubo.indiesco.utils.Regular
-                style="@style/texto_15_gris"
                 android:id="@+id/tvDescription1"
+                style="@style/texto_15_gris"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:lines="2"
-                android:maxLines="2"
-                android:text="Description"/>
+                android:lines="6"
+                android:maxLines="6"
+                android:text="Description" />
 
         </LinearLayout>
 
@@ -71,8 +70,8 @@
             android:id="@+id/radioButton"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/select_property"
             android:button="@color/transparente"
             android:checked="false"

@@ -59,20 +59,19 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
 
         presenter = new NotificacionesPresenter(this, getApplicationContext(), MisNotificaciones.this);
 
-
         rvNotificacion.setOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 RecyclerViewHelper mRecyclerViewHelper = new RecyclerViewHelper(recyclerView);
-                int  visibleItemCount = rvNotificacion.getChildCount();
+                int visibleItemCount = rvNotificacion.getChildCount();
                 int firstVisibleItem = mRecyclerViewHelper.findFirstVisibleItemPosition();
-                if (notificaciones != null && notificaciones.size()!=0) {
+                if (notificaciones != null && notificaciones.size() != 0) {
                     int lastItem = firstVisibleItem + visibleItemCount;
                     lastItem = lastItem;
-                    Log.v("lastItem",lastItem+"");
-                    if ((lastItem/2) == page && page == (notificaciones.size()/2)) {
+                    Log.v("lastItem", lastItem + "");
+                    if ((lastItem / 2) == page && page == (notificaciones.size() / 2)) {
                         lastPosition = lastItem;
                         int valuePage = page;
                         offSetReal += 20;
@@ -113,7 +112,7 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.imgBotonVolver:
                 onBackPressed();
                 break;
@@ -137,7 +136,7 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
         Usuario usuario = new Usuario();
         usuario = SharedPreferenceManager.getInfoUsuario(getApplicationContext());
-        Call<ResponseNotificacion> responseNotificacionCall= endpoints.listarNotificaciones(authToken, usuario.getId_user(), offSetReal+"");
+        Call<ResponseNotificacion> responseNotificacionCall = endpoints.listarNotificaciones(authToken, usuario.getId_user(), offSetReal + "");
         responseNotificacionCall.enqueue(new Callback<ResponseNotificacion>() {
             @Override
             public void onResponse(Call<ResponseNotificacion> call, Response<ResponseNotificacion> response) {
@@ -145,19 +144,19 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
                     dialogProgress.dismiss();
                 }
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100":
                         notificacionesTemp = response.body().getData();
-                        if (notificacionesTemp.size() != 0){
+                        if (notificacionesTemp.size() != 0) {
                             fillData();
-                        }else{
-                           // iNotificacionesView.pintarSinInfo();
+                        } else {
+                            // iNotificacionesView.pintarSinInfo();
                         }
 
-                       // mostrarNotificaciones();
+                        // mostrarNotificaciones();
                         break;
                     case "102":
-                       // iNotificacionesView.pintarSinInfo();
+                        // iNotificacionesView.pintarSinInfo();
                         Log.e(TAG, "Cod: 102 No hay datos");
                         break;
                     case "120":
@@ -165,32 +164,33 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
                         break;
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseNotificacion> call, Throwable t) {
                 if (dialogProgress.isShowing()) {
                     dialogProgress.dismiss();
                 }
                 Log.e(TAG, "obtener notificaciones onFailure");
-               // iNotificacionesView.pintarSinInfo();
+                // iNotificacionesView.pintarSinInfo();
             }
         });
     }
 
-    public void fillData(){
+    public void fillData() {
         fecha.add(notificacionesTemp.get(0).getFecha());
         String date = notificacionesTemp.get(0).getFecha();
         int x = 0;
-        for (int i = 0; i < notificacionesTemp.size(); i++){
-            if (!date.equals(notificacionesTemp.get(i).getFecha())){
+        for (int i = 0; i < notificacionesTemp.size(); i++) {
+            if (!date.equals(notificacionesTemp.get(i).getFecha())) {
                 fecha.add(notificacionesTemp.get(i).getFecha());
             }//if
         }//for
         boolean band = true;
-        for (int y = 0; y < fecha.size(); y++){
+        for (int y = 0; y < fecha.size(); y++) {
             band = true;
-            for (int i = 0; i < notificacionesTemp.size(); i++){
-                if (notificacionesTemp.get(i).getFecha().equals(fecha.get(y))){
-                    if (band){
+            for (int i = 0; i < notificacionesTemp.size(); i++) {
+                if (notificacionesTemp.get(i).getFecha().equals(fecha.get(y))) {
+                    if (band) {
                         Notificaciones not = new Notificaciones();
                         not.setFecha(notificacionesTemp.get(i).getFecha());
                         not.setId_notificacion(notificacionesTemp.get(i).getId_notificacion());
@@ -209,7 +209,7 @@ public class MisNotificaciones extends AppCompatActivity implements INotificacio
                 }
             }//for2
         }//for
-         //notificaciones.addAll(notificacionesTemp);
-         notificacionesAdapter.notifyDataSetChanged();
+        //notificaciones.addAll(notificacionesTemp);
+        notificacionesAdapter.notifyDataSetChanged();
     }
 }
