@@ -29,6 +29,12 @@ public class Direccion {
     @SerializedName("city")
     @Expose
     private String city;
+    @SerializedName("region")
+    @Expose
+    private String region;
+    @SerializedName("cityId")
+    @Expose
+    private String cityId;
 
     public String getCity() {
         return city;
@@ -94,5 +100,25 @@ public class Direccion {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public String getCityRegion() {
+        return city + " (" + region + ")";
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 }

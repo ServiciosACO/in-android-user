@@ -48,23 +48,25 @@ public class MisDireccionesAdapter2 extends RecyclerView.Adapter<MisDireccionesA
         this.activity = activity;
         this.iAddress = iAddress;
     }
+
     @Override
     public MisDireccionesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mis_direcciones2, parent, false);
         return new MisDireccionesViewHolder(v);
     }
+
     @Override
     public void onBindViewHolder(MisDireccionesViewHolder holder, final int position) {
         final Direccion dir = direccion.get(position);
         holder.tvDir.setText(dir.getDireccion());
         holder.tvComplemento.setText(dir.getComplemento());
-        holder.tvCiudad.setText(dir.getCiudad());
+        holder.tvCiudad.setText(dir.getCityRegion());
 
         holder.radioButton.setChecked(dir.isCheck());
         holder.llItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 0; i < direccion.size(); i++){
+                for (int i = 0; i < direccion.size(); i++) {
                     direccion.get(i).setCheck(false);
                 }
                 notifyDataSetChanged();
@@ -76,15 +78,17 @@ public class MisDireccionesAdapter2 extends RecyclerView.Adapter<MisDireccionesA
         });
 
     }
+
     @Override
     public int getItemCount() {
         return direccion.size();
     }
 
-    public class MisDireccionesViewHolder extends RecyclerView.ViewHolder{
+    public class MisDireccionesViewHolder extends RecyclerView.ViewHolder {
         TextView tvDir, tvCiudad, tvComplemento;
         LinearLayout llItem;
         RadioButton radioButton;
+
         public MisDireccionesViewHolder(View itemView) {
             super(itemView);
             tvDir = (TextView) itemView.findViewById(R.id.tvDir);

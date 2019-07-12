@@ -52,17 +52,19 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
         this.activity = activity;
         this.iMisDireccionesView = iMisDireccionesView;
     }
+
     @Override
     public MisDireccionesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mis_direcciones, parent, false);
         return new MisDireccionesViewHolder(v);
     }
+
     @Override
     public void onBindViewHolder(MisDireccionesViewHolder holder, final int position) {
         final Direccion dir = direccion.get(position);
         holder.tvDir.setText(dir.getDireccion());
         holder.tvComplemento.setText(dir.getComplemento());
-        holder.tvCiudad.setText(dir.getCity());
+        holder.tvCiudad.setText(dir.getCityRegion());
 
         holder.llBorrarDir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,10 +73,12 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                     @Override
                     public void onCancelar() {
                     }
+
                     @Override
                     public void onAceptar() {
                         borrarDir(dir.getId_direccion(), position);
                     }
+
                     @Override
                     public void onSalir() {
                     }
@@ -92,17 +96,19 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
             }
         });
     }
+
     @Override
     public int getItemCount() {
         return direccion.size();
     }
 
-    public class MisDireccionesViewHolder extends RecyclerView.ViewHolder{
+    public class MisDireccionesViewHolder extends RecyclerView.ViewHolder {
         TextView tvDir, tvCiudad, tvComplemento;
         LinearLayout llBorrarDir;
         LinearLayout llEditarDir;
         SwipeLayout mSwipe;
         ImageView imgBorrarDir;
+
         public MisDireccionesViewHolder(View itemView) {
             super(itemView);
             tvDir = (TextView) itemView.findViewById(R.id.tvDir);
@@ -115,7 +121,7 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
         }
     }
 
-    private void borrarDir(String id_dir, final int adapter_position){
+    private void borrarDir(String id_dir, final int adapter_position) {
         if (dialogProgress == null) {
             dialogProgress = new DialogProgress(activity);
             dialogProgress.show();
@@ -133,15 +139,15 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                     dialogProgress.dismiss();
                 }
                 String code = response.body().getCode();
-                switch (code){
+                switch (code) {
                     case "100":
                         Toast.makeText(activity, "Elimino la dirección con éxito", Toast.LENGTH_LONG).show();
                         direccion.remove(adapter_position);
                         notifyDataSetChanged();
-                        if (direccion.isEmpty()){
+                        if (direccion.isEmpty()) {
                             iMisDireccionesView.noAddresses();
                         }
-                        if (direccion.size() < 5){
+                        if (direccion.size() < 5) {
                             iMisDireccionesView.disableButtonAddAddress(true);
                         }
                         break;
@@ -151,9 +157,11 @@ public class MisDireccionesAdapter extends RecyclerView.Adapter<MisDireccionesAd
                     case "120":
                         Log.e(TAG, "borrarDir, auth_token no valido");
                         break;
-                    default: break;
+                    default:
+                        break;
                 }//switch
             }
+
             @Override
             public void onFailure(Call<ResponseGeneral> call, Throwable t) {
                 if (dialogProgress.isShowing()) {

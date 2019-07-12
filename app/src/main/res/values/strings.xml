@@ -86,4 +86,8 @@
     <!--Home-->
     <string name="notifaciones_sin_leer">notificación(es ) sin leer</string>
 
+    <!--Nueva dirección-->
+    <string name="title_nueva_direccion">Nueva dirección</string>
+    <string name="title_editar_direccion">Editar dirección</string>
+
 </resources>

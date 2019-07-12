@@ -186,7 +186,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private String val;
     private boolean bandNombre = false, bandEmail = false, bandCel = false, bandDir = false, bandCiudad = false, bandPass1 = false, bandPass2 = false, bandOK = false;
     private String nombre = "", email = "", password = "", plataforma = "a", token = "0", telefono = "", foto = "http:\\/\\/indiescoapi.inkubo.co\\/imgs_usuarios\\/-";
-    private String direccion = "",complemento = "-", ciudad = "";
+    private String direccion = "", complemento = "-", ciudad = "";
 
 
     private List<ValidacionDirecciones> listCiudadesDisponibles = new ArrayList<>();
@@ -194,10 +194,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     boolean ciudadAvaible = false;
 
 
-
-
     private List<String> arrayCities = new ArrayList<>();
-    final String[] str={"Autopista", "Avenida", "Bulevar", "Calle", "Carrera", "Carretera", "Circular", "Circunvalar", "Diagonal", "Pasaje", "Paseo", "Peatonal", "Transversal", "Troncal", "Variante", "Via"};
+    final String[] str = {"Autopista", "Avenida", "Bulevar", "Calle", "Carrera", "Carretera", "Circular", "Circunvalar", "Diagonal", "Pasaje", "Paseo", "Peatonal", "Transversal", "Troncal", "Variante", "Via"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -243,7 +241,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, str);
-        spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 // Spinner spinYear = (Spinner)findViewById(R.id.spin);
         spTypesCA.setAdapter(spinnerArrayAdapter);
@@ -251,7 +249,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         setlistenerEditText();
 
         ciudadesDispo();
-
 
 
     }//onCreate
@@ -426,7 +423,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.fabSiguiente:
                 if (validacion() && bandOK) {
-                   // fabSiguiente.setEnabled(false);
+                    // fabSiguiente.setEnabled(false);
                     nombre = editNombre.getText().toString();
                     email = editEmail.getText().toString();
                     password = editpass1.getText().toString();
@@ -442,11 +439,13 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         position = 0;
                         opcionFoto();
                     }
+
                     @Override
                     public void onGaleria() {
                         position = 1;
                         opcionFoto();
                     }
+
                     @Override
                     public void onSalir() {
                         return;
@@ -567,8 +566,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     private void crearCuenta() {
         //if (dialogProgress == null) {
-            dialogProgress = new DialogProgress(Registro.this);
-            dialogProgress.show();
+        dialogProgress = new DialogProgress(Registro.this);
+        dialogProgress.show();
         //}
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         final String passSha1 = Utils.sha1Encrypt(password);
@@ -587,7 +586,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         //Servicio para crear direccion
 
                         for (ValidacionDirecciones validaciones : listCiudadesDisponibles) {
-                            if (validaciones.getCity().equals(spnCiudadesCA.getSelectedItem().toString())){
+                            if (validaciones.getCity().equals(spnCiudadesCA.getSelectedItem().toString())) {
                                 crearDireccion(validaciones.getCityId(), response.body().getData().getUid());
                             }
                         }
@@ -621,7 +620,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        Call<ResponseValidacion> responseGeneralCall = endpoints.createAddress(authToken, uid, spTypesCA.getSelectedItem().toString()+" "+etFirstPartCA.getText().toString()+ " "+etSecondPartCA.getText().toString()+ " "+etThirdPartCA.getText().toString()+ " ",etComplementCA.getText().toString(), passSHA1);
+        Call<ResponseValidacion> responseGeneralCall = endpoints.createAddress(authToken, uid, spTypesCA.getSelectedItem().toString() + " " + etFirstPartCA.getText().toString() + " " + etSecondPartCA.getText().toString() + " " + etThirdPartCA.getText().toString() + " ", etComplementCA.getText().toString(), passSHA1);
         responseGeneralCall.enqueue(new Callback<ResponseValidacion>() {
             @Override
             public void onResponse(Call<ResponseValidacion> call, Response<ResponseValidacion> response) {
@@ -637,7 +636,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         usuario.setEmail(email);
                         usuario.setContraseña(passSHA1);
                         usuario.setCelular(telefono);
-                        usuario.setDireccion(spTypesCA.getSelectedItem().toString()+" "+etFirstPartCA.getText().toString()+ " "+etSecondPartCA.getText().toString()+ " "+etThirdPartCA.getText().toString()+ " ");
+                        usuario.setDireccion(spTypesCA.getSelectedItem().toString() + " " + etFirstPartCA.getText().toString() + " " + etSecondPartCA.getText().toString() + " " + etThirdPartCA.getText().toString() + " ");
                         usuario.setLatitud("0.0");
                         usuario.setLongitud("0.0");
                         usuario.setComplemento(etComplementCA.getText().toString());
@@ -664,6 +663,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         break;
                 }//switch
             }
+
             @Override
             public void onFailure(Call<ResponseValidacion> call, Throwable t) {
                 if (dialogProgress.isShowing()) {
@@ -913,12 +913,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                         //Servicio para crear direccion
                         listCiudadesDisponibles.addAll(response.body().getData());
                         for (ValidacionDirecciones validaciones : listCiudadesDisponibles) {
-                            arrayCities.add(validaciones.getCity());
+                            arrayCities.add(validaciones.getCity() + " (" + validaciones.getRegion() + ")");
                         }
 
                         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
                                 Registro.this, android.R.layout.simple_spinner_item, arrayCities);
-                        spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+                        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spnCiudadesCA.setAdapter(spinnerArrayAdapter);
                         break;
                     case "102": //Fallo
@@ -940,7 +940,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
             }
         });
     }
-
 
 
 }

@@ -19,10 +19,10 @@
 
     <!--This is for change underline color in InputLayout-->
     <style name="TextLabel" parent="TextAppearance.AppCompat">
-        <!-- Hint color and label color in FALSE state -->
+        <!-- Hint color and label color in FALSE region -->
         <item name="android:textColorHint">#fff</item>
         <item name="android:textSize">20dp</item>
-        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <!-- Label color in TRUE region and bar color FALSE and TRUE State -->
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="colorControlNormal">@color/colorVerdeCursor</item>
         <item name="colorControlActivated">@color/colorVerdeCursor</item>

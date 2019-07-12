@@ -11,9 +11,9 @@ public class ValidacionDirecciones {
     @SerializedName("city")
     @Expose
     private String city;
-    @SerializedName("state")
+    @SerializedName("region")
     @Expose
-    private String state;
+    private String region;
 
     public String getCityId() {
         return cityId;
@@ -31,12 +31,12 @@ public class ValidacionDirecciones {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getRegion() {
+        return region;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
 }
