@@ -273,7 +273,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             public void onResponse(Call<ResponseCantidadNotificacionesNuevas> call, Response<ResponseCantidadNotificacionesNuevas> response) {
                 ResponseCantidadNotificacionesNuevas responseBody = response.body();
                 if (responseBody.getCode().equals("100")) {
-                    tvNnotificaciones.setText(responseBody.getData() + " " + getString(R.string.notifaciones_sin_leer));
+                    tvNnotificaciones.setText(responseBody.getData().getTotal() + " " + getString(R.string.notifaciones_sin_leer));
                 } else {
                     tvNnotificaciones.setText("0 " + getString(R.string.notifaciones_sin_leer));
                 }

@@ -21,6 +21,7 @@ public class ConstantesRestApi {
     public static final String URL_ELIMINAR_NOTIFICACION = "cuenta/eliminar_notificacion/";
     public static final String URL_LISTAR_DIRECCIONES = "cuenta/listar_direcciones/";
     public static final String URL_LISTAR_NOTIFICACIONES = "cuenta/listar_notificaciones/";
+    public static final String URL_LISTAR_TIPOS_DIRECCIONES ="cuenta/getTypeRoadOptions";
     public static final String URL_CANCELAR_SERVICIO = "servicios/cancelar_servicio/";
     public static final String URL_RESUMEN_PEDIDO = "servicios/resumen_pedido/";
     public static final String URL_CREAR_SERVICIO = "servicios/crear_servicio";

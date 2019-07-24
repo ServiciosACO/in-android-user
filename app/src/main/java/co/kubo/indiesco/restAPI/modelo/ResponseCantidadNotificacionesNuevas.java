@@ -9,7 +9,7 @@ public class ResponseCantidadNotificacionesNuevas {
     private String code;
     @SerializedName("data")
     @Expose
-    private Integer data;
+    private Data data;
 
     public String getCode() {
         return code;
@@ -19,11 +19,26 @@ public class ResponseCantidadNotificacionesNuevas {
         this.code = code;
     }
 
-    public Integer getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(Integer data) {
+    public void setData(Data data) {
         this.data = data;
+    }
+
+    public class Data {
+
+        @SerializedName("total")
+        @Expose
+        private String total;
+
+        public String getTotal() {
+            return total;
+        }
+
+        public void setTotal(String total) {
+            this.total = total;
+        }
     }
 }

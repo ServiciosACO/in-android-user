@@ -2,6 +2,8 @@ package co.kubo.indiesco.restAPI;
 
 import com.google.gson.JsonElement;
 
+import java.util.List;
+
 import co.kubo.indiesco.modelo.Foto;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.ValidacionDirecciones;
@@ -22,6 +24,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseRecargo;
 import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
+import co.kubo.indiesco.restAPI.modelo.ResponseTipoDirecciones;
 import co.kubo.indiesco.restAPI.modelo.ResponseValidacion;
 import co.kubo.indiesco.utils.Constantes;
 import okhttp3.MultipartBody;
@@ -269,5 +272,9 @@ public interface Endpoints {
     @GET(ConstantesRestApi.URL_OBTENER_CANTIDAD_NUEVAS_NOTIFICACIONES)
     Call<ResponseCantidadNotificacionesNuevas> obtenerCantidadNotificacionesNuevas(@Header("X-AC-Auth-Token") String authToken,
                                                                                    @Path("uid") String uid);
+
+    @GET(ConstantesRestApi.URL_LISTAR_TIPOS_DIRECCIONES)
+    Call<ResponseTipoDirecciones> obtenerTypoDeDireccicones(@Header("X-AC-Auth-Token") String authToken);
+
 
 }//Endpoints
