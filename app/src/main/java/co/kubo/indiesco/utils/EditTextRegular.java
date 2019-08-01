@@ -4,11 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatEditText;
+
 /**
  * Created by estacion on 31/01/18.
  */
 
-public class EditTextRegular extends android.support.v7.widget.AppCompatEditText {
+public class EditTextRegular extends AppCompatEditText {
 
     Utils utils = new Utils();
 

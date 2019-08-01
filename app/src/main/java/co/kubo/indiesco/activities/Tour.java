@@ -1,10 +1,11 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import butterknife.ButterKnife;
 import co.kubo.indiesco.adaptadores.CustomPagerAdapter;

@@ -2,13 +2,13 @@ package co.kubo.indiesco.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterVivienda
 import co.kubo.indiesco.adaptadores.IVivieda

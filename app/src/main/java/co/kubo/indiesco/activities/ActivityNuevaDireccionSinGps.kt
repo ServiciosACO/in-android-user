@@ -2,7 +2,6 @@ package co.kubo.indiesco.activities
 
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,6 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import co.kubo.indiesco.modelo.Usuario
 import co.kubo.indiesco.modelo.ValidacionDirecciones
 import co.kubo.indiesco.restAPI.modelo.ResponseTipoDirecciones

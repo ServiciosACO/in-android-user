@@ -1,7 +1,6 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,16 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.vision.text.Line;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.Calendario2;
-import co.kubo.indiesco.activities.ViewHolderListItemCalendario;
 import co.kubo.indiesco.dialog.DialogDetalleCalendario;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;

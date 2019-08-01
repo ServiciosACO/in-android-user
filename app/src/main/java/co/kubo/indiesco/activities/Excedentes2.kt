@@ -1,12 +1,12 @@
 package co.kubo.indiesco.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterInmuebles
 import co.kubo.indiesco.adaptadores.IShowOption

@@ -1,9 +1,10 @@
 package co.kubo.indiesco.activities;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.vision.text.Line;
 

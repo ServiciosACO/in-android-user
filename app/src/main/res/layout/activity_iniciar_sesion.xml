@@ -62,7 +62,7 @@
                 android:layout_marginTop="80dp"
                 android:backgroundTint="@color/colorVerdeCursor"
                 app:backgroundTint="@color/colorVerdeCursor" />
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:visibility="gone"
                 android:id="@+id/inputPassword"
                 android:layout_marginTop="67dp"
@@ -74,7 +74,7 @@
                 android:theme="@style/TextLabel"
                 app:hintEnabled="false"
                 app:passwordToggleTint="@color/colorGris">
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editContraseña"
                     android:hint="Contraseña"
                     android:textColorHint="@color/color_hint"
@@ -87,7 +87,7 @@
                     app:backgroundTint="@color/colorVerdeCursor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <co.kubo.indiesco.utils.ButtonMedium
                 android:id="@+id/btnContinuar"
                 android:layout_width="match_parent"

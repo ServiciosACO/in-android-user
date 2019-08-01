@@ -2,13 +2,13 @@ package co.kubo.indiesco.activities
 
 import android.content.Intent
 import android.graphics.Point
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.IAddress
 import co.kubo.indiesco.adaptadores.IDimension

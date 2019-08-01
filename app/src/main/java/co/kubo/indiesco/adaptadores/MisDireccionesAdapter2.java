@@ -1,34 +1,21 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.daimajia.swipe.SwipeLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.Direccion;
-import co.kubo.indiesco.modelo.Usuario;
-import co.kubo.indiesco.restAPI.Endpoints;
-import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
-import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
-import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Singleton;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Diego on 15/02/2018.

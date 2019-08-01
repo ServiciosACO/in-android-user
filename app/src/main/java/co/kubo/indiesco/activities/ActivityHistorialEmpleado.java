@@ -1,14 +1,14 @@
 package co.kubo.indiesco.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.adaptadores.CalificarEmpleadoAdapter;
 import co.kubo.indiesco.adaptadores.HistorialEmpleadoAdapter;
 import co.kubo.indiesco.utils.Singleton;
 

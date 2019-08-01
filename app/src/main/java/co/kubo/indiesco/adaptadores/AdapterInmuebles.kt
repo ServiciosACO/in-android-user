@@ -1,17 +1,17 @@
 package co.kubo.indiesco.adaptadores
 
 import android.app.Activity
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.RadioButton
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import co.kubo.indiesco.R
-import co.kubo.indiesco.activities.CircleTransform
 import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.utils.Singleton
-import com.squareup.picasso.MemoryPolicy
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 /**
@@ -24,15 +24,15 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
     var pos = 0
     var singleton = Singleton.getInstance()
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): InmuebleViewHolder {
-        val v = LayoutInflater.from(parent!!.context).inflate(R.layout.item_inmueble, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InmuebleViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_inmueble, parent, false)
         return InmuebleViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: InmuebleViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: InmuebleViewHolder, position: Int) {
         var temp = inmuebleArray[position]
-        holder!!.tvInmueble.text = temp.categoria
-        holder!!.tvDescription1.text = temp.description
+        holder.tvInmueble.text = temp.categoria
+        holder.tvDescription1.text = temp.description
         Picasso.with(activity)
                 .load(temp.imagen)
                 .into(holder.imgProperty)
@@ -63,7 +63,7 @@ class AdapterInmuebles(private val inmuebleArray : ArrayList<InmuebleVO>, privat
         return inmuebleArray.size
     }
 
-    class InmuebleViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
+    class InmuebleViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         var tvInmueble = itemView!!.findViewById<TextView>(R.id.tvInmueble)
         var radioButton = itemView!!.findViewById<RadioButton>(R.id.radioButton)
         var imgProperty = itemView!!.findViewById<ImageView>(R.id.imgProperty)

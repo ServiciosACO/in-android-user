@@ -1,14 +1,14 @@
 package co.kubo.indiesco.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterEspacios
 import co.kubo.indiesco.adaptadores.IEspacios
@@ -36,7 +36,7 @@ class EspaciosPrincipalesFragment : Fragment() {
     var pos2 = -1
     var pos3 = -1
 
-    var rvEspaciosPpal : RecyclerView ?= null
+    var rvEspaciosPpal : RecyclerView?= null
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

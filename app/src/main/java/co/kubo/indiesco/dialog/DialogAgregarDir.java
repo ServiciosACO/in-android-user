@@ -8,36 +8,24 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
-import android.webkit.WebView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.activities.MisDirecciones;
-import co.kubo.indiesco.activities.Registro;
 import co.kubo.indiesco.asincronasMapa.AsincronaGetDireccionPorCoordenadas;
-import co.kubo.indiesco.modelo.Usuario;
-import co.kubo.indiesco.restAPI.Endpoints;
-import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
-import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
-import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Utils;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Diego on 17/02/2018.

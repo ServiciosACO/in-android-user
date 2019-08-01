@@ -1,7 +1,6 @@
 package co.kubo.indiesco.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,7 @@ import co.kubo.indiesco.R
 import co.kubo.indiesco.utils.Singleton
 import android.annotation.SuppressLint
 import android.widget.*
+import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
 import java.util.*
 

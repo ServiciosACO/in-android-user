@@ -1,7 +1,6 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.Tour;

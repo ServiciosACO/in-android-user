@@ -2,13 +2,13 @@ package co.kubo.indiesco.adaptadores
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import co.kubo.indiesco.modelo.ServiceResumen
 import co.kubo.indiesco.R
 import co.kubo.indiesco.activities.FechaServicio
@@ -49,13 +49,13 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>,
         //return position > mList.size //if it have header the operator is >
     }*/
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == TYPE_HEADER) { //changing UI from footer to header
-            var view = LayoutInflater.from(viewGroup!!.context).inflate(R.layout.item_button_footer, viewGroup, false)
+            var view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_button_footer, viewGroup, false)
             return HeaderViewHolder(view)
 
         } else if (viewType == TYPE_ITEM) {
-            var view = LayoutInflater.from(viewGroup!!.context).inflate(R.layout.item_resumen, viewGroup, false)
+            var view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_resumen, viewGroup, false)
             return ItemViewHolder(view)
 
         } /*else if (viewType == TYPE_FOOTER) {
@@ -65,7 +65,7 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>,
         throw RuntimeException("there is no type that matches the type $viewType + make sure your using types correctly")
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
             holder.tvAddService.setOnClickListener {
                 val intent = Intent(activity, FechaServicio::class.java)
@@ -119,7 +119,7 @@ class AdapterResumen(private val mList : ArrayList<ServiceResumen>,
         val tvAddService = itemView!!.findViewById<TextView>(R.id.tvAddService)!!
     }
 
-    class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
+    class ItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         // Add your UI Components here
         val llResumen       = itemView!!.findViewById<LinearLayout>(R.id.llResumen)
         val tvTipoVivienda  = itemView!!.findViewById<TextView>(R.id.tvTipoVivienda)

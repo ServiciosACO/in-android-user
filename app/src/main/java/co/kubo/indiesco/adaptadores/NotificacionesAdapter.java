@@ -1,25 +1,22 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.EventListener;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.activities.IniciarSesion;
 import co.kubo.indiesco.activities.ViewHolderHeader;
 import co.kubo.indiesco.activities.ViewHolderListItem;
 import co.kubo.indiesco.dialog.DialogDosOpciones;

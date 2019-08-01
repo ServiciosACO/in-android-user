@@ -4,11 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 /**
  * Created by estacion on 31/01/18.
  */
 
-public class SemiBold extends android.support.v7.widget.AppCompatTextView {
+public class SemiBold extends AppCompatTextView {
 
     Utils utils = new Utils();
 

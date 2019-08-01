@@ -2,10 +2,6 @@ package co.kubo.indiesco.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +9,9 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.activities.ActivityNuevaDireccionSinGps
 import co.kubo.indiesco.activities.NuevaDireccion
@@ -26,6 +25,7 @@ import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
 import co.kubo.indiesco.restAPI.modelo.ResponseDireccion
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import com.google.android.gms.vision.text.Line
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,14 +37,14 @@ import java.util.ArrayList
 class ChooseAddressFragment : Fragment(), View.OnClickListener {
 
     var TAG = "ChooseAddressFragment"
-    var rvAddress : RecyclerView ?= null
+    var rvAddress : RecyclerView?= null
     var llNoAddress : LinearLayout ?= null
     private var direccion: ArrayList<Direccion>? = null
     private var dialogProgress : DialogProgress ?= null
     lateinit var llm : LinearLayoutManager
     lateinit var adapter : MisDireccionesAdapter2
     lateinit var iAddress : IAddress
-    var fabAgregar : FloatingActionButton ?= null
+    var fabAgregar : FloatingActionButton?= null
     var flag = true
 
     override fun onClick(v: View?) {

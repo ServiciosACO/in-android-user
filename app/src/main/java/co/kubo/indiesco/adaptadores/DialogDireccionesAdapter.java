@@ -1,19 +1,18 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.activities.Registro;
 import co.kubo.indiesco.dialog.DialogDirecciones;
-import co.kubo.indiesco.interfaces.IDialogDireccionesView;
 import co.kubo.indiesco.modelo.Direccion;
 
 /**

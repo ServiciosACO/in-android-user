@@ -4,11 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
+
 /**
  * Created by estacion on 31/01/18.
  */
 
-public class AutoCompleteTextViewRegular extends android.support.v7.widget.AppCompatAutoCompleteTextView {
+public class AutoCompleteTextViewRegular extends AppCompatAutoCompleteTextView {
 
     Utils utils = new Utils();
 

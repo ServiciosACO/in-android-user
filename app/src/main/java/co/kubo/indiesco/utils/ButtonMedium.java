@@ -4,11 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatButton;
+
 /**
  * Created by estacion on 31/01/18.
  */
 
-public class ButtonMedium extends android.support.v7.widget.AppCompatButton {
+public class ButtonMedium extends AppCompatButton {
 
     Utils utils = new Utils();
 

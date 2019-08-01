@@ -2,20 +2,18 @@ package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,10 +25,6 @@ import java.util.ArrayList;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.ActivityCalificarPersonal;
 import co.kubo.indiesco.activities.Calificar2;
-import co.kubo.indiesco.activities.OlvidoContrasena;
-import co.kubo.indiesco.activities.Splash;
-import co.kubo.indiesco.activities.Tour;
-import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.PendienteCalificar;
 import co.kubo.indiesco.modelo.Personal;

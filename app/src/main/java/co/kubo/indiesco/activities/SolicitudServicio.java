@@ -2,12 +2,10 @@ package co.kubo.indiesco.activities;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,7 +38,6 @@ import co.kubo.indiesco.modelo.InmuebleVO;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
-import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseInmueble;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.utils.SharedPreferenceManager;

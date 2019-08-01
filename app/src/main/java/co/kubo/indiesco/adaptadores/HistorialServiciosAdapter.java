@@ -1,10 +1,7 @@
 package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -30,7 +20,6 @@ import co.kubo.indiesco.activities.Calificar;
 import co.kubo.indiesco.dialog.DialogDetalleHistorial;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.utils.Utils;
-import okhttp3.internal.Util;
 
 /**
  * Created by Diego on 12/02/2018.

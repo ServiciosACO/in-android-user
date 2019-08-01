@@ -1,12 +1,12 @@
 package co.kubo.indiesco.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterResumen
 import co.kubo.indiesco.adaptadores.IChangeLayout
@@ -20,9 +20,6 @@ import co.kubo.indiesco.restAPI.modelo.ResponseCrearServicio
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
-import com.squareup.picasso.MemoryPolicy
-import com.squareup.picasso.NetworkPolicy
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_solicitud_servicio3.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -34,7 +31,7 @@ import java.text.DecimalFormat
 class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLayout {
 
     val df = DecimalFormat("$###,###.##")
-    lateinit var dialogProgress : DialogProgress
+    lateinit var dialogProgress: DialogProgress
     val singleton = Singleton.getInstance()
     val sharedPreferenceManager = SharedPreferenceManager()
     val utils = Utils()
@@ -42,22 +39,22 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
     var id_codigo_descuento = 0
     var descuento = 0
 
-    lateinit var llm : LinearLayoutManager
+    lateinit var llm: LinearLayoutManager
     private lateinit var adapter: AdapterResumen
     var total = 0.0
 
     override fun onClick(v: View?) {
-        when (v!!.id){
+        when (v!!.id) {
             R.id.imgBotonVolver -> {
                 onBackPressed()
             }
             R.id.tvAddService -> {
-                val intent = Intent (this, FechaServicio :: class.java)
+                val intent = Intent(this, FechaServicio::class.java)
                 startActivity(intent)
             }
             R.id.tvValidateCoupon -> {
-                if (validation()){
-                    if (singleton.validateCoupon){
+                if (validation()) {
+                    if (singleton.validateCoupon) {
                         Toast.makeText(applicationContext, "Ya fue usado un cupón", Toast.LENGTH_LONG).show()
                     } else {
                         var code = editCode.text.toString()
@@ -67,9 +64,9 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
             }
             R.id.tvPayment -> {
                 var resumen = singleton.resumen
-                var reqBody = ""
+                var reqBody: String
                 var jsonArray = JSONArray()
-                for (item in resumen.indices){
+                for (item in resumen.indices) {
                     var jsonObject = JSONObject()
                     jsonObject.put("id_tipo_inmueble", resumen[item].id_tipo_inmueble)
                     jsonObject.put("id_dimension", resumen[item].id_dimension)
@@ -81,16 +78,16 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                     jsonObject.put("hora", resumen[item].hora)
                     jsonObject.put("comentario", resumen[item].comentario)
                     jsonObject.put("tipo_cobro", resumen[item].tipo_cobro)
-                    if (resumen[item].tipo_cobro.equals("espacios")){
+                    if (resumen[item].tipo_cobro.equals("espacios")) {
                         var jsonArrayEspacios = JSONArray()
-                        for (i in resumen[item].espacios.indices){
+                        for (i in resumen[item].espacios.indices) {
                             var jsonObjectEspacios = JSONObject()
                             jsonObjectEspacios.put("id_espacio", resumen[item].espacios[i].id_espacio)
                             jsonArrayEspacios.put(jsonObjectEspacios)
                         }
                         var aux = jsonArrayEspacios.toString().replace("\"[", "[")
                                 .replace("]\"", "]")
-                                .replace("\\\"","\"")
+                                .replace("\\\"", "\"")
                         jsonObject.put("espacios", aux)
                     } else {
                         jsonObject.put("espacios", "[]")
@@ -99,7 +96,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                 }
                 reqBody = jsonArray.toString().replace("\"[", "[")
                         .replace("]\"", "]")
-                        .replace("\\\"","\"")
+                        .replace("\\\"", "\"")
                 var cantidad_fechas = resumen.size
                 crearServicio(reqBody, cantidad_fechas)
             }
@@ -115,9 +112,9 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
         var usuario = Usuario()
         usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
         var id_user = usuario.id_user
-         val responseCrearServicio : Call<ResponseCrearServicio> = endpoints.crearServicio(authToken, id_user,
+        val responseCrearServicio: Call<ResponseCrearServicio> = endpoints.crearServicio(authToken, id_user,
                 total.toInt(), id_codigo_descuento, descuento, cantidad_fechas, reqBody)
-        responseCrearServicio.enqueue(object : Callback<ResponseCrearServicio>{
+        responseCrearServicio.enqueue(object : Callback<ResponseCrearServicio> {
             override fun onFailure(call: Call<ResponseCrearServicio>?, t: Throwable?) {
                 if (dialogProgress.isShowing)
                     dialogProgress.dismiss()
@@ -126,13 +123,13 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
             override fun onResponse(call: Call<ResponseCrearServicio>?, response: Response<ResponseCrearServicio>?) {
                 if (dialogProgress.isShowing)
                     dialogProgress.dismiss()
-                if (response!!.isSuccessful){
-                    when(response.body()!!.code){
+                if (response!!.isSuccessful) {
+                    when (response.body()!!.code) {
                         "100" -> {
                             var urlBase = ConstantesRestApi.URL_BASE
                             var id_solicitud = response.body()!!.data.idSolicitud
                             var urlTransaccion = "$urlBase/servicios/resumen_pedido/$id_user/$id_solicitud/servicio"
-                            var goPago = Intent(applicationContext, Transaccion :: class.java)
+                            var goPago = Intent(applicationContext, Transaccion::class.java)
                             goPago.putExtra("type", "servicio")
                             goPago.putExtra("url", urlTransaccion)
                             goPago.putExtra("id_sol", id_solicitud.toString())
@@ -150,11 +147,11 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 
-    fun validation(): Boolean{
-        if (!utils.checkInternetConnection(this@SolicitudServicio3,true)){
+    fun validation(): Boolean {
+        if (!utils.checkInternetConnection(this@SolicitudServicio3, true)) {
             return false
         }
-        if (editCode.text.isEmpty()){
+        if (editCode.text.isEmpty()) {
             editCode.error = "Debe ingresar un código valido"
             return false
         }
@@ -170,20 +167,21 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
         var usuario = Usuario()
         usuario = SharedPreferenceManager.getInfoUsuario(this)
         var id = usuario.id_user
-        var responseCodigoDescuentoCall : Call<ResponseCodigoDescuento> = endpoints.validarCupon(authToken, id, code)
-        responseCodigoDescuentoCall.enqueue(object : Callback<ResponseCodigoDescuento>{
+        var responseCodigoDescuentoCall: Call<ResponseCodigoDescuento> = endpoints.validarCupon(authToken, id, code)
+        responseCodigoDescuentoCall.enqueue(object : Callback<ResponseCodigoDescuento> {
             override fun onFailure(call: Call<ResponseCodigoDescuento>?, t: Throwable?) {
                 if (dialogProgress.isShowing)
                     dialogProgress.dismiss()
             }
+
             override fun onResponse(call: Call<ResponseCodigoDescuento>?, response: Response<ResponseCodigoDescuento>?) {
                 if (dialogProgress.isShowing)
                     dialogProgress.dismiss()
-                if (response!!.isSuccessful){
-                    when (response.body()!!.code){
+                if (response!!.isSuccessful) {
+                    when (response.body()!!.code) {
                         "100" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_check,0)
-                            when (response.body()!!.data!!.tipoCodigo){
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.coupon_check, 0)
+                            when (response.body()!!.data!!.tipoCodigo) {
                                 "1" -> { //valor
                                     //tvDiscount.visibility = View.VISIBLE
                                     //tvDiscount.text = (response.body()!!.data!!.valor!!.toDouble() * -1).toString()
@@ -194,10 +192,10 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                                 "2" -> { //porcentaje
                                     //tvDiscount.visibility = View.VISIBLE
                                     //tvDiscount.text = (((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1).toString()
-                                    singleton.discountValue = ((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1
-                                    var code_percent = (response.body()!!.data!!.valor!!.toDouble()/100)
+                                    singleton.discountValue = ((response.body()!!.data!!.valor!!.toDouble() / 100) * total) * -1
+                                    var code_percent = (response.body()!!.data!!.valor!!.toDouble() / 100)
                                     total -= (total * code_percent)
-                                    tvDiscount.text = "${df.format(total * (response.body()!!.data!!.valor!!.toDouble()/100))}"
+                                    tvDiscount.text = "${df.format(total * (response.body()!!.data!!.valor!!.toDouble() / 100))}"
                                 }
                             }
                             singleton.discountCode = response.body()!!.data!!.tipoCodigo
@@ -206,19 +204,19 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                             tvTotal.text = "${df.format(total)}"
                         }
                         "101" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.coupon_error, 0)
                             Toast.makeText(applicationContext, "El código ingresado ya fue redimido", Toast.LENGTH_LONG).show()
                         }
                         "102" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.coupon_error, 0)
                             Toast.makeText(applicationContext, "El código ingresado no es válido", Toast.LENGTH_LONG).show()
                         }
                         "103" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.coupon_error, 0)
                             Toast.makeText(applicationContext, "El código ingresado expiró", Toast.LENGTH_LONG).show()
                         }
                         "104" -> {
-                            editCode.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.coupon_error,0)
+                            editCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.coupon_error, 0)
                             Toast.makeText(applicationContext, "El código ingresado no es válido", Toast.LENGTH_LONG).show()
                         }
                         "120" -> {
@@ -232,7 +230,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
 
     override fun onBackPressed() {
         singleton.validateCoupon = false
-        val intent = Intent(this, Home :: class.java)
+        val intent = Intent(this, Home::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()
@@ -247,13 +245,13 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
     }
 
     override fun changeForNoService(flag: Boolean, mList: ArrayList<ServiceResumen>) {
-        if (flag){
+        if (flag) {
             llServices.visibility = View.GONE
             llNoServices.visibility = View.VISIBLE
             singleton.validateCoupon = false
         } else {
             total = 0.0
-            for (item in mList.indices){
+            for (item in mList.indices) {
                 var unitPrice = mList[item].totalCost.toDouble()
                 total += unitPrice
             }
@@ -267,7 +265,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
         setListeners()
 
         var resumen = singleton.resumen
-        if (resumen.isNotEmpty() || resumen.size != 0){
+        if (resumen.isNotEmpty() || resumen.size != 0) {
             llServices.visibility = View.VISIBLE
             llNoServices.visibility = View.GONE
 
@@ -277,7 +275,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
             rvResumen.layoutManager = llm
             adapter = AdapterResumen(resumen, this, this)
             rvResumen.adapter = adapter
-            for (item in resumen.indices){
+            for (item in resumen.indices) {
                 var unitPrice = resumen[item].totalCost.toDouble()
                 total += unitPrice
             }

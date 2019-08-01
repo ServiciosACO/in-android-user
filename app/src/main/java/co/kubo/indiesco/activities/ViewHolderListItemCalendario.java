@@ -1,10 +1,11 @@
 package co.kubo.indiesco.activities;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.EventListener;
 

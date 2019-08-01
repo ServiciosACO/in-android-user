@@ -2,9 +2,6 @@ package co.kubo.indiesco.fragment
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +10,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterDimensiones
 import co.kubo.indiesco.adaptadores.IDimension
@@ -33,7 +33,7 @@ class DimensionesFragment : Fragment(), View.OnClickListener{
     var nPisos = 0
     lateinit var iDimension : IDimension
 
-    private var rvDimensiones : RecyclerView ?= null
+    private var rvDimensiones : RecyclerView?= null
     private var tvQtyFloor : TextView ?= null
     private var llNoSpaces : LinearLayout ?= null
     private var llDimens : LinearLayout ?= null

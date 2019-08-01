@@ -1,11 +1,11 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
-import android.media.VolumeAutomation;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,11 +27,12 @@ public class Calificar2 extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.imgBotonVolver:
                 onBackPressed();
                 break;
-            default:break;
+            default:
+                break;
         }//switch
     }
 

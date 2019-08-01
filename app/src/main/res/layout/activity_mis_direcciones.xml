@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/fondo_registro"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDir"
             android:layout_marginBottom="32dp"
             android:background="@color/fondo_registro"
@@ -86,7 +86,7 @@
             android:layout_height="match_parent"/>
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAgregar"
         android:src="@drawable/btn_add"
         app:backgroundTint="@color/colorNaranja"
@@ -95,4 +95,4 @@
         android:layout_gravity="right|bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

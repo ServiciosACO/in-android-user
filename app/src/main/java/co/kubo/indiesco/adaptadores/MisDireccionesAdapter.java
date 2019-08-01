@@ -2,16 +2,16 @@ package co.kubo.indiesco.adaptadores;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.daimajia.swipe.SwipeLayout;
 
@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.activities.ActivityNuevaDireccionSinGps;
-import co.kubo.indiesco.activities.Calificar;
 import co.kubo.indiesco.dialog.DialogDosOpciones;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.IMisDireccionesView;

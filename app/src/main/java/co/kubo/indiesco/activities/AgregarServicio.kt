@@ -1,7 +1,7 @@
 package co.kubo.indiesco.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import co.kubo.indiesco.R
 
 class AgregarServicio : AppCompatActivity() {

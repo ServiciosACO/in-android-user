@@ -1,10 +1,10 @@
 package co.kubo.indiesco.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import co.kubo.indiesco.R
 import co.kubo.indiesco.adaptadores.AdapterRecargos
 import co.kubo.indiesco.dialog.DialogProgress

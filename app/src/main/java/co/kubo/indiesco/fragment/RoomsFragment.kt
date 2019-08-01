@@ -1,11 +1,11 @@
 package co.kubo.indiesco.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import co.kubo.indiesco.R
 import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.utils.Singleton

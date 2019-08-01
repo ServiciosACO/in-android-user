@@ -1,21 +1,14 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.modelo.Usuario;
-import co.kubo.indiesco.restAPI.Endpoints;
-import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
-import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
 import co.kubo.indiesco.utils.Constantes;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Splash extends AppCompatActivity {
 

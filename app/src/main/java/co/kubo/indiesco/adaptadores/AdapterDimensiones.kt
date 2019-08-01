@@ -1,11 +1,11 @@
 package co.kubo.indiesco.adaptadores
 
 import android.app.Activity
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import co.kubo.indiesco.R
 import co.kubo.indiesco.modelo.InmuebleVO
 import co.kubo.indiesco.utils.Singleton
@@ -20,8 +20,8 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
 
     val singleton = Singleton.getInstance()
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DimensionesViewHolder {
-        val v = LayoutInflater.from(parent!!.context).inflate(R.layout.item_dimensiones, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DimensionesViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_dimensiones, parent, false)
         return DimensionesViewHolder(v)
     }
 
@@ -29,9 +29,9 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
         return inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[posInmueble].dimesiones!!.size
     }
 
-    override fun onBindViewHolder(holder: DimensionesViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: DimensionesViewHolder, position: Int) {
         var temp = inmuebleArray[singleton.posCat.toInt()].tiposInmuebles[posInmueble].dimesiones!![position]
-        holder!!.tvDimension.text = temp.dimension
+        holder.tvDimension.text = temp.dimension
 
         if (temp.checkDim){
             holder.tvDimension.setBackgroundColor(activity.resources.getColor(R.color.colorNaranja))
@@ -54,7 +54,7 @@ class AdapterDimensiones(private val inmuebleArray : ArrayList<InmuebleVO>, priv
             iDimension.dimensionCheck(2)
         }
     }
-    class DimensionesViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
+    class DimensionesViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         var tvDimension = itemView!!.findViewById<TextView>(R.id.tvDimension)
     }
 }

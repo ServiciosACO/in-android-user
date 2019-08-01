@@ -1,33 +1,27 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.adaptadores.CalendarioAdapter;
-import co.kubo.indiesco.adaptadores.NotificacionesAdapter;
 import co.kubo.indiesco.interfaces.ICalendarioPresenter;
 import co.kubo.indiesco.interfaces.ICalendarioView;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.presenter.CalendarioPresenter;
-import co.kubo.indiesco.presenter.HistorialServiciosPresenter;
 
 public class Calendario extends AppCompatActivity implements View.OnClickListener, ICalendarioView {
 
@@ -80,8 +74,7 @@ public class Calendario extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void generarLinearLayoutVertical() {
-        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
         rvCalendar.setLayoutManager(llm);
     }
 

@@ -1,50 +1,36 @@
 package co.kubo.indiesco.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.CalendarMode;
-import com.prolificinteractive.materialcalendarview.DayViewDecorator;
-import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.adaptadores.CalendarioAdapter;
 import co.kubo.indiesco.adaptadores.CalendarioDetalleFechaAdapter;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.interfaces.ICalendario2Presenter;
 import co.kubo.indiesco.interfaces.ICalendario2View;
-import co.kubo.indiesco.interfaces.ICalendarioPresenter;
-import co.kubo.indiesco.interfaces.ICalendarioView;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.presenter.Calendario2Presenter;
-import co.kubo.indiesco.presenter.CalendarioPresenter;
 import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseHistorial;

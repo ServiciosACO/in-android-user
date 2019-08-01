@@ -2,9 +2,6 @@ package co.kubo.indiesco.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,14 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
-import co.kubo.indiesco.dialog.DialogPendienteCalificar;
 import co.kubo.indiesco.dialog.DialogProgress;
 import co.kubo.indiesco.modelo.PendienteCalificar;
 import co.kubo.indiesco.modelo.Usuario;
@@ -34,8 +33,6 @@ import co.kubo.indiesco.restAPI.Endpoints;
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter;
 import co.kubo.indiesco.restAPI.modelo.ResponseGeneral;
 import co.kubo.indiesco.restAPI.modelo.ResponseLogin;
-import co.kubo.indiesco.restAPI.modelo.ResponsePendienteCalificar;
-import co.kubo.indiesco.utils.Constantes;
 import co.kubo.indiesco.utils.SharedPreferenceManager;
 import co.kubo.indiesco.utils.Utils;
 import retrofit2.Call;
