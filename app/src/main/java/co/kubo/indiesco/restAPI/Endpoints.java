@@ -25,6 +25,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseTipoDirecciones;
+import co.kubo.indiesco.restAPI.modelo.ResponseTotalToPay;
 import co.kubo.indiesco.restAPI.modelo.ResponseValidacion;
 import co.kubo.indiesco.utils.Constantes;
 import okhttp3.MultipartBody;
@@ -275,6 +276,15 @@ public interface Endpoints {
 
     @GET(ConstantesRestApi.URL_LISTAR_TIPOS_DIRECCIONES)
     Call<ResponseTipoDirecciones> obtenerTypoDeDireccicones(@Header("X-AC-Auth-Token") String authToken);
+
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_OBTENER_TOTAL_PAGAR)
+    Call<ResponseTotalToPay> obtenerTotalPagar(@Header("X-AC-Auth-Token") String authToken,
+                                               @Field("typeSpace") String idCategoria,
+                                               @Field("size") String idDimension,
+                                               @Field("floor") String floor,
+                                               @Field("spaces[]") List<String> espacios,
+                                               @Field("exactMeters") String metrosExactos);
 
 
 }//Endpoints

@@ -1,8 +1,10 @@
 package co.kubo.indiesco.activities
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -14,14 +16,23 @@ import co.kubo.indiesco.adaptadores.*
 import co.kubo.indiesco.dialog.DialogDosOpciones
 import co.kubo.indiesco.fragment.*
 import co.kubo.indiesco.modelo.Espacios
+import co.kubo.indiesco.modelo.InmuebleEspacios
 import co.kubo.indiesco.modelo.ServiceResumen
+import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
+import co.kubo.indiesco.restAPI.modelo.ResponseTipoDirecciones
+import co.kubo.indiesco.restAPI.modelo.ResponseTotalToPay
+import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import kotlinx.android.synthetic.main.activity_add_service.*
 import org.joda.time.DateTime
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
@@ -51,7 +62,21 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
-        calculateTotal()
+        //calculateTotal()
+
+        getTotalPagarEspacios(getEspaciosOcupados())
+    }
+
+    fun getEspaciosOcupados(): ArrayList<String> {
+        val data = singleton.data
+        val inmuebleEspacios = data[0].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].espacios
+        val espacios = ArrayList<String>()
+        inmuebleEspacios!!.forEach {
+            if (it.qty > 0) {
+                espacios.add("${it.id_espacio},${it.qty}")
+            }
+        }
+        return espacios
     }
 
     override fun espaciosCheck(flag: Boolean, posInm: Int, posDim: Int) {
@@ -63,7 +88,8 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
         flagEspacios = flag
-        calculateTotal()
+        //calculateTotal()
+        getTotalPagarEspacios(getEspaciosOcupados())
     }
 
     fun calculateTotal() {
@@ -147,6 +173,45 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
         flagVivienda = true
     }
 
+    fun getTotalPagar(espacios: ArrayList<String>) {
+        val authToken = SharedPreferenceManager.getAuthToken(applicationContext)
+        val restApiAdapter = RestApiAdapter()
+        val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
+        val request: Call<ResponseTotalToPay> = endpoints.obtenerTotalPagar(authToken, singleton.idCategoria, singleton.idDimension, singleton.getnPisos(), espacios, "")
+        request.enqueue(object : Callback<ResponseTotalToPay> {
+            override fun onFailure(call: Call<ResponseTotalToPay>, t: Throwable) {
+                Log.e("ERROR-RESP-TOTAL-PAY", t.message)
+            }
+
+            override fun onResponse(call: Call<ResponseTotalToPay>, response: Response<ResponseTotalToPay>) {
+                Log.i("RESPONSE-TOTAL-PAY", response.body().toString())
+                if (response.body()!!.code == "100") {
+                    totalCost = response.body()!!.data.price
+                }
+            }
+        })
+    }
+
+    fun getTotalPagarEspacios(espacios: ArrayList<String>) {
+        val authToken = SharedPreferenceManager.getAuthToken(applicationContext)
+        val restApiAdapter = RestApiAdapter()
+        val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
+        val request: Call<ResponseTotalToPay> = endpoints.obtenerTotalPagar(authToken, singleton.idCategoria, singleton.idDimension, singleton.getnPisos(), espacios, "")
+        request.enqueue(object : Callback<ResponseTotalToPay> {
+            override fun onFailure(call: Call<ResponseTotalToPay>, t: Throwable) {
+                Log.e("ERROR-RESP-TOTAL-PAY", t.message)
+            }
+
+            override fun onResponse(call: Call<ResponseTotalToPay>, response: Response<ResponseTotalToPay>) {
+                Log.i("RESPONSE-TOTAL-PAY", response.body().toString())
+                if (response.body()!!.code == "100") {
+                    tvValor.text = "Total: ${df.format(response.body()!!.data.price)}"
+                    totalCost = response.body()!!.data.price
+                }
+            }
+        })
+    }
+
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.imgBotonVolver -> {
@@ -191,6 +256,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                             val df = SimpleDateFormat("yyyy-MM-dd")
                             val currentDate = df.format(Calendar.getInstance().time)
                             var splitTime = singleton.hora.split(":")
+
                             if (singleton.urgente == "no") {
                                 if (splitTime[0].toInt() < 6 || splitTime[0].toInt() > 18) {
                                     DialogDosOpciones(this@AddService, "4", object : DialogDosOpciones.RespuestaListener {

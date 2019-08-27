@@ -40,6 +40,20 @@ public class Singleton {
     private Double priceFloorOne;
     private Double priceFloorTwo;
     private Double priceFloorThree;
+    private String idCategoria;
+    List<String> listaEspacios = new ArrayList<>();
+
+    public List<String> getListaEspacios() {
+        return listaEspacios;
+    }
+
+    public String getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(String idCategoria) {
+        this.idCategoria = idCategoria;
+    }
 
     public String getPrecioFijo() {
         return precioFijo;

@@ -3,6 +3,7 @@ package co.kubo.indiesco.activities
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -18,10 +19,16 @@ import co.kubo.indiesco.dialog.DialogDosOpciones
 import co.kubo.indiesco.fragment.*
 import co.kubo.indiesco.modelo.Espacios
 import co.kubo.indiesco.modelo.ServiceResumen
+import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
+import co.kubo.indiesco.restAPI.modelo.ResponseTotalToPay
+import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import kotlinx.android.synthetic.main.activity_add_service2.*
 import org.joda.time.DateTime
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,16 +53,17 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
     val utils = Utils()
 
     override fun dimensionCheck(num: Int) {
-        when(num){
+        when (num) {
             2 -> flag1 = true
             3 -> flag2 = true
         }
-        if (flag1 && flag2){
+        if (flag1 && flag2) {
             flagDimensiones = true
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
         }
         //calculateTotal()
+        getTotalPagar()
     }
 
     override fun viviendaCheck() {
@@ -66,24 +74,25 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
 
     override fun checkNPisos(b: Boolean) {
         flagNpisos = true // esto cambio
-        if (b){
+        if (b) {
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
         } else {
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
-        calculateTotal()
+        //calculateTotal()
+        getTotalPagar()
     }
 
-    fun calculateTotal(){
+    fun calculateTotal() {
         var data = singleton.data
         var total = 0.0
         if (data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!!.size != 0) {
 
-            if (singleton.getnMetros().toInt()==0){
+            if (singleton.getnMetros().toInt() == 0) {
                 total = singleton.precioFijo.toDouble()
-            }else{
+            } else {
                 var precio = data[singleton.posCat.toInt()].tiposInmuebles[singleton.posTipoInmueble.toInt()].dimesiones!![singleton.posDimension.toInt()].precio
                 var qty = singleton.getnMetros().toInt() //
                 total = qty * precio!!.toDouble()
@@ -119,8 +128,8 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
     }
 
     override fun checkTime() {
-       // if (flagNpisos && flagAddress){
-        if (flagAddress){
+        // if (flagNpisos && flagAddress){
+        if (flagAddress) {
             flagTime = true
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
@@ -129,7 +138,8 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
         }
-        calculateTotal()
+        //calculateTotal()
+        getTotalPagar()
     }
 
     override fun AddressCheck() {
@@ -147,39 +157,39 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                 var pos = viewPager2.currentItem
                 when (pos) {
                     0 -> {
-                        if (flagVivienda){
+                        if (flagVivienda) {
                             viewPager2.currentItem = 1
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
                         }
 
                     }
                     1 -> {
-                        if (flagDimensiones){
+                        if (flagDimensiones) {
                             viewPager2.currentItem = 2
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
                         }
                     }
                     2 -> {
-                        if (flagNpisos){
+                        if (flagNpisos) {
                             viewPager2.currentItem = 3
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije numero de pisos", Toast.LENGTH_LONG).show()
                         }
 
                     }
                     3 -> {
-                        if (flagAddress){
+                        if (flagAddress) {
                             viewPager2.currentItem = 4
-                        }else{
+                        } else {
                             Toast.makeText(applicationContext, "Elije dirección", Toast.LENGTH_LONG).show()
                         }
 
                     }
                     4 -> {
-                        if (flagVivienda && flagDimensiones && flagNpisos && flagAddress && flagTime){
-                      //  if (flagVivienda && flagDimensiones && flagAddress && flagTime){
+                        if (flagVivienda && flagDimensiones && flagNpisos && flagAddress && flagTime) {
+                            //  if (flagVivienda && flagDimensiones && flagAddress && flagTime){
                             val df = SimpleDateFormat("yyyy-MM-dd")
                             val currentDate = df.format(Calendar.getInstance().time)
                             var splitTime = singleton.hora.split(":")
@@ -548,11 +558,11 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                 }
                             }
                         } else {
-                            if (!flagVivienda){
+                            if (!flagVivienda) {
                                 Toast.makeText(applicationContext, "Elije tipo de vivienda", Toast.LENGTH_LONG).show()
-                            } else if (!flagDimensiones){
+                            } else if (!flagDimensiones) {
                                 Toast.makeText(applicationContext, "Elije el rango de dimensiones y/o el número de pisos", Toast.LENGTH_LONG).show()
-                            } else if (!flagAddress){
+                            } else if (!flagAddress) {
                                 Toast.makeText(applicationContext, "Elije la dirección", Toast.LENGTH_LONG).show()
                             }
                         }
@@ -563,7 +573,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun validation(): Boolean {
-        if (!utils.checkInternetConnection(this@AddService2, true)){
+        if (!utils.checkInternetConnection(this@AddService2, true)) {
             return false
         }
         return true
@@ -571,10 +581,10 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
 
     override fun onBackPressed() {
         var pos = viewPager2.currentItem
-        when (pos){
+        when (pos) {
             0 -> {
-                if (validation()){
-                    val intent = Intent (this, TipoInmueble :: class.java)
+                if (validation()) {
+                    val intent = Intent(this, TipoInmueble::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                     finish()
@@ -625,7 +635,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
-        val width = (size.x)/5
+        val width = (size.x) / 5
         val height = size.y
 
         viewPager2.setPagingEnabled(false)
@@ -639,7 +649,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         tvValor.visibility = View.INVISIBLE
                         llProgress.layoutParams.width = width
                         llProgress.requestLayout()
-                        if (flagVivienda){
+                        if (flagVivienda) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -652,7 +662,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         tvValor.visibility = View.INVISIBLE
                         llProgress.layoutParams.width = width * 2
                         llProgress.requestLayout()
-                        if (flagDimensiones){
+                        if (flagDimensiones) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -665,7 +675,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = width * 3
                         llProgress.requestLayout()
-                        if (flagNpisos){
+                        if (flagNpisos) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -678,7 +688,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = width * 4
                         llProgress.requestLayout()
-                        if (flagAddress){
+                        if (flagAddress) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -691,7 +701,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                         tvValor.visibility = View.VISIBLE
                         llProgress.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
                         llProgress.requestLayout()
-                        if (flagTime){
+                        if (flagTime) {
                             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
                             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
                         } else {
@@ -701,7 +711,33 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                     }
                 }//switch
             }//public void onPageSelected
+
             override fun onPageScrollStateChanged(state: Int) {}
+        })
+    }
+
+    fun getTotalPagar() {
+        val authToken = SharedPreferenceManager.getAuthToken(applicationContext)
+        val restApiAdapter = RestApiAdapter()
+        val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
+        val metrosExactos = if (singleton.getnMetros() == "0" || singleton.getnMetros() == "") {
+            null
+        } else {
+            singleton.getnMetros()
+        }
+        val request: Call<ResponseTotalToPay> = endpoints.obtenerTotalPagar(authToken, singleton.idCategoria, singleton.idDimension, singleton.getnPisos(), null, metrosExactos)
+        request.enqueue(object : Callback<ResponseTotalToPay> {
+            override fun onFailure(call: Call<ResponseTotalToPay>, t: Throwable) {
+                Log.e("ERROR-RESP-TOTAL-PAY", t.message)
+            }
+
+            override fun onResponse(call: Call<ResponseTotalToPay>, response: Response<ResponseTotalToPay>) {
+                Log.i("RESPONSE-TOTAL-PAY", response.body().toString())
+                if (response.body()!!.code == "100") {
+                    tvValor.text = "Total: ${df.format(response.body()!!.data.price)}"
+                    totalCost = response.body()!!.data.price
+                }
+            }
         })
     }
 }
