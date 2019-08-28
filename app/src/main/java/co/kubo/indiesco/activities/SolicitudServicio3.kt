@@ -182,20 +182,22 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                         "100" -> {
                             editCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.coupon_check, 0)
                             when (response.body()!!.data!!.tipoCodigo) {
-                                "1" -> { //valor
+                                "1" -> {//porcentaje
                                     //tvDiscount.visibility = View.VISIBLE
                                     //tvDiscount.text = (response.body()!!.data!!.valor!!.toDouble() * -1).toString()
-                                    singleton.discountValue = (response.body()!!.data!!.valor!!.toDouble() * -1)
-                                    total -= response.body()!!.data!!.valor!!.toDouble()
-                                    tvDiscount.text = "${df.format(response.body()!!.data!!.valor!!.toDouble())}"
-                                }
-                                "2" -> { //porcentaje
-                                    //tvDiscount.visibility = View.VISIBLE
-                                    //tvDiscount.text = (((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1).toString()
                                     singleton.discountValue = ((response.body()!!.data!!.valor!!.toDouble() / 100) * total) * -1
                                     var code_percent = (response.body()!!.data!!.valor!!.toDouble() / 100)
                                     total -= (total * code_percent)
-                                    tvDiscount.text = "${df.format(total * (response.body()!!.data!!.valor!!.toDouble() / 100))}"
+                                    tvDiscount.text = "${df.format(singleton.discountValue * -1)}"
+
+                                }
+                                "2" -> {//valor
+                                    //tvDiscount.visibility = View.VISIBLE
+                                    //tvDiscount.text = (((response.body()!!.data!!.valor!!.toDouble()/100)*total) * -1).toString()
+
+                                    singleton.discountValue = (response.body()!!.data!!.valor!!.toDouble() * -1)
+                                    total -= response.body()!!.data!!.valor!!.toDouble()
+                                    tvDiscount.text = "${df.format(response.body()!!.data!!.valor!!.toDouble())}"
                                 }
                             }
                             singleton.discountCode = response.body()!!.data!!.tipoCodigo
