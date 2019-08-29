@@ -26,7 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
         <activity
             android:name=".activities.ActivityNuevaDireccionSinGps"
             android:screenOrientation="portrait"></activity>
@@ -161,7 +163,9 @@
             android:name=".activities.Excedentes3"
             android:label="@string/title_activity_excedentes3"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.AddService2" />
+        <activity
+            android:name=".activities.AddService2"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.ActivityCalificarPersonal"
             android:screenOrientation="portrait" />
