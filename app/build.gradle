@@ -8,8 +8,8 @@ android {
         applicationId "co.kubo.indiesco"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 22
-        versionName "2.3"
+        versionCode 23
+        versionName "2.4"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "Servicios ACO - $versionName")
@@ -28,6 +28,10 @@ android {
 
     dexOptions {
         javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
     }
 }
 
