@@ -552,12 +552,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                     dialogProgress.dismiss();
                 }
                 String code = response.body().getCode();
+                String selectedItem = spnCiudadesCA.getSelectedItem().toString();
                 switch (code) {
                     case "100": //OK
                         //Servicio para crear direccion
 
                         for (ValidacionDirecciones validaciones : listCiudadesDisponibles) {
-                            if (validaciones.getCity().equals(spnCiudadesCA.getSelectedItem().toString())) {
+                            String comparacion = validaciones.getCity() + " (" + validaciones.getRegion() + ")";
+                            if (comparacion.equals(selectedItem)) {
                                 crearDireccion(validaciones.getCityId(), response.body().getData().getUid());
                             }
                         }
@@ -591,7 +593,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         String authToken = SharedPreferenceManager.getAuthToken(getApplicationContext());
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestApiSinGson();
-        Call<ResponseValidacion> responseGeneralCall = endpoints.createAddress(authToken, uid, spTypesCA.getSelectedItem().toString() + " " + etFirstPartCA.getText().toString() + " " + etSecondPartCA.getText().toString() + " " + etThirdPartCA.getText().toString() + " ", etComplementCA.getText().toString(), passSHA1);
+        Call<ResponseValidacion> responseGeneralCall = endpoints.createAddress(authToken, uid, spTypesCA.getSelectedItem().toString() + " " + etFirstPartCA.getText().toString() + " # " + etSecondPartCA.getText().toString() + " - " + etThirdPartCA.getText().toString() + " ", etComplementCA.getText().toString(), passSHA1);
         responseGeneralCall.enqueue(new Callback<ResponseValidacion>() {
             @Override
             public void onResponse(Call<ResponseValidacion> call, Response<ResponseValidacion> response) {
