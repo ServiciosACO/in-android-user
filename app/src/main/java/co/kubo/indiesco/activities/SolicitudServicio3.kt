@@ -83,6 +83,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                         for (i in resumen[item].espacios.indices) {
                             var jsonObjectEspacios = JSONObject()
                             jsonObjectEspacios.put("id_espacio", resumen[item].espacios[i].id_espacio)
+                            jsonObjectEspacios.put("total", resumen[item].espacios[i].total)
                             jsonArrayEspacios.put(jsonObjectEspacios)
                         }
                         var aux = jsonArrayEspacios.toString().replace("\"[", "[")

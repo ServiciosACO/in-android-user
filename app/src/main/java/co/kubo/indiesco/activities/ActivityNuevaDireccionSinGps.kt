@@ -158,7 +158,7 @@ class ActivityNuevaDireccionSinGps : AppCompatActivity(), View.OnClickListener {
         val endpoints = restApiAdapter.establecerConexionRestApiSinGson()
         var usuario = Usuario()
         usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
-        var responseRecargo2Call: Call<ResponseValidacion> = endpoints.createAddress(authToken, usuario.id_user, spTypes.getSelectedItem().toString() + " " + etFirstPart.text.toString() + " # " + etSecondPart.text.toString() + " - " + etThirdPart.text.toString() + " ", etComplement.text.toString(), cityId)
+        var responseRecargo2Call: Call<ResponseValidacion> = endpoints.createAddress(authToken, usuario.id_user, spTypes.selectedItem.toString() + " " + etFirstPart.text.toString().replace(" ", "") + " # " + etSecondPart.text.toString().replace(" ", "") + " - " + etThirdPart.text.toString().replace(" ", "") + " ", etComplement.text.toString(), cityId)
         responseRecargo2Call.enqueue(object : Callback<ResponseValidacion> {
             override fun onFailure(call: Call<ResponseValidacion>?, t: Throwable?) {
 

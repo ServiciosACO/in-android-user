@@ -5,4 +5,5 @@ package co.kubo.indiesco.modelo
  */
 class Espacios {
     var id_espacio = ""
+    var total = 0
 }

@@ -65,31 +65,30 @@
 
                 <Spinner
                     android:id="@+id/spTypes"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
                     android:layout_height="50dp" />
+
                 <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/etFirstPart"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="2"
-                    android:maxLines="1"
-                    android:maxLength="4"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_weight="2"
+                    android:maxLines="3" />
+
                 <co.kubo.indiesco.utils.Medium
                     android:layout_gravity="center"
                     style="@style/texto_20_morado"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:gravity="center_horizontal"
                     android:text="#"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/etSecondPart"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_weight="2"
-                    android:maxLines="1"
-                    android:maxLength="4"
+                    android:maxLines="3"
                     android:layout_height="wrap_content"
                     />
                 <co.kubo.indiesco.utils.Medium
@@ -97,15 +96,14 @@
                     style="@style/texto_20_morado"
                     android:text="-"
                     android:gravity="center_horizontal"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <co.kubo.indiesco.utils.EditTextRegular
                     android:id="@+id/etThirdPart"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_weight="2"
-                    android:maxLines="1"
-                    android:maxLength="4"
+                    android:maxLines="3"
                     android:layout_height="wrap_content"
                     />
             </LinearLayout>

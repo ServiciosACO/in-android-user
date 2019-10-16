@@ -1,6 +1,5 @@
 package co.kubo.indiesco.activities
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
@@ -16,10 +15,8 @@ import co.kubo.indiesco.adaptadores.*
 import co.kubo.indiesco.dialog.DialogDosOpciones
 import co.kubo.indiesco.fragment.*
 import co.kubo.indiesco.modelo.Espacios
-import co.kubo.indiesco.modelo.InmuebleEspacios
 import co.kubo.indiesco.modelo.ServiceResumen
 import co.kubo.indiesco.restAPI.adapter.RestApiAdapter
-import co.kubo.indiesco.restAPI.modelo.ResponseTipoDirecciones
 import co.kubo.indiesco.restAPI.modelo.ResponseTotalToPay
 import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
@@ -376,12 +373,12 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                             var data = singleton.data
                                                             var posInm = singleton.posTipoInmueble
                                                             var posDim = singleton.posDimension
-                                                            var arrayEspacios = ArrayList<Espacios>()
                                                             for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
                                                                 if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
-                                                                    var espacios_aux = Espacios()
-                                                                    espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
-                                                                    serviceResumen.espacios.add(espacios_aux)
+                                                                    var espaciosAux = Espacios()
+                                                                    espaciosAux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                                    espaciosAux.total = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty
+                                                                    serviceResumen.espacios.add(espaciosAux)
                                                                 }
                                                             }
                                                             arrayResumen.add(serviceResumen)
@@ -489,6 +486,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                                 if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
                                                                     var espacios_aux = Espacios()
                                                                     espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                                    espacios_aux.total = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty
                                                                     serviceResumen.espacios.add(espacios_aux)
                                                                 }
                                                             }
@@ -583,6 +581,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                             if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
                                                 var espacios_aux = Espacios()
                                                 espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                                espacios_aux.total = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty
                                                 serviceResumen.espacios.add(espacios_aux)
                                             }
                                         }
@@ -668,9 +667,10 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                     var arrayEspacios = ArrayList<Espacios>()
                                     for (item in data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!!.indices) {
                                         if (data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty != 0) {
-                                            var espacios_aux = Espacios()
-                                            espacios_aux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
-                                            serviceResumen.espacios.add(espacios_aux)
+                                            var espaciosAux = Espacios()
+                                            espaciosAux.id_espacio = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].id_espacio!!
+                                            espaciosAux.total = data[0].tiposInmuebles[posInm.toInt()].dimesiones!![posDim.toInt()].espacios!![item].qty
+                                            serviceResumen.espacios.add(espaciosAux)
                                         }
                                     }
                                     arrayResumen.add(serviceResumen)
