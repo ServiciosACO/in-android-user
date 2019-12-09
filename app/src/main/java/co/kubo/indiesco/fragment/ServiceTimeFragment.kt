@@ -11,6 +11,7 @@ import android.annotation.SuppressLint
 import android.widget.*
 import androidx.fragment.app.Fragment
 import co.kubo.indiesco.utils.DateUtil
+import co.kubo.indiesco.utils.Utils
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,6 +30,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     val TIME_PICKER_INTERVAL = 30
     lateinit var iTime: ITime
     var time = ""
+    private var hourBegin: Int = 6
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -42,6 +44,10 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         toggleButton.setOnClickListener(this)
         llUrgentService = v.findViewById(R.id.llUrgentService)
         tvInfo = v.findViewById(R.id.tvInfo)
+        if (!singleton.isBandTodayService)
+            hourBegin = 6
+        else
+            hourBegin = singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) + DateUtil.HOURS_BEFORE_SERVICE
 
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
@@ -66,8 +72,17 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
         setTimePickerInterval(timePicker)
 
-        //timePicker.currentHour = DateUtil.roundedCurrentDate().get(Calendar.HOUR)
-        //timePicker.currentMinute = 0
+        timePicker.currentHour = hourBegin
+        timePicker.currentMinute = if (!singleton.isBandTodayService) {
+            0
+        } else {
+            if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
+                1
+            } else {
+                0
+            }
+        }
+
         val minute = timePicker.currentMinute.toString().length
         when (minute) {
             1 -> {
@@ -78,7 +93,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             }
         }
         singleton.hora = time
-        if (timePicker.currentHour in 0..5) {
+        if (timePicker.currentHour < 12) {
             AM_PM = "AM"
             imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
         } else {
@@ -99,20 +114,27 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             }
 
             */
-            if (hourOfDay in 6..11) {
+            if (hourOfDay in hourBegin..11) {
                 AM_PM = "AM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
                 singleton.idDimension
-            } else if (hourOfDay in 12..16) {
-                AM_PM = "PM"
-                imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
-            } else if (hourOfDay > 16) {
-                timePicker.currentHour = 6
+            } else if (hourOfDay in 12..DateUtil.HOUR_LIMIT_SERVICE) {
+                if (hourOfDay == DateUtil.HOUR_LIMIT_SERVICE && minute > 0) {
+                    timePicker.currentHour = DateUtil.HOUR_LIMIT_SERVICE
+                    timePicker.currentMinute = 0
+                    AM_PM = "PM"
+                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
+                } else {
+                    AM_PM = "PM"
+                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
+                }
+            } else if (hourOfDay > DateUtil.HOUR_LIMIT_SERVICE) {
+                timePicker.currentHour = hourBegin
                 AM_PM = "AM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
                 singleton.idDimension
-            } else if (hourOfDay < 6) {
-                timePicker.currentHour = 16
+            } else if (hourOfDay < hourBegin) {
+                timePicker.currentHour = DateUtil.HOUR_LIMIT_SERVICE
                 AM_PM = "PM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
             }
@@ -231,24 +253,6 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             e.printStackTrace()
         }
     }
-
-    private fun getRanksHour(): ArrayList<String> {
-        val displayedValues = ArrayList<String>()
-        var i = 0
-        while (i < 16) {
-            if ((i + 1) >= 6 && (i + 1) <= 16) {
-
-                if ((i + 1) > 12) {
-                    displayedValues.add("${(i + 1 - 12)}")
-                } else {
-                    displayedValues.add("${(i + 1)}")
-                }
-            }
-            i++
-        }
-        return displayedValues
-    }
-
 }
 
 interface ITime {

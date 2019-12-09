@@ -7,7 +7,9 @@ class DateUtil {
 
     companion object {
 
-        const val HOUR_LIMIT = "13:00"
+        const val HOUR_LIMIT = "26:00"
+        const val HOURS_BEFORE_SERVICE = 8
+        const val HOUR_LIMIT_SERVICE = 16
 
         @JvmStatic
         fun roundedCurrentDate(): Calendar {

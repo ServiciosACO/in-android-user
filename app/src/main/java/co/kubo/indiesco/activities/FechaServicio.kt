@@ -103,7 +103,7 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
         return if (currentCalendar.before(limitCalendar)) {
             val difference: Long = DateUtil.calculateDifferenceBetweenToDated(currentCalendar.time, limitCalendar.time)
             val longDifference: Int = DateUtil.convertMillisecondsToHours(difference)
-            if (longDifference >= 8) {
+            if (longDifference >= DateUtil.HOURS_BEFORE_SERVICE) {
                 singleton.isBandTodayService = true
                 singleton.requestCalendarService = currentCalendar
                 singleton.hourMinimunService = "${(currentCalendar.get(Calendar.HOUR_OF_DAY) + 1)}:${currentCalendar.get(Calendar.MINUTE)}"
