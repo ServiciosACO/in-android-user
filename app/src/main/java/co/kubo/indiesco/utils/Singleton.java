@@ -1,6 +1,7 @@
 package co.kubo.indiesco.utils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import co.kubo.indiesco.modelo.Direccion;
@@ -15,8 +16,10 @@ import co.kubo.indiesco.modelo.ServiceResumen;
 
 public class Singleton {
     private static Singleton INSTANCE = new Singleton();
+
     Singleton() {
     }
+
     public static Singleton getInstance() {
         return INSTANCE;
     }
@@ -42,6 +45,9 @@ public class Singleton {
     private Double priceFloorThree;
     private String idCategoria;
     List<String> listaEspacios = new ArrayList<>();
+    private boolean bandTodayService = false;
+    private Calendar requestCalendarService;
+    private String hourMinimunService;
 
     public List<String> getListaEspacios() {
         return listaEspacios;
@@ -68,7 +74,7 @@ public class Singleton {
     private String discountCode = "0";
     ArrayList<Personal> arrayListPersonal = new ArrayList<>();
     ArrayList<Personal> arrayListPersonalHistorial = new ArrayList<>();
-   PendienteCalificar voPendiente = new PendienteCalificar();
+    PendienteCalificar voPendiente = new PendienteCalificar();
     Direccion voDireccion = new Direccion();
 
     public Direccion getVoDireccion() {
@@ -323,5 +329,27 @@ public class Singleton {
         this.longitud = longitud;
     }
 
+    public boolean isBandTodayService() {
+        return bandTodayService;
+    }
 
+    public void setBandTodayService(boolean bandTodayService) {
+        this.bandTodayService = bandTodayService;
+    }
+
+    public Calendar getRequestCalendarService() {
+        return requestCalendarService;
+    }
+
+    public void setRequestCalendarService(Calendar requestCalendarService) {
+        this.requestCalendarService = requestCalendarService;
+    }
+
+    public String getHourMinimunService() {
+        return hourMinimunService;
+    }
+
+    public void setHourMinimunService(String hourMinimunService) {
+        this.hourMinimunService = hourMinimunService;
+    }
 }

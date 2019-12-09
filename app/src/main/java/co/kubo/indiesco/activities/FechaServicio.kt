@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import co.kubo.indiesco.R
+import co.kubo.indiesco.utils.DateUtil
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -13,6 +14,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
 import kotlinx.android.synthetic.main.activity_fecha_servicio.*
 import java.util.*
+
 
 class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedListener {
 
@@ -22,10 +24,10 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
     var singleton = Singleton.getInstance()
 
     override fun onClick(v: View?) {
-        when (v!!.id){
+        when (v!!.id) {
             R.id.llNext -> {
-                if (validation()){
-                    val intent = Intent (this, TipoInmueble :: class.java)
+                if (validation()) {
+                    val intent = Intent(this, TipoInmueble::class.java)
                     startActivity(intent)
                 }
             }
@@ -36,7 +38,7 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
     }
 
     private fun validation(): Boolean {
-        if (!utils.checkInternetConnection(this@FechaServicio, true)){
+        if (!utils.checkInternetConnection(this@FechaServicio, true)) {
             return false
         }
         if (flag == 0) {
@@ -65,9 +67,9 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
         flag = 1
     }
 
-    private fun getSelectedDatesString(): String{
+    private fun getSelectedDatesString(): String {
         val date = calendarView.selectedDate
-        if (date == null){
+        if (date == null) {
             dateStr = ""
         } else {
             dateStr = utils.DateToString3(calendarView.selectedDate.date).replace(" ", "-")
@@ -82,9 +84,37 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
         var currentDate = Calendar.getInstance().time
         var currentDateStr = utils.DateToString3(currentDate).replace(" ", "-")
         var splitDate = currentDateStr.split("-")
-        calendarView.state().edit()
-                .setMinimumDate(CalendarDay.from(splitDate[0].toInt(), splitDate[1].toInt()-1, splitDate[2].toInt()))
-                .commit()
+        val validate = validateToday()
+        if (validate) {
+            calendarView.state().edit()
+                    .setMinimumDate(CalendarDay.from(splitDate[0].toInt(), splitDate[1].toInt() - 1, splitDate[2].toInt()))
+                    .commit()
+        } else {
+            calendarView.state().edit()
+                    .setMinimumDate(CalendarDay.from(splitDate[0].toInt(), splitDate[1].toInt() - 1, splitDate[2].toInt() + 1))
+                    .commit()
+        }
 
+    }
+
+    private fun validateToday(): Boolean {
+        val limitCalendar: Calendar = DateUtil.convertLimitToCalendar(DateUtil.HOUR_LIMIT)
+        val currentCalendar: Calendar = DateUtil.roundedCurrentDate()
+        return if (currentCalendar.before(limitCalendar)) {
+            val difference: Long = DateUtil.calculateDifferenceBetweenToDated(currentCalendar.time, limitCalendar.time)
+            val longDifference: Int = DateUtil.convertMillisecondsToHours(difference)
+            if (longDifference >= 8) {
+                singleton.isBandTodayService = true
+                singleton.requestCalendarService = currentCalendar
+                singleton.hourMinimunService = "${(currentCalendar.get(Calendar.HOUR_OF_DAY) + 1)}:${currentCalendar.get(Calendar.MINUTE)}"
+                true
+            } else {
+                singleton.isBandTodayService = false
+                false
+            }
+        } else {
+            singleton.isBandTodayService = false
+            false
+        }
     }
 }
