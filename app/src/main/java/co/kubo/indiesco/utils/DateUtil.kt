@@ -33,8 +33,7 @@ class DateUtil {
 
         @JvmStatic
         fun calculateDifferenceBetweenToDated(date1: Date, date2: Date): Long {
-            val difference = date2.time - date1.time
-            return difference
+            return date2.time - date1.time
         }
 
         @JvmStatic

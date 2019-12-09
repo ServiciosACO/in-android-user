@@ -10,6 +10,7 @@ import co.kubo.indiesco.utils.Singleton
 import android.annotation.SuppressLint
 import android.widget.*
 import androidx.fragment.app.Fragment
+import co.kubo.indiesco.utils.DateUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,70 +20,17 @@ import java.util.*
 class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
     val singleton = Singleton.getInstance()
-    lateinit var imgTime : ImageView
-    lateinit var timePicker : TimePicker
-    lateinit var toggleButton : ToggleButton
-    lateinit var llUrgentService : LinearLayout
-    lateinit var tvInfo : TextView
+    lateinit var imgTime: ImageView
+    lateinit var timePicker: TimePicker
+    lateinit var toggleButton: ToggleButton
+    lateinit var llUrgentService: LinearLayout
+    lateinit var tvInfo: TextView
     var AM_PM = "AM"
     val TIME_PICKER_INTERVAL = 30
-    lateinit var iTime : ITime
+    lateinit var iTime: ITime
     var time = ""
 
-    override fun onClick(v: View?) {
-        when (v!!.id){
-            R.id.toggleButton -> {
-                if (toggleButton.isChecked){
-                    toggleButton.isChecked = true
-                    singleton.urgente = "si"
-
-                    val format = SimpleDateFormat("HH:mm") //this is format in military time
-                    val currentTime = format.format(Calendar.getInstance().time) //get current time
-                    var currentTimetime = format.parse(currentTime) as Date //convert string time in Date time
-                    singleton.hora = format.format(currentTimetime)
-
-                    timePicker.isEnabled = false
-
-                }  else {
-                    toggleButton.isChecked = false
-                    singleton.urgente = "no"
-                    timePicker.isEnabled = true
-                }
-                iTime.checkTime()
-            }
-        }
-    }
-
-    @SuppressLint("NewApi")
-    private fun setTimePickerInterval(timePicker: TimePicker) {
-        try {
-            val classForid = Class.forName("com.android.internal.R\$id")
-            // Field timePickerField = classForid.getField("timePicker");
-
-            val field = classForid.getField("minute")
-            val minutePicker = timePicker.findViewById(field.getInt(null)) as NumberPicker
-
-            minutePicker.minValue = 0
-            minutePicker.maxValue = 3
-            var displayedValues = ArrayList<String>()
-            run {
-                var i = 0
-                while (i < 60) {
-                    displayedValues.add(String.format("%02d", i))
-                    i += TIME_PICKER_INTERVAL
-                }
-            }
-            var i = 0
-            while (i < 60) {
-                displayedValues.add(String.format("%02d", i))
-                i += TIME_PICKER_INTERVAL
-            }
-            minutePicker.displayedValues = displayedValues.toArray(arrayOfNulls<String>(0))
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
+    @SuppressLint("SimpleDateFormat")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_service_time, container, false)
         iTime = (activity as? ITime)!!
@@ -97,12 +45,14 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
-        if(currentDate == singleton.fecha){
+
+        if (currentDate == singleton.fecha) {
             val format = SimpleDateFormat("HH:mm") //this is format in military time
             val currentTime = format.format(Calendar.getInstance().time) //get current time
-            var currentTimetime = format.parse(currentTime) as Date //convert string time in Date time
-            var currentTimeStr = format.format(currentTimetime).split(":")
-            if (currentTimeStr[0].toInt() >= 16){
+            val currentTimetime = format.parse(currentTime) as Date //convert string time in Date time
+            val currentTimeStr = format.format(currentTimetime).split(":")
+
+            if (currentTimeStr[0].toInt() >= 16) {
                 llUrgentService.visibility = View.GONE
                 tvInfo.visibility = View.GONE
             } else {
@@ -115,10 +65,11 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         }
 
         setTimePickerInterval(timePicker)
-        timePicker.currentHour = 5
-        timePicker.currentMinute = 0
-        var minute = timePicker.currentMinute.toString().length
-        when(minute){
+
+        //timePicker.currentHour = DateUtil.roundedCurrentDate().get(Calendar.HOUR)
+        //timePicker.currentMinute = 0
+        val minute = timePicker.currentMinute.toString().length
+        when (minute) {
             1 -> {
                 time = "${timePicker.currentHour}:0${timePicker.currentMinute}"
             }
@@ -127,7 +78,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             }
         }
         singleton.hora = time
-        if (timePicker.currentHour < 12){
+        if (timePicker.currentHour in 0..5) {
             AM_PM = "AM"
             imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
         } else {
@@ -135,9 +86,10 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
         }
 
-        timePicker.setOnTimeChangedListener {
-            view, hourOfDay, minute ->
-            if (hourOfDay < 12){
+        timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
+            val selectedHour = timePicker.currentHour
+            /*
+            if (hourOfDay < 12) {
                 AM_PM = "AM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
                 singleton.idDimension
@@ -146,9 +98,28 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
             }
 
+            */
+            if (hourOfDay in 6..11) {
+                AM_PM = "AM"
+                imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
+                singleton.idDimension
+            } else if (hourOfDay in 12..16) {
+                AM_PM = "PM"
+                imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
+            } else if (hourOfDay > 16) {
+                timePicker.currentHour = 6
+                AM_PM = "AM"
+                imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
+                singleton.idDimension
+            } else if (hourOfDay < 6) {
+                timePicker.currentHour = 16
+                AM_PM = "PM"
+                imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
+            }
+
             var minute = timePicker.currentMinute.toString()
             var time = ""
-            when(minute){
+            when (minute) {
                 "0" -> {
                     time = "${timePicker.currentHour}:00"
                 }
@@ -168,14 +139,38 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         return v
     }
 
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.toggleButton -> {
+                if (toggleButton.isChecked) {
+                    toggleButton.isChecked = true
+                    singleton.urgente = "si"
+
+                    val format = SimpleDateFormat("HH:mm") //this is format in military time
+                    val currentTime = format.format(Calendar.getInstance().time) //get current time
+                    var currentTimetime = format.parse(currentTime) as Date //convert string time in Date time
+                    singleton.hora = format.format(currentTimetime)
+
+                    timePicker.isEnabled = false
+
+                } else {
+                    toggleButton.isChecked = false
+                    singleton.urgente = "no"
+                    timePicker.isEnabled = true
+                }
+                iTime.checkTime()
+            }
+        }
+    }
+
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-        if (isVisibleToUser){
+        if (isVisibleToUser) {
             val iTime = (activity as? ITime)!!
             setTimePickerInterval(timePicker)
             var minute = timePicker.currentMinute.toString()
             var time = ""
-            when(minute){
+            when (minute) {
                 "0" -> {
                     time = "${timePicker.currentHour}:00"
                 }
@@ -198,8 +193,64 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    @SuppressLint("NewApi")
+    private fun setTimePickerInterval(timePicker: TimePicker) {
+        try {
+            val classForid = Class.forName("com.android.internal.R\$id")
+            // Field timePickerField = classForid.getField("timePicker");
+
+            val field = classForid.getField("minute")
+            val minutePicker = timePicker.findViewById(field.getInt(null)) as NumberPicker
+
+            /*
+            val fieldHour = classForid.getField("hour")
+            val hourPicker = timePicker.findViewById(fieldHour.getInt(null)) as NumberPicker
+
+            hourPicker.minValue = 6
+            hourPicker.maxValue = 16
+            */
+
+            minutePicker.minValue = 0
+            minutePicker.maxValue = 3
+            val displayedValues = ArrayList<String>()
+            run {
+                var i = 0
+                while (i < 60) {
+                    displayedValues.add(String.format("%02d", i))
+                    i += TIME_PICKER_INTERVAL
+                }
+            }
+            var i = 0
+            while (i < 60) {
+                displayedValues.add(String.format("%02d", i))
+                i += TIME_PICKER_INTERVAL
+            }
+            minutePicker.displayedValues = displayedValues.toArray(arrayOfNulls<String>(0))
+            //hourPicker.displayedValues = getRanksHour().toArray(arrayOfNulls<String>(0))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun getRanksHour(): ArrayList<String> {
+        val displayedValues = ArrayList<String>()
+        var i = 0
+        while (i < 16) {
+            if ((i + 1) >= 6 && (i + 1) <= 16) {
+
+                if ((i + 1) > 12) {
+                    displayedValues.add("${(i + 1 - 12)}")
+                } else {
+                    displayedValues.add("${(i + 1)}")
+                }
+            }
+            i++
+        }
+        return displayedValues
+    }
+
 }
 
-interface ITime{
+interface ITime {
     fun checkTime()
 }

@@ -1,113 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:http="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <co.kubo.indiesco.utils.Regular
-                android:text="Selecciona una hora"
-                android:gravity="center"
                 style="@style/texto_15_gris"
-                android:layout_marginBottom="24dp"
-                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="Selecciona una hora" />
+
             <com.loopeer.shadow.ShadowView
                 android:id="@+id/shadow_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:elevation="10dp"
-                app:shadowColor="@color/shadow"
                 app:shadowAlpha="70"
+                app:shadowColor="@color/shadow"
                 app:shadowDx="0"
                 app:shadowDy="4"
                 app:shadowMargin="5dp"
                 app:shadowRadius="14dp">
+
                 <LinearLayout
-                    android:elevation="4dp"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:elevation="4dp"
+                    android:orientation="vertical">
+
                     <co.kubo.indiesco.utils.Bold
                         style="@style/texto_18_blue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginStart="13dp"
-                        android:text="Hora del servicio"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:text="Hora del servicio" />
+
                     <co.kubo.indiesco.utils.Regular
                         android:id="@+id/tvInfo2"
                         style="@style/texto_13_gris"
-                        android:text=" Recuerda que los servicios debes solicitarlos con mínimo 5 horas de anticipación. "
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="9dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:text=" Recuerda que los servicios debes solicitarlos con mínimo 5 horas de anticipación. " />
+
                     <ImageView
                         android:id="@+id/imgTime"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_day"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_day" />
 
                     <TimePicker
                         android:id="@+id/timePicker"
                         style="@style/TimePickerTheme"
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
-                        android:layout_marginBottom="12dp"
                         android:layout_marginTop="15dp"
-                        android:timePickerMode="spinner" />
+                        android:layout_marginBottom="12dp"
+                        android:timePickerMode="spinner"
+                        http:targetApi="lollipop" />
+
                     <LinearLayout
                         android:id="@+id/llUrgentService"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="25dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="25dp"
+                        android:orientation="horizontal">
+
                         <co.kubo.indiesco.utils.Bold
                             style="@style/texto_18_blue"
-                            android:layout_marginStart="13dp"
-                            android:text="Servicio urgente"
-                            android:textStyle="bold"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:layout_weight="1"
+                            android:text="Servicio urgente"
+                            android:textStyle="bold" />
+
                         <ToggleButton
                             android:id="@+id/toggleButton"
-                            android:checked="false"
-                            android:background="@drawable/toggle_switch"
-                            android:textOff=""
-                            android:textOn=""
-                            android:text=""
-                            android:layout_marginEnd="16dp"
-                            android:layout_gravity="center"
                             android:layout_width="45dp"
-                            android:layout_height="24dp" />
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/toggle_switch"
+                            android:checked="false"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn="" />
                     </LinearLayout>
+
                     <co.kubo.indiesco.utils.Regular
                         android:id="@+id/tvInfo"
                         style="@style/texto_13_gris"
-                        android:text="Recuerda que los servicios urgentes tienen recargo y debes solicitarlos con mínimo 2 horas de anticipación"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="9dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:text="Recuerda que los servicios urgentes tienen recargo y debes solicitarlos con mínimo 2 horas de anticipación" />
                 </LinearLayout>
             </com.loopeer.shadow.ShadowView>
         </LinearLayout>
