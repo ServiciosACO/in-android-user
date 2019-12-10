@@ -48,6 +48,7 @@ public class Singleton {
     private boolean bandTodayService = false;
     private Calendar requestCalendarService;
     private String hourMinimunService;
+    private boolean urgentCalculate = false;
 
     public List<String> getListaEspacios() {
         return listaEspacios;
@@ -351,5 +352,13 @@ public class Singleton {
 
     public void setHourMinimunService(String hourMinimunService) {
         this.hourMinimunService = hourMinimunService;
+    }
+
+    public boolean isUrgentCalculate() {
+        return urgentCalculate;
+    }
+
+    public void setUrgentCalculate(boolean urgentCalculate) {
+        this.urgentCalculate = urgentCalculate;
     }
 }

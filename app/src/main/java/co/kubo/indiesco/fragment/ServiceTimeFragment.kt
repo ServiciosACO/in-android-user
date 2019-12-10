@@ -11,7 +11,6 @@ import android.annotation.SuppressLint
 import android.widget.*
 import androidx.fragment.app.Fragment
 import co.kubo.indiesco.utils.DateUtil
-import co.kubo.indiesco.utils.Utils
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -82,8 +81,13 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             tvInfo.visibility = View.GONE
         }
         */
-        llUrgentService.visibility = View.VISIBLE
-        tvInfo.visibility = View.VISIBLE
+        if (singleton.isBandTodayService) {
+            llUrgentService.visibility = View.VISIBLE
+            tvInfo.visibility = View.VISIBLE
+        } else {
+            llUrgentService.visibility = View.GONE
+            tvInfo.visibility = View.GONE
+        }
         toggleButton.isEnabled = false
 
         setTimePickerInterval(timePicker)
@@ -98,6 +102,8 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                 0
             }
         }
+
+        validateUrgentService(timePicker.currentHour, timePicker.currentMinute)
 
         val minute = timePicker.currentMinute.toString().length
         when (minute) {
@@ -130,23 +136,8 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
             */
 
-            validateUrgentSertvice(hourOfDay, minute)
-
-            if (hourOfDay == hourBegin) {
-                timePicker.currentHour = hourBegin
-                timePicker.currentMinute = if (minuteBegin == 30) {
-                    1
-                } else {
-                    0
-                }
-                if (hourOfDay < 12) {
-                    AM_PM = "AM"
-                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
-                } else {
-                    AM_PM = "PM"
-                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
-                }
-            } else if (hourOfDay in hourBegin..11) {
+            validateUrgentService(hourOfDay, minute)
+            if (hourOfDay in hourBegin..11) {
                 AM_PM = "AM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
                 singleton.idDimension
@@ -177,6 +168,40 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
             }
 
+            if (minuteBegin == 30) {
+                if (hourOfDay == hourBegin) {
+                    timePicker.currentHour = hourBegin
+                    timePicker.currentMinute = if (minuteBegin == 30) {
+                        1
+                    } else {
+                        0
+                    }
+                    if (hourOfDay < 12) {
+                        AM_PM = "AM"
+                        imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
+                    } else {
+                        AM_PM = "PM"
+                        imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
+                    }
+                }
+            }
+
+            if (hourBegin >= 12 && hourOfDay < hourBegin) {
+                timePicker.currentHour = hourBegin
+                timePicker.currentMinute = if (minuteBegin == 30) {
+                    1
+                } else {
+                    0
+                }
+                if (hourOfDay < 12) {
+                    AM_PM = "AM"
+                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
+                } else {
+                    AM_PM = "PM"
+                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
+                }
+            }
+
             var minute = timePicker.currentMinute.toString()
             var time = ""
             when (minute) {
@@ -199,28 +224,37 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         return v
     }
 
-    private fun validateUrgentSertvice(hourOfDay: Int, minute: Int) {
-        val calendarRequestService = singleton.requestCalendarService
-        calendarRequestService.set(Calendar.HOUR_OF_DAY, calendarRequestService.get(Calendar.HOUR_OF_DAY) + DateUtil.HOURS_BEFORE_SERVICE)
-        calendarRequestService.set(Calendar.SECOND, 0)
-        calendarRequestService.set(Calendar.MILLISECOND, 0)
-
-        val compareMinutes = if (minute == 0 || minute == 2) {
-            0
-        } else {
-            30
+    private fun validateUrgentService(hourOfDay: Int, minute: Int) {
+        if (singleton.isBandTodayService) {
+            val compareMinutes = if (minute == 0 || minute == 2) {
+                0
+            } else {
+                30
+            }
+            if (minuteBegin == 0) {
+                val isUrgent = hourOfDay - hourBegin <= 3
+                toggleButton.isChecked = isUrgent
+                singleton.urgente = if (isUrgent) {
+                    "si"
+                } else {
+                    "no"
+                }
+            } else {
+                if (hourOfDay - hourBegin <= 3) {
+                    toggleButton.isChecked = true
+                    singleton.urgente = "si"
+                } else {
+                    val isUrgent = hourOfDay - hourBegin == 4 && compareMinutes == 0
+                    toggleButton.isChecked = isUrgent
+                    singleton.urgente = if (isUrgent) {
+                        "si"
+                    } else {
+                        "no"
+                    }
+                }
+            }
+            iTime.checkTime()
         }
-
-        val compareCalendar = Calendar.getInstance()
-        compareCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-        compareCalendar.set(Calendar.DAY_OF_YEAR, calendarRequestService.get(Calendar.DAY_OF_YEAR))
-        compareCalendar.set(Calendar.MINUTE, compareMinutes)
-        compareCalendar.set(Calendar.SECOND, 0)
-        compareCalendar.set(Calendar.MILLISECOND, 0)
-
-        val difference = DateUtil.calculateDifferenceBetweenToDated(calendarRequestService.time, compareCalendar.time)
-        val differenceToHours = DateUtil.convertMillisecondsToHoursDouble(difference)
-        toggleButton.isChecked = difference <= 12600000L
     }
 
     override fun onClick(v: View?) {

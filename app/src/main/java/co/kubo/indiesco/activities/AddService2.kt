@@ -133,13 +133,27 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
             flagTime = true
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
+            if (singleton.urgente == "si") {
+                if (!singleton.isUrgentCalculate) {
+                    val halfCost = totalCost / 2.0
+                    val newTotalCost = halfCost + totalCost
+                    totalCost = newTotalCost
+                    tvValor.text = "Total: ${df.format(newTotalCost)}"
+                    singleton.isUrgentCalculate = true
+                }
+            } else {
+                getTotalPagar()
+                singleton.isUrgentCalculate = false
+            }
         } else {
             flagTime = false
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
+            getTotalPagar()
+            singleton.isUrgentCalculate = false
         }
         //calculateTotal()
-        getTotalPagar()
+        //getTotalPagar()
     }
 
     override fun AddressCheck() {
@@ -716,7 +730,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
         })
     }
 
-    fun getTotalPagar() {
+    private fun getTotalPagar() {
         val authToken = SharedPreferenceManager.getAuthToken(applicationContext)
         val restApiAdapter = RestApiAdapter()
         val endpoints = restApiAdapter.establecerConexionRestApiSinGson()

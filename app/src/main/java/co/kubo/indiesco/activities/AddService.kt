@@ -22,6 +22,12 @@ import co.kubo.indiesco.utils.SharedPreferenceManager
 import co.kubo.indiesco.utils.Singleton
 import co.kubo.indiesco.utils.Utils
 import kotlinx.android.synthetic.main.activity_add_service.*
+import kotlinx.android.synthetic.main.activity_add_service.imgBotonVolver
+import kotlinx.android.synthetic.main.activity_add_service.llProgress
+import kotlinx.android.synthetic.main.activity_add_service.radiogroup
+import kotlinx.android.synthetic.main.activity_add_service.rlValor
+import kotlinx.android.synthetic.main.activity_add_service.tvNext
+import kotlinx.android.synthetic.main.activity_add_service.tvValor
 import org.joda.time.DateTime
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,6 +36,7 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.sin
 
 
 class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
@@ -54,14 +61,29 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
             flagTime = true
             llProgress.setBackgroundColor(resources.getColor(R.color.colorVerde))
             rlValor.setBackgroundColor(resources.getColor(R.color.colorVerde_80))
+            if (singleton.urgente == "si") {
+                if (!singleton.isUrgentCalculate) {
+                    val halfCost = totalCost / 2.0
+                    val newTotalCost = halfCost + totalCost
+                    totalCost = newTotalCost
+                    tvValor.text = "Total: ${df.format(newTotalCost)}"
+                    singleton.isUrgentCalculate = true
+                }
+            } else {
+                getTotalPagarEspacios(getEspaciosOcupados())
+                singleton.isUrgentCalculate = false
+            }
         } else {
             flagTime = false
             llProgress.setBackgroundColor(resources.getColor(R.color.color_hint))
             rlValor.setBackgroundColor(resources.getColor(R.color.color_hint_80))
+            getTotalPagarEspacios(getEspaciosOcupados())
+            singleton.isUrgentCalculate = false
         }
         //calculateTotal()
 
-        getTotalPagarEspacios(getEspaciosOcupados())
+        //getTotalPagarEspacios(getEspaciosOcupados())
+
     }
 
     fun getEspaciosOcupados(): ArrayList<String> {
