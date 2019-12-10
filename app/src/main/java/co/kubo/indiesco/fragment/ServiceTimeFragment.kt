@@ -31,6 +31,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     lateinit var iTime: ITime
     var time = ""
     private var hourBegin: Int = 6
+    private var minuteBegin: Int = 0
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,14 +45,24 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         toggleButton.setOnClickListener(this)
         llUrgentService = v.findViewById(R.id.llUrgentService)
         tvInfo = v.findViewById(R.id.tvInfo)
-        if (!singleton.isBandTodayService)
-            hourBegin = 6
+        hourBegin = if (!singleton.isBandTodayService)
+            6
         else
-            hourBegin = singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) + DateUtil.HOURS_BEFORE_SERVICE
+            singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) + DateUtil.HOURS_BEFORE_SERVICE
+
+        minuteBegin = if (!singleton.isBandTodayService) {
+            0
+        } else {
+            if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
+                30
+            } else {
+                0
+            }
+        }
 
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
-
+        /*
         if (currentDate == singleton.fecha) {
             val format = SimpleDateFormat("HH:mm") //this is format in military time
             val currentTime = format.format(Calendar.getInstance().time) //get current time
@@ -69,6 +80,9 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             llUrgentService.visibility = View.GONE
             tvInfo.visibility = View.GONE
         }
+        */
+        llUrgentService.visibility = View.VISIBLE
+        tvInfo.visibility = View.VISIBLE
 
         setTimePickerInterval(timePicker)
 
@@ -114,7 +128,22 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             }
 
             */
-            if (hourOfDay in hourBegin..11) {
+            if(hourOfDay == hourBegin){
+                timePicker.currentHour = hourBegin
+                timePicker.currentMinute = if (minuteBegin == 30) {
+                    1
+                } else {
+                    0
+                }
+                if(hourOfDay<12){
+                    AM_PM = "AM"
+                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
+                }else{
+                    AM_PM = "PM"
+                    imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
+                }
+            }
+            else if (hourOfDay in hourBegin..11) {
                 AM_PM = "AM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
                 singleton.idDimension
@@ -130,11 +159,17 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                 }
             } else if (hourOfDay > DateUtil.HOUR_LIMIT_SERVICE) {
                 timePicker.currentHour = hourBegin
+                timePicker.currentMinute = if (minuteBegin == 30) {
+                    1
+                } else {
+                    0
+                }
                 AM_PM = "AM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
                 singleton.idDimension
             } else if (hourOfDay < hourBegin) {
                 timePicker.currentHour = DateUtil.HOUR_LIMIT_SERVICE
+                timePicker.currentMinute = 0
                 AM_PM = "PM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
             }

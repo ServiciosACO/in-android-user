@@ -62,6 +62,8 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
     override fun onDateSelected(widget: MaterialCalendarView, date: CalendarDay, selected: Boolean) {
         var dateStr = getSelectedDatesString()
         //Toast.makeText(applicationContext, dateStr, Toast.LENGTH_LONG).show()
+        val calendarSelected = date.calendar
+        singleton.isBandTodayService = calendarSelected.get(Calendar.DAY_OF_YEAR) == DateUtil.roundedCurrentDate().get(Calendar.DAY_OF_YEAR)
         singleton.fecha = dateStr
         llNext.setBackgroundColor(resources.getColor(R.color.colorVerde))
         flag = 1
@@ -104,16 +106,13 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
             val difference: Long = DateUtil.calculateDifferenceBetweenToDated(currentCalendar.time, limitCalendar.time)
             val longDifference: Int = DateUtil.convertMillisecondsToHours(difference)
             if (longDifference >= DateUtil.HOURS_BEFORE_SERVICE) {
-                singleton.isBandTodayService = true
                 singleton.requestCalendarService = currentCalendar
                 singleton.hourMinimunService = "${(currentCalendar.get(Calendar.HOUR_OF_DAY) + 1)}:${currentCalendar.get(Calendar.MINUTE)}"
                 true
             } else {
-                singleton.isBandTodayService = false
                 false
             }
         } else {
-            singleton.isBandTodayService = false
             false
         }
     }
