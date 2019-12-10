@@ -7,9 +7,10 @@ class DateUtil {
 
     companion object {
 
-        const val HOUR_LIMIT = "26:00"
+        const val HOUR_LIMIT = "16:00"
         const val HOURS_BEFORE_SERVICE = 8
         const val HOUR_LIMIT_SERVICE = 16
+        const val MAX_HOUR_URGENT_SERVICE = 3.5
 
         @JvmStatic
         fun roundedCurrentDate(): Calendar {
@@ -41,6 +42,11 @@ class DateUtil {
         @JvmStatic
         fun convertMillisecondsToHours(milliseconds: Long): Int {
             return (milliseconds / (1000 * 60 * 60) % 24).toInt()
+        }
+
+        @JvmStatic
+        fun convertMillisecondsToHoursDouble(milliseconds: Long): Double {
+            return (milliseconds / (1000 * 60 * 60) % 24).toDouble()
         }
     }
 }

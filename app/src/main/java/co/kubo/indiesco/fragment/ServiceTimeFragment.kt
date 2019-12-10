@@ -60,9 +60,10 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             }
         }
 
+        /*
         val df = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = df.format(Calendar.getInstance().time)
-        /*
+
         if (currentDate == singleton.fecha) {
             val format = SimpleDateFormat("HH:mm") //this is format in military time
             val currentTime = format.format(Calendar.getInstance().time) //get current time
@@ -83,6 +84,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         */
         llUrgentService.visibility = View.VISIBLE
         tvInfo.visibility = View.VISIBLE
+        toggleButton.isEnabled = false
 
         setTimePickerInterval(timePicker)
 
@@ -116,7 +118,6 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         }
 
         timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
-            val selectedHour = timePicker.currentHour
             /*
             if (hourOfDay < 12) {
                 AM_PM = "AM"
@@ -128,22 +129,24 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             }
 
             */
-            if(hourOfDay == hourBegin){
+
+            validateUrgentSertvice(hourOfDay, minute)
+
+            if (hourOfDay == hourBegin) {
                 timePicker.currentHour = hourBegin
                 timePicker.currentMinute = if (minuteBegin == 30) {
                     1
                 } else {
                     0
                 }
-                if(hourOfDay<12){
+                if (hourOfDay < 12) {
                     AM_PM = "AM"
                     imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
-                }else{
+                } else {
                     AM_PM = "PM"
                     imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_afternoon))
                 }
-            }
-            else if (hourOfDay in hourBegin..11) {
+            } else if (hourOfDay in hourBegin..11) {
                 AM_PM = "AM"
                 imgTime.setImageDrawable(activity!!.resources.getDrawable(R.drawable.img_day))
                 singleton.idDimension
@@ -194,6 +197,30 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             singleton.hora = time
         }
         return v
+    }
+
+    private fun validateUrgentSertvice(hourOfDay: Int, minute: Int) {
+        val calendarRequestService = singleton.requestCalendarService
+        calendarRequestService.set(Calendar.HOUR_OF_DAY, calendarRequestService.get(Calendar.HOUR_OF_DAY) + DateUtil.HOURS_BEFORE_SERVICE)
+        calendarRequestService.set(Calendar.SECOND, 0)
+        calendarRequestService.set(Calendar.MILLISECOND, 0)
+
+        val compareMinutes = if (minute == 0 || minute == 2) {
+            0
+        } else {
+            30
+        }
+
+        val compareCalendar = Calendar.getInstance()
+        compareCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+        compareCalendar.set(Calendar.DAY_OF_YEAR, calendarRequestService.get(Calendar.DAY_OF_YEAR))
+        compareCalendar.set(Calendar.MINUTE, compareMinutes)
+        compareCalendar.set(Calendar.SECOND, 0)
+        compareCalendar.set(Calendar.MILLISECOND, 0)
+
+        val difference = DateUtil.calculateDifferenceBetweenToDated(calendarRequestService.time, compareCalendar.time)
+        val differenceToHours = DateUtil.convertMillisecondsToHoursDouble(difference)
+        toggleButton.isChecked = difference <= 12600000L
     }
 
     override fun onClick(v: View?) {
