@@ -31,6 +31,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     var time = ""
     private var hourBegin: Int = 6
     private var minuteBegin: Int = 0
+    val currentCalendar = Calendar.getInstance()
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,20 +45,38 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
         toggleButton.setOnClickListener(this)
         llUrgentService = v.findViewById(R.id.llUrgentService)
         tvInfo = v.findViewById(R.id.tvInfo)
-        hourBegin = if (!singleton.isBandTodayService)
-            6
-        else
-            singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) + DateUtil.HOURS_BEFORE_SERVICE
 
-        minuteBegin = if (!singleton.isBandTodayService) {
-            0
-        } else {
-            if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
+        if (singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1) {
+            hourBegin = if (singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) < 22) {
+                6
+            } else {
+                if(singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) == 22){
+                    6
+                }else{
+                    7
+                }
+            }
+            minuteBegin = if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
                 30
             } else {
                 0
             }
+        } else {
+            hourBegin = if (!singleton.isBandTodayService)
+                6
+            else
+                singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) + DateUtil.HOURS_BEFORE_SERVICE
+            minuteBegin = if (!singleton.isBandTodayService) {
+                0
+            } else {
+                if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
+                    30
+                } else {
+                    0
+                }
+            }
         }
+
 
         /*
         val df = SimpleDateFormat("yyyy-MM-dd")
@@ -94,7 +113,15 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
         timePicker.currentHour = hourBegin
         timePicker.currentMinute = if (!singleton.isBandTodayService) {
-            0
+            if(singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1){
+                if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
+                    1
+                } else {
+                    0
+                }
+            }else{
+                0
+            }
         } else {
             if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
                 1

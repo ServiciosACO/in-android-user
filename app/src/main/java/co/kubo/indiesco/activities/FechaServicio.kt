@@ -64,6 +64,7 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
         //Toast.makeText(applicationContext, dateStr, Toast.LENGTH_LONG).show()
         val calendarSelected = date.calendar
         singleton.isBandTodayService = calendarSelected.get(Calendar.DAY_OF_YEAR) == DateUtil.roundedCurrentDate().get(Calendar.DAY_OF_YEAR)
+        singleton.requestCalendarService.set(Calendar.DAY_OF_MONTH, calendarSelected.get(Calendar.DAY_OF_MONTH))
         singleton.fecha = dateStr
         llNext.setBackgroundColor(resources.getColor(R.color.colorVerde))
         flag = 1
@@ -110,9 +111,13 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
                 singleton.hourMinimunService = "${(currentCalendar.get(Calendar.HOUR_OF_DAY) + 1)}:${currentCalendar.get(Calendar.MINUTE)}"
                 true
             } else {
+                singleton.requestCalendarService = currentCalendar
+                singleton.hourMinimunService = "${(currentCalendar.get(Calendar.HOUR_OF_DAY) + 1)}:${currentCalendar.get(Calendar.MINUTE)}"
                 false
             }
         } else {
+            singleton.requestCalendarService = currentCalendar
+            singleton.hourMinimunService = "${(currentCalendar.get(Calendar.HOUR_OF_DAY) + 1)}:${currentCalendar.get(Calendar.MINUTE)}"
             false
         }
     }
