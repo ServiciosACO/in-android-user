@@ -50,9 +50,9 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             hourBegin = if (singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) < 22) {
                 6
             } else {
-                if(singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) == 22){
+                if (singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) == 22) {
                     6
-                }else{
+                } else {
                     7
                 }
             }
@@ -100,12 +100,13 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             tvInfo.visibility = View.GONE
         }
         */
-        if (singleton.isBandTodayService) {
+        if (singleton.isBandTodayService || singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1) {
             llUrgentService.visibility = View.VISIBLE
             tvInfo.visibility = View.VISIBLE
         } else {
             llUrgentService.visibility = View.GONE
             tvInfo.visibility = View.GONE
+            singleton.urgente = "no"
         }
         toggleButton.isEnabled = false
 
@@ -113,13 +114,13 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
         timePicker.currentHour = hourBegin
         timePicker.currentMinute = if (!singleton.isBandTodayService) {
-            if(singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1){
+            if (singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1) {
                 if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
                     1
                 } else {
                     0
                 }
-            }else{
+            } else {
                 0
             }
         } else {
@@ -252,7 +253,8 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun validateUrgentService(hourOfDay: Int, minute: Int) {
-        if (singleton.isBandTodayService) {
+        val compare = singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1
+        if (singleton.isBandTodayService || compare) {
             val compareMinutes = if (minute == 0 || minute == 2) {
                 0
             } else {
