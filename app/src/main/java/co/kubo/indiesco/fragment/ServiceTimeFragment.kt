@@ -56,10 +56,14 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
                     7
                 }
             }
-            minuteBegin = if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
-                30
-            } else {
+            minuteBegin = if (singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) < 22) {
                 0
+            } else {
+                if (singleton.requestCalendarService.get(Calendar.MINUTE) == 30) {
+                    30
+                } else {
+                    0
+                }
             }
         } else {
             hourBegin = if (!singleton.isBandTodayService)
@@ -100,7 +104,8 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
             tvInfo.visibility = View.GONE
         }
         */
-        if (singleton.isBandTodayService || singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1) {
+        if (singleton.isBandTodayService || (singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1
+                        && singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) >= 22)) {
             llUrgentService.visibility = View.VISIBLE
             tvInfo.visibility = View.VISIBLE
         } else {
@@ -254,7 +259,7 @@ class ServiceTimeFragment : Fragment(), View.OnClickListener {
 
     private fun validateUrgentService(hourOfDay: Int, minute: Int) {
         val compare = singleton.requestCalendarService.get(Calendar.DAY_OF_YEAR) - currentCalendar.get(Calendar.DAY_OF_YEAR) == 1
-        if (singleton.isBandTodayService || compare) {
+        if (singleton.isBandTodayService || (compare && singleton.requestCalendarService.get(Calendar.HOUR_OF_DAY) >= 22)) {
             val compareMinutes = if (minute == 0 || minute == 2) {
                 0
             } else {
