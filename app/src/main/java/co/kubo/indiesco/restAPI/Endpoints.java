@@ -163,7 +163,7 @@ public interface Endpoints {
                                               @Field("uid") String uid,
                                               @Field("valor_compra") int valor_compra,
                                               @Field("id_codigo_descuento") int id_codigo_descuento,
-                                              @Field("descuento") int descuento,
+                                              @Field("descuento") double descuento,
                                               @Field("cantidad_fechas") int cantidad_fechas,
                                               @Field("servicios") String servicios);
 

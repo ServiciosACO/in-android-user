@@ -36,8 +36,8 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
     val sharedPreferenceManager = SharedPreferenceManager()
     val utils = Utils()
     var codigo = ""
-    var id_codigo_descuento = 0
-    var descuento = 0
+    var idDiscountCode = 0
+    var discount = 0.0
 
     lateinit var llm: LinearLayoutManager
     private lateinit var adapter: AdapterResumen
@@ -114,7 +114,7 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
         usuario = SharedPreferenceManager.getInfoUsuario(applicationContext)
         var id_user = usuario.id_user
         val responseCrearServicio: Call<ResponseCrearServicio> = endpoints.crearServicio(authToken, id_user,
-                total.toInt(), id_codigo_descuento, descuento, cantidad_fechas, reqBody)
+                total.toInt(), idDiscountCode, discount, cantidad_fechas, reqBody)
         responseCrearServicio.enqueue(object : Callback<ResponseCrearServicio> {
             override fun onFailure(call: Call<ResponseCrearServicio>?, t: Throwable?) {
                 if (dialogProgress.isShowing)
@@ -189,6 +189,8 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
                                     singleton.discountValue = ((response.body()!!.data!!.valor!!.toDouble() / 100) * total) * -1
                                     var code_percent = (response.body()!!.data!!.valor!!.toDouble() / 100)
                                     total -= (total * code_percent)
+                                    idDiscountCode = response.body()!!.data!!.idCodigoDescuento!!.toInt()
+                                    discount = total * code_percent
                                     tvDiscount.text = "${df.format(singleton.discountValue * -1)}"
 
                                 }
@@ -198,6 +200,8 @@ class SolicitudServicio3 : AppCompatActivity(), View.OnClickListener, IChangeLay
 
                                     singleton.discountValue = (response.body()!!.data!!.valor!!.toDouble() * -1)
                                     total -= response.body()!!.data!!.valor!!.toDouble()
+                                    idDiscountCode = response.body()!!.data!!.idCodigoDescuento!!.toInt()
+                                    discount = total * response.body()!!.data!!.valor!!.toDouble()
                                     tvDiscount.text = "${df.format(response.body()!!.data!!.valor!!.toDouble())}"
                                 }
                             }
