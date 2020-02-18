@@ -89,5 +89,9 @@
     <!--Nueva dirección-->
     <string name="title_nueva_direccion">Nueva dirección</string>
     <string name="title_editar_direccion">Editar dirección</string>
+    <string name="lab_actualizar">Tenemos una nueva actualización disponible. Te recomendamos actualizar la versión antes de continuar.</string>
+    <string name="lab_actualizar_ahora">Actualizar ahora</string>
+    <string name="lab_actualizar_tarde">Mas tarde</string>
+    <string name="lab_espera">¡Espera!</string>
 
 </resources>

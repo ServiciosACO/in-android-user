@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llSalir"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorBlanco"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <co.kubo.indiesco.utils.Bold
+            style="@style/texto_22_morado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="33dp"
+            android:gravity="center"
+            android:text="@string/lab_espera" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="31dp"
+            android:src="@drawable/logo_home" />
+
+        <co.kubo.indiesco.utils.Regular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:text="@string/lab_actualizar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="23dp"
+            android:paddingRight="23dp">
+
+            <co.kubo.indiesco.utils.ButtonMedium
+                android:id="@+id/btnMasTarde"
+                style="@style/texto_14_rojo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/lab_actualizar_tarde"
+                android:textAllCaps="false" />
+
+            <co.kubo.indiesco.utils.ButtonMedium
+                android:id="@+id/btnActualizarAhora"
+                style="@style/texto_14_verde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/lab_actualizar_ahora"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

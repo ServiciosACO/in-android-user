@@ -286,5 +286,10 @@ public interface Endpoints {
                                                @Field("spaces[]") List<String> espacios,
                                                @Field("exactMeters") String metrosExactos);
 
+    @FormUrlEncoded
+    @POST("cuenta/validateVersion")
+    Call<ResponseGeneral> validateVersion(@Header("X-AC-Auth-Token") String authToken,
+                                           @Field("platform") String platform,
+                                           @Field("version") String version);
 
 }//Endpoints

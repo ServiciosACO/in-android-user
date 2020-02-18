@@ -16,13 +16,17 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.kubo.indiesco.R;
 import co.kubo.indiesco.dialog.DialogPendienteCalificar;
 import co.kubo.indiesco.dialog.DialogProgress;
+import co.kubo.indiesco.dialog.DialogUpdate;
 import co.kubo.indiesco.modelo.Historial;
 import co.kubo.indiesco.modelo.Usuario;
 import co.kubo.indiesco.restAPI.Endpoints;
@@ -73,6 +77,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         try {
             PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             versionName = packageInfo.versionName;
+            validateVersion();
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -93,6 +98,31 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         obtenerCalendario();
         pendienteCalificar(usuario.getId_user());
+    }
+
+    private void validateVersion() {
+        final DialogProgress dialogProgress = new DialogProgress(this);
+        dialogProgress.show();
+        String authToken = SharedPreferenceManager.getAuthToken(this);
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        restApiAdapter.establecerConexionRestApiSinGson().validateVersion(authToken, "a", versionName)
+                .enqueue(new Callback<ResponseGeneral>() {
+                    @Override
+                    public void onResponse(@NotNull Call<ResponseGeneral> call, @NotNull Response<ResponseGeneral> response) {
+                        dialogProgress.dismiss();
+                        if (response.isSuccessful()) {
+                            if (Objects.requireNonNull(response.body()).getCode().equals("100")) {
+                                DialogUpdate dialogUpdate = new DialogUpdate(Home.this);
+                                dialogUpdate.show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull Call<ResponseGeneral> call, @NotNull Throwable t) {
+                        dialogProgress.dismiss();
+                    }
+                });
     }
 
     private void setListeners() {
