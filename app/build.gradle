@@ -8,8 +8,8 @@ android {
         applicationId "co.kubo.indiesco"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 28
-        versionName "2.9"
+        versionCode 29
+        versionName "3.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "Servicios ACO - $versionName")
