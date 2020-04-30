@@ -31,7 +31,10 @@ public class InmuebleVO {
 
     @SerializedName("description")
     @Expose
-    private  String description;
+    private String description;
+    @SerializedName("id_servicio")
+    @Expose
+    private int idServicio;
 
     Boolean check = false;
 
@@ -108,5 +111,13 @@ public class InmuebleVO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getIdServicio() {
+        return idServicio;
+    }
+
+    public void setIdServicio(int idServicio) {
+        this.idServicio = idServicio;
     }
 }

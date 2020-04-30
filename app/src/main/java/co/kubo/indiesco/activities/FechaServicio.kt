@@ -27,7 +27,8 @@ class FechaServicio : AppCompatActivity(), View.OnClickListener, OnDateSelectedL
         when (v!!.id) {
             R.id.llNext -> {
                 if (validation()) {
-                    val intent = Intent(this, TipoInmueble::class.java)
+                    //val intent = Intent(this, TipoInmueble::class.java)
+                    val intent = Intent(this, TipoServicioActivity::class.java)
                     startActivity(intent)
                 }
             }

@@ -4,7 +4,7 @@ package co.kubo.indiesco.modelo
  * Created by estacion on 5/06/18.
  */
 class ServiceResumen {
-    var id_tipo_inmueble =""
+    var id_tipo_inmueble = ""
     var pisos = "" //from 1 to 3
     var urgente = "" //si, no
     var hora = "" //militar time
@@ -18,4 +18,5 @@ class ServiceResumen {
     var id_dimension = ""
     var totalCost = ""
     var espacios = ArrayList<Espacios>()
+    var idTipoServicio = -1
 }

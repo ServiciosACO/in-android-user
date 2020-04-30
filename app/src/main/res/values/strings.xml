@@ -94,4 +94,12 @@
     <string name="lab_actualizar_tarde">Mas tarde</string>
     <string name="lab_espera">¡Espera!</string>
 
+    <!--Tipo servicio-->
+    <string name="lan_agregar_servicio">Agregar servicio</string>
+    <string name="lab_pregunta_tipo_servicio">¿Qué tipo de servicio necesitas?</string>
+    <string name="lab_siguiente">Siguiente</string>
+    <string name="lab_regresar_mas_tarde">Parece que no hay nada aquí, por favor regresa más tarde</string>
+    <string name="lab_ops">¡Oops!</string>
+    <string name="lab_seleccionar_tipo_servicio">Debe elegir un tipo de servicio</string>
+
 </resources>

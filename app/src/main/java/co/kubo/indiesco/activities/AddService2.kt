@@ -314,6 +314,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                                             serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                                             serviceResumen.tipo_cobro = "pisos"
                                                             serviceResumen.hora = singleton.hora
+                                                            serviceResumen.idTipoServicio = singleton.idTipoServicio
                                                             var espacios_aux = Espacios()
                                                             serviceResumen.espacios.add(espacios_aux)
                                                             arrayResumen.add(serviceResumen)
@@ -406,6 +407,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                                             serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                                             serviceResumen.tipo_cobro = "pisos"
                                                             serviceResumen.hora = singleton.hora
+                                                            serviceResumen.idTipoServicio = singleton.idTipoServicio
                                                             var espacios_aux = Espacios()
                                                             serviceResumen.espacios.add(espacios_aux)
                                                             arrayResumen.add(serviceResumen)
@@ -482,6 +484,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                         serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                         serviceResumen.tipo_cobro = "pisos"
                                         serviceResumen.hora = singleton.hora
+                                        serviceResumen.idTipoServicio = singleton.idTipoServicio
                                         var espacios_aux = Espacios()
                                         serviceResumen.espacios.add(espacios_aux)
                                         arrayResumen.add(serviceResumen)
@@ -551,6 +554,7 @@ class AddService2 : AppCompatActivity(), View.OnClickListener,
                                     serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                     serviceResumen.tipo_cobro = "pisos"
                                     serviceResumen.hora = singleton.hora
+                                    serviceResumen.idTipoServicio = singleton.idTipoServicio
                                     var espacios_aux = Espacios()
                                     serviceResumen.espacios.add(espacios_aux)
                                     arrayResumen.add(serviceResumen)

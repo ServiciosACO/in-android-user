@@ -25,6 +25,7 @@ import co.kubo.indiesco.restAPI.modelo.ResponseRecargo2;
 import co.kubo.indiesco.restAPI.modelo.ResponseRegistro;
 import co.kubo.indiesco.restAPI.modelo.ResponseTasarServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseTipoDirecciones;
+import co.kubo.indiesco.restAPI.modelo.ResponseTipoServicio;
 import co.kubo.indiesco.restAPI.modelo.ResponseTotalToPay;
 import co.kubo.indiesco.restAPI.modelo.ResponseValidacion;
 import co.kubo.indiesco.utils.Constantes;
@@ -289,7 +290,10 @@ public interface Endpoints {
     @FormUrlEncoded
     @POST("cuenta/validateVersion")
     Call<ResponseGeneral> validateVersion(@Header("X-AC-Auth-Token") String authToken,
-                                           @Field("platform") String platform,
-                                           @Field("version") String version);
+                                          @Field("platform") String platform,
+                                          @Field("version") String version);
 
-}//Endpoints
+    @GET(ConstantesRestApi.URL_OBTENER_TIPOS_SERVICIO)
+    Call<ResponseTipoServicio> obtenerTiposDeServicion(@Header("X-AC-Auth-Token") String authToken);
+
+}

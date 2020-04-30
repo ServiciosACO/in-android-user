@@ -49,6 +49,7 @@ public class Singleton {
     private Calendar requestCalendarService;
     private String hourMinimunService;
     private boolean urgentCalculate = false;
+    private int idTipoServicio = -1;
 
     public List<String> getListaEspacios() {
         return listaEspacios;
@@ -360,5 +361,13 @@ public class Singleton {
 
     public void setUrgentCalculate(boolean urgentCalculate) {
         this.urgentCalculate = urgentCalculate;
+    }
+
+    public int getIdTipoServicio() {
+        return idTipoServicio;
+    }
+
+    public void setIdTipoServicio(int idTipoServicio) {
+        this.idTipoServicio = idTipoServicio;
     }
 }

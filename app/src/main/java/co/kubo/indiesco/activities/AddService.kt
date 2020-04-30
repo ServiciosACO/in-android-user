@@ -391,6 +391,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                             serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                                             serviceResumen.tipo_cobro = "espacios"
                                                             serviceResumen.hora = singleton.hora
+                                                            serviceResumen.idTipoServicio = singleton.idTipoServicio
 
                                                             var data = singleton.data
                                                             var posInm = singleton.posTipoInmueble
@@ -499,6 +500,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                                             serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                                             serviceResumen.tipo_cobro = "espacios"
                                                             serviceResumen.hora = singleton.hora
+                                                            serviceResumen.idTipoServicio = singleton.idTipoServicio
 
                                                             var data = singleton.data
                                                             var posInm = singleton.posTipoInmueble
@@ -594,6 +596,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                         serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                         serviceResumen.tipo_cobro = "espacios"
                                         serviceResumen.hora = singleton.hora
+                                        serviceResumen.idTipoServicio = singleton.idTipoServicio
 
                                         var data = singleton.data
                                         var posInm = singleton.posTipoInmueble
@@ -682,6 +685,7 @@ class AddService : AppCompatActivity(), View.OnClickListener, IVivieda,
                                     serviceResumen.id_tipo_inmueble = singleton.idTipoInmueble
                                     serviceResumen.tipo_cobro = "espacios"
                                     serviceResumen.hora = singleton.hora
+                                    serviceResumen.idTipoServicio = singleton.idTipoServicio
 
                                     var data = singleton.data
                                     var posInm = singleton.posTipoInmueble
