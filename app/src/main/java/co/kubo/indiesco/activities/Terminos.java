@@ -1,7 +1,13 @@
 package co.kubo.indiesco.activities;
 
+import android.net.http.SslError;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -44,9 +50,11 @@ public class Terminos extends AppCompatActivity implements View.OnClickListener 
         /**Para mostrar solo pagina web embebido*/
         webViewTerminos.getSettings().setJavaScriptEnabled(true);
         //Para mostrar la pagina web embebida en la app
-        webViewTerminos.loadUrl(getResources().getString(R.string.terms));
         webViewTerminos.setWebViewClient(new MyWebViewClient());
+        WebSettings settings = webViewTerminos.getSettings();
+        settings.setDomStorageEnabled(true);
         webViewTerminos.requestFocus();
+        webViewTerminos.loadUrl(getResources().getString(R.string.terms));
 
     }//protected void onCreate
 

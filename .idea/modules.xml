@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Desktop-Jaime-indiesco_android.iml" filepath="$PROJECT_DIR$/Desktop-Jaime-indiesco_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/Jaime-indiesco_android.iml" filepath="$PROJECT_DIR$/Jaime-indiesco_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="indiesco_android/app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="in-android-user/app" />
+      <module fileurl="file://$PROJECT_DIR$/in-android-user.iml" filepath="$PROJECT_DIR$/in-android-user.iml" group="in-android-user" />
       <module fileurl="file://$PROJECT_DIR$/indiesco_android.iml" filepath="$PROJECT_DIR$/indiesco_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-indiesco_android.iml" filepath="$PROJECT_DIR$/project-indiesco_android.iml" group="indiesco_android" />
     </modules>
